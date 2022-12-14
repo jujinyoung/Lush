@@ -1,0 +1,73 @@
+# 에디터 설정 파일 제외
+.metadata
+bin/
+tmp/
+*.tmp
+*.tmp
+*.bak
+*.swp
+local.properties
+.settings/
+.loadpath
+.recommenders
+.project
+.externalToolBuilders/
+*.launch
+.classpath
+.factorypath
+.buildpath
+.target
+.springBeans
+.recommenders/
+
+# intellij 파일 제외
+target/
+pom.xml
+.idea
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+
+# 서버 제외
+Servers/
+
+# jar압축할일 없음
+MANIFEST.mf
+
+# 외부 라이브러리 제외
+/WEB-INF/lib
+
+# VSCODE 실행 시 설정 파일 제외
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# 실행파일 제외
+*.dll
+*.exe
+*.o
+*.so
+*.com
+*.class
+
+# 로그파일 제외
+*.log
+logs/
+
+# 패키지 파일 제외
+*.dmg
+*.iso
+*.tar
+*.zip
+*.gz
+
+# os용 시스템 파일 제외
+.Trashes
+.Thumbs.db
+.ehthumbs.db
