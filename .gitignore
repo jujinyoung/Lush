@@ -40,6 +40,7 @@ MANIFEST.mf
 
 # 외부 라이브러리 제외
 /WEB-INF/lib
+*.jar
 
 # VSCODE 실행 시 설정 파일 제외
 .vscode/*
