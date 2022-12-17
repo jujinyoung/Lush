@@ -27,6 +27,21 @@
     <dispatcher>REQUEST</dispatcher>
   </filter-mapping>
 
-
+<!--  이벤트 시스템 서블릿 등록-->
+  <servlet>
+    <description>시스템 서블릿 등록</description>
+    <servlet-name>Dispatcher</servlet-name>
+    <servlet-class>controller.DispatcherServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+    <init-param>
+      <description>요청 URL과 Handler 매핑 정보를 가지고 있는 파일의 경로</description>
+      <param-name>path</param-name>
+      <param-value>/WEB-INF/commandHandler.properties</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Dispatcher</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
 
  </web-app>
