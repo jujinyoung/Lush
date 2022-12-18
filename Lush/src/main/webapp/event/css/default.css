@@ -1,0 +1,32 @@
+/* 폰트사용 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+
+/* 기본 설정 초기화(자동으로 값들어가는 거 방지) */
+body, form, div, p, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, ol, li, fieldset, th, td, input, textarea, button, section{
+    margin: 0;
+    padding: 0;
+    color: #222;
+    font-family: 'Noto Sans KR', dotum, '돋움';
+}
+
+/*h1, h2, h3, h4, h5, h6 {*/
+/*  font-size: inherit;*/
+/*  font-weight: normal;*/
+/*}*/
+
+strong, em {
+    font-style: normal;
+}
+
+ul, ol {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+*{
+    box-sizing: border-box;
+    text-shadow: none;
+}
