@@ -7,6 +7,11 @@ header{
   height: 96px;
 }
 
+img{
+  border: 0;
+  vertical-align: middle;
+}
+
 .inner{
   display: block;
   position: relative;
@@ -121,7 +126,7 @@ input[type="text"] {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  width: 98.7%;
   margin-bottom: 47px;
 }
 
@@ -174,8 +179,8 @@ input[type="text"] {
 }
 
 .list-thumb li {
-  width: 392px;
-  margin-right: 24px;
+  width: 389px;
+  margin-right: 19px;
   margin-bottom: 48px;
 }
 
@@ -202,5 +207,24 @@ input[type="text"] {
   font-size: 18px;
   letter-spacing: -.5px;
   text-align: center;
+}
+
+.list-thumb li .date {
+  display: block;
+  margin-top: 4px;
+  letter-spacing: -.45px;
+  color: #949494;
+  text-align: center;
+}
+
+.list-thumb li .article-thumb img {
+  display: block;
+  position: absolute;
+  min-height: 100%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  height: 100%;
+  width: auto;
 }
 

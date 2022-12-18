@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,7 +38,20 @@
             <div class="inner">
                 <ul class="list-thumb">
                     <!-- db에서 이벤트정보가져다가 쓰기 -->
-
+                    <c:forEach var="event" items="${events}">
+                        <li>
+                            <a class="article-thumb">
+                                <img src="${event.image}" alt="${event.title}">
+                            </a>
+                            <a class="article-title">
+                                ${event.title} ?
+                            </a>
+                            <a class="article-cate">
+                                ${event.subtitle}
+                            </a>
+                            <p class="date">${event.rdate}~${event.edate}</p>
+                        </li>
+                    </c:forEach>
                 </ul>
 
             </div>
