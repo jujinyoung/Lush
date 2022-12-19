@@ -30,7 +30,6 @@ public class ListHandler implements CommandHandler {
         int numberPerPage = 12;
         int numberOfPageBlock = 10;
 
-        System.out.println("searchWord = " + searchWord);
         if (searchWord.equals("")){
             events = listService.selectEventList(eventStatus, currentPage, numberPerPage);
         }else {
@@ -38,6 +37,10 @@ public class ListHandler implements CommandHandler {
         }
 
         int totalPages = listService.getTotalPages(numberPerPage, eventStatus);
+        int proceedRecords = listService.getProceedRecords();
+        int endRecords = listService.getEndRecords();
+        System.out.println("proceedRecords = " + proceedRecords);
+        System.out.println("endRecords = " + endRecords);
 
         pageBlock = PageService.pagingService(currentPage, numberPerPage, numberOfPageBlock, totalPages);
 
@@ -46,6 +49,8 @@ public class ListHandler implements CommandHandler {
         request.setAttribute("searchWord", searchWord);
         request.setAttribute("events", events);
         request.setAttribute("pageBlock", pageBlock);
+        request.setAttribute("proceedRecords", proceedRecords);
+        request.setAttribute("endRecords", endRecords);
 
         return "/event/list.jsp";
     }

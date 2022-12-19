@@ -200,6 +200,7 @@ input[type="text"] {
   letter-spacing: -.5px;
   font-weight: 700;
   text-align: center;
+  color: #222;
 }
 
 .list-thumb li .article-cate {
@@ -207,6 +208,7 @@ input[type="text"] {
   font-size: 18px;
   letter-spacing: -.5px;
   text-align: center;
+  color: #222;
 }
 
 .list-thumb li .date {

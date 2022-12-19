@@ -13,4 +13,8 @@ public interface EventDao {
     public List<Event> searchEventList(Connection conn, int eventStatus ,int currentPage, int numberPerPage, int condition, String key) throws SQLException;
 
     public int getTotalPages(Connection conn, int numberPerPage, int eventStatus) throws SQLException;
+
+    public int getProceedTotalRecords(Connection conn) throws Exception;
+
+    public int getEndTotalRecords(Connection conn) throws Exception;
 }

@@ -124,6 +124,47 @@ public class EventDaoImpl implements EventDao{
         }
     }
 
+    @Override
+    public int getProceedTotalRecords(Connection conn) throws Exception {
+
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        String sql = "SELECT COUNT(*) FROM ltb_event WHERE ev_edate > sysdate";
+        try {
+            pstmt = conn.prepareStatement(sql);
+            rs = pstmt.executeQuery();
+
+            int result = 0;
+            if (rs.next()) result = rs.getInt(1);
+
+            return result;
+        }finally {
+            JdbcUtil.close(pstmt);
+            JdbcUtil.close(rs);
+        }
+    }
+
+    @Override
+    public int getEndTotalRecords(Connection conn) throws Exception {
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        String sql = "SELECT COUNT(*) FROM ltb_event WHERE ev_edate < sysdate";
+        try {
+            pstmt = conn.prepareStatement(sql);
+            rs = pstmt.executeQuery();
+
+            int result = 0;
+            if (rs.next()) result = rs.getInt(1);
+
+            return result;
+        }finally {
+            JdbcUtil.close(pstmt);
+            JdbcUtil.close(rs);
+        }
+    }
+
     private String sliceDate(Timestamp timestamp){
         SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd HH:mm");
         return sdf.format(timestamp);
