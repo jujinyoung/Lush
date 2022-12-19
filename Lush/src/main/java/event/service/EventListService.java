@@ -55,4 +55,18 @@ public class EventListService {
         }
         return list;
     }
+
+    public int getTotalPages(int numberPerPage, int eventStatus){
+        Connection conn = null;
+
+        try {
+            conn = ConnectionProvider.getConnection();
+            EventDao dao = EventDaoImpl.getInstance();
+            return dao.getTotalPages(conn, numberPerPage, eventStatus);
+        } catch (NamingException | SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            JdbcUtil.close(conn);
+        }
+    }
 }

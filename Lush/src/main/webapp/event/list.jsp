@@ -2,7 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
     int eventStatus = request.getParameter("eventStatus")==null ? 1 :Integer.parseInt(request.getParameter("eventStatus"));
-    int contentPage = request.getParameter("currentPage")==null ? 1 :Integer.parseInt(request.getParameter("page"));
+    int contentPage = request.getParameter("currentPage")==null ? 1 :Integer.parseInt(request.getParameter("currentPage"));
+    int searchCondition = request.getParameter("searchCondition")==null ? 1 :Integer.parseInt(request.getParameter("searchCondition"));
     String searchWord = request.getParameter("searchWord")==null ? "" : request.getParameter("searchWord");
 %>
 <!DOCTYPE html>
@@ -25,7 +26,7 @@
         <div class="board-search-wrap">
             <input name="eventStatus" type="hidden" value="<%=eventStatus%>">
             <input name="currentPage" type="hidden" value="<%=contentPage%>">
-            <input id="where1" name="searchCondition" checked="checked" type="radio" value="1">
+            <input id="where1" name="searchCondition" type="radio" value="1">
             <label for="where1">제목</label>
             <input id="where2" name="searchCondition" type="radio" value="2">
             <label for="where2">내용</label>
@@ -47,6 +48,7 @@
                         <li>
                             <a class="article-thumb">
                                 <img src="${event.image}" alt="${event.title}">
+                                <div class="mask"></div>
                             </a>
                             <a class="article-title">
                                 ${event.title} ?
@@ -61,19 +63,19 @@
                 <div class="paginate">
                     <ul>
                         <c:if test="${pageBlock.prev}">
-                            <li class="prev"><a href="/Lush/event/list.do?eventStatus=<%=eventStatus%>&currentpage=${pageBlock.startOfPageBlock-1}&searchCondition=${searchCondition}&searchWord=${searchWord}"> &laquo; </a></li></c:if>
+                            <li class="first"><a href="/Lush/event/list.do?eventStatus=<%=eventStatus%>&currentPage=${pageBlock.startOfPageBlock-1}&searchCondition=${searchCondition}&searchWord=${searchWord}"> &laquo; </a></li></c:if>
                         <c:forEach begin="${pageBlock.startOfPageBlock}" end="${pageBlock.endOfPageBlock}" var="i" step="1">
                             <c:choose>
                                 <c:when test="${pageBlock.currentPage eq i}">
                                     <li><a href="#" class="num on">${i}</a></li>
                                 </c:when>
                                 <c:otherwise>
-                                    <li><a href="/Lush/event/list.do?eventStatus=<%=eventStatus%>&currentpage=${i}&searchCondition=${searchCondition}&searchWord=${searchWord}">${i}</a></li>
+                                    <li><a href="/Lush/event/list.do?eventStatus=<%=eventStatus%>&currentPage=${i}&searchCondition=${searchCondition}&searchWord=${searchWord}">${i}</a></li>
                                 </c:otherwise>
                             </c:choose>
                         </c:forEach>
                         <c:if test="${pageBlock.next}">
-                            <li class="next"><a href="Lush/event/list.do?eventStatus=<%=eventStatus%>&currentpage=${pageBlock.endOfPageBlock+1}&searchCondition=${searchCondition}&searchWord=${searchWord}"> &raquo; </a></li>
+                            <li class="last"><a href="Lush/event/list.do?eventStatus=<%=eventStatus%>&currentPage=${pageBlock.endOfPageBlock+1}&searchCondition=${searchCondition}&searchWord=${searchWord}"> &raquo; </a></li>
                         </c:if>
                     </ul>
                 </div>
@@ -85,9 +87,19 @@
 <script>
     if(<%=eventStatus%> == 2){
         $('ul.tab-btn>li:last-child').find('a').addClass('on');
+        $('.list-thumb li').addClass('end');
     }else{
         $('ul.tab-btn>li:first-child').find('a').addClass('on');
     }
+
+    if (<%=searchCondition%> == 1){
+        $('input[id="where1"]').prop('checked',true);
+    }else{
+        $('input[id="where2"]').prop('checked',true);
+    }
+
+
+
 
 </script>
 </div>

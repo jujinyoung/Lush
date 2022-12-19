@@ -27,7 +27,7 @@ public class EventDaoImpl implements EventDao{
                 " FROM( " +
                 "    SELECT ROWNUM no, t.* " +
                 "    FROM( " +
-                "        SELECT * FROM tb_event " +
+                "        SELECT * FROM ltb_event " +
                 "        WHERE ev_edate ";
         if(eventStatus == 1) sql += " > sysdate ";
         else sql += " < sysdate ";
@@ -68,21 +68,20 @@ public class EventDaoImpl implements EventDao{
         int begin = (currentPage-1)*numberPerPage + 1;
         int end = begin + numberPerPage - 1;
 
-        StringBuilder sql = new StringBuilder("SELECT b.* FROM( " +
+        String sql = "SELECT b.* FROM( " +
                 " SELECT ROWNUM no, t.* FROM( " +
-                " SELECT * FROM tb_event WHERE ev_rdate ");
+                " SELECT * FROM ltb_event WHERE ev_edate ";
 
-        if (eventStatus == 1) sql.append("> sysdate ");
-        else sql.append("< sysdate");
+        if (eventStatus == 1) sql += "> sysdate ";
+        else sql += "< sysdate";
 
-        if (condition == 1) sql.append(" and REGEXP_LIKE(ev_title, ?, 'i') ");
-        else sql.append(" and REGEXP_LIKE(ev_notice, ?, 'i') ");
-        sql.append(" ORDER BY ev_rdate DESC)t " +
-                " )b WHERE b.no BETWEEN ? and ?");
+        if (condition == 1) sql += " and REGEXP_LIKE(ev_title, ?, 'i') ";
+        else sql += " and REGEXP_LIKE(ev_notice, ?, 'i') ";
+        sql += " ORDER BY ev_rdate DESC)t )b WHERE b.no BETWEEN ? and ?";
 
         List<Event> list = null;
         try {
-            pstmt = conn.prepareStatement(sql.toString());
+            pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, key);
             pstmt.setInt(2, begin);
             pstmt.setInt(3, end);
@@ -93,10 +92,32 @@ public class EventDaoImpl implements EventDao{
                     list.add(new Event(rs.getInt("ev_id"), rs.getString("ev_image"), rs.getString("ev_title"), rs.getString("ev_subtitle")
                             , rs.getString("ev_notice"), sliceDate(rs.getTimestamp("ev_rdate")), sliceDate(rs.getTimestamp("ev_edate"))));
                 }while (rs.next());
-            }else{
-                System.out.println("EventDaoImpl.searchEventList rs없음");
             }
             return list;
+        }finally {
+            JdbcUtil.close(pstmt);
+            JdbcUtil.close(rs);
+        }
+    }
+
+    @Override
+    public int getTotalPages(Connection conn, int numberPerPage, int eventStatus) throws SQLException {
+
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        String sql = "SELECT CEIL(COUNT(*)/?) FROM ltb_event WHERE ev_edate";
+        if (eventStatus == 1) sql += "> sysdate ";
+        else sql += "< sysdate";
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, numberPerPage);
+            rs = pstmt.executeQuery();
+            int result = 0;
+            if (rs.next()){
+                result = rs.getInt(1);
+            }
+            return result;
         }finally {
             JdbcUtil.close(pstmt);
             JdbcUtil.close(rs);

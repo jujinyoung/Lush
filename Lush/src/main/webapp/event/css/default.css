@@ -35,3 +35,7 @@ a {
     box-sizing: border-box;
     text-shadow: none;
 }
+
+a:hover, a:focus, a:visited, a:active {
+    text-decoration: none;
+}
