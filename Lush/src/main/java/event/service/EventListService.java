@@ -19,14 +19,15 @@ public class EventListService {
     private EventListService(){}
     public static EventListService getInstance(){return instance;}
 
+    EventDao eventDao = EventDaoImpl.getInstance();
+
     public List<Event> selectEventList(int eventStatus, int currentPage, int numberPerPage){
         Connection conn = null;
-        EventDao dao = EventDaoImpl.getInstance();
         List<Event> events = null;
 
         try {
             conn = ConnectionProvider.getConnection();
-            events = dao.selectEventList(conn, eventStatus, currentPage, numberPerPage);
+            events = eventDao.selectEventList(conn, eventStatus, currentPage, numberPerPage);
             if (events == null){
                 throw new EventListEmptyException("이벤트 목록이 비어있습니다.");
             }
@@ -46,10 +47,10 @@ public class EventListService {
         List<Event> list = null;
         try {
             conn = ConnectionProvider.getConnection();
-            EventDao dao = EventDaoImpl.getInstance();
-            list = dao.searchEventList(conn, eventStatus, currentPage, numberPerPage, searchCondition, searchWord);
+
+            list = eventDao.searchEventList(conn, eventStatus, currentPage, numberPerPage, searchCondition, searchWord);
         } catch (NamingException | SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         } finally {
             JdbcUtil.close(conn);
         }
@@ -61,12 +62,46 @@ public class EventListService {
 
         try {
             conn = ConnectionProvider.getConnection();
-            EventDao dao = EventDaoImpl.getInstance();
-            return dao.getTotalPages(conn, numberPerPage, eventStatus);
+            return eventDao.getTotalPages(conn, numberPerPage, eventStatus);
         } catch (NamingException | SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         } finally {
             JdbcUtil.close(conn);
         }
+        return 1;
+    }
+
+    public int getProceedRecords(){
+        Connection conn = null;
+
+        try {
+            conn = ConnectionProvider.getConnection();
+            return eventDao.getProceedTotalRecords(conn);
+        }catch (NamingException | SQLException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JdbcUtil.close(conn);
+        }
+
+        return 0;
+    }
+
+    public int getEndRecords(){
+        Connection conn = null;
+
+        try {
+            conn = ConnectionProvider.getConnection();
+            return eventDao.getEndTotalRecords(conn);
+        }catch (NamingException | SQLException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JdbcUtil.close(conn);
+        }
+
+        return 0;
     }
 }

@@ -2,9 +2,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
     int eventStatus = request.getParameter("eventStatus")==null ? 1 :Integer.parseInt(request.getParameter("eventStatus"));
-    int contentPage = request.getParameter("currentPage")==null ? 1 :Integer.parseInt(request.getParameter("currentPage"));
     int searchCondition = request.getParameter("searchCondition")==null ? 1 :Integer.parseInt(request.getParameter("searchCondition"));
     String searchWord = request.getParameter("searchWord")==null ? "" : request.getParameter("searchWord");
+    int proceedRecords = (int) request.getAttribute("proceedRecords");
+    int endRecords = (int) request.getAttribute("endRecords");
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,7 +26,7 @@
     <form action="/Lush/event/list.do" method="get">
         <div class="board-search-wrap">
             <input name="eventStatus" type="hidden" value="<%=eventStatus%>">
-            <input name="currentPage" type="hidden" value="<%=contentPage%>">
+            <input name="currentPage" type="hidden" value="${pageBlock.currentPage}">
             <input id="where1" name="searchCondition" type="radio" value="1">
             <label for="where1">제목</label>
             <input id="where2" name="searchCondition" type="radio" value="2">
@@ -35,9 +36,9 @@
         </div>
     </form>
     <ul class="tab-btn type3">
-        <li><a href="/Lush/event/list.do?eventStatus=1">진행중인 이벤트 ?</a></li>
+        <li><a href="/Lush/event/list.do?eventStatus=1">진행중인 이벤트 (<%=proceedRecords%>)</a></li>
         <li><a href="/Lush/event/eventresult.do">선정자 발표</a></li>
-        <li><a href="/Lush/event/list.do?eventStatus=2">종료된 이벤트 ?</a></li>
+        <li><a href="/Lush/event/list.do?eventStatus=2">종료된 이벤트 (<%=endRecords%>)</a></li>
     </ul>
     <div class="tab-cont">
         <div class="tab-inner-on">
@@ -46,14 +47,14 @@
                     <!-- db에서 이벤트정보가져다가 쓰기 -->
                     <c:forEach var="event" items="${events}">
                         <li>
-                            <a class="article-thumb">
+                            <a href="/Lush/event/view/${event.id}.do?eventStatus=<%=eventStatus%>&currentPage=${pageBlock.currentPage}" class="article-thumb">
                                 <img src="${event.image}" alt="${event.title}">
                                 <div class="mask"></div>
                             </a>
-                            <a class="article-title">
+                            <a href="/Lush/event/view/${event.id}.do?eventStatus=<%=eventStatus%>&currentPage=${pageBlock.currentPage}" class="article-title">
                                 ${event.title} ?
                             </a>
-                            <a class="article-cate">
+                            <a href="/Lush/event/view/${event.id}.do?eventStatus=<%=eventStatus%>&currentPage=${pageBlock.currentPage}" class="article-cate">
                                 ${event.subtitle}
                             </a>
                             <p class="date">${event.rdate}~${event.edate}</p>
