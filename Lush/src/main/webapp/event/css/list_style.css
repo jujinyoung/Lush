@@ -228,3 +228,32 @@ input[type="text"] {
   width: auto;
 }
 
+.list-thumb + .paginate {
+  margin-top: 32px;
+}
+
+.paginate {
+  display: block;
+  position: relative;
+  margin: 100px auto;
+}
+
+.paginate ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+
+.paginate ul li {
+  display: block;
+  padding: 0 8px;
+}
+
+.paginate ul li a.num.on {
+  border-bottom: 1px solid #535353;
+  pointer-events: none;
+  cursor: default;
+}
+
