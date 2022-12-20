@@ -10,12 +10,9 @@ public class ViewHandler implements CommandHandler {
     public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
         String requestMethod = request.getMethod();
-        String requestURI = request.getRequestURI();
-        int startIdx = requestURI.indexOf("view") + 5;
-        int endIdx = requestURI.indexOf(".do");
-        String pageNo = requestURI.substring(startIdx, endIdx);
+        String eventId = request.getParameter("eventID");
         if (requestMethod.equals("GET")){
-            return "/event/view/"+ pageNo +".jsp";
+            return "/event/view/"+ eventId +".jsp";
         }else if (requestMethod.equals("POST")){
 
         }

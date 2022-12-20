@@ -26,11 +26,14 @@
     <jsp:include page="/WEB-INF/inc/event/boardEvent.jsp">
         <jsp:param name="eventStatus" value="<%=eventStatus%>"/>
         <jsp:param name="searchWord" value="<%=searchWord%>"/>
+        <jsp:param name="currentPage" value="${pageBlock.currentPage}"/>
+        <jsp:param name="searchCondition" value="<%=searchCondition%>"/>
     </jsp:include>
 
     <jsp:include page="/WEB-INF/inc/event/eventTab.jsp">
         <jsp:param name="proceedRecords" value="<%=proceedRecords%>"/>
         <jsp:param name="endRecords" value="<%=endRecords%>"/>
+        <jsp:param name="eventStatus" value="<%=eventStatus%>"/>
     </jsp:include>
 
     <div class="tab-cont">
@@ -40,14 +43,14 @@
                     <!-- db에서 이벤트정보가져다가 쓰기 -->
                     <c:forEach var="event" items="${events}">
                         <li>
-                            <a href="/Lush/event/view.do?eventID=${event.id}&eventStatus=<%=eventStatus%>&currentPage=${pageBlock.currentPage}" class="article-thumb">
+                            <a href="/Lush/event/view.do?eventID=${event.id}&eventStatus=<%=eventStatus%>&currentPage=${pageBlock.currentPage}&proceedRecords=<%=proceedRecords%>&endRecords=<%=endRecords%>" class="article-thumb">
                                 <img src="${event.image}" alt="${event.title}">
                                 <div class="mask"></div>
                             </a>
-                            <a href="/Lush/event/view.do?eventID=${event.id}&eventStatus=<%=eventStatus%>&currentPage=${pageBlock.currentPage}" class="article-title">
+                            <a href="/Lush/event/view.do?eventID=${event.id}&eventStatus=<%=eventStatus%>&currentPage=${pageBlock.currentPage}&proceedRecords=<%=proceedRecords%>&endRecords=<%=endRecords%>" class="article-title">
                                 ${event.title} ?
                             </a>
-                            <a href="/Lush/event/view.do?eventID=${event.id}&eventStatus=<%=eventStatus%>&currentPage=${pageBlock.currentPage}" class="article-cate">
+                            <a href="/Lush/event/view.do?eventID=${event.id}&eventStatus=<%=eventStatus%>&currentPage=${pageBlock.currentPage}&proceedRecords=<%=proceedRecords%>&endRecords=<%=endRecords%>" class="article-cate">
                                 ${event.subtitle}
                             </a>
                             <p class="date">${event.rdate}~${event.edate}</p>
@@ -66,21 +69,9 @@
 
 <script>
     if(<%=eventStatus%> == 2){
-        $('ul.tab-btn>li:last-child').find('a').addClass('on');
         $('.list-thumb li').addClass('end');
     }else{
-        $('ul.tab-btn>li:first-child').find('a').addClass('on');
     }
-
-    if (<%=searchCondition%> == 1){
-        $('input[id="where1"]').prop('checked',true);
-    }else{
-        $('input[id="where2"]').prop('checked',true);
-    }
-
-
-
-
 </script>
 </div>
 </body>

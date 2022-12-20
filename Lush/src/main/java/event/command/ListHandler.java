@@ -39,8 +39,6 @@ public class ListHandler implements CommandHandler {
         int totalPages = listService.getTotalPages(numberPerPage, eventStatus);
         int proceedRecords = listService.getProceedRecords();
         int endRecords = listService.getEndRecords();
-        System.out.println("proceedRecords = " + proceedRecords);
-        System.out.println("endRecords = " + endRecords);
 
         pageBlock = PageService.pagingService(currentPage, numberPerPage, numberOfPageBlock, totalPages);
 

@@ -1,10 +1,8 @@
-/* 폰트사용 */
+
 @import url(default.css);
 @import url(boardEvent.css);
 @import url(eventTab.css);
 @import url(paging.css);
-
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
 
 header{
   height: 96px;
