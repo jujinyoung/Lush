@@ -1,0 +1,139 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap');
+@font-face {font-family:'lush'; src:url('font/Lush.ttf');}
+
+
+.top-visual {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 456px;
+    margin-bottom: 40px;
+    overflow: hidden;
+    background-size: contain;
+    background-position: center center;
+}
+
+.top-visual .category-title {
+    display: block;
+    font-family: 'lush';
+    font-size: 96px;
+    line-height: 1em;
+    color: #fafafa;
+    letter-spacing: -3px;
+    font-weight: 500;
+}
+
+.top-visual img {
+    position: absolute;
+    min-width: 100%;
+    display: block;
+    z-index: 1;
+    left: 50%;
+    top: 50%;
+    min-height: 100%;
+    transform: translate(-50%,-50%);
+}
+
+img {
+    border: 0;
+    vertical-align: middle;
+}
+
+.top-visual > div {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    z-index: 2;
+    background-color: transparent;
+    opacity: 30;
+    background: rgba(34,34,34,.3);
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flex.center {
+    justify-content: center;
+}
+
+h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+.board-search-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 80px;
+}
+
+input[type="text"] {
+    background: #fff;
+    color: #222;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 1em;
+    padding: 0 10px;
+    border: 1px solid #949494;
+    height: 48px;
+    line-height: 46px;
+}
+
+.board-search-wrap input[type='radio'] + label {
+    margin-right: 32px;
+}
+
+input[type="radio"] {
+    display: none;
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: none;
+}
+
+.board-search-wrap button {
+    width: 127px;
+    height: 48px;
+    line-height: 46px;
+    font-size: 14px;
+    font-weight: 700;
+    margin-left: 8px;
+}
+
+.black-btn {
+    position: relative;
+    background: #222;
+    color: #fff !important;
+    text-align: center;
+    border: 1px solid #222;
+}
+
+input[type="radio"]:checked + label {
+    background: url(https://www.lush.co.kr/content/renewal/pc/images/ico/radio_on.svg) no-repeat center left;
+}
+
+input[type="radio"] + label {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: url(https://www.lush.co.kr/content/renewal/pc/images/ico/radio_off.svg) no-repeat center left;
+    padding-left: 28px;
+    min-width: 18px;
+    min-height: 18px;
+}
