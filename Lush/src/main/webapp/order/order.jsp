@@ -1,5 +1,9 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+      request.setCharacterEncoding("UTF-8");
+      String contextPath = request.getContextPath();
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -116,13 +120,10 @@
 											<th>주문자 정보</th>
 											<td>
 												<ul class="info-ul no-border">
-													<li id="bName"><span id="childBName">김지훈</span> <a href="javascript:;" class="pop-open" data-class="orderer"><span>주문자 정보 변경</span></a></li>
-													<li id="bEmail">okol4561@naver.com</li>
-													<li id="bMobile">010-4920-4748</li>
-													<li id="bAddress">
-														
-															(02584)
-														<span>서울 동대문구 왕산로 72 (동대문한양아이클래스)</span>704호</li>
+													<li id="bName"><span id="childBName">${ member.name }</span> <a href="javascript:;" class="pop-open" data-class="orderer"><span>주문자 정보 변경</span></a></li>
+													<li id="bEmail">${ member.email }</li>
+													<li id="bMobile">${ member.telnum }</li>
+													<li id="bAddress"><span>${ member.address }</span></li>
 												</ul>
 											</td>
 										</tr>
