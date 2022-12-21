@@ -143,7 +143,6 @@ footer .footer-right .info *, footer .footer-right .copyright {
     font-weight: 300;
 }
 
-
 footer .footer-left .cscenter li strong {
     font-weight: 500;
 }
@@ -198,8 +197,6 @@ ol, ul, dl {
 ul {
     list-style-type: disc;
 }
-
-
 
 li{
 	list-style: none;
