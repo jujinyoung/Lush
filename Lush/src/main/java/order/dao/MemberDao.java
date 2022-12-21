@@ -1,6 +1,6 @@
-package member.dao;
+package order.dao;
 
-import member.domain.Member;
+import order.domain.Member;
 
 import java.sql.Connection;
 import java.sql.SQLException;

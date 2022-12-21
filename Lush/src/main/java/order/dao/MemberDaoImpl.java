@@ -1,12 +1,10 @@
-package member.dao;
+package order.dao;
 
 import com.util.JdbcUtil;
 
-import event.domain.Event;
-import member.domain.Member;
+import order.domain.Member;
 
 import java.sql.*;
-import java.util.ArrayList;
 
 
 public class MemberDaoImpl implements MemberDao{

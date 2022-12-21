@@ -147,9 +147,9 @@
 																	<strong id="deliveryTitle_0">기본 배송지</strong>
 																		<a href="javascript:;" onclick="selectAddress(0)" class="pop-open" data-class="receiver"><span>배송지 정보 변경</span></a>
 																</li>
-																<li id="deliveryName_0">김지훈</li>
-																<li id="deliveryMobile_0">010-4920-4748</li>
-																<li id="deliveryAddress_0">(02584)<span>서울 동대문구 왕산로 72 (동대문한양아이클래스)</span>704호</li>
+																<li id="deliveryName_0">${ shipadd.oname }</li>
+																<li id="deliveryMobile_0">${ shipadd.telnum1 }</li>
+																<li id="deliveryAddress_0"><span>${ shipadd.address }</span></li>
 																	</ul>
 														</td>
 													</tr>

@@ -1,4 +1,4 @@
-package member.domain;
+package order.domain;
 
 public class Member {
 
