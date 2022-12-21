@@ -6,6 +6,8 @@
     int currentPage = request.getParameter("currentPage")==null ? 1 :Integer.parseInt(request.getParameter("currentPage"));
     String proceedRecords = request.getParameter("proceedRecords");
     String endRecords = request.getParameter("endRecords");
+
+    String eventID = request.getParameter("eventID");
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -108,5 +110,132 @@
         </div>
     </article>
 </section>
+
+
+
+<div class="dimmed" id="dimmedArea">
+<%--&lt;%&ndash;    <!-- 댓글작성 취소 팝업 -->&ndash;%&gt;--%>
+<%--   ------- <div class="popup reply-cancel" id="commentCancelPopup">--%>
+<%--        <div class="pop-head">--%>
+<%--        </div>--%>
+<%--        <div class="pop-content">--%>
+<%--            <p class="body1">작성중인 내용은 저장되지 않습니다.<br/> 취소하시겠습니까?</p>--%>
+<%--        </div>--%>
+<%--        <div class="btn-wrap basic double">--%>
+<%--            <button type="button" class="border-btn" onclick="rna.openLayerPopup('commentRegistPopup')">취소</button>--%>
+<%--            <button type="button" class="black-btn pop-close confirm" onclick="resetCommentPop();">확인</button>--%>
+<%--        </div>--%>
+<%--        <button type="button" class="pop-close popup-close-btn" onclick="resetCommentPop();">팝업닫기</button>--%>
+<%--    </div>--%>
+
+<%--&lt;%&ndash;    <!-- 댓글등록 팝업 -->&ndash;%&gt;--%>
+<%--   -------- <div class="popup reply-ok" id="commentRegistSuccessPopup">--%>
+<%--        <div class="pop-head">--%>
+<%--        </div>--%>
+<%--        <div class="pop-content">--%>
+<%--            <p class="body1">댓글이 등록되었습니다.</p>--%>
+<%--        </div>--%>
+<%--        <div class="btn-wrap basic">--%>
+<%--            <button type="button" class="black-btn pop-close" >확인</button>--%>
+<%--        </div>--%>
+<%--        <button type="button" class="pop-close popup-close-btn" name="">팝업닫기</button>--%>
+<%--    </div>--%>
+
+<%--    댓글작성 버튼 클릭시 --%>
+    <div class="popup biggest reply-write" id="commentRegistPopup">
+        <div class="pop-head">
+            <h2 class="big">댓글 작성</h2>
+        </div>
+        <div class="pop-content" id="commentRegistForm">
+            <form id="boardComment" action="/Lush/event/view.do?eventId=<%=eventID%>" method="post" enctype="multipart/form-data"><input type="hidden" name="boardCommentId" value="0" />
+                <table class="list-table light">
+                    <colgroup>
+                        <col width="210px">
+                        <col width="auto">
+                    </colgroup>
+                    <tbody>
+                    <tr class="title">
+                        <th>제목</th>
+                        <td>
+                            <input id="cmntStatusCode1" name="secret" type="checkbox" value="0"/>
+                            <label for="cmntStatusCode1">
+                                <span>비밀글</span>
+                            </label>
+                            <input type="hidden" name="_cmntStatusCode" value="on"/>
+                        </td>
+                    </tr>
+                    <tr class="contents">
+                        <th>내용</th>
+                        <td>
+                            <textarea id="cmntContent" name="cmntContent" placeholder="댓글 내용을 작성해주세요.
+특수문자(<, >, |, = , &amp;lt, &amp;gt 등) 입력은 불가능합니다."></textarea>
+                        </td>
+                    </tr>
+                        <tr class="files">
+                            <th>첨부파일</th>
+                            <td>
+                                <div class="upload-box">
+                                    <ul class="file-tree">
+<%--                                        이미지 업로드시 li태그 생성--%>
+
+                                    </ul>
+                                    <label for="boardCommentFiles" class="file-btn"><span>파일선택</span></label>
+                                    <input type="file" id="boardCommentFiles" hidden=""  multiple="multiple" accept=".png, .jpg"/>
+                                    <input type="file" name="boardCommentFiles" hidden=""  multiple="multiple" accept=".png, .jpg"/>
+                                </div>
+                                <p class="file-notice">5MB이하 이미지파일(png, jpg)로 최대 5개까지 업로드 가능합니다.</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+        <div class="btn-wrap large double">
+            <button type="reset" class="border-btn pop-change">취소</button>
+            <button type="button" class="black-btn pop-change">작성하기</button>
+        </div>
+        <button type="button" class="popup-close-btn">팝업닫기</button>
+    </div>
+</div>
+
+<script>
+    $('.review-title button.pop-open').click(function (){
+        $('.dimmed').addClass('on');
+        $('.dimmed #commentRegistPopup').show();
+    });
+
+    $('button.popup-close-btn').click(function (){
+        $('.dimmed').removeClass('on');
+        $('.dimmed #commentRegistPopup').hidden();
+    });
+
+    $('#cmntStatusCode1').click(function (){
+        if ($('#cmntStatusCode1').val() == 0){
+            $('#cmntStatusCode1').val(1);
+        }else{
+            $('input#cmntStatusCode1').val(0);
+        }
+    });
+
+    $(document).ready(function () {
+        $("#boardCommentFiles").change(function (event) {
+            var n = $('.upload-box ul.file-tree li').length;
+            if (n>=5){
+                alert("이미지파일은 5개까지만 올릴 수 있습니다.")
+            }else{
+                $('.upload-box ul.file-tree').append('<li><div class="input-wrap"><input id="file' + n +'" type="text" readonly>' +
+                    '<button id="delFile" type="button"></button>' +
+                    '</div></li>');
+
+                var files = $('input#boardCommentFiles')[0].files;
+                // alert(files[0].name);
+                // for (var i=0; files.length; i++){
+                    $('#file'+n).val(files[0].name);
+                // }
+            }
+        });//  click
+
+    }); // ready
+</script>
 </body>
 </html>
