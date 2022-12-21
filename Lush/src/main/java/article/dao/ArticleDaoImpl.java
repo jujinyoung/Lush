@@ -2,6 +2,7 @@ package article.dao;
 
 import com.util.JdbcUtil;
 import article.domain.Article;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +12,38 @@ import java.util.List;
 //DAO 싱글톤 구현
 public class ArticleDaoImpl implements ArticleDao{
 
+	
+	private static ArticleDaoImpl instance = new ArticleDaoImpl();
+    private ArticleDaoImpl(){}
+    public static ArticleDaoImpl getInstance(){return  instance;}
+    @Override
+    public List<Article> selectArticleList(Connection con) throws SQLException {
+
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        String sql = "SELECT * FROM ltb_story";
+        List<Article> list = null;
+        try {
+            pstmt = con.prepareStatement(sql);
+            rs = pstmt.executeQuery();
+
+            if (rs.next()){
+                list = new ArrayList<>();
+                do {
+                    list.add(new Article(rs.getInt("st_id"), rs.getString("st_title"), rs.getString("st_stitle"), rs.getString("st_content")
+                            , rs.getString("st_image"), rs.getString("st_product"), rs.getString("adm_id")));
+                }while (rs.next());
+            }
+        }finally {
+            JdbcUtil.close(pstmt);
+            JdbcUtil.close(rs);
+        }
+
+        return list;
+    }
+
+	
+	/*
 	private ArticleDaoImpl() {}
 	
 	private static ArticleDaoImpl articleDAO = null;
@@ -203,4 +236,6 @@ public class ArticleDaoImpl implements ArticleDao{
 	         JdbcUtil.close(con);
 	      }
 	   }
+	   
+	   */
 	}

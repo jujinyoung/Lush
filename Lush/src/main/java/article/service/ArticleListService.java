@@ -2,19 +2,49 @@ package article.service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.Collections;
+//import java.util.Collections;
 import java.util.List;
 
 import javax.naming.NamingException;
 
 import com.util.ConnectionProvider;
-import com.util.JdbcUtil;
+//import com.util.JdbcUtil;
+
+import article.dao.ArticleDao;
 import article.dao.ArticleDaoImpl;
 import article.domain.Article;
+//import event.dao.EventDao;
+//import event.dao.EventDaoImpl;
+//import event.domain.Event;
+import event.exception.EventListEmptyException;
+//import event.service.EventListService;
 
 // 싱글톤
 public class ArticleListService {
 	
+	private static ArticleListService instance = new ArticleListService();
+    private ArticleListService(){}
+    public static ArticleListService getInstance(){return instance;}
+
+    public List<Article> selectArticleList(){
+        Connection conn = null;
+        ArticleDao dao = ArticleDaoImpl.getInstance();
+        List<Article> articles = null;
+
+        try {
+            conn = ConnectionProvider.getConnection();
+            articles = dao.selectArticleList(conn);
+            if (articles == null){
+                throw new EventListEmptyException("이벤트 목록이 비어있습니다.");
+            }
+        } catch (NamingException | SQLException e) {
+            e.printStackTrace();
+        } catch (EventListEmptyException e) {
+            e.printStackTrace();
+        }
+        return articles;
+    }
+	/*
 	private static ArticleListService  instance = null;
 	   
 	   private ArticleListService() {}
@@ -93,4 +123,5 @@ public class ArticleListService {
 	         JdbcUtil.close(conn);
 	      }
 	   }
+	   */
 }

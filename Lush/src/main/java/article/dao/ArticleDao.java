@@ -8,7 +8,9 @@ import java.util.List;
 import article.domain.Article;
 
 public interface ArticleDao {
-	
+
+	List<Article> selectArticleList(Connection con) throws SQLException;
+/*	
 	// 1.글쓰기
 	int insert( Connection con, Article article) throws SQLException;
 	// 2.총 게시글 수를 반환하는 메서드
@@ -21,7 +23,8 @@ public interface ArticleDao {
 	int delete( Connection con, long st_id ) throws SQLException;
 	// 6. 방명록 수정
 	int update( Connection con, Article article ) throws SQLException;
+	List<Article> selectArticleList(Connection conn);
 
-
+*/
 
 }

@@ -18,30 +18,57 @@
 
 <style>
 
-@font-face {
-font-family: 'lush';
-src: url('font/lush-hw/lushHandwritten_wlat_bd-webfont.woff2') format('woff2'),
-url('font/lush-hw/lushHandwritten_wlat_bd-webfont.woff') format('woff'),
-url('font/lush-hw/lushHandwritten_wlat_bd-webfont.ttf') format('truetype');
+@font-face{
+	font-family: 'Lush';
+	src: url('/Lush/src/webapp/article/font/Lush.ttf')	
 }
 
+/* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');  */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap');
+
 /* 전체 */
+element.style {
+    padding-top: 128px;
+}
+section {
+    min-height: calc(100vh - 96px - 320px);
+}
+
+section {
+    display: block;
+}
+
+.story-wrap {
+    margin-top: 56px;
+}
+
 body, form, div, p, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, ol, li, fieldset, th, td, input, textarea, button, select {
     margin: 0;
     padding: 0;
-    font-family: "NotoSans",dotum,'돋움';
+    font-family: "Noto Sans KR", sans-serif;
     color: #222;
+}
+
+strong, em {
+    font-style: normal;
 }
 
 * {
     box-sizing: border-box !important;
 }
 
+
+
 * {
-    -webkit-text-size-adjust: none;
+	-webkit-text-size-adjust: none;
     text-shadow: none !important;
 }
 
+article {
+    display: block;
+}
+
+ 
 html {
     -webkit-user-select: none;
     -webkit-touch-callout: none;
@@ -131,8 +158,8 @@ img {
 
 .top-visual .category-title {
     display: block;
-    font-family: 'lush';
-    font-size: 96px;
+    font-family: 'Lush';
+    font-size: 70px;
     line-height: 1em;
     color: #fafafa;
     letter-spacing: -3px;
@@ -140,6 +167,13 @@ img {
 }
 
 /* 검색 */
+.inner {
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    width: 1224px;
+}
+
 form {
     display: block;
     margin-top: 0em;
@@ -255,6 +289,49 @@ button, input[type="button"], input[type="submit"], input[type="reset"], input[t
     font-size: 1em;
 }
 
+input[type="radio" i] {
+    background-color: initial;
+    cursor: default;
+    appearance: auto;
+    box-sizing: border-box;
+    margin: 3px 3px 0px 5px;
+    padding: initial;
+    border: initial;
+}
+
+input {
+    writing-mode: horizontal-tb !important;
+    font-style: ;
+    font-variant-ligatures: ;
+    font-variant-caps: ;
+    font-variant-numeric: ;
+    font-variant-east-asian: ;
+    font-weight: ;
+    font-stretch: ;
+    font-size: ;
+    font-family: ;
+    text-rendering: auto;
+    color: fieldtext;
+    letter-spacing: normal;
+    word-spacing: normal;
+    line-height: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    appearance: auto;
+    -webkit-rtl-ordering: logical;
+    cursor: text;
+    background-color: field;
+    margin: 0em;
+    padding: 1px 2px;
+    border-width: 2px;
+    border-style: inset;
+    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+    border-image: initial;
+}
+
 /* 카테고리 */
 .tab-btn {
     display: flex;
@@ -268,22 +345,27 @@ ol, ul, dl {
     list-style: none;
 }
 
-ul {
+ ul {
     display: block;
     list-style-type: disc;
     margin-block-start: 1em;
     margin-block-end: 1em;
     margin-inline-start: 0px;
     margin-inline-end: 0px;
-    padding-inline-start: 40px;
+    padding-inline-start: 40px; 
 }
-
+  
 li {
     text-align: -webkit-match-parent;
 }
-
+  
 .tab-btn.type5 li {
     width: 20%;
+}
+
+ul.tab-btn.type5{
+	margin: 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
 }
 
 .tab-btn li {
@@ -300,7 +382,7 @@ li {
     background: #222;
     color: #fff;
     font-weight: 700;
-    width: calc(100% + 2px);
+    width: calc(100% + 2px);;
     margin-left: -1px;
     margin-right: -1px;
     height: 65px;
@@ -319,12 +401,12 @@ li {
     letter-spacing: -0.45px;
 }
 
-a:hover, a:focus, a:visited, a:active {
-    text-decoration: none;
+ a:hover, a:focus, a:visited, a:active {
+    text-decoration-line: none;
 }
 
 a {
-    text-decoration: none;
+    text-decoration-line: none;
     color: #222;
 }
 
@@ -335,12 +417,15 @@ a {
 a:-webkit-any-link {
     color: -webkit-link;
     cursor: pointer;
-    text-decoration: underline;
 }
 
 /* 메인 */
 .tab-cont .tab-inner.on {
     display: block;
+}
+
+.tab-btn li:not(:first-child) {
+  border-left: none;
 }
 
 .tab-cont .tab-inner {
@@ -361,6 +446,10 @@ a:-webkit-any-link {
     flex-wrap: wrap;
 }
 
+ .list-thumb li:nth-of-type(3n) {
+    margin-right: 0;
+}
+ 
 .list-thumb li {
     width: 392px;
     margin-right: 24px;
@@ -396,6 +485,37 @@ a {
     letter-spacing: -.5px;
     text-align: center;
 }
+
+.list-thumb li .article-thumb img {
+  display: block;
+  position: absolute;
+  min-height: 100%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  height: 100%;
+  width: auto;
+}
+
+img {
+    border: 0;
+    vertical-align: middle;
+}
+
+/* img {
+    overflow-clip-margin: content-box;
+    overflow: clip;
+}
+ */
+fieldset, img {
+    border: 0;
+}
+
+ul.list-thumb{
+	padding: 0px 0px 0px 0px;
+	
+}
+
 
 /* 페이징처리 */
 .list-thumb + .paginate {
@@ -491,21 +611,21 @@ img {
 
 <body>
 
-<header>
+<header id ="header">
 </header>
 
 <!-- 탑이미지 -->
-<section>
+<section id="story" style="padding-top: 128px;">
 <article class="top-visual">
 	<div class = "flex center">
-		<h2 class="category-title">러쉬 이야기</h2>
+		<h2 class="category-title">Lush story</h2>
 		<p class="sub"></p>
 	</div>
 	<img src="https://www.lush.co.kr/upload/article/20220215105233L.jpg" alt="러쉬 이야기">
 </article>
 
 
-<article>
+<article class="story-wrap">
 <!-- 검색 -->
 <div class="inner">
 
@@ -555,7 +675,7 @@ img {
                                 <img src="${article.st_image}" alt="${article.st_title}">
                             </a>
                             <a class="article-title">
-                                ${article.st_title} ?
+                                ${article.st_title}
                             </a>
                             <a class="article-cate">
                                 ${article.st_stitle}
