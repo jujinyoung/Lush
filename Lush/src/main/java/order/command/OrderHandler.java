@@ -2,6 +2,8 @@ package order.command;
 
 import command.CommandHandler;
 import order.domain.Member;
+import order.domain.Product;
+import order.domain.ProductSangse;
 import order.domain.ShipAdd;
 import order.service.OrderService;
 
@@ -17,15 +19,24 @@ public class OrderHandler implements CommandHandler {
     	
         OrderService orderService = OrderService.getInstance();
         HttpSession session =  request.getSession(  false );
+        Long psid = Long.parseLong(request.getParameter("psid"));
+        
 	    if( session == null) {
 	    	return "/order/default.jsp";
 	    }else {
 	    	 String sid = (String)session.getAttribute("auth");
 	    	 Member member = orderService.selectMember(sid);
-	    	 ShipAdd shipadd = orderService.selectShipAdd(member);
+	    	 
+	    	 Long mid = member.getMid();
+	    	 ShipAdd shipadd = orderService.selectShipAdd(mid);
+	    	 
+	    	 ProductSangse productsangse = orderService.selectProductSangse(psid);
+	    	 Product product = orderService.selectProduct(productsangse.getPid());
 
 	         request.setAttribute("member", member);
 	         request.setAttribute("shipadd", shipadd);
+	         request.setAttribute("productsangse", productsangse);
+	         request.setAttribute("product", product);
 	         return "/order/order.jsp";
 	    }
        

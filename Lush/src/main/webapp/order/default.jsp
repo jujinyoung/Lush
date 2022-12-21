@@ -18,5 +18,12 @@
 
 <a href="<%= contextPath %>/order/order.do">링크</a>
 
+<script>
+  $("a").on("click", function (){
+	  $(this).attr("href", function (i, val){
+		  return val +"?psid="+"1"+"&amount="+"2";
+	  });
+  });
+</script>
 </body>
 </html>

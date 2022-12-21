@@ -2,7 +2,6 @@ package order.dao;
 
 import com.util.JdbcUtil;
 
-import order.domain.Member;
 import order.domain.ShipAdd;
 
 import java.sql.*;
@@ -14,7 +13,7 @@ public class ShipAddDaoImpl implements ShipAddDao{
     private ShipAddDaoImpl(){}
     public static ShipAddDaoImpl getInstance(){return  instance;}
     @Override
-    public ShipAdd selectShipAdd(Connection con, Member member ) throws SQLException {
+    public ShipAdd selectShipAdd(Connection con, Long mid ) throws SQLException {
 
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -23,7 +22,7 @@ public class ShipAddDaoImpl implements ShipAddDao{
         
         try {
             pstmt = con.prepareStatement(sql);
-            pstmt.setLong(1, member.getMid());
+            pstmt.setLong(1, mid);
             pstmt.setString(2, "1");
             
             rs = pstmt.executeQuery();

@@ -3,6 +3,7 @@
 <%
       request.setCharacterEncoding("UTF-8");
       String contextPath = request.getContextPath();
+      int amount = Integer.parseInt(request.getParameter("amount"));
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,18 +50,18 @@
 						
 <%-- <c:forEach var="event" items="${events}">
  --%><tr>
-    <td class="cart-prd-img"><img src=https://www.lush.co.kr/upload/item/342/20220727192654M.png alt="dummy 제품 이미지"></td>
+    <td class="cart-prd-img"><img src=${ product.img } alt="dummy 제품 이미지"></td>
     <td class="text-left">
-        <p class="subtitle" id="cartData-0" data-store-qt="1" data-store-id="342" data-store-nm="더 올리브 브랜치 100g/250g/500g/1000g" data-store-va="용량 : 250g (+17,000원)" data-store-am="34000">더 올리브 브랜치 100g/250g/500g/1000g</p><p class="cate body1">샤워 젤</p>
-                <p class="option body2"></p><ul class="option"><li> <span class="choice">용량 : </span><span>250g</span> (+17,000원)</li></ul><p></p>
+        <p class="subtitle" id="cartData-0">${ product.name } </p><p class="cate body1">${ product.cat3 } </p>
+                <p class="option body2"></p><ul class="option"><li> <span class="choice">용량 : </span><span>${ productsangse.weight } g</span> </li></ul><p></p>
                 </td>
     <td>
         <div class="quantity-box">
-            <input type="text" class="quantity" id="quantity-0" value="1" readonly="">
+            <input type="text" class="quantity" id="quantity-0" value="<%= amount %>" readonly="">
         </div>
     </td>
-<td id="itemSalePrice-0">￦34,000</td>
-        <td id="itemSaleAmount-0">￦34,000</td>
+<td id="itemSalePrice-0">￦ ${ productsangse.price }</td>
+        <td id="itemSaleAmount-0"><p id="result"></p></td>
 </tr>
 <%-- </c:forEach>
  --%>
@@ -69,9 +70,9 @@
 						<tr>
 							<td colspan="5">
 								<ul class="total-wrap flex">
-									<li><span>선택제품</span> <strong>1 개</strong></li>
-<li><span>제품합계</span> <strong>￦ 34,000</strong></li>
-										<li class="d-charge"><span>배송비</span> <strong class="op-total-delivery-charge-text">￦ 0</strong></li><li><span>주문금액</span> 	<strong class="op-order-pay-amount-text">￦ 34,000</strong></li>
+									<li><span>선택제품</span> <strong><%= amount %> 개</strong></li>
+<li><span>제품합계</span> <strong id="result2"></strong></li>
+										<li class="d-charge"><span>배송비</span> <strong class="op-total-delivery-charge-text">￦ 0</strong></li><li><span>주문금액</span> 	<strong class="op-order-pay-amount-text" id="result5"></strong></li>
 								</ul>
 							</td>
 						</tr>
@@ -120,7 +121,7 @@
 											<th>주문자 정보</th>
 											<td>
 												<ul class="info-ul no-border">
-													<li id="bName"><span id="childBName">${ member.name }</span> <a href="javascript:;" class="pop-open" data-class="orderer"><span>주문자 정보 변경</span></a></li>
+													<li id="bName"><span id="childBName">${ member.name }</span> <a href="javascript:;" class="pop-open"><span>주문자 정보 변경</span></a></li>
 													<li id="bEmail">${ member.email }</li>
 													<li id="bMobile">${ member.telnum }</li>
 													<li id="bAddress"><span>${ member.address }</span></li>
@@ -145,7 +146,7 @@
 															<ul class="info-ul no-border">
 																<li>
 																	<strong id="deliveryTitle_0">기본 배송지</strong>
-																		<a href="javascript:;" onclick="selectAddress(0)" class="pop-open" data-class="receiver"><span>배송지 정보 변경</span></a>
+																		<a href="javascript:;" onclick="selectAddress(0)" class="pop-open" ><span>배송지 정보 변경</span></a>
 																</li>
 																<li id="deliveryName_0">${ shipadd.oname }</li>
 																<li id="deliveryMobile_0">${ shipadd.telnum1 }</li>
@@ -157,7 +158,7 @@
 														<th>배송 메세지</th>
 														<td>
 															<div class="select-box long">
-																<a href="javascript:;" class="selected-value reveiverMsg" data-receiver-index="0">선택해주세요</a>
+																<a href="javascript:;" class="selected-value reveiverMsg" >선택해주세요</a>
 																<ul id="selDelMsg" class="option-box" name="">
 																	<li>부재시 경비실에 맡겨주세요</li>
 																	<li>부재시 문 앞에 놓아주세요</li>
@@ -181,10 +182,10 @@
 						</h3>
 
 					<ul class="total-wrap flex">
-						<li><span>합계</span> <strong>￦ 34,000</strong></li>
+						<li><span>합계</span> <strong id="result3"></strong></li>
 								<li class="d-charge"><span>배송비</span> <strong class="op-total-delivery-charge-text">￦ 0</strong></li><li class="total-price ">
 							<span>최종 결제 금액</span>
-							<strong class="op-order-pay-amount-text">￦ 34,000</strong>
+							<strong class="op-order-pay-amount-text" id="result4"></strong>
 						</li>
 					</ul>
 
@@ -246,12 +247,24 @@
 					<div class="input-box">
 						<input type="checkbox" id="agree" name="agree"><label for="agree"><span>(필수)</span>구매하실 제품의 결제정보를 확인하였으며, 구매진행에 동의합니다.</label>
 					</div>
-					<button type="submit" id="payment-button" name="" class="green-btn"><strong class="op-order-pay-amount-text">￦ 34,000</strong> <strong>결제하기</strong></button>
+					<button type="submit" id="payment-button" name="" class="green-btn"><strong class="op-order-pay-amount-text"><strong id="result6"></strong></strong></strong> <strong>결제하기</strong></button>
 				</article>
 				
 			</div>
 		</div>
 	<div>
 </div></form></section>
+<script>
+  var sum = '￦ ';
+  sum += String(<%= amount %> * ${ productsangse.price });
+  document.getElementById('result').innerHTML = sum;
+  document.getElementById('result2').innerHTML = sum;
+  document.getElementById('result3').innerHTML = sum;
+  document.getElementById('result4').innerHTML = sum;
+  document.getElementById('result5').innerHTML = sum;
+  document.getElementById('result6').innerHTML = sum;
+
+
+</script>
 </body>
 </html>

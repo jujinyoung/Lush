@@ -3,10 +3,16 @@ package order.service;
 import com.util.ConnectionProvider;
 
 import order.domain.Member;
+import order.domain.Product;
+import order.domain.ProductSangse;
 import order.domain.ShipAdd;
 import order.exception.EmptyException;
 import order.dao.MemberDao;
 import order.dao.MemberDaoImpl;
+import order.dao.ProductDao;
+import order.dao.ProductDaoImpl;
+import order.dao.ProductSangseDao;
+import order.dao.ProductSangseDaoImpl;
 import order.dao.ShipAddDao;
 import order.dao.ShipAddDaoImpl;
 
@@ -40,7 +46,7 @@ public class OrderService {
         return member;
     }
     
-    public ShipAdd selectShipAdd(Member member){
+    public ShipAdd selectShipAdd(Long mid){
         Connection conn = null;
         ShipAddDao dao = ShipAddDaoImpl.getInstance();
         ShipAdd shipadd = null;
@@ -48,7 +54,7 @@ public class OrderService {
 
         try {
             conn = ConnectionProvider.getConnection();
-            shipadd = dao.selectShipAdd(conn, member);
+            shipadd = dao.selectShipAdd(conn, mid);
             if (shipadd == null){
                 throw new EmptyException("배송지가 없습니다.");
             }
@@ -60,4 +66,48 @@ public class OrderService {
         
         return shipadd;
     }
+    
+    public Product selectProduct(Long pid){
+        Connection conn = null;
+        ProductDao dao = ProductDaoImpl.getInstance();
+        Product product = null;
+        
+
+        try {
+            conn = ConnectionProvider.getConnection();
+            product = dao.selectProduct(conn, pid);
+            if (product == null){
+                throw new EmptyException("제품이 없습니다.");
+            }
+        } catch (NamingException | SQLException e) {
+            e.printStackTrace();
+        } catch (EmptyException e) {
+            e.printStackTrace();
+        }
+        
+        return product;
+    }
+    
+    public ProductSangse selectProductSangse(Long psid){
+        Connection conn = null;
+        ProductSangseDao dao = ProductSangseDaoImpl.getInstance();
+        ProductSangse productsangse = null;
+        
+
+        try {
+            conn = ConnectionProvider.getConnection();
+            productsangse = dao.selectProductSangse(conn, psid);
+            if (productsangse == null){
+                throw new EmptyException("제품상세가 없습니다.");
+            }
+        } catch (NamingException | SQLException e) {
+            e.printStackTrace();
+        } catch (EmptyException e) {
+            e.printStackTrace();
+        }
+        
+        return productsangse;
+    }
+    
+
 }
