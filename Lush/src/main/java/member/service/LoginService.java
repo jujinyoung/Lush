@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 import javax.naming.NamingException;
+import javax.servlet.RequestDispatcher;
 
 import com.util.ConnectionProvider;
 
@@ -21,15 +22,27 @@ public class LoginService { // 로그인
 		try( 
 				Connection conn = ConnectionProvider.getConnection()){
 				Member member = memberDao.selectById(conn, id);
-				if(member == null) { // 회원이 없으면 
-					throw new LoginFailException();
+				// 패스워드가 맞지 않거나 아이디가 잘못되면 
+				// ID 또는 비밀번호를 다시 확인해 주시기 바랍니다.
+				if(member == null || !member.matchPassword(password ) ){ 
+					return null;
 				}
-				if(!member.matchPassword(password)) { // 패스워드가 맞지 않으면
-					throw new LoginFailException();
-		} //if
+
 				return new User(member.getMe_loginid(), member.getMe_name());
 	}catch(SQLException | NamingException e) {
 		throw new RuntimeException(e);
 	}
 	}
 }
+
+
+
+
+/*if(!member.matchPassword(password)) { // 패스워드가 맞지 않으면
+*/			// response.sendRedirect("LoginError.jsp"); 
+	/*
+	 * String path = "LoginError.jsp"; RequestDispatcher dispatcher =
+	 * request.getRequestDispatcher(path) ; request.sendre
+	 */
+//		error
+//	} //if

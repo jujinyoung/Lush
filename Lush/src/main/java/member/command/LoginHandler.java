@@ -52,8 +52,13 @@ public class LoginHandler implements CommandHandler {
 		try {
 			// loginService 를 이용해 인증을 수행 -> 로그인에 성공하면 user객체 리턴 
 			User user = loginservice.login(id, password);
-			// user 객체를 authuser 속성에 저장 
-			request.getSession().setAttribute("authUser", user);
+			if(user == null) {
+				errors.put("idorpasserror", Boolean.TRUE);
+				return "Login.jsp";
+			}
+			// user 객체를 authuser 속성에 저장 아이디 / 이름 
+		// 	request.getSession().setAttribute("authUser", id);
+			 request.getSession().setAttribute("authUser", user);
 		//	response.sendRedirect(request.getContextPath() + "/index.jsp");
 			response.sendRedirect("main_temp.jsp");
 			return null;

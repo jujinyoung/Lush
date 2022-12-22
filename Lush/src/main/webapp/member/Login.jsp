@@ -270,11 +270,16 @@
 </section>
 
 
+<script>
+
+<c:if test="${errors.idorpasserror}" var="idorpasserror">
+	alert('ID 또는 비밀번호를 다시 확인해 주시기 바랍니다.');
+</c:if>
 
 
 
 
-
+</script>
 
 
 <!--  

@@ -44,4 +44,14 @@
     <url-pattern>*.do</url-pattern>
   </servlet-mapping>
 
+
+<!-- 로그인 여부 체크 필터  -->
+<filter>
+	<filter-name>LoginCheckFilter</filter-name>
+	<filter-class>com.filter.LoginCheckFilter</filter-class>
+</filter>
+<filter-mapping>
+	<filter-name>LoginCheckFilter</filter-name>
+	<url-pattern>/changePwd.do</url-pattern>
+</filter-mapping>
  </web-app>

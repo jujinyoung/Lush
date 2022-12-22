@@ -17,7 +17,6 @@
 
 <div> 약관동의 </div>
 
-<h3>가입실패</h3>
 
 <div class = "textarea">
 LUSH 웹사이트에 오신 것을 환영합니다.

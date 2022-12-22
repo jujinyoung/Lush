@@ -57,7 +57,7 @@ public class DispatcherServlet extends HttpServlet {
         String requestURI = request.getRequestURI(); // url 분석 /list.do /join.do
      //  System.out.println("requestURI = " + requestURI);
         CommandHandler handler = commandHandlerMap.get(requestURI); // 핸들러 검색
-
+        System.out.println("체크");
         
      //     String viewPage = 핸들러.process
         String viewPage = null;
