@@ -16,7 +16,7 @@ public class ShopHandler implements CommandHandler{
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		int currentPage = 1;
-		
+		try {}catch(Exception e) {}
 		Connection conn = ConnectionProvider.getConnection();
 		ShopDaoImpl dao = new ShopDaoImpl(conn);
 		
