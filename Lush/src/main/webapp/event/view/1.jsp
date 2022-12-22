@@ -122,10 +122,10 @@
 <%--            <p class="body1">작성중인 내용은 저장되지 않습니다.<br/> 취소하시겠습니까?</p>--%>
 <%--        </div>--%>
 <%--        <div class="btn-wrap basic double">--%>
-<%--            <button type="button" class="border-btn" onclick="rna.openLayerPopup('commentRegistPopup')">취소</button>--%>
-<%--            <button type="button" class="black-btn pop-close confirm" onclick="resetCommentPop();">확인</button>--%>
+<%--            <button type="button" class="border-btn">취소</button>--%>
+<%--            <button type="button" class="black-btn pop-close confirm">확인</button>--%>
 <%--        </div>--%>
-<%--        <button type="button" class="pop-close popup-close-btn" onclick="resetCommentPop();">팝업닫기</button>--%>
+<%--        <button type="button" class="pop-close popup-close-btn">팝업닫기</button>--%>
 <%--    </div>--%>
 
 <%--&lt;%&ndash;    <!-- 댓글등록 팝업 -->&ndash;%&gt;--%>
@@ -147,7 +147,8 @@
             <h2 class="big">댓글 작성</h2>
         </div>
         <div class="pop-content" id="commentRegistForm">
-            <form id="boardComment" action="/Lush/event/view.do?eventId=<%=eventID%>" method="post" enctype="multipart/form-data"><input type="hidden" name="boardCommentId" value="0" />
+            <form id="boardComment" action="/Lush/event/view.do" method="post" enctype="multipart/form-data"><input type="hidden" name="boardCommentId" value="0" />
+                <input type="hidden" name="eventID" value="<%=eventID%>">
                 <table class="list-table light">
                     <colgroup>
                         <col width="210px">
@@ -180,8 +181,8 @@
 
                                     </ul>
                                     <label for="boardCommentFiles" class="file-btn"><span>파일선택</span></label>
-                                    <input type="file" id="boardCommentFiles" hidden=""  multiple="multiple" accept=".png, .jpg"/>
-                                    <input type="file" name="boardCommentFiles" hidden=""  multiple="multiple" accept=".png, .jpg"/>
+                                    <input type="file" id="boardCommentFiles" name="boardCommentFiles" hidden=""  multiple="multiple" accept=".png, .jpg"/>
+<%--                                    <input type="file" hidden=""  multiple="multiple" accept=".png, .jpg"/>--%>
                                 </div>
                                 <p class="file-notice">5MB이하 이미지파일(png, jpg)로 최대 5개까지 업로드 가능합니다.</p>
                             </td>
@@ -192,7 +193,7 @@
         </div>
         <div class="btn-wrap large double">
             <button type="reset" class="border-btn pop-change">취소</button>
-            <button type="button" class="black-btn pop-change">작성하기</button>
+            <button id="submit_eventReview" type="button" class="black-btn pop-change">작성하기</button>
         </div>
         <button type="button" class="popup-close-btn">팝업닫기</button>
     </div>
@@ -207,7 +208,18 @@
     $('button.popup-close-btn').click(function (){
         $('.dimmed').removeClass('on');
         $('.dimmed #commentRegistPopup').hidden();
+        // $('input#cmntStatusCode1').val(0);
+        // $('textarea#cmntContent').val(';');
+        // $('.upload-box ul.file-tree li').detach();
     });
+
+    // $('button.pop-change').click(function (){
+    //     $('.dimmed').removeClass('on');
+    //     $('.dimmed #commentRegistPopup').hidden();
+    //     // $('#cmntStatusCode1').val(0);
+    //     // $('#cmntContent').val('');
+    //     // $('.file-tree li').detach();
+    // });
 
     $('#cmntStatusCode1').click(function (){
         if ($('#cmntStatusCode1').val() == 0){
@@ -224,7 +236,7 @@
                 alert("이미지파일은 5개까지만 올릴 수 있습니다.")
             }else{
                 $('.upload-box ul.file-tree').append('<li><div class="input-wrap"><input id="file' + n +'" type="text" readonly>' +
-                    '<button id="delFile" type="button"></button>' +
+                    '<button id="delFile" type="button" onclick="delFileFunc()"></button>' +
                     '</div></li>');
 
                 var files = $('input#boardCommentFiles')[0].files;
@@ -232,10 +244,32 @@
                 // for (var i=0; files.length; i++){
                     $('#file'+n).val(files[0].name);
                 // }
+
+                var fileInput = document.getElementById("boardCommentFiles");
+
+                var files = fileInput.files;
+                var file;
+
+                for (var i = 0; i < files.length; i++) {
+
+                    file = files[i];
+
+                    alert(file.name);
+                }
             }
         });//  click
 
     }); // ready
+
+    function delFileFunc(){
+        alert('gd');
+        $(this).unwrap();
+        // $(this).closest('li').detach();
+    }
+
+    $('button#submit_eventReview').click(function (){
+        $('form#boardComment').submit();
+    });
 </script>
 </body>
 </html>

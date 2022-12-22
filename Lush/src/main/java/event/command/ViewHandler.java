@@ -15,10 +15,10 @@ public class ViewHandler implements CommandHandler {
     public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
         String requestMethod = request.getMethod();
-        String eventId = request.getParameter("eventID");
+        String eventID = request.getParameter("eventID");
 
         if (requestMethod.equals("GET")){
-            return "/event/view/"+ eventId +".jsp";
+            return "/event/view/"+ eventID +".jsp";
         }else if (requestMethod.equals("POST")){
             //파일
             String savePath = "D:\\LushUpload\\event";
@@ -30,18 +30,23 @@ public class ViewHandler implements CommandHandler {
             FileRenamePolicy policy = new DefaultFileRenamePolicy();
             MultipartRequest mrequest = new MultipartRequest(request, savePath, maxPostSize, encoding, policy);
 
-//            Enumeration en =  mrequest.getFileNames();
-//            while( en.hasMoreElements() ) {
-//                String name = (String) en.nextElement();
+            Enumeration en =  mrequest.getFileNames();
+            while( en.hasMoreElements() ) {
+                String name = (String) en.nextElement();
+                System.out.println("name = " + name);
 //                File uploadFile = mrequest.getFile(name);  // file1, file2, file3
 //                String fileName = uploadFile.getName(); // 파일명
 //                long fileLength = uploadFile.length();      // 파일크기
-//
-//                String filesystemName = mrequest.getFilesystemName(name);
-//            }
 
+                String filesystemName = mrequest.getFilesystemName(name);
 
-            response.sendRedirect("/Lush/event/view.do?evendID="+eventId);
+//                System.out.println("fileName = " + fileName);
+//                System.out.println("fileLength = " + fileLength);
+                System.out.println("filesystemName = " + filesystemName);
+            }
+
+            request.setAttribute("eventID",eventID);
+            response.sendRedirect("/Lush/event/view.do");
         }
 
         return null;
