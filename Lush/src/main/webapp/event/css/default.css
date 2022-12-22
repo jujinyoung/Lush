@@ -85,4 +85,8 @@ input {
 
 input, textarea, select {
     letter-spacing: normal;
+
+img {
+    border: 0;
+    vertical-align: middle;
 }
