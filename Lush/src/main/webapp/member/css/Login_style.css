@@ -1,0 +1,276 @@
+@charset "UTF-8";
+/* @import url(default.css); */
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans+KR:wght@500&display=swap');
+@import url(default.css);
+
+header{
+  height: 96px;
+}
+
+.login-opt li {
+    margin: 0 12px;
+    display: inline-block;
+}
+
+li {
+    list-style: none;
+}
+
+body, form, div, p, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, ol, li, fieldset, th, td, input, textarea, button, select {
+   /*  margin: 0;
+    padding: 0; */
+    font-family: 'Noto Sans KR', sans-serif;
+    color: #222;
+}
+
+* {
+    box-sizing: border-box !important;
+    -webkit-text-size-adjust: none;
+    text-shadow: none !important;
+}
+
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+
+body {
+    font-size: 16px;
+    font-family: 'NotoSans';
+    color: #222;
+    font-weight: 400;
+}
+
+html {
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+.page-top .page-title-small {
+    font-size: 32px;
+    line-height: 46px;
+    letter-spacing: -0.6px;
+    text-align: center;
+}
+
+h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+input {
+    vertical-align: middle;
+}
+
+input, textarea, select {
+    letter-spacing: normal;
+}
+
+input {
+  writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    color: fieldtext;
+    letter-spacing: normal;
+    word-spacing: normal;
+    line-height: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    appearance: auto;
+    -webkit-rtl-ordering: logical;
+    cursor: text;
+    background-color: field;
+    margin: 0em;
+    padding: 1px 2px;
+    border-width: 2px;
+    border-style: inset;
+    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+    border-image: initial;
+}
+
+article{
+	display:block;
+	position: relative;
+    margin: 0 auto;
+    width: 500px;
+}
+
+.tab-cont .tab-inner.on {
+    display: block;
+}
+.tab-cont .tab-inner {
+    display: none;
+}
+
+
+
+form {
+    display: block;
+    margin-top: 0em;
+    width:40%
+    align-items center;
+}
+
+.tab-cont .tab-inner.on {
+    display: block;
+}
+
+.flex.center {
+    justify-content: center;
+}
+.login-opt {
+    margin: 32px auto;
+}
+
+.search-wrap .black-btn {
+    width: 100%;
+    margin: 0px auto 0 auto;
+}
+.large-btn {
+    height: 64px;
+    line-height: 62px;
+    width: 232px;
+}
+.black-btn {
+    position: relative;
+    background: #222;
+    color: #fff !important;
+    text-align: center;
+    border: 1px solid #222;
+}
+
+input[type="text"] {
+    background: #fff;
+    color: #222;
+    font-size: 1em;
+    padding: 0 10px;
+    border: 1px solid #949494;
+    height: 48px;
+    line-height: 46px;
+}
+
+ .search-wrap input {
+    display: block;
+    width: 100%;
+    margin: 0 auto 8px auto;
+} 
+
+  input[type="text"], input[type="password"] {
+    background: #fff;
+    color: #222;
+    font-size: 1em;
+    padding: 0 10px;
+    border: 1px solid #949494;
+    height: 48px;
+    line-height: 46px;
+}  
+
+.login-tab li a {
+    display: block;
+    color: #949494;
+    line-height: 18px;
+    height: 20px;
+} 
+ .tab-btn li a {
+    position: relative;
+    /* display: block; */
+    width: 100%;
+    height: 64px;
+    line-height: 62px;
+    text-align: center;
+    color: #949494;
+    font-size: 16px;
+    letter-spacing: -0.45px;
+} 
+a {
+    text-decoration: none;
+    color: #222;
+}
+
+ol, ul, dl {
+    list-style: none;
+}
+
+
+.tab-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 47px;
+}
+
+/* .login-wrap{
+margin: 100px 0px 0px	
+} */
+
+ul.tab-btn.login-tab{
+	margin: -24px 0px 72px;
+	font-size:16px;
+}
+
+#userTab{
+	margin: -1px -1px 0px;
+}
+
+input[type="checkbox"] + label {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    border: 1px black solid;
+/*     background: url(../images/ico/checkbox_off.svg) no-repeat center left; */
+    padding-left: 36px;
+    color: #535353;
+    min-width: 20px;
+    min-height: 20px;
+    background-size: 20px 20px;
+}
+
+.input-wrap {
+    display: block;
+    position: relative;
+    text-align: left;
+    margin: 14px auto;
+}
+
+.flex.center {
+    justify-content: center;
+}
+.login-opt {
+    margin: 32px auto;
+}
+.flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+/*     width: 1px; */
+    height: 1px;
+    padding: 0;
+/*     margin: -1px; */
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: none;
+}
