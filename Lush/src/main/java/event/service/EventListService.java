@@ -2,12 +2,10 @@ package event.service;
 
 import com.util.ConnectionProvider;
 import com.util.JdbcUtil;
-import event.dao.EventDao;
-import event.dao.EventDaoImpl;
+import event.dao.EventDAO;
+import event.dao.EventDAOImpl;
 import event.domain.Event;
 import event.exception.EventListEmptyException;
-import paging.PageBlock;
-import paging.PageService;
 
 import javax.naming.NamingException;
 import java.sql.Connection;
@@ -19,7 +17,7 @@ public class EventListService {
     private EventListService(){}
     public static EventListService getInstance(){return instance;}
 
-    EventDao eventDao = EventDaoImpl.getInstance();
+    EventDAO eventDao = EventDAOImpl.getInstance();
 
     public List<Event> selectEventList(int eventStatus, int currentPage, int numberPerPage){
         Connection conn = null;
