@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ include file="/WEB-INF/inc/include.jspf" %>
+<%-- <%@ include file="/WEB-INF/inc/include.jspf" %> --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,151 +32,56 @@
 	        	<div><input type="hidden" name="_csrf" value=""></div>
     		</form>
     		<div class="article-list">
-                        <div class="inner">
-                        <ul class="list-thumb">
-                                <li>
-                                    <a href="javascript:goView('/board/shop/1000756');" class="article-thumb">
-                                        <img src="/upload/shop/20221108131842L.jpg" alt="롯데백화점 강남점">
-                                    </a>
-                                    <a href="javascript:goView('/board/shop/1000756');" class="article-title">롯데백화점 강남점</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:goView('/board/shop/2679');" class="article-thumb">
-                                        <img src="/upload/shop/20220803141015L.jpg" alt="스타필드 안성점">
-                                    </a>
-                                    <a href="javascript:goView('/board/shop/2679');" class="article-title">스타필드 안성점</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:goView('/board/shop/2678');" class="article-thumb">
-                                        <img src="/upload/shop/20220722180807L.jpg" alt="신세계백화점 대전점">
-                                    </a>
-                                    <a href="javascript:goView('/board/shop/2678');" class="article-title">신세계백화점 대전점</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:goView('/board/shop/2677');" class="article-thumb">
-                                        <img src="/upload/shop/20220722180705L.jpg" alt="롯데백화점 동탄점">
-                                    </a>
-                                    <a href="javascript:goView('/board/shop/2677');" class="article-title">롯데백화점 동탄점</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:goView('/board/shop/2676');" class="article-thumb">
-                                        <img src="/upload/shop/20220722180400L.jpg" alt="현대백화점 압구정 본점">
-                                    </a>
-                                    <a href="javascript:goView('/board/shop/2676');" class="article-title">현대백화점 압구정 본점</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:goView('/board/shop/2675');" class="article-thumb">
-                                        <img src="/upload/shop/20220725152252L.jpg" alt="롯데백화점 영등포점">
-                                    </a>
-                                    <a href="javascript:goView('/board/shop/2675');" class="article-title">롯데백화점 영등포점</a>
-                                </li>
-                                </ul>
-                            
- 
-
-
-
-<div class="paginate">
-	<ul>
-		
-
-		
-
-		
-
-		
-			
-
-			
-
-			
-
-			
-				
-					
-						
-							<li><a href="javascript:;" class="num on">1</a></li>
-						
-						
-					
-				
-					
-						
-						
-							<li><a href="/board/shop?page=2" class="num">2</a></li>
-						
-					
-				
-					
-						
-						
-							<li><a href="/board/shop?page=3" class="num">3</a></li>
-						
-					
-				
-					
-						
-						
-							<li><a href="/board/shop?page=4" class="num">4</a></li>
-						
-					
-				
-					
-						
-						
-							<li><a href="/board/shop?page=5" class="num">5</a></li>
-						
-					
-				
-					
-						
-						
-							<li><a href="/board/shop?page=6" class="num">6</a></li>
-						
-					
-				
-					
-						
-						
-							<li><a href="/board/shop?page=7" class="num">7</a></li>
-						
-					
-				
-					
-						
-						
-							<li><a href="/board/shop?page=8" class="num">8</a></li>
-						
-					
-				
-					
-						
-						
-							<li><a href="/board/shop?page=9" class="num">9</a></li>
-						
-					
-				
-					
-						
-						
-							<li><a href="/board/shop?page=10" class="num">10</a></li>
-						
-					
-				
-			
-
-			
-
-			
-		
-
-		
-			<li class="next"><a href="/board/shop?page=2"><img src="/content/renewal/pc/images/ico/page_next.svg" alt="다음 페이지로"></a></li>
-			<li class="last"><a href="/board/shop?page=12"><img src="/content/renewal/pc/images/ico/page_last.svg" alt="마지막 페이지로"></a></li>
-		
-		
-</ul></div></div>
-                    </div>
+    			<div class="inner">
+   					<c:choose>
+   						<c:when test="${ not empty list }">
+    						<ul class="list-thumb">
+    							<c:forEach items="${ list }" var="dto">
+    								<li>
+                                    	<a href="javascript:goView('/board/shop/${ dto.seq }');" class="article-thumb">
+                                        	<img src="https://www.lush.co.kr/upload/shop/${ dto.image }" alt="${ dto.shopname }">
+                                    	</a>
+                                    	<a href="javascript:goView('/board/shop/${ dto.seq }');" class="article-title">${ dto.shopname }</a>
+                                	</li>
+              					</c:forEach>
+    						</ul>
+       					</c:when>
+        				<c:otherwise>
+             				<div class="empty big">
+								<p>확인되는 게시글이 없습니다.</p>
+							</div>
+          				</c:otherwise>
+       				</c:choose>
+				<div class="paginate">
+					<c:choose>
+   						<c:when test="${ not empty list }">
+   							<ul>
+				             	<c:if test="${ pageBlock.prev }">
+				             		<li class="first"><a href="/board/shop?page=1"><img src="https://www.lush.co.kr/content/renewal/pc/images/ico/page_first.svg" alt="처음 페이지로"></a></li>
+				             		<li class="prev"><a href="/board/shop?page=${  pageBlock.startOfPageBlock - 1  }"><img src="https://www.lush.co.kr/content/renewal/pc/images/ico/page_prev.svg" alt="앞 페이지로"></a></li>
+				             	</c:if>
+   								<c:forEach begin="${  pageBlock.startOfPageBlock  }" end="${  pageBlock.endOfPageBlock  }" var="i" step="1">
+					             	<c:choose> 
+					             		<c:when test="${ pageBlock.page eq i }">
+					             			<li><a href="#" class="num on">1</a></li>
+					             		</c:when>
+					             		<c:otherwise>
+					             			<a href="board/shop?page=${ i }">${ i }</a> 
+					             		</c:otherwise>
+					             	</c:choose>
+             					</c:forEach>
+				             	<c:if test="${ pageBlock.next }">
+				             		<li class="next"><a href="/board/shop?page=${  pageBlock.startOfPageBlock + 1  }"><img src="https://www.lush.co.kr/content/renewal/pc/images/ico/page_next.svg" alt="다음 페이지로"></a></li>
+									<li class="last"><a href="/board/shop?page=${  pageBlock.lastPage  }"><img src="https://www.lush.co.kr/content/renewal/pc/images/ico/page_last.svg" alt="마지막 페이지로"></a></li>
+				               </c:if>
+							</ul>
+       					</c:when>
+	        			<c:otherwise>
+	          			</c:otherwise>
+       				</c:choose>
+					</div>
+				</div>
+			</div>
 		</article>
 	</section>
 	
