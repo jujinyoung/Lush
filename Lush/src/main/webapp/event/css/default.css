@@ -39,3 +39,8 @@ a {
 a:hover, a:focus, a:visited, a:active {
     text-decoration: none;
 }
+
+img {
+    border: 0;
+    vertical-align: middle;
+}
