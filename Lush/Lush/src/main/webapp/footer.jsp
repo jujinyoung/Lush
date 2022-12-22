@@ -8,359 +8,49 @@
 <title>러쉬코리아</title>
 <link rel="shortcut icon" type="image/x-icon" href="../images/SiSt.ico">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/content/renewal/pc/css/footer.css">
 <style>
-
-a:hover, a:focus, a:visited, a:active {
-    text-decoration: none;
-}
-
-script{
-	display: none;
-}
-
-
-footer{
-	display: block;
-	position: relative;
-	background: #000;
-	margin-top: 160px;
-}
-
-footer .core{
-	width: 100%;
-	height: 140px;
-	background: #f2f2f2;
-	text-align: center;
-	padding: 15px 0;
-}
-
-footer .core ul {
-	max-width: 1070px;
-	margin: 0 auto;
-}
-
-footer .footer-left .input-wrap input{
-	border:none;
-	width: 392px;
-	height: 32px;
-	line-height: 32px;
-	background: #222;
-	color: #949494;
-	font-size: 14px;
-	padding: 0 30px 0 70px;
-}
-
-button, input[type="button"], input[type="submit"], input[type="reset"], input[type="file"] {
-    -webkit-appearance: button;
-    border-radius: 0;
-    outline: none;
-    cursor: pointer;
-    border: none;
-    background: none;
-    font-size: 1em;
-}
-
-footer *{
-	color: #fff;
-}
-
-footer .footer-left .input-wrap button {
-    position: absolute;
-    right: 7px;
-    top: 0;
-    background: #222;
-    color: #fff;
-    width: 30px;
-    height: 32px;
-    line-height: 32px;
-    border: none;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-footer .footer-wrap{
-	display: flex;
-	justify-content: center;
-	align-items: flex-start;
-	padding: 64px 0 64px 0;
-}
-
-footer .footer-left .link {
-    display: inline-block;
-    margin-left: 6px;
-    border-bottom: 1px solid #fff;
-}
-
-footer .footer-left{
-	margin-right: 220px;
-}
-
-footer .footer-left > p {
-    margin: 12px 0 56px 0;
-    letter-spacing: -0.39px;
-    font-weight: 300;
-    line-height: 22px;
-}
-
-
-
-footer .footer-right .notice li a {
-    font-size: 14px;
-    line-height: 22px;
-    letter-spacing: -0.39px;
-    font-weight: 300;
-}
-
-footer .footer-right .notice li a span{
-	display: inline-block;
-    margin-right: 5px;
-    font-weight: 300;
-}
-
-footer .footer-right .notice li a .footer-ico {
-    position: absolute;
-    margin: 5px 0 0 4px;
-}
-
-footer .footer-right .footer-menu a {
-    font-weight: 300;
-}
-
-footer .footer-right .footer-menu li strong {
-    font-weight: 400;
-    color: #fbe85e;
-}
-
-footer .footer-right .info .bar {
-    margin: 0 6px;
-}
-
-footer .footer-right .info *, footer .footer-right .copyright {
-    font-size: 14px;
-    color: #a7a7a7;
-    line-height: 22px;
-    letter-spacing: -0.39px;
-    font-weight: 300;
-}
-
-footer .footer-left .cscenter li strong {
-    font-weight: 500;
-}
-
-footer .footer-left .cscenter li * {
-    display: block;
-    font-weight: 300;
-}
 
 footer .quick-menu ul li .quick-times {
     background: #222 url(../images/lushtimes/btn_times.png) no-repeat center center;
-}
-
-footer .quick-menu ul li a, footer .quick-menu ul li button {
-    width: 56px;
-    height: 56px;
-    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
-    display: inline-block;
-    position: relative;
-    text-align: center;
-    font-size: 0;
-    text-indent: -9999px;
-    border-radius: 50%;
 }
 
 footer .quick-menu ul li .quick-top {
     background: #222 url(../images/ico/ico_footer_top.svg) no-repeat center center;
-}
-
-footer .quick-menu ul li a, footer .quick-menu ul li button {
-    width: 56px;
-    height: 56px;
-    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
-    display: inline-block;
-    position: relative;
-    text-align: center;
-    font-size: 0;
-    text-indent: -9999px;
-    border-radius: 50%;
-}
-
-.flex {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-
-ol, ul, dl {
-	list-style: none;
-}
-
-ul {
-    list-style-type: disc;
-}
-
-li{
-	list-style: none;
-}
-
-a{
-	text-decoration: none;
-	color: #222;
-}
-
-img{
-	border:0;
-	vertical-align: middle;
-	overflow-clip-margin: content-box;
-	overflow: clip;
-}
-
-input{
-	-webkit-border-radius:0;
-	vertical-align: middle;
-	writing-mode: horizontal-tb !important;
-    text-rendering: auto;
-    color: fieldtext;
-    letter-spacing: normal;
-    word-spacing: normal;
-    line-height: normal;
-    text-transform: none;
-    text-indent: 0px;
-    text-shadow: none;
-    display: inline-block;
-    text-align: start;
-    appearance: auto;
-    -webkit-rtl-ordering: logical;
-    cursor: text;
-    background-color: field;
-    margin: 0em;
-    padding: 1px 2px;
-    border-width: 2px;
-    border-style: inset;
-    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
-    border-image: initial;
-}
-
-button {
-    appearance: auto;
-    writing-mode: horizontal-tb !important;
-    text-rendering: auto;
-    color: buttontext;
-    letter-spacing: normal;
-    word-spacing: normal;
-    line-height: normal;
-    text-transform: none;
-    text-indent: 0px;
-    text-shadow: none;
-    display: inline-block;
-    text-align: center;
-    align-items: flex-start;
-    cursor: default;
-    box-sizing: border-box;
-    background-color: buttonface;
-    margin: 0em;
-    padding: 1px 6px;
-    border-width: 2px;
-    border-style: outset;
-    border-color: buttonborder;
-    border-image: initial;
-}
-
-input[type="email" i]{
-	padding: 1px 2px;
-}
-
-input, textarea, select{
-	letter-spacing: normal;
-}
-
-*{
-	box-sizing: border-box !important;
-}
-*{
-	-webkit-text-size-adjust: none;
-	text-shadow: none !important;
-}
-
-body{
-	font-size: 16px;
-	font-family: 'NotoSans';
-	color: #222;
-	font-weight: 400;
-}
-
-.body1 {
-    font-size: 16px;
-    line-height: 24px;
-}
-
-.body2 {
-    font-size: 14px;
-    line-height: 20px;
-}
-
-b, strong {
-    font-weight: 700;
-}
-
-p {
-    display: block;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-}
-
-body, form, div, p, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, ol, li, fieldset, th, td, input, textarea, button, select{
-	margin:0;
-	padding: 0;
-	font-family: 'NotoSans', dotum, '돋움';
-	color: #222;	
-}
-
-footer .footer-right .notice li a .footer-ico {
-    position: absolute;
-    margin: 5px 0 0 4px;
-}
-
-footer .quick-menu ul li .quick-times {
-    background: #222 url(../images/lushtimes/btn_times.png) no-repeat center center;
 }
 
 footer .quick-menu ul li .quick-kakao {
-    background: #fae100 url(../images/ico/ico_footer_kakao.svg) no-repeat top 15px center;
+   	background: #fae100 url(../images/ico/ico_footer_kakao.svg) no-repeat top 15px center;
     background-size: 32px auto;
+}
+
+
+footer .quick-menu ul li .quick-kakao.on {
+    width: 108px;
+    border-radius: 30px;
+    background-position: top 15px left 17px;
     transition: all .15s;
 }
 
-footer .quick-menu ul li .quick-top {
-    background: #222 url(../images/ico/ico_footer_top.svg) no-repeat center center;
-}	
-
-footer .quick-menu ul li a, footer .quick-menu ul li button {
-    width: 56px;
-    height: 56px;
-    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+footer .quick-menu ul li .quick-kakao.on::after {
+    content: '상담톡';
+    font-size: 14px;
+    color: #222;
+    position: absolute;
+    right: 17px;
+    top: 17px;
     display: inline-block;
-    position: relative;
-    text-align: center;
-    font-size: 0;
-    text-indent: -9999px;
-    border-radius: 50%;
+    width: 40px;
+    text-indent: 1px;
 }
 
-footer .core ul img {
-    width: 136px;
-}
 
-a[href^="tel"] {
-    font-style: normal;
-}
 
-html {
-    -webkit-user-select: none;
-    -webkit-touch-callout: none;
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
-}
+</style>
+
+
+
+<style>
 
 </style>
 </head>
@@ -386,9 +76,9 @@ html {
 				<button type="button" id="footerEmailBtn">구독</button>
 			</div>
 			<p class="body2">
-				"매주 월요일 오후, 구독자님을 위한 제품과 브랜드 이야기를 전해 드립니다. "
+				매주 월요일 오후, 구독자님을 위한 제품과 브랜드 이야기를 전해 드립니다. 
 				<br>
-				"구독은 언제든지 해지하실 수 있습니다. "
+				구독은 언제든지 해지하실 수 있습니다. 
 				<a href="/email-subscrib-preview" class="link">미리보기</a>
 			</p>
 			<ul class="cscenter">
@@ -400,9 +90,9 @@ html {
 					<a href="mailto:webmaster@lush.co.kr" class="email">webmaster@lush.co.kr</a>
 					<p class="body2">
 						<span>
-							"상담전화 13:00 ~ 16:00(평일) "
+							상담전화 13:00 ~ 16:00(평일) 
 							<br>
-							"상담톡 10:00 ~ 16:00(평일) "
+							상담톡 10:00 ~ 16:00(평일) 
 						</span>
 					</p>
 				</li>
@@ -428,14 +118,14 @@ html {
 				<li>
 					<a href="/mypage/view/1931">
 					<span>2022-12-21</span>
-					"[공지] 연말 택배 물량 증가 배송 지연 안내"
+					[공지] 연말 택배 물량 증가 배송 지연 안내
 					<img src="/content/renewal/pc/images/ico/ico_new.svg" alt="새글 아이콘" class="footer-ico" />
 					</a>
 				</li>
 				<li>
 					<a href="/mypage/view/1929">
 					<span>2022-11-22</span>
-					"네이버페이 결제 시, 덕찌 발급 재개 안내"
+					네이버페이 결제 시, 덕찌 발급 재개 안내
 					<img src="/content/renewal/pc/images/ico/ico_new.svg" alt="새글 아이콘" class="footer-ico" />
 					</a>
 				</li>
@@ -455,18 +145,18 @@ html {
 					서울 강남구 학동로 336 (메이트리 빌딩(matree B/D))&nbsp;1층 주식회사 러쉬코리아
 				</li>
 				<li>
-					"사이트 운영자: 주식회사 러쉬코리아"
+					사이트 운영자: 주식회사 러쉬코리아
 					<span class="bar">|</span>
-					" 대표회사: 우미령"
+					대표회사: 우미령
 				</li>
 				<li>
-					"사업자 등록번호: 201-81-77964"
+					사업자 등록번호: 201-81-77964
 					<a href="javascript:window.open('https://www.ftc.go.kr/bizCommPop.do?wrkr_no=2018177964&apv_perm_no=', '', 'width=1024, height=800');">사업자정보확인</a>
 				</li>
 				<li>
-					"통신판매업 신고번호: 2022-서울강남-02857"
+					통신판매업 신고번호: 2022-서울강남-02857
 					<span class="bar">|</span>
-					" 개인정보보호책임자: 신상훈"
+					개인정보보호책임자: 신상훈
 				</li>
 			</ul>
 			<p class="copyright">COPYRIGHT © LUSHKOREA.CO.LTD.ALL RIGHTS RESERVED.</p>
