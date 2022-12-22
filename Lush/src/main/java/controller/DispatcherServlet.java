@@ -20,7 +20,7 @@ public class DispatcherServlet extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        System.out.println("DispatcherServlet.init");
+//        System.out.println("DispatcherServlet.init");
         String path = this.getInitParameter("path");
         String realPath = this.getServletContext().getRealPath(path);
 
@@ -53,7 +53,7 @@ public class DispatcherServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        System.out.println("DispatcherServlet.doGet");
+       // System.out.println("DispatcherServlet.doGet");
         String requestURI = request.getRequestURI();
 //        System.out.println("requestURI = " + requestURI);
         CommandHandler handler = commandHandlerMap.get(requestURI);
@@ -61,13 +61,13 @@ public class DispatcherServlet extends HttpServlet {
         String viewPage = null;
         try {
             viewPage = handler.process(request, response);
-//            System.out.println("viewPage = " + viewPage);
+            System.out.println("viewPage = " + viewPage);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         if (viewPage != null){
-//            System.out.println("forward실행");
+//           System.out.println("forward실행");
             RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
             dispatcher.forward(request, response);
         }
