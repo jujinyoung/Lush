@@ -1,54 +1,54 @@
-package event.service;
+package shop.service;
 
-import com.util.ConnectionProvider;
-import com.util.JdbcUtil;
-import event.dao.EventDao;
-import event.dao.EventDaoImpl;
-import event.domain.Event;
-import event.exception.EventListEmptyException;
-import paging.PageBlock;
-import paging.PageService;
-
-import javax.naming.NamingException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
-public class EventListService {
-    private static EventListService instance = new EventListService();
-    private EventListService(){}
-    public static EventListService getInstance(){return instance;}
+import javax.naming.NamingException;
 
-    EventDao eventDao = EventDaoImpl.getInstance();
+import com.util.ConnectionProvider;
+import com.util.JdbcUtil;
 
-    public List<Event> selectEventList(int eventStatus, int currentPage, int numberPerPage){
+import shop.dao.ShopDao;
+import shop.dao.ShopDaoImpl;
+import shop.domain.Shop;
+import shop.exception.ShopListEmptyException;
+
+public class ShopListService {
+	private static ShopListService instance = new ShopListService();
+    private ShopListService(){}
+    public static ShopListService getInstance(){return instance;}
+    
+    ShopDao shopDao = ShopDaoImpl.getInstance();
+    
+    public List<Shop> selectShopList(int currentPage, int numberPerPage){
         Connection conn = null;
-        List<Event> events = null;
+        List<Shop> shops = null;
 
         try {
             conn = ConnectionProvider.getConnection();
-            events = eventDao.selectEventList(conn, eventStatus, currentPage, numberPerPage);
-            if (events == null){
-                throw new EventListEmptyException("이벤트 목록이 비어있습니다.");
+            shops = shopDao.selectShopList(conn, currentPage, numberPerPage);
+            if (shops == null){
+                throw new ShopListEmptyException("매장 목록이 비어있습니다.");
             }
         } catch (NamingException | SQLException e) {
             e.printStackTrace();
-        } catch (EventListEmptyException e) {
+        } catch (ShopListEmptyException e) {
             e.printStackTrace();
         }finally {
             JdbcUtil.close(conn);
         }
-        return events;
+        return shops;
     }
-
-    public List<Event> searchEventList(int eventStatus, int currentPage, int numberPerPage, int searchCondition, String searchWord){
+    
+    public List<Shop> searchShopList(int currentPage, int numberPerPage, int searchCondition, String searchWord){
         Connection conn = null;
-
-        List<Event> list = null;
+        List<Shop> list = null;
+        
         try {
             conn = ConnectionProvider.getConnection();
 
-            list = eventDao.searchEventList(conn, eventStatus, currentPage, numberPerPage, searchCondition, searchWord);
+            list = shopDao.searchShopList(conn, currentPage, numberPerPage, searchCondition, searchWord);
         } catch (NamingException | SQLException e) {
             e.printStackTrace();
         } finally {
@@ -56,13 +56,13 @@ public class EventListService {
         }
         return list;
     }
-
-    public int getTotalPages(int numberPerPage, int eventStatus){
+    
+    public int getTotalPages(int numberPerPage){
         Connection conn = null;
 
         try {
             conn = ConnectionProvider.getConnection();
-            return eventDao.getTotalPages(conn, numberPerPage, eventStatus);
+            return shopDao.getTotalPages(conn, numberPerPage);
         } catch (NamingException | SQLException e) {
             e.printStackTrace();
         } finally {
@@ -76,7 +76,7 @@ public class EventListService {
 
         try {
             conn = ConnectionProvider.getConnection();
-            return eventDao.getProceedTotalRecords(conn);
+            return shopDao.getProceedTotalRecords(conn);
         }catch (NamingException | SQLException e) {
             e.printStackTrace();
         } catch (Exception e) {
@@ -93,7 +93,7 @@ public class EventListService {
 
         try {
             conn = ConnectionProvider.getConnection();
-            return eventDao.getEndTotalRecords(conn);
+            return shopDao.getEndTotalRecords(conn);
         }catch (NamingException | SQLException e) {
             e.printStackTrace();
         } catch (Exception e) {

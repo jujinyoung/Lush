@@ -33,15 +33,16 @@
     		</form>
     		<div class="article-list">
     			<div class="inner">
+   					<p>${shops.sp_id}</p>
    					<c:choose>
-   						<c:when test="${ not empty list }">
+   						<c:when test="${ not empty shops }">
     						<ul class="list-thumb">
-    							<c:forEach items="${ list }" var="dto">
+    							<c:forEach items="${ shops }" var="dto">
     								<li>
-                                    	<a href="javascript:goView('/board/shop/${ dto.seq }');" class="article-thumb">
-                                        	<img src="https://www.lush.co.kr/upload/shop/${ dto.image }" alt="${ dto.shopname }">
+                                    	<a href="javascript:goView('/board/shop/${ dto.sp_id }');" class="article-thumb">
+                                        	<img src="https://www.lush.co.kr/upload/shop/${ dto.sp_image }" alt="${ dto.sp_name }">
                                     	</a>
-                                    	<a href="javascript:goView('/board/shop/${ dto.seq }');" class="article-title">${ dto.shopname }</a>
+                                    	<a href="javascript:goView('/board/shop/${ dto.sp_id }');" class="article-title">${ dto.sp_name }</a>
                                 	</li>
               					</c:forEach>
     						</ul>

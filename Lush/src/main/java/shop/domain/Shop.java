@@ -1,8 +1,8 @@
-package shop.dao;
+package shop.domain;
 
 import java.sql.Date;
 
-public class ShopDto {
+public class Shop {
 	
 	private int sp_id;
 	private Date sp_rdate;
@@ -18,11 +18,11 @@ public class ShopDto {
 	private String sp_info;
 	private int adm_id;
 	
-	public ShopDto() {
+	public Shop() {
 		super();
 	}
 	
-	public ShopDto(int sp_id, Date sp_rdate, Date sp_edate, String sp_image, String sp_name, String sp_adr_k,
+	public Shop(int sp_id, Date sp_rdate, Date sp_edate, String sp_image, String sp_name, String sp_adr_k,
 			String sp_adr_e, String sp_bhour1, String sp_bhour2, String sp_tel, String sp_sns, String sp_info,
 			int adm_id) {
 		super();
@@ -118,14 +118,6 @@ public class ShopDto {
 	}
 	public void setAdm_id(int adm_id) {
 		this.adm_id = adm_id;
-	}
-
-	@Override
-	public String toString() {
-		return "ShopDto [sp_id=" + sp_id + ", sp_rdate=" + sp_rdate + ", sp_edate=" + sp_edate + ", sp_image="
-				+ sp_image + ", sp_name=" + sp_name + ", sp_adr_k=" + sp_adr_k + ", sp_adr_e=" + sp_adr_e
-				+ ", sp_bhour1=" + sp_bhour1 + ", sp_bhour2=" + sp_bhour2 + ", sp_tel=" + sp_tel + ", sp_sns=" + sp_sns
-				+ ", sp_info=" + sp_info + ", adm_id=" + adm_id + "]";
 	}
 	
 }
