@@ -48,206 +48,6 @@
 							</ul>
 							<div class="sns-btns">
 								<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
-<!-- 네이버아이디로로그인 버튼 노출 영역 -->
-<!-- <div id="naver_id_login">
-	<div id="naverIdLogin" style="display:none;"><a id="naverIdLogin_loginButton" href="#"><img src="https://static.nid.naver.com/oauth/big_g.PNG?version=js-2.0.1" height="40"></a></div>
-</div> 
-
-
-	<input type="hidden" name="snsType" value="naver">
-	<input type="hidden" name="snsId" value="">
-	<input type="hidden" name="accessToken" value="">
-
-<!-- //네이버아이디로로그인 버튼 노출 영역 -->
-<!-- 
-<script type="text/javascript">
-	var naverLogin = new naver.LoginWithNaverId(
-			{
-				clientId: '0Q8wjCNa7cJS0AvkCJEQ',
-				callbackUrl: 'https://www.lush.co.kr/sns-user/naver-callback',
-				isPopup: true, /* 팝업을 통한 연동처리 여부 */
-				loginButton: {color: "green", type: 3, height: 40} /* 로그인 버튼의 타입을 지정 */
-			}
-	);
-
-	/* 설정정보를 초기화하고 연동을 준비 */
-	naverLogin.init();
-
-	function naverResponse(snsUser) {
-
-		var isJoined = true;
-
-		$.post("/sns-user/sns-joined-check", snsUser, function(response){
-
-			if (response.value == 0) {
-				isJoined = false;
-			}
-
-			if (isJoined) {
-				
-						snsUserSubmit(snsUser);
-					
-			}
-			else {
-				
-						location.href="/users/sns-agreement?snsType=naver";
-					
-			}
-		});
-	}
-
-	function naverProcess() {
-		$('#naverIdLogin_loginButton img').click();
-	}
-</script>
-<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-
-	<form id="kakaoAuthForm" action="" method="post">
-    <input type="hidden" name="snsType" value="kakao">
-    <input type="hidden" name="snsId" value="">
-<div><input type="hidden" name="_csrf" value="1b57ed98-63db-4c8a-9394-51c6884aac10"></div></form>
-<script type="text/javascript">
-
-	// 사용할 앱의 JavaScript 키를 설정해 주세요.
-	Kakao.init('a25f713d0b81914924e2a23fbc394b58');
-
-	function loginWithKakao() {
-		// 로그인 창을 띄웁니다.
-		Kakao.Auth.login({
-			success : function(authObj) {
-				Kakao.API.request({
-					url : '/v2/user/me',
-					success : function(response) {
-                        // 카톡 닉네임 이모티콘 제거 정규식
-                        var patterns = "[\\uD83C-\\uDBFF\\uDC00-\\uDFFF]+";
-						var nickName = response.properties.nickname;
-                        nickName = nickName.replace(new RegExp(patterns), '');
-                        response.properties.nickname = nickName;
-
-						var snsUser = {
-							"snsType" : "kakao",
-							"snsId" : response.id,
-							"email" : response.kakao_account.email,
-							"snsName" : response.properties.nickname,
-                            "nickName" : response.properties.nickname,
-                            "gender" : (response.kakao_account.gender == "male" ? "0" : "1"),
-                            "birthday" : response.kakao_account.birthday,
-                            "birthyear" : '',
-                            "mobile" : setMobileFormat(response.kakao_account.phone_number),
-                            "age" : response.kakao_account.age_range
-						};
-
-						var isJoined = true;
-                        $.post("/sns-user/sns-joined-check", snsUser, function(response){
-
-                            if (response.value == 0) {
-                                isJoined = false;
-                            }
-
-                            if (isJoined) {
-                                
-                                        snsUserSubmit(snsUser);
-                                    
-                            } else {
-                                
-                                        location.href="/users/sns-agreement?snsType=kakao";
-                                    
-                            }
-                        });
-
-					},
-					fail : function(error) {
-						console.log(JSON.stringify(error));
-					}
-				});
-			},
-			fail : function(err) {
-				alert(JSON.stringify(err));
-			}
-		});
-	};
-
-	function disconnectKakaoAction() {
-
-        Kakao.API.request({
-            url: '/v1/user/unlink',
-            success: function(response) {
-                userLeaveAction();
-            },
-            fail: function(error) {
-                console.log(error);
-            },
-        });
-    }
-
-    function setMobileFormat(mobileNum) {
-	    var mobile = "";
-        if (mobileNum) {
-            var moNumArr = mobileNum.split("-");
-            mobile = "010" + moNumArr[1] + moNumArr[2];
-        }
-        return mobile;
-    }
-    
-</script>
-<a href="javascript:naverProcess();" class="naver-btn">네이버 아이디로 로그인</a>
-								<a href="javascript:loginWithKakao();" class="kakao-btn">카카오 아이디로 로그인</a>
-							</div></form>
-						
-					</div>
-					<form name="sso-login-form" id="sso-login-form" action="/op_security_login" method="post" target="_parent">
-	<page:csrf>
-	<input type="hidden" name="target" value="/">
-	<input type="hidden" name="op_login_type" value="ROLE_USER">
-	<input type="hidden" name="failureUrl" value="/users/login?target=">
-	<input type="hidden" name="op_username">
-	<input type="hidden" name="op_password" id="op_password">
-	<input type="hidden" name="op_signature" id="op_signature">
-	<input type="hidden" name="op_sns_login_id" id="op_sns_login_id">
-
-
-<form id="joinCompleteForm" action="/sns-user/join-complete" method="post">
-	<page:csrf>
-	<input type="hidden" name="loginId">
-
-
-<script type="text/javascript">
-	function snsUserSubmit(snsUser, target) {
-
-		$.post("/m/sns-user/search", snsUser, function(response) {
-
-			if (response.status == "00") {
-				if (response.value == "00") {
-
-					if (target) {
-						$('#sso-login-form input[name="target"]').val(target);
-					}
-					$('#sso-login-form input[name="op_username"]').hide();
-					$("#sso-login-form #op_password").hide();
-					$('#sso-login-form input[name="op_username"]').val(response.shadowLoginKey);
-					$("#sso-login-form #op_password").val(response.shadowLoginPassword);
-					$("#sso-login-form #op_signature").val(response.shadowLoginSignature);
-					$("#sso-login-form #op_sns_login_id").val(response.loginId);
-					$("#sso-login-form").submit();
-				} else if (response.value == "99") {
-					var uri = "/sns-user/join-complete";
-					if (isMobileLayer != 'false') {
-						$("#joinCompleteForm").prop("action","/m" + uri);
-					}
-					$("#joinCompleteForm").find("[name=loginId]").val(response.loginId);
-					$("#joinCompleteForm").submit();
-				} else {
-					alert(response.message);
-					return false;
-				}
-			} else if (response.status == "01") {
-				alert(response.message);
-			} else {
-				console.log("Error Occurred - " + response.message);
-			}
-		});
-	}
-</script> -->
 
 </page:csrf><div><input type="hidden" name="_csrf" value="1b57ed98-63db-4c8a-9394-51c6884aac10"></div></form></page:csrf><div><input type="hidden" name="_csrf" value="1b57ed98-63db-4c8a-9394-51c6884aac10"></div></form></div>
 
@@ -276,8 +76,69 @@
 	alert('ID 또는 비밀번호를 다시 확인해 주시기 바랍니다.');
 </c:if>
 
+</script>
+
+<script>
+
+/* id 
+save_id
+
+<input type="text" id="userId">
+<input type="checkbox" id="idSaveCheck">아이디 기억하기 */
 
 
+$(document).ready(function(){
+	 
+    // 저장된 쿠키값을 가져와서 ID 칸에 넣어준다. 없으면 공백으로 들어감.
+    var key = getCookie("key");
+    $("#id ").val(key); 
+     
+    if($("#id ").val() != ""){ // 그 전에 ID를 저장해서 처음 페이지 로딩 시, 입력 칸에 저장된 ID가 표시된 상태라면,
+        $("#save_id").attr("checked", true); // ID 저장하기를 체크 상태로 두기.
+    }
+     
+    $("#save_id").change(function(){ // 체크박스에 변화가 있다면,
+        if($("#save_id").is(":checked")){ // ID 저장하기 체크했을 때,
+            setCookie("key", $("#id").val(), 7); // 7일 동안 쿠키 보관
+        }else{ // ID 저장하기 체크 해제 시,
+            deleteCookie("key");
+        }
+    });
+     
+    // ID 저장하기를 체크한 상태에서 ID를 입력하는 경우, 이럴 때도 쿠키 저장.
+    $("#id ").keyup(function(){ // ID 입력 칸에 ID를 입력할 때,
+        if($("#save_id").is(":checked")){ // ID 저장하기를 체크한 상태라면,
+            setCookie("key", $("#id ").val(), 7); // 7일 동안 쿠키 보관
+        }
+    });
+});
+ 
+function setCookie(cookieName, value, exdays){
+    var exdate = new Date();
+    exdate.setDate(exdate.getDate() + exdays);
+    var cookieValue = escape(value) + ((exdays==null) ? "" : "; expires=" + exdate.toGMTString());
+    document.cookie = cookieName + "=" + cookieValue;
+}
+ 
+function deleteCookie(cookieName){
+    var expireDate = new Date();
+    expireDate.setDate(expireDate.getDate() - 1);
+    document.cookie = cookieName + "= " + "; expires=" + expireDate.toGMTString();
+}
+ 
+function getCookie(cookieName) {
+    cookieName = cookieName + '=';
+    var cookieData = document.cookie;
+    var start = cookieData.indexOf(cookieName);
+    var cookieValue = '';
+    if(start != -1){
+        start += cookieName.length;
+        var end = cookieData.indexOf(';', start);
+        if(end == -1)end = cookieData.length;
+        cookieValue = cookieData.substring(start, end);
+    }
+    return unescape(cookieValue);
+}
 
 </script>
 
