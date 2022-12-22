@@ -20,7 +20,7 @@ String id = (String)request.getSession().getAttribute("authUser");
 
 <c:if test="${!empty authUser }">
 	${authUser.name }님 안녕하세요 
-	<a href="logout.do">로그아웃하기</a>
+	<!-- <a href="logout.do">로그아웃하기</a> -->
 </c:if>
 <c:if test="${empty authUser }">
 
