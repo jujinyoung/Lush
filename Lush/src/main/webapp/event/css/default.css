@@ -39,3 +39,54 @@ a {
 a:hover, a:focus, a:visited, a:active {
     text-decoration: none;
 }
+
+button, input[type="button"], input[type="submit"], input[type="reset"], input[type="file"] {
+    -webkit-appearance: button;
+    border-radius: 0;
+    outline: none;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-size: 1em;
+}
+
+.body1 {
+    font-size: 16px;
+    line-height: 24px;
+}
+
+textarea {
+    -webkit-appearance: none;
+    border: 1px solid #949494;
+    padding: 10px 10px;
+    background: #fff;
+    resize: none;
+    overflow-y: auto;
+    font-size: 16px;
+}
+
+input, textarea, select {
+    letter-spacing: normal;
+}
+
+button, input[type="button"], input[type="submit"], input[type="reset"], input[type="file"] {
+    -webkit-appearance: button;
+    border-radius: 0;
+    outline: none;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-size: 1em;
+}
+
+input {
+    vertical-align: middle;
+}
+
+input, textarea, select {
+    letter-spacing: normal;
+
+img {
+    border: 0;
+    vertical-align: middle;
+}

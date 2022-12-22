@@ -1,6 +1,5 @@
 package event.dao;
 
-import com.util.ConnectionProvider;
 import com.util.JdbcUtil;
 import event.domain.Event;
 
@@ -9,11 +8,11 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EventDaoImpl implements EventDao{
+public class EventDAOImpl implements EventDAO {
 
-    private static EventDaoImpl instance = new EventDaoImpl();
-    private EventDaoImpl(){}
-    public static EventDaoImpl getInstance(){return  instance;}
+    private static EventDAOImpl instance = new EventDAOImpl();
+    private EventDAOImpl(){}
+    public static EventDAOImpl getInstance(){return  instance;}
     @Override
     public List<Event> selectEventList(Connection conn, int eventStatus, int currentPage, int numberPerPage) throws SQLException {
 
