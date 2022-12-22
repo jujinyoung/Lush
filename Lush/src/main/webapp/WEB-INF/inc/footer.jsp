@@ -1,59 +1,3 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>러쉬코리아</title>
-<link rel="shortcut icon" type="image/x-icon" href="../images/SiSt.ico">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-<link rel="stylesheet" type="text/css" href="/content/renewal/pc/css/footer.css">
-<style>
-
-footer .quick-menu ul li .quick-times {
-    background: #222 url(../images/lushtimes/btn_times.png) no-repeat center center;
-}
-
-footer .quick-menu ul li .quick-top {
-    background: #222 url(../images/ico/ico_footer_top.svg) no-repeat center center;
-}
-
-footer .quick-menu ul li .quick-kakao {
-   	background: #fae100 url(../images/ico/ico_footer_kakao.svg) no-repeat top 15px center;
-    background-size: 32px auto;
-}
-
-
-footer .quick-menu ul li .quick-kakao.on {
-    width: 108px;
-    border-radius: 30px;
-    background-position: top 15px left 17px;
-    transition: all .15s;
-}
-
-footer .quick-menu ul li .quick-kakao.on::after {
-    content: '상담톡';
-    font-size: 14px;
-    color: #222;
-    position: absolute;
-    right: 17px;
-    top: 17px;
-    display: inline-block;
-    width: 40px;
-    text-indent: 1px;
-}
-
-
-
-</style>
-
-
-
-<style>
-
-</style>
-</head>
 <body>
 
 <!-- <h3>footer.jsp</h3> -->
@@ -105,11 +49,11 @@ footer .quick-menu ul li .quick-kakao.on::after {
 				</li>
 			</ul>
 			<ul class="sns">
-				<li><a href="https://twitter.com/LUSHKOREA" target="_blank"><img src="/content/renewal/mobile/images/ico/ico_twitter.png" alt="러쉬 트위터 바로가기" style="width:40px" /></a></li>
-				<li><a href="https://www.instagram.com/lushkorea" target="_blank"><img src="/content/renewal/mobile/images/ico/ico_insta.svg" alt="러쉬 인스타그램 바로가기" ></a></li>
-				<li><a href="https://www.youtube.com/user/LUSHKOREA1" target="_blank"><img src="/content/renewal/mobile/images/ico/ico_youtube.svg" alt="러쉬 유튜브 바로가기"></a></li>
-				<li><a href="https://pf.kakao.com/_VEbUM" target="_blank"><img src="/content/renewal/mobile/images/ico/ico_kakao.svg" alt="러쉬 카카오플러스 바로가기"></a></li>
-				<li><a href="https://m.post.naver.com/lushkr1" target="_blank"><img src="/content/renewal/mobile/images/ico/ico_naver.svg" alt="러쉬 네이버 바로가기"></a></li>
+				<li><a href="https://twitter.com/LUSHKOREA" target="_blank"><img src="/images/ico/ico_twitter.png" alt="러쉬 트위터 바로가기" style="width:40px" /></a></li>
+				<li><a href="https://www.instagram.com/lushkorea" target="_blank"><img src="/images/ico/ico_insta.svg" alt="러쉬 인스타그램 바로가기" ></a></li>
+				<li><a href="https://www.youtube.com/user/LUSHKOREA1" target="_blank"><img src="/images/ico/ico_youtube.svg" alt="러쉬 유튜브 바로가기"></a></li>
+				<li><a href="https://pf.kakao.com/_VEbUM" target="_blank"><img src="/images/ico/ico_kakao.svg" alt="러쉬 카카오플러스 바로가기"></a></li>
+				<li><a href="https://m.post.naver.com/lushkr1" target="_blank"><img src="/images/ico/ico_naver.svg" alt="러쉬 네이버 바로가기"></a></li>
 			</ul>
 		</div>
 		<div class="footer-right">
@@ -119,14 +63,14 @@ footer .quick-menu ul li .quick-kakao.on::after {
 					<a href="/mypage/view/1931">
 					<span>2022-12-21</span>
 					[공지] 연말 택배 물량 증가 배송 지연 안내
-					<img src="/content/renewal/pc/images/ico/ico_new.svg" alt="새글 아이콘" class="footer-ico" />
+					<img src="/images/ico/ico_new.svg" alt="새글 아이콘" class="footer-ico" />
 					</a>
 				</li>
 				<li>
 					<a href="/mypage/view/1929">
 					<span>2022-11-22</span>
 					네이버페이 결제 시, 덕찌 발급 재개 안내
-					<img src="/content/renewal/pc/images/ico/ico_new.svg" alt="새글 아이콘" class="footer-ico" />
+					<img src="/images/ico/ico_new.svg" alt="새글 아이콘" class="footer-ico" />
 					</a>
 				</li>
 			</ul>
