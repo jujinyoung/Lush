@@ -181,7 +181,7 @@
 
                                     </ul>
                                     <label for="boardCommentFiles" class="file-btn"><span>파일선택</span></label>
-                                    <input type="file" id="boardCommentFiles" name="boardCommentFiles" hidden=""  multiple="multiple" accept=".png, .jpg"/>
+                                    <input type="file" id="boardCommentFiles" name="boardCommentFiles0" hidden="" accept=".png, .jpg"/>
 <%--                                    <input type="file" hidden=""  multiple="multiple" accept=".png, .jpg"/>--%>
                                 </div>
                                 <p class="file-notice">5MB이하 이미지파일(png, jpg)로 최대 5개까지 업로드 가능합니다.</p>
@@ -229,37 +229,51 @@
         }
     });
 
-    $(document).ready(function () {
-        $("#boardCommentFiles").change(function (event) {
-            var n = $('.upload-box ul.file-tree li').length;
-            if (n>=5){
-                alert("이미지파일은 5개까지만 올릴 수 있습니다.")
-            }else{
-                $('.upload-box ul.file-tree').append('<li><div class="input-wrap"><input id="file' + n +'" type="text" readonly>' +
-                    '<button id="delFile" type="button" onclick="delFileFunc()"></button>' +
-                    '</div></li>');
 
-                var files = $('input#boardCommentFiles')[0].files;
-                // alert(files[0].name);
-                // for (var i=0; files.length; i++){
-                    $('#file'+n).val(files[0].name);
-                // }
+    $(document).on('change','input[type="file"]',function (event){
+        var n = $('.upload-box ul.file-tree li').length;
+        if (n>=5){
+            alert("이미지파일은 5개까지만 올릴 수 있습니다.")
+        }else{
+            $('.upload-box ul.file-tree').append('<li><div class="input-wrap"><input id="file' + n +'" type="text" readonly>' +
+                '<button id="delFile" type="button" onclick="delFileFunc()"></button>' +
+                '</div></li>');
 
-                var fileInput = document.getElementById("boardCommentFiles");
+            var files = $('input[type="file"]')[n].files;
+            // alert(files[0].name);
+            // for (var i=0; files.length; i++){
+            $('#file'+n).val(files[0].name);
+            // }
+            $('.upload-box label').hide();
 
-                var files = fileInput.files;
-                var file;
+            $('.upload-box').append('<label for="boardCommentFiles' + n +'" class="file-btn"><span>파일선택</span></label>' +
+                '<input type="file" id="boardCommentFiles' + n +'" name="boardCommentFiles' + (n+1) +'" hidden="" accept=".png, .jpg"/>');
+        }
+    });
 
-                for (var i = 0; i < files.length; i++) {
-
-                    file = files[i];
-
-                    alert(file.name);
-                }
-            }
-        });//  click
-
-    }); // ready
+    // $(document).ready(function () {
+    //     $("#boardCommentFiles").change(function (event) {
+    //         var n = $('.upload-box ul.file-tree li').length;
+    //         if (n>=5){
+    //             alert("이미지파일은 5개까지만 올릴 수 있습니다.")
+    //         }else{
+    //             $('.upload-box ul.file-tree').append('<li><div class="input-wrap"><input id="file' + n +'" type="text" readonly>' +
+    //                 '<button id="delFile" type="button" onclick="delFileFunc()"></button>' +
+    //                 '</div></li>');
+    //
+    //             var files = $('input#boardCommentFiles')[0].files;
+    //             // alert(files[0].name);
+    //             // for (var i=0; files.length; i++){
+    //                 $('#file'+n).val(files[0].name);
+    //             // }
+    //             $('.upload-box label').hide();
+    //
+    //             $('.upload-box').append('<label for="boardCommentFiles" class="file-btn"><span>파일선택</span></label>' +
+    //                 '<input type="file" id="boardCommentFiles" name="boardCommentFiles' + n +'" hidden="" accept=".png, .jpg"/>');
+    //         }
+    //     });//  click
+    //
+    // }); // ready
 
     function delFileFunc(){
         alert('gd');

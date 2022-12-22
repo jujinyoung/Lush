@@ -1,4 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%
+  int searchCondition = request.getParameter("searchCondition")==null ? 1 :Integer.parseInt(request.getParameter("searchCondition"));
+  String searchWord = request.getParameter("searchWord")==null ? "" : request.getParameter("searchWord");
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,28 +24,28 @@
   <div class="inner">
     <div class="normal-table">
       <!-- 검색 -->
-      <form id="lushBoardSearchParam" action="/board/eventresult" method="get"><div class="board-search-wrap">
-        <input id="where1" name="where" checked="checked" type="radio" value="CONT_SUBJECT"/><label for="where1">제목</label><input id="where2" name="where" type="radio" value="CONTENT_PC"/><label for="where2">내용</label><input id="query" name="query" placeholder="검색 단어를 입력해 주세요." type="text" value=""/><input id="categoryLink" name="categoryLink" type="hidden" value=""/><input id="page" name="page" type="hidden" value="1"/><button type="submit" class="black-btn">검색</button>
+      <form id="lushBoardSearchParam" action="/Lush/event/eventresult.do" method="get">
+        <div class="board-search-wrap">
+          <input id="where1" name="searchCondition" type="radio" value="1">
+          <label for="where1">제목</label>
+          <input id="where2" name="searchCondition" type="radio" value="2">
+          <label for="where2">내용</label>
+          <input name="searchWord" type="text" placeholder="검색 단어를 입력해 주세요." value="<%=searchWord%>">
+          <input id="categoryLink" name="categoryLink" type="hidden" value=""/>
+          <input id="page" name="page" type="hidden" value="1"/>
+          <button type="submit" class="black-btn">검색</button>
       </div>
       </form><!-- 검색 //-->
 
-      <ul class="tab-btn">
+      <ul class="tab-btn type3">
         <li>
-          <a href="/event/list?eventStatus=2"
-
-          >진행중인 이벤트</a>
+          <a href="/Lush/event/list.do?eventStatus=1">진행중인 이벤트</a>
         </li>
         <li>
-          <a href="/board/eventresult"
-
-             class="on"
-
-          >선정자 발표</a>
+          <a href="/Lush/event/eventresult.do" class="on">선정자 발표</a>
         </li>
         <li>
-          <a href="/event/list?eventStatus=3"
-
-          >종료된 이벤트</a>
+          <a href="/Lush/event/list.do?eventStatus=2">종료된 이벤트</a>
         </li>
       </ul>
       <div class="tab-cont">
@@ -64,12 +68,24 @@
             </tbody>
           </table>
           <!-- 페이징 영역 -->
-
+            <jsp:include page="/WEB-INF/inc/event/paging.jsp">
+              <jsp:param name="eventStatus" value="null"/>
+              <jsp:param name="searchCondition" value="<%=searchCondition%>"/>
+              <jsp:param name="searchWord" value="<%=searchWord%>"/>
+            </jsp:include>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<script>
+  if (<%=searchCondition%> == 1){
+    $('input[id="where1"]').prop('checked',true);
+  }else{
+    $('input[id="where2"]').prop('checked',true);
+  }
+</script>
 </body>
 </html>
