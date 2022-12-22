@@ -147,8 +147,13 @@
             <h2 class="big">댓글 작성</h2>
         </div>
         <div class="pop-content" id="commentRegistForm">
-            <form id="boardComment" action="/Lush/event/view.do" method="post" enctype="multipart/form-data"><input type="hidden" name="boardCommentId" value="0" />
-                <input type="hidden" name="eventID" value="<%=eventID%>">
+            <form id="boardComment" action="/Lush/event/view.do" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="boardCommentId" value="0" />
+                <input type="hidden" name="eventID" value="<%=eventID%>"/>
+                <input type="hidden" name="eventStatus" value="<%=eventStatus%>">
+                <input type="hidden" name="currentPage" value="<%=currentPage%>">
+                <input type="hidden" name="proceedRecords" value="<%=proceedRecords%>">
+                <input type="hidden" name="endRecords" value="<%=endRecords%>">
                 <table class="list-table light">
                     <colgroup>
                         <col width="210px">

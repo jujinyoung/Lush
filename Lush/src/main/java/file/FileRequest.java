@@ -6,15 +6,18 @@ import com.oreilly.servlet.multipart.FileRenamePolicy;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.List;
 
 public class FileRequest {
 
-    public static String[] createFileURL(HttpServletRequest request) throws Exception{
+    private final static String savePath = "D:\\LushUpload\\event";
 
-        String[] uploadURL = new String[5];
+    public static MultipartRequest getFileRequest(HttpServletRequest request) throws IOException {
+
         //파일 경로
-        String savePath = "D:\\LushUpload\\event";
         File saveDir = new File(savePath);
         if (!saveDir.exists()) saveDir.mkdirs();
 
@@ -22,13 +25,17 @@ public class FileRequest {
         String encoding = "UTF-8";
         FileRenamePolicy policy = new DefaultFileRenamePolicy();
         MultipartRequest mrequest = new MultipartRequest(request, savePath, maxPostSize, encoding, policy);
+        return mrequest;
+    }
+
+    public static List<String> createFileURL(MultipartRequest mrequest) throws Exception{
+        List<String> uploadURL = new ArrayList<>();
 
         Enumeration en =  mrequest.getFileNames();
-        int n = 0;
         while( en.hasMoreElements() ) {
             String name = (String) en.nextElement();
             String filesystemName = mrequest.getFilesystemName(name);
-            uploadURL[n++] = savePath + "\\" + filesystemName;
+            if (filesystemName!=null) uploadURL.add(savePath + "\\" + filesystemName);
         }
 
         return uploadURL;
