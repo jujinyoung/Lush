@@ -161,14 +161,14 @@
 														<th>배송 메세지</th>
 														<td>
 															<div class="select-box long">
-																<a href="javascript:;" class="selected-value reveiverMsg" >선택해주세요</a>
-																<ul id="selDelMsg" class="option-box" name="">
-																	<li>부재시 경비실에 맡겨주세요</li>
-																	<li>부재시 문 앞에 놓아주세요</li>
-																	<li>직접 받을게요</li>
-																	<li>배송전에 연락주세요</li>
-																	<li>직접입력</li>
-																</ul>
+																<select id="delmsgselect">
+																	<option value="부재시 경비실에 맡겨주세요">부재시 경비실에 맡겨주세요</option>
+																	<option value="부재시 문 앞에 놓아주세요">부재시 문 앞에 놓아주세요</option>
+																	<option value="직접 받을게요">직접 받을게요</option>
+																	<option value="배송전에 연락주세요">배송전에 연락주세요</option>
+																</select>
+																<input type="hidden" id="delmsginput" name="delmsg" value="" >
+
 															</div>
 															<input type="text" id="receivers[0].content" name="receivers[0].content" placeholder="ex) 부재시 경비실에 맡겨주세요." style="display:none;">
 														</td>
@@ -391,6 +391,12 @@ $("button.pop-close.popup-close-btn").click(function(){
 	$("#myForm input[name=phone]").val("");
 	$("#myForm input[name=mobile]").val("");
 	$("#myForm input[name=address]").val("");
+}); 
+
+$("#delmsgselect").change(function(){
+	var valss = $("#delmsgselect option:selected").val();
+	$("#delmsginput").val(valss);
+
 }); 
 
 </script>
