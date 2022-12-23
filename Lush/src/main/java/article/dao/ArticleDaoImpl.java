@@ -12,7 +12,133 @@ import java.util.List;
 //DAO 싱글톤 구현
 public class ArticleDaoImpl implements ArticleDao{
 
-	
+	private static ArticleDaoImpl instance = new ArticleDaoImpl();
+    private ArticleDaoImpl(){}
+    public static ArticleDaoImpl getInstance(){
+    	return  instance;
+    	}
+    
+    @Override
+    public List<Article> selectArticleList(Connection conn, int categoryLink, int currentPage, int numberPerPage) throws SQLException {
+
+        int begin = (currentPage-1)*numberPerPage + 1;
+        int end = begin + numberPerPage - 1;
+
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        String sql = " SELECT a.* " +
+                     " FROM( " +
+                     " SELECT ROWNUM no, t.* " +
+                     " FROM( " +
+        		     " SELECT * FROM ltb_story " +
+                     " WHERE st_product ";
+        if(categoryLink == 1) sql += " IN('1', '2', '3', '4') ";
+        else if(categoryLink == 2) sql += " = '1' ";
+        else if(categoryLink == 3) sql += " = '2' ";
+        else if(categoryLink == 4) sql += " = '3' ";
+        else if(categoryLink == 5) sql += " = '4' ";
+        sql += " ORDER BY st_id DESC " +
+               " )t " +
+        	   " )a "+
+               "WHERE a.no BETWEEN ? and ? ";
+
+
+        List<Article> list = null;
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, begin);
+            pstmt.setInt(2, end);
+            rs = pstmt.executeQuery();
+
+            if (rs.next()){
+                list = new ArrayList<>();
+                do {
+                	list.add(new Article(rs.getInt("st_id"), rs.getString("st_title"), rs.getString("st_stitle"), rs.getString("st_content")
+                            , rs.getString("st_image"), rs.getString("st_product"), rs.getString("adm_id")));
+                }while (rs.next());
+            }
+        }finally {
+            JdbcUtil.close(pstmt);
+            JdbcUtil.close(rs);
+        }
+
+        return list;
+    }
+
+    @Override
+    public List<Article> searchArticleList(Connection conn, int categoryLink, int currentPage, int numberPerPage, int condition, String key) throws SQLException {
+
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        int begin = (currentPage-1)*numberPerPage + 1;
+        int end = begin + numberPerPage - 1;
+
+        String sql = " SELECT b.* FROM( " +
+                     " SELECT ROWNUM no, t.* FROM( " +
+        		     " SELECT * FROM ltb_story WHERE st_product";
+        if(categoryLink == 1) sql += " IN('1', '2', '3', '4') ";
+        else if(categoryLink == 2) sql += " = '1' ";
+        else if(categoryLink == 3) sql += " = '2' ";
+        else if(categoryLink == 4) sql += " = '3' ";
+        else if(categoryLink == 5) sql += " = '4' ";
+        
+        
+        if(condition ==1) sql += " and REGEXP_LIKE(st_title, ?, 'i') ";
+        else sql += "and REGEXP_LIKE(st_content, ?, 'i') ";
+        sql += " ORDER BY st_id DESC)t)b WHERE b.no BETWEEN ? AND ?";
+
+        List<Article> list = null;
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, key);
+            pstmt.setInt(2, begin);
+            pstmt.setInt(3, end);
+            rs = pstmt.executeQuery();
+            if (rs.next()){
+                list = new ArrayList<>();
+                do {
+                	list.add(new Article(rs.getInt("st_id"), rs.getString("st_title"), rs.getString("st_stitle"), rs.getString("st_content")
+                            , rs.getString("st_image"), rs.getString("st_product"), rs.getString("adm_id")));
+                }while (rs.next());
+            }
+            return list;
+        }finally {
+            JdbcUtil.close(pstmt);
+            JdbcUtil.close(rs);
+        }
+    }
+
+    @Override
+    public int getTotalPages(Connection conn, int numberPerPage, int categoryLink) throws SQLException {
+
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        String sql = "SELECT CEIL(COUNT(*)/?) FROM ltb_story where st_product";
+        if(categoryLink == 1) sql += " IN('1', '2', '3', '4') ";
+        else if(categoryLink == 2) sql += " = '1' ";
+        else if(categoryLink == 3) sql += " = '2' ";
+        else if(categoryLink == 4) sql += " = '3' ";
+        else if(categoryLink == 5) sql += " = '4' ";
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, numberPerPage);
+            rs = pstmt.executeQuery();
+            int result = 0;
+            if (rs.next()){
+                result = rs.getInt(1);
+            }
+            return result;
+        }finally {
+            JdbcUtil.close(pstmt);
+            JdbcUtil.close(rs);
+        }
+    }
+
+}
+	/*
 	private static ArticleDaoImpl instance = new ArticleDaoImpl();
     private ArticleDaoImpl(){}
     public static ArticleDaoImpl getInstance(){return  instance;}
@@ -42,7 +168,7 @@ public class ArticleDaoImpl implements ArticleDao{
         return list;
     }
 
-	
+	*/
 	/*
 	private ArticleDaoImpl() {}
 	
@@ -238,4 +364,4 @@ public class ArticleDaoImpl implements ArticleDao{
 	   }
 	   
 	   */
-	}
+	

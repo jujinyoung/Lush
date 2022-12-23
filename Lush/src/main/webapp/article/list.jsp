@@ -497,6 +497,35 @@ a {
   width: auto;
 }
 
+.list-thumb li.end .article-thumb .mask {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(34,34,34,.7);
+  z-index: 2;
+}
+
+.list-thumb li .article-thumb .mask {
+  display: none;
+}
+
+.list-thumb li.end .article-thumb .mask::after {
+  content: '종료';
+  display: block;
+  position: absolute;
+  width: 100%;
+  opacity: 1;
+  color: #fff;
+  text-align: center;
+  font-size: 22px;
+  top: 50%;
+  margin-top: -17px;
+  font-weight: 500;
+}
+
 img {
     border: 0;
     vertical-align: middle;
@@ -575,7 +604,7 @@ a {
 }
 
 a:hover, a:focus, a:visited, a:active {
-    text-decoration: none;
+    text-decoration: none; 
 }
 
 ul {
@@ -606,6 +635,13 @@ img {
     overflow: clip;
 }
 </style>
+       
+<%
+    int categoryLink = request.getParameter("categoryLink")==null ? 1 :Integer.parseInt(request.getParameter("categoryLink"));
+    int contentPage = request.getParameter("currentPage")==null ? 1 :Integer.parseInt(request.getParameter("currentPage"));
+    int searchCondition = request.getParameter("searchCondition")==null ? 1 :Integer.parseInt(request.getParameter("searchCondition"));
+    String searchWord = request.getParameter("searchWord")==null ? "" : request.getParameter("searchWord");
+%>
         
 </head>
 
@@ -631,15 +667,15 @@ img {
 
 <form id="lushBoardSearchParam" action="/Lush/article/list.do" method="get">
 <div class="board-search-wrap">
-<input id="where1" name="where" checked="checked" type="radio" value="CONT_SUBJECT">
-<label for="where1">제목</label>
-<input id="where2" name="where" type="radio" value="CONTENT_PC">
-<label for="where2">내용</label>
-<input id="query" name="query" placeholder="검색 단어를 입력해 주세요." type="text" value="">
-<input id="categoryLink" name="categoryLink" type="hidden" value="">
-<input id="page" name="page" type="hidden" value="1">
-<button type="submit" class="black-btn">검색</button>
-</div>
+            <input name="categoryLink" type="hidden" value="<%=categoryLink%>">
+            <input name="currentPage" type="hidden" value="<%=contentPage%>">
+            <input id="where1" name="searchCondition" type="radio" value="1">
+            <label for="where1">제목</label>
+            <input id="where2" name="searchCondition" type="radio" value="2">
+            <label for="where2">내용</label>
+            <input name="searchWord" type="text" value="<%=searchWord%>">
+            <button type="submit" class="black-btn">검색</button>
+        </div>
 <div>
 <input type="hidden" name="_csrf" value="3b0351a8-f783-4f60-86aa-5cc142894a38">
 </div>
@@ -648,19 +684,19 @@ img {
 <!--카테고리  -->
 <ul class="tab-btn type5">
 <li>
-	<a href="/Lush/article/list.do" class="on">전체 ?</a>
+	<a href="/Lush/article/list.do?categoryLink=1" >전체</a>
 </li>
 <li>
-	<a href="#">브랜드 ? </a>
+	<a href="/Lush/article/list.do?categoryLink=2">브랜드</a>
 </li>
 <li>
-	<a href="#">제품 ? </a>
+	<a href="/Lush/article/list.do?categoryLink=3">제품</a>
 </li>
 <li>
-	<a href="#">캠페인 ?</a>
+	<a href="/Lush/article/list.do?categoryLink=4">캠페인</a>
 </li>
 <li>
-	<a href="#">원재료 ?</a>
+	<a href="/Lush/article/list.do?categoryLink=5">원재료</a>
 </li>
 </ul>
 
@@ -685,46 +721,21 @@ img {
 				</ul>
 				<div class="paginate">
 					<ul>
-						<li>
-							<a href="#" class="num on">1</a>
-						</li>
-						<li>
-							<a href="#" class="num">2</a>
-						</li>
-						<li>
-							<a href="#" class="num">3</a>
-						</li>
-						<li>
-							<a href="#" class="num">4</a>
-						</li>
-						<li>
-							<a href="#" class="num">5</a>
-						</li>
-						<li>
-							<a href="#" class="num">6</a>
-						</li>
-						<li>
-							<a href="#" class="num">7</a>
-						</li>
-						<li>
-							<a href="#" class="num">8</a>
-						</li>
-						<li>
-							<a href="#" class="num">9</a>
-						</li>
-						<li>
-							<a href="#" class="num">10</a>
-						</li>
-						<li class="next">
-							<a href="#">
-								<img src="https://www.lush.co.kr/content/renewal/pc/images/ico/page_next.svg" alt="다음 페이지로">
-							</a>
-						</li>
-						<li class="last">
-							<a href="#">
-								<img src="https://www.lush.co.kr/content/renewal/pc/images/ico/page_last.svg" alt="마지막 페이지로">
-							</a>	
-						</li>
+						<c:if test="${pageBlock.prev}">
+                            <li class="first"><a href="/Lush/article/list.do?categoryLink=<%=categoryLink%>&currentPage=${pageBlock.startOfPageBlock-1}&searchCondition=${searchCondition}&searchWord=${searchWord}"> &laquo; </a></li></c:if>
+                        <c:forEach begin="${pageBlock.startOfPageBlock}" end="${pageBlock.endOfPageBlock}" var="i" step="1">
+                            <c:choose>
+                                <c:when test="${pageBlock.currentPage eq i}">
+                                    <li><a href="#" class="num on">${i}</a></li>
+                                </c:when>
+                                <c:otherwise>
+                                    <li><a href="/Lush/article/list.do?categoryLink=<%=categoryLink%>&currentPage=${i}&searchCondition=${searchCondition}&searchWord=${searchWord}">${i}</a></li>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:forEach>
+                        <c:if test="${pageBlock.next}">
+                            <li class="last"><a href="Lush/article/list.do?categoryLink=<%=categoryLink%>&currentPage=${pageBlock.endOfPageBlock+1}&searchCondition=${searchCondition}&searchWord=${searchWord}"> &raquo; </a></li>
+                        </c:if>
 					</ul>
 				</div>
 			</div>
@@ -738,20 +749,44 @@ img {
 <footer>
 </footer>
 <!-- 카테고리 -->
+<script>
+
+ if(<%=categoryLink%> == 5){
+	$('ul.tab-btn>li:first-child').find('a').addClass('on');
+    $('.list-thumb li').addClass('end');
+}else {
+    $('ul.tab-btn>li:first-child').find('a').addClass('on');
+}
+ 
+
+
+if (<%=searchCondition%> == 1){
+    $('input[id="where1"]').prop('checked',true);
+}else{
+    $('input[id="where2"]').prop('checked',true);
+}
+
+</script>
+ <script>
+
+ </script>
+  <!-- 
     <script>
         $('ul.tab-btn>li').click(function(){
             $('ul.tab-btn>li').find('a').removeClass('on');
             $(this).find('a').addClass('on');
         })
     </script>
+ 
 
-<!-- 페이징 -->    
+페이징    
     <script>
     $(function() {
        $("#lushBoardSearchParam").validator(function() {
            $("#page").val(1);
        });
     })
+     -->
 </script>
 </body>
 </html>

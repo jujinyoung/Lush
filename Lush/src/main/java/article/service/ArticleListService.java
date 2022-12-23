@@ -9,6 +9,7 @@ import javax.naming.NamingException;
 
 import com.util.ConnectionProvider;
 //import com.util.JdbcUtil;
+import com.util.JdbcUtil;
 
 import article.dao.ArticleDao;
 import article.dao.ArticleDaoImpl;
@@ -20,6 +21,65 @@ import event.exception.EventListEmptyException;
 //import event.service.EventListService;
 
 // 싱글톤
+
+
+public class ArticleListService {
+    private static ArticleListService instance = new ArticleListService();
+    private ArticleListService(){}
+    public static ArticleListService getInstance(){return instance;}
+
+    public List<Article> selectArticleList(int articleStatus, int currentPage, int numberPerPage){
+        Connection conn = null;
+        ArticleDao dao = ArticleDaoImpl.getInstance();
+        List<Article> articles = null;
+
+        try {
+            conn = ConnectionProvider.getConnection();
+            articles = dao.selectArticleList(conn, articleStatus, currentPage, numberPerPage);
+            if (articles == null){
+                throw new EventListEmptyException("이벤트 목록이 비어있습니다.");
+            }
+        } catch (NamingException | SQLException e) {
+            e.printStackTrace();
+        } catch (EventListEmptyException e) {
+            e.printStackTrace();
+        }finally {
+            JdbcUtil.close(conn);
+        }
+        return articles;
+    }
+
+    public List<Article> searchArticleList(int categoryLink, int currentPage, int numberPerPage, int searchCondition, String searchWord){
+        Connection conn = null;
+
+        List<Article> list = null;
+        try {
+            conn = ConnectionProvider.getConnection();
+            ArticleDao dao = ArticleDaoImpl.getInstance();
+            list = dao.searchArticleList(conn, categoryLink, currentPage, numberPerPage, searchCondition, searchWord);
+        } catch (NamingException | SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            JdbcUtil.close(conn);
+        }
+        return list;
+    }
+
+    public int getTotalPages(int numberPerPage, int categoryLink){
+        Connection conn = null;
+
+        try {
+            conn = ConnectionProvider.getConnection();
+            ArticleDao dao = ArticleDaoImpl.getInstance();
+            return dao.getTotalPages(conn, numberPerPage, categoryLink);
+        } catch (NamingException | SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            JdbcUtil.close(conn);
+        }
+    }
+}
+/*
 public class ArticleListService {
 	
 	private static ArticleListService instance = new ArticleListService();
@@ -44,6 +104,7 @@ public class ArticleListService {
         }
         return articles;
     }
+    */
 	/*
 	private static ArticleListService  instance = null;
 	   
@@ -124,4 +185,4 @@ public class ArticleListService {
 	      }
 	   }
 	   */
-}
+
