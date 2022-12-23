@@ -1,0 +1,96 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans+KR:wght@500&display=swap');
+@import url(default.css);
+
+header{
+  height: 96px;
+}
+section {
+    min-height: calc(100vh - 96px - 320px);
+}
+
+
+* {
+    box-sizing: border-box !important;
+      -webkit-text-size-adjust: none;
+    text-shadow: none !important;
+}
+
+section {
+    display: block;
+}
+
+.inner {
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    width: 1224px;
+}
+
+.join-wrap {
+    position: relative;
+    margin-top: 100px;
+    text-align: center;
+}
+
+.page-top {
+    display: block;
+    margin: 48px auto 56px auto;
+}
+
+.page-top .page-title-small {
+    font-size: 32px;
+    line-height: 46px;
+    letter-spacing: -0.6px;
+    text-align: center;
+}
+
+.sns-btns {
+    display: block;
+    margin: 32px auto 24px auto;
+    width: 328px;
+}
+
+/* .sns-btns a:not(:last-of-type) {
+    margin-bottom: 8px;
+} */
+.sns-btns a {
+    display: block;
+    width: 100%;
+    height: 64px;
+    line-height: 64px;
+    letter-spacing: -0.45px;
+    color: #fff;
+    text-align: center;
+}
+
+/* a:hover, a:focus, a:visited, a:active {
+    text-decoration: none;
+}
+ */
+a {
+    text-decoration: none;
+}
+
+.black-btn {
+    position: relative;
+    background: #222;
+    color: #fff !important;
+    text-align: center;
+    border: 1px solid #222;
+}
+
+.join-wrap > span {
+    display: inline-block;
+    color: #535353;
+    font-size: 14px;
+}
+
+.join-wrap .go-login {
+    display: inline-block;
+    color: #535353;
+    border-bottom: 1px solid #535353;
+    margin-left: 16px;
+    line-height: 18px;
+    font-size: 14px;
+}
