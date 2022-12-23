@@ -224,8 +224,8 @@ input[type="password"] {
     width: 100%;
     margin: 0 auto 8px auto;
 }
-/* input[type="checkbox"] {
-    display: none;
+input[type="checkbox"] {
+ /*    display: none; */
     position: absolute;
     opacity: 0;
     width: 1px;
@@ -241,13 +241,18 @@ input[type="checkbox"] + label {
     display: inline-block;
     position: relative;
     cursor: pointer;
- /*    background: url(../images/ico/checkbox_off.svg) no-repeat center left; 
+    background: url(../../images/ico/checkbox_off.svg) no-repeat center left; 
     padding-left: 36px;
     color: #535353;
     min-width: 20px;
     min-height: 20px;
     background-size: 20px 20px;
-} */
+} 
+
+input[type="checkbox"]:checked + label {
+    background: url(../../images/ico/checkbox_on_black.svg) no-repeat center left;
+    background-size: 20px 20px;
+}
 
 .search-wrap .black-btn {
     width: 100%;
@@ -291,7 +296,7 @@ button, input[type="button"], input[type="submit"], input[type="reset"], input[t
     width: 108%;
 
 }
-/* 
+
 input[type="checkbox" i] {
     background-color: initial;
     cursor: default;
@@ -300,7 +305,7 @@ input[type="checkbox" i] {
     margin: 3px 3px 3px 4px;
     padding: initial;
     border: initial;
-} */
+} 
 
 .login-opt li a {
     color: #535353;
