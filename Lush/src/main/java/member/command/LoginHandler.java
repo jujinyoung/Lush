@@ -1,3 +1,4 @@
+
 package member.command;
 
 import java.io.IOException;
@@ -16,11 +17,13 @@ import member.service.LoginService;
 
 public class LoginHandler implements CommandHandler {	
 	
+	
 	private LoginService loginservice = new LoginService();
 	
 	
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
 		if(request.getMethod().equalsIgnoreCase("GET")) {
 			return processForm(request, response);	
 		} else if( request.getMethod().equalsIgnoreCase("POST")) {
