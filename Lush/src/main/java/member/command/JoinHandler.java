@@ -21,11 +21,13 @@ public class JoinHandler implements CommandHandler {
 	
 	
 	
+	
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// System.out.println("JoinHandler.process");
 		
 		if(request.getMethod().equalsIgnoreCase("GET")) {
+			
 			
 			return "/event/list.jsp";
 			

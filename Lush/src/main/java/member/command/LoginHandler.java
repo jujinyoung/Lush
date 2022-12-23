@@ -21,6 +21,7 @@ public class LoginHandler implements CommandHandler {
 	private LoginService loginservice = new LoginService();
 	
 	
+	
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
@@ -33,7 +34,6 @@ public class LoginHandler implements CommandHandler {
 			return null;
 		}
 		
-	
 	}
 
 
@@ -63,14 +63,13 @@ public class LoginHandler implements CommandHandler {
 				return "Login.jsp";
 			}
 			// user 객체를 authuser 속성에 저장 아이디 / 이름 
-			if(save_id!=null) {
+			if(save_id!=null) { // 체크박스 표시 o > 쿠키 저장 
 				System.out.println(" 체크박스 표시 함 ");
-			       Cookie c = new Cookie("save_id",id);
-	                //쿠키값 저장 시간을 지정함, 숫자당 1초로 계산
+			       Cookie c = new Cookie("saveid",id);
 	                c.setMaxAge(60*60*24*7); //7일간 저장
 	                response.addCookie(c);
 			} else {
-                Cookie c = new Cookie("save_id",id);
+                Cookie c = new Cookie("saveid",id);
                 System.out.println(" 새쿠키 만듦 ");
                 c.setMaxAge(0);
                 response.addCookie(c);
