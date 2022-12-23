@@ -8,4 +8,6 @@ import java.sql.SQLException;
 public interface ShipAddDao {
 
     public ShipAdd selectShipAdd(Connection con, Long mid) throws SQLException;
+    public int addShipAdd(Connection con, ShipAdd shipadd) throws SQLException;
+    public int updateShipAdd(Connection con, ShipAdd shipadd) throws SQLException;
 }

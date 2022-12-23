@@ -13,16 +13,17 @@ public class ProductSangseDaoImpl implements ProductSangseDao{
     private ProductSangseDaoImpl(){}
     public static ProductSangseDaoImpl getInstance(){return  instance;}
     @Override
-    public ProductSangse selectProductSangse(Connection con, Long psid ) throws SQLException {
+    public ProductSangse selectProductSangse(Connection con, Long pid, Long weight ) throws SQLException {
 
         PreparedStatement pstmt = null;
         ResultSet rs = null;
-        String sql = "SELECT * FROM ltb_ps WHERE ps_id = ? ";
+        String sql = "SELECT * FROM ltb_ps WHERE pd_id = ? and ps_weight = ?";
         ProductSangse productsangse = null;
         
         try {
             pstmt = con.prepareStatement(sql);
-            pstmt.setLong(1, psid);
+            pstmt.setLong(1, pid);
+            pstmt.setLong(2, weight);
             
             rs = pstmt.executeQuery();
             

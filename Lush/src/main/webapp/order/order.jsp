@@ -4,6 +4,9 @@
       request.setCharacterEncoding("UTF-8");
       String contextPath = request.getContextPath();
       int amount = Integer.parseInt(request.getParameter("amount"));
+      int pid = Integer.parseInt(request.getParameter("pid"));
+      int weight = Integer.parseInt(request.getParameter("weight"));
+
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -121,7 +124,7 @@
 											<th>주문자 정보</th>
 											<td>
 												<ul class="info-ul no-border">
-													<li id="bName"><span id="childBName">${ member.name }</span> <a href="javascript:;" class="pop-open"><span>주문자 정보 변경</span></a></li>
+													<li id="bName"><span id="childBName">${ member.name }</span></li>
 													<li id="bEmail">${ member.email }</li>
 													<li id="bMobile">${ member.telnum }</li>
 													<li id="bAddress"><span>${ member.address }</span></li>
@@ -146,7 +149,7 @@
 															<ul class="info-ul no-border">
 																<li>
 																	<strong id="deliveryTitle_0">기본 배송지</strong>
-																		<a href="javascript:;" onclick="selectAddress(0)" class="pop-open" ><span>배송지 정보 변경</span></a>
+																		<button type="button" class="open-button" id="baesong"><span> 배송지 추가 </span></button> 
 																</li>
 																<li id="deliveryName_0">${ shipadd.oname }</li>
 																<li id="deliveryMobile_0">${ shipadd.telnum1 }</li>
@@ -254,6 +257,96 @@
 		</div>
 	<div>
 </div></form></section>
+
+<!-- <div class="form-popup" id="myForm">
+  <form class="form-container" method="post"> -->
+<%--     <h1>배송지 추가</h1>
+
+    <label for="address"><b>주소</b></label>
+    <input type="text" placeholder="Enter Address" name="address" required>
+	<p>
+    <b>기본 배송지 설정하시겠습니까?</b><p>
+    <div>
+        <input type="radio" id="yes" name="default-add-yes" chekced>
+        <label for="yes">네</label>
+    </div>
+    
+    <div>
+        <input type="radio" id="no" name="default-add-no">
+        <label for="no">아니요</label>
+    </div>
+    <input type="hidden" name="pid" value=<%=pid %>>
+    <input type="hidden" name="weight" value=<%=weight %> >
+    <input type="hidden" name="amount" value=<%=amount %> >
+
+    <button type="submit" class="btn addchange">수정</button>
+    <button type="button" class="btn cancel">닫기</button> --%>
+<div class ="dimmed" id="myForm">
+    <div class="popup big add-address" style="display: block;">
+		<div class="pop-head">
+			<h2 class="big">배송지 추가</h2>
+			<!--p class="body2">※ 배송지를 입력하시면, 마이페이지 &gt; 배송지 관리에도 등록됩니다.</p-->
+		</div>
+		<form id="userDelivery" name="userDelivery" method="post">
+			<div class="pop-content">
+				<table class="no-border-table">
+					<colgroup>
+						<col width="122px">
+						<col width="auto">
+					</colgroup>
+					<tbody>
+					<tr>
+						<th>배송지명</th>
+						<td><input type="text" name="title" maxlength="50"></td>
+					</tr>
+					<tr>
+						<th>받는사람 이름</th>
+						<td><input type="text" name="userName" maxlength="50"></td>
+					</tr>
+					<tr>
+						<th>전화번호</th>
+						<td><input type="text" name="phone" maxlength="11"></td>
+					</tr>
+					<tr>
+						<th>휴대전화 번호</th>
+						<td><input type="text" name="mobile" maxlength="11"></td>
+					</tr>
+					<tr class="address">
+						<th>주소</th>
+						<td>
+							<input type="text" name="address">
+
+						</td>
+					</tr>
+					</tbody>
+				</table>
+				    <b>기본 배송지 설정하시겠습니까?</b><p>
+    <div>
+        <input type="radio" id="yes" name="default-add" value="yes" checked>
+        <label for="yes">네</label>
+    </div>
+    
+    <div>
+        <input type="radio" id="no" name="default-add" value="no">
+        <label for="no">아니요</label>
+    </div>
+			</div>
+			<div class="btn-wrap large double">
+				<button type="button" class="border-btn pop-close" >취소 </button>
+				<button type="submit" class="black-btn" id="userDeliveryAdd"> 추가하기</button>
+			</div>
+			<button type="button" id="closeBtn" class="pop-close popup-close-btn" name="">팝업닫기</button>
+		<div><input type="hidden" name="_csrf" value="c400f9a2-c347-421b-9cb4-65028638e3ab"></div></form>
+	</div>
+	
+	
+	
+<!--   </form>
+</div> -->
+</div>
+
+
+
 <script>
   var sum = '￦ ';
   sum += String(<%= amount %> * ${ productsangse.price });
@@ -264,6 +357,41 @@
   document.getElementById('result5').innerHTML = sum;
   document.getElementById('result6').innerHTML = sum;
 
+
+</script>
+<script>
+
+$("button.open-button").click( function (){
+	// alert("!!");
+	$("#myForm").attr('class', 'dimmed on');
+	$("#myForm input[name=title").focus();
+});
+
+$("button.border-btn.pop-close").click(function(){
+	// alert("!!");
+/* 	$("#myForm").hide();
+	$("#myForm input[name=email]").val("");
+	$("#myForm input[name=psw]").val(""); */
+	$("#myForm").attr('class', 'dimmed');
+	$("#myForm input[name=title]").val("");
+	$("#myForm input[name=userName]").val("");
+	$("#myForm input[name=phone]").val("");
+	$("#myForm input[name=mobile]").val("");
+	$("#myForm input[name=address]").val("");
+}); 
+
+$("button.pop-close.popup-close-btn").click(function(){
+	// alert("!!");
+/* 	$("#myForm").hide();
+	$("#myForm input[name=email]").val("");
+	$("#myForm input[name=psw]").val(""); */
+	$("#myForm").attr('class', 'dimmed');
+	$("#myForm input[name=title]").val("");
+	$("#myForm input[name=userName]").val("");
+	$("#myForm input[name=phone]").val("");
+	$("#myForm input[name=mobile]").val("");
+	$("#myForm input[name=address]").val("");
+}); 
 
 </script>
 </body>

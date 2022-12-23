@@ -359,11 +359,10 @@ li {
     list-style: none;
 }
 
-input:checked[type="checkbox"] {
-    -webkit-appearance: checkbox;
-}
 
-input[type="checkbox"] {
+
+
+/* input[type="checkbox"] {
     display: none;
     position: absolute;
     opacity: 0;
@@ -374,7 +373,7 @@ input[type="checkbox"] {
     overflow: hidden;
     clip: rect(0,0,0,0);
     border: none;
-}
+} */
 input {
     -webkit-border-radius: 0;
 }
@@ -385,7 +384,7 @@ input, textarea, select {
     letter-spacing: normal;
 }
 
-.gift ul li input[type="checkbox"] + label {
+.gift ul li label {
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -394,11 +393,10 @@ input, textarea, select {
 
 
 
-input[type="checkbox"] + label {
+label {
     display: inline-block;
     position: relative;
     cursor: pointer;
-    background: url(https://www.lush.co.kr/content/renewal/pc/images/ico/checkbox_off.svg) no-repeat center left;
     padding-left: 36px;
     color: #535353;
     min-width: 20px;
@@ -561,7 +559,7 @@ table.list-table.light {
     padding: 16px 0;
 }
 
-input[type="radio"] {
+/* input[type="radio"] {
     display: none;
     position: absolute;
     opacity: 0;
@@ -572,7 +570,7 @@ input[type="radio"] {
     overflow: hidden;
     clip: rect(0,0,0,0);
     border: none;
-}
+} */
 
 .bills .pay-type li label {
     padding-left: 32px;
@@ -584,7 +582,6 @@ input[type="radio"] + label {
     display: inline-block;
     position: relative;
     cursor: pointer;
-    background: url(https://www.lush.co.kr/content/renewal/pc/images/ico/radio_off.svg) no-repeat center left;
     padding-left: 28px;
     min-width: 18px;
     min-height: 18px;
@@ -618,18 +615,6 @@ input[type="radio"] + label {
     margin: 16px auto 36px auto;
 }
 
-input[type="checkbox"] {
-    display: none;
-    position: absolute;
-    opacity: 0;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    border: none;
-}
 
 input {
     -webkit-border-radius: 0;
@@ -676,3 +661,215 @@ button, input[type="button"], input[type="submit"], input[type="reset"], input[t
 b, strong {
     font-weight: 700;
 }
+
+/* .open-button{
+	background-color: #555;
+	color:white;
+	padding:16px 20px;
+	border:none;
+	cursor:pointer;
+	opacity:0.8;
+	position:fixed;
+	right:28px;
+	bottom:23px;
+	width:280px;
+}
+
+.form-popup{
+	display:none;
+	
+	border:3px solid #f1f1f1;
+	
+	position:fixed;
+	bottom:0;
+	right:15px;
+	z-index:9;
+}
+
+.form-container{
+	max-width:300px;
+	padding:10px;
+	background-color: white;
+}
+
+.form-container input[type=text], .form-container input[type=password]{
+	width:100%;
+	margin:5px 0 22px 0;
+	border:none;
+	background-color: #f1f1f1;
+	padding:15px;
+}
+.form-container input[type=text]:focus
+, .form-container input[type=password]:focus{
+	background-color: #ddd;
+	outline:none; border 밖
+	
+}
+
+.form-container .btn{
+	background-color: #4caf50;
+	color:white;
+	padding:16px 20px;
+	border:none;
+	cursor:pointer;
+	width:100%;
+	margin-bottom:10px;
+	opacity:0.8;
+}
+
+.form-container .btn:hover, open-button:hover{
+	opacity:1;
+}
+.form-container .cancel{
+	background-color: red;
+} */
+
+.popup {
+    display: none;
+    position: relative;
+    width: auto;
+    z-index: 11;
+    background: #fff;
+    min-width: 456px;
+}
+
+.popup.big > * {
+    padding-left: 32px;
+    padding-right: 32px;
+}
+.popup .pop-head {
+    display: block;
+    position: relative;
+    padding-top: 40px;
+}
+
+.popup.add-address .pop-content, .popup.orderer .pop-content {
+    margin-top: 16px;
+}
+
+.popup .pop-content {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: auto;
+    max-height: 64vh;
+    overflow-y: auto;
+}
+
+.popup.add-address .no-border-table tr th, .popup.orderer .no-border-table tr th {
+    padding-left: 0;
+}
+.popup .pop-content table tr th {
+    font-weight: 400;
+}
+table.no-border-table tr th {
+    position: relative;
+    padding: 20px 0px 0px 26px;
+    color: #757575;
+    text-align: left;
+    letter-spacing: -0.45px;
+    vertical-align: top;
+}
+
+table.no-border-table tr td {
+    position: relative;
+    padding: 8px 0;
+    width: 100%;
+}
+
+table.no-border-table tr td input {
+    width: 100%;
+}
+
+.popup .pop-content + .btn-wrap {
+    padding-top: 32px;
+    padding-bottom: 40px;
+}
+.btn-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.popup.big .popup-close-btn {
+    top: 40px;
+    right: 27px;
+}
+
+.popup .popup-close-btn {
+    position: absolute;
+    display: block;
+    width: 24px;
+    height: 24px;
+    top: 19px;
+    right: 20px;
+    background: url(https://www.lush.co.kr/content/renewal/pc/images/ico/closePop.png) no-repeat center center;
+    text-indent: -9999px;
+    margin: 0;
+    padding: 0 !important;
+}
+
+.popup.benefit-pop, .popup.benefit-empty, .popup.spa-gift, .popup.re-alert, .popup.add-address, .popup.comp-write, .popup.orderer, .popup.benefit-gift, .popup.option-change {
+    width: 560px;
+}
+.dimmed.on {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.dimmed {
+    position: fixed;
+    display: none;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(34, 34, 34, 0.4);
+    z-index: 12;
+}
+
+#baesong {
+  font-family:arial;
+  font-size:16px;
+  color:#34495e;
+  text-decoration:none;
+  line-height:50px;
+  transition:all .5s ease;
+  z-index:2;
+  position:relative;
+}
+
+.btn-wrap.double > button:first-child, .btn-wrap.double > a:first-child {
+    margin-right: 16px;
+}
+.btn-wrap.large button, .btn-wrap.large a {
+    width: 232px;
+    height: 64px;
+    line-height: 62px;
+}
+
+.btn-wrap.large button, .btn-wrap.large a {
+    width: 232px;
+    height: 64px;
+    line-height: 62px;
+}
+.black-btn {
+    position: relative;
+    background: #222;
+    color: #fff !important;
+    text-align: center;
+    border: 1px solid #222;
+}
+
+input[type="text"] {
+    background: #fff;
+    color: #222;
+    font-size: 1em;
+    padding: 0 10px;
+    border: 1px solid #949494;
+    height: 48px;
+    line-height: 46px;
+}
+

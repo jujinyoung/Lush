@@ -16,12 +16,12 @@
 </head>
 <body>
 
-<a href="<%= contextPath %>/order/order.do">링크</a>
+<a href="<%= contextPath %>/order/orderview.do">링크</a>
 
 <script>
   $("a").on("click", function (){
 	  $(this).attr("href", function (i, val){
-		  return val +"?psid="+"1"+"&amount="+"2";
+		  return val +"?pid="+"1"+"&weight="+"150"+"&amount="+"2";
 	  });
   });
 </script>
