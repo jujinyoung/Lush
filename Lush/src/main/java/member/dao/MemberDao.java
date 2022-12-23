@@ -44,13 +44,9 @@ public class MemberDao {
 		}
 	}
 	
-	public void insert(Connection conn, Member mem) throws SQLException{
-		
+	public void insert(Connection conn, Member mem) throws SQLException{ // 회원가입
 	
 		try (
-		//	PreparedStatement pstmt = null;
-		    //ResultSet rs = null;
-				
 				PreparedStatement pstmt = conn.prepareStatement(
 					
 						"insert into ltb_member values (seq_ltb_member.NEXTVAL , ?, ?, ? , ? , ?, ?, ? )"
@@ -68,12 +64,40 @@ public class MemberDao {
 				
 					System.out.println("insert 실행");
 		
-	}
+		}
 	} 
 	
 	
 	
-	
+	public Member findId(Connection conn, String name, String email) throws SQLException { // 아이디 찾기
+		// member 테이블에서 id컬럼이 id 파라미터와 동일한 값을 조회 
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		pstmt = conn.prepareStatement(
+				"select * from ltb_member where me_name = ? and me_email = ?");
+		pstmt.setString(1, name);
+		pstmt.setString(2, email);
+
+		System.out.println("findId 실행");
+		
+		rs = pstmt.executeQuery();
+		Member member = null;
+		try {
+			// 존재한다면 member객체를 생성-> ?
+		if(rs.next()) {
+			member = new Member(
+					rs.getString("me_name"),
+					rs.getString("me_email"),
+					rs.getString("me_loginid"));
+			}
+		System.out.println("멤버 객체 생성-findid");
+					return member;
+				
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
+	}
 	
 	
 	

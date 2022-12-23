@@ -26,7 +26,7 @@
 			</ul>
 
 			<div class="tab-cont">
-				<!-- 탭1번. 회원 -->
+				<!-- 탭1번. 회원 data-gtm-form-interact-id="0" -->
 				<div class="tab-inner on">
 					<div class="search-wrap">
 						<form id="loginForm" action="/Lush/member/login.do" method="POST">

@@ -4,8 +4,10 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import command.CommandHandler;
 import member.domain.User;
@@ -35,11 +37,12 @@ public class LoginHandler implements CommandHandler {
 	private String processSubmit(HttpServletRequest request, HttpServletResponse response) {
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
+		String save_id = request.getParameter("save_id");
 		
 		Map<String, Boolean> errors = new HashMap<>();
 		request.setAttribute("errors", errors);
 
-		System.out.println(" 에러 만듦 ");
+		
 		if(id == null || id.isEmpty())
 			errors.put("id", Boolean.TRUE);
 		if(password == null || password.isEmpty())
@@ -57,9 +60,21 @@ public class LoginHandler implements CommandHandler {
 				return "Login.jsp";
 			}
 			// user 객체를 authuser 속성에 저장 아이디 / 이름 
-		// 	request.getSession().setAttribute("authUser", id);
+			if(save_id!=null) {
+				System.out.println(" 체크박스 표시 함 ");
+			       Cookie c = new Cookie("save_id",id);
+	                //쿠키값 저장 시간을 지정함, 숫자당 1초로 계산
+	                c.setMaxAge(60*60*24*7); //7일간 저장
+	                response.addCookie(c);
+			} else {
+                Cookie c = new Cookie("save_id",id);
+                System.out.println(" 새쿠키 만듦 ");
+                c.setMaxAge(0);
+                response.addCookie(c);
+            }
+			HttpSession session = request.getSession();
 			 request.getSession().setAttribute("authUser", user);
-		//	response.sendRedirect(request.getContextPath() + "/index.jsp");
+			 System.out.println(" 세션 추가 ");
 			response.sendRedirect("main_temp.jsp");
 			return null;
 		}catch(IOException e) {

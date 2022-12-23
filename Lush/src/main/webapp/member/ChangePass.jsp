@@ -12,7 +12,7 @@
 </head>
 <body>
 
-
+비밀번호 찾기.jsp -> 이메일 인증 -> 비밀번호 변경 -> 완료
 <script>
 </script>
 </body>
