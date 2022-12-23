@@ -30,7 +30,7 @@ public class ListHandler implements CommandHandler{
       ArticleListService listService = ArticleListService.getInstance();
       List<Article> articles = null;
       PageBlock pageBlock = null;
-      int numberPerPage = 12;
+      int numberPerPage = 6;
       int numberOfPageBlock = 10;
 
       System.out.println("searchWord = " + searchWord);
