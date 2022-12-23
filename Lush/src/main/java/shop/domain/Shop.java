@@ -7,7 +7,6 @@ public class Shop {
 	private int sp_id;
 	private Date sp_rdate;
 	private Date sp_edate;
-	private String sp_image;
 	private String sp_name;
 	private String sp_adr_k;
 	private String sp_adr_e;
@@ -16,20 +15,21 @@ public class Shop {
 	private String sp_tel;
 	private String sp_sns;
 	private String sp_info;
+	private String sp_map;
+	private char sp_status;
 	private int adm_id;
 	
 	public Shop() {
 		super();
 	}
 	
-	public Shop(int sp_id, Date sp_rdate, Date sp_edate, String sp_image, String sp_name, String sp_adr_k,
+	public Shop(int sp_id, Date sp_rdate, Date sp_edate, String sp_name, String sp_adr_k,
 			String sp_adr_e, String sp_bhour1, String sp_bhour2, String sp_tel, String sp_sns, String sp_info,
-			int adm_id) {
+			String sp_map, char sp_status, int adm_id) {
 		super();
 		this.sp_id = sp_id;
 		this.sp_rdate = sp_rdate;
 		this.sp_edate = sp_edate;
-		this.sp_image = sp_image;
 		this.sp_name = sp_name;
 		this.sp_adr_k = sp_adr_k;
 		this.sp_adr_e = sp_adr_e;
@@ -38,6 +38,8 @@ public class Shop {
 		this.sp_tel = sp_tel;
 		this.sp_sns = sp_sns;
 		this.sp_info = sp_info;
+		this.sp_map = sp_map;
+		this.sp_status = sp_status;
 		this.adm_id = adm_id;
 	}
 
@@ -58,12 +60,6 @@ public class Shop {
 	}
 	public void setSp_edate(Date sp_edate) {
 		this.sp_edate = sp_edate;
-	}
-	public String getSp_image() {
-		return sp_image;
-	}
-	public void setSp_image(String sp_image) {
-		this.sp_image = sp_image;
 	}
 	public String getSp_name() {
 		return sp_name;
@@ -112,6 +108,18 @@ public class Shop {
 	}
 	public void setSp_info(String sp_info) {
 		this.sp_info = sp_info;
+	}
+	public String getSp_map() {
+		return sp_map;
+	}
+	public void setSp_map(String sp_map) {
+		this.sp_map = sp_map;
+	}
+	public char getSp_status() {
+		return sp_status;
+	}
+	public void setSp_status(char sp_status) {
+		this.sp_status = sp_status;
 	}
 	public int getAdm_id() {
 		return adm_id;

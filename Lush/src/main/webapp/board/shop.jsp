@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%-- <%@ include file="/WEB-INF/inc/include.jspf" %> --%>
+<%
+    int searchCondition = request.getParameter("searchCondition")==null ? 1 :Integer.parseInt(request.getParameter("searchCondition"));
+    String searchWord = request.getParameter("searchWord")==null ? "" : request.getParameter("searchWord");
+    int proceedRecords = (int) request.getAttribute("proceedRecords");
+    int endRecords = (int) request.getAttribute("endRecords");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +25,7 @@
 			<img src="https://www.lush.co.kr/upload/shop/20220215110847L.jpg" alt="매장안내">
 		</article>
 		<article>
-			<form action="/board/shop" method="get">
+			<form action="/Lush/board/shop.do" method="get">
 	        	<div class="board-search-wrap">
 		            <input id="shop_name" name="shopname" checked="checked" type="radio" value="CONT_SUBJECT">
 		            <label for="shop_name">매장명</label>
@@ -33,16 +38,15 @@
     		</form>
     		<div class="article-list">
     			<div class="inner">
-   					<p>${shops.sp_id}</p>
    					<c:choose>
    						<c:when test="${ not empty shops }">
     						<ul class="list-thumb">
     							<c:forEach items="${ shops }" var="dto">
     								<li>
-                                    	<a href="javascript:goView('/board/shop/${ dto.sp_id }');" class="article-thumb">
-                                        	<img src="https://www.lush.co.kr/upload/shop/${ dto.sp_image }" alt="${ dto.sp_name }">
+                                    	<a class="article-thumb">
+                                        	<img src="../images/sp_${ dto.sp_id }" alt="${ dto.sp_name }">
                                     	</a>
-                                    	<a href="javascript:goView('/board/shop/${ dto.sp_id }');" class="article-title">${ dto.sp_name }</a>
+                                    	<a class="article-title">${ dto.sp_name }</a>
                                 	</li>
               					</c:forEach>
     						</ul>
