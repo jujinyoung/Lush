@@ -19,8 +19,8 @@
 				<h2 class="page-title-small">아이디 찾기</h2>
 			</div>
 			<div class="search-wrap">
-				<form id="authForm" method="post">
-<input type="text" id="userName" name="userName" placeholder="이름">
+				<form id="authForm" action="/Lush/member/findid.do" method="post">
+					<input type="text" id="name" name="name" placeholder="이름">
 					<input type="text" id="email" name="email" placeholder="가입 메일 주소">
 					<button type="submit" id="" class="black-btn large-btn">아이디 찾기</button>
 				<div><input type="hidden" name="_csrf" value="96f52a54-18f2-4216-84c8-f2380fec3c3c"></div></form>
@@ -40,6 +40,21 @@
 
 
 <script>
+
+
+<c:if test="${errors.namenull}">
+	alert('이름을 입력해 주세요.');
+</c:if>
+
+<c:if test="${errors.emailnull}">
+alert('이메일을 입력해 주세요.');
+</c:if>
+
+<c:if test="${errors.nomember}">
+alert('일치하는 회원이 없습니다.');
+</c:if>
+
+
 </script>
 </body>
 </html>
