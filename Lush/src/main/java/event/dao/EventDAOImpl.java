@@ -164,4 +164,25 @@ public class EventDAOImpl implements EventDAO {
             JdbcUtil.close(rs);
         }
     }
+
+    @Override
+    public String getTitle(Connection conn, int eventID) throws SQLException {
+
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        String sql = "SELECT ev_title FROM ltb_event WHERE ev_id=?";
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, eventID);
+            rs = pstmt.executeQuery();
+            String title = null;
+            if (rs.next()){
+                title = rs.getString(1);
+            }
+            return title;
+        }finally {
+            JdbcUtil.close(pstmt);
+            JdbcUtil.close(rs);
+        }
+    }
 }

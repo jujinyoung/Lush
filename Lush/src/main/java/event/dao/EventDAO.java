@@ -17,4 +17,6 @@ public interface EventDAO {
     public int getProceedTotalRecords(Connection conn) throws Exception;
 
     public int getEndTotalRecords(Connection conn) throws Exception;
+
+    public String getTitle(Connection conn, int eventID) throws SQLException;
 }

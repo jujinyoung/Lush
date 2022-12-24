@@ -15,6 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>러쉬 EVENT</title>
     <link rel="stylesheet" href="css/list_style.css" type="text/css">
+    <link rel="icon" type="image/png" sizes="192x192" href="../images/ico/fabicon.png">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
 <body>
