@@ -16,14 +16,23 @@
 </head>
 <body>
 
-<a href="<%= contextPath %>/order/orderview.do">링크</a>
+<%-- <a href="<%= contextPath %>/order/orderview.do">링크</a>
+ --%>
 
-<script>
+<form action="<%= contextPath %>/order/orderview.do" method="post">
+<input type="hidden" name="pid" value=1>
+<input type="hidden" name="weight" value=150>
+<input type="hidden" name="amount" value=2>
+<input type="hidden" name="fromwhere" value=1>
+<button type="submit"> 이동하기 </button>
+</form>
+
+<!-- <script>
   $("a").on("click", function (){
 	  $(this).attr("href", function (i, val){
 		  return val +"?pid="+"1"+"&weight="+"150"+"&amount="+"2";
 	  });
   });
-</script>
+</script> -->
 </body>
 </html>

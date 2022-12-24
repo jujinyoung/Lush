@@ -5,9 +5,9 @@ import order.domain.ShipAdd;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public interface ProductOrderDao {
+public interface ProductPayDao {
 
-    public long getOrderNum(Connection con) throws SQLException;
+    public ShipAdd selectShipAdd(Connection con, Long mid) throws SQLException;
     public int addShipAdd(Connection con, ShipAdd shipadd) throws SQLException;
     public int updateShipAdd(Connection con, ShipAdd shipadd) throws SQLException;
 }

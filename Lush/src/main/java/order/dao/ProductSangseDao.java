@@ -7,5 +7,5 @@ import java.sql.SQLException;
 
 public interface ProductSangseDao {
 
-    public ProductSangse selectProductSangse(Connection con, Long pid, Long weight) throws SQLException;
+    public ProductSangse selectProductSangse(Connection con, Long pid, int weight) throws SQLException;
 }
