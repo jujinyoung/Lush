@@ -25,11 +25,16 @@ public class Member { // DTO / VO
 		this.me_loginid = me_loginid;
 	}
 	
+	
+
+
+
 	public Member(String me_name, String me_email, String me_loginid) {
 		this.me_name = me_name;
 		this.me_email = me_email;
 		this.me_loginid = me_loginid;
 	}
+
 
 	public int getMe_id() {
 		return me_id;

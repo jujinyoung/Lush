@@ -16,7 +16,6 @@ import member.service.FindIdService;
 
 public class FindIdHandler implements CommandHandler {
 
-	
 	FindIdService findservice = new FindIdService();
 	
 	
@@ -25,6 +24,7 @@ public class FindIdHandler implements CommandHandler {
 		
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
+		
 		
 		System.out.println( request.getParameter("email") );
 		// 서비스에서 name email -> member 객체? 

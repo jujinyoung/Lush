@@ -27,7 +27,7 @@
 				<li>가입완료</li>
 			</ul>
 		</article>
-		<form id="user" action="/users/join" method="post"><input type="hidden" name="miAgreementFlag" value="Y">
+		<form id="user" action="/Lush/member/join.do" method="post"><input type="hidden" name="miAgreementFlag" value="Y">
 		<input type="hidden" name="authType" value="KCP">
 		<article class="basic-info">
 			<div class="flex">

@@ -38,6 +38,7 @@
 	<a href="SignUp.jsp">회원가입하기</a>
 </c:if>
 
+<a href="Login2.jsp">로그인 페이지</a>
 
 <script>
 </script>

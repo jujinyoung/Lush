@@ -17,8 +17,8 @@ import member.service.LoginService;
 
 public class LoginHandler implements CommandHandler {	
 	
-	
 	private LoginService loginservice = new LoginService();
+	
 	
 	
 	@Override
@@ -33,7 +33,6 @@ public class LoginHandler implements CommandHandler {
 			return null;
 		}
 		
-	
 	}
 
 
@@ -62,19 +61,7 @@ public class LoginHandler implements CommandHandler {
 				errors.put("idorpasserror", Boolean.TRUE);
 				return "Login.jsp";
 			}
-			// user 객체를 authuser 속성에 저장 아이디 / 이름 
-			if(save_id!=null) {
-				System.out.println(" 체크박스 표시 함 ");
-			       Cookie c = new Cookie("save_id",id);
-	                //쿠키값 저장 시간을 지정함, 숫자당 1초로 계산
-	                c.setMaxAge(60*60*24*7); //7일간 저장
-	                response.addCookie(c);
-			} else {
-                Cookie c = new Cookie("save_id",id);
-                System.out.println(" 새쿠키 만듦 ");
-                c.setMaxAge(0);
-                response.addCookie(c);
-            }
+	
 			HttpSession session = request.getSession();
 			 request.getSession().setAttribute("authUser", user);
 			 System.out.println(" 세션 추가 ");
