@@ -16,7 +16,6 @@ import member.service.FindIdService;
 
 public class FindIdHandler implements CommandHandler {
 
-	
 	FindIdService findservice = new FindIdService();
 	
 	

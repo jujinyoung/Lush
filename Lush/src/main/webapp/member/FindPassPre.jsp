@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -9,6 +8,7 @@
 <title></title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <link href="css/FindPassPre_style.css" rel="stylesheet" type="text/css">
+<title> findpass(아이디 이메일 입력)-> preemail(인증번호 입력) -> changepass(비밀번호 변경) -> cpsucc(성공)</title>
 <style>
 </style>
 </head>
@@ -21,10 +21,11 @@
 				<h2 class="page-title-small">비밀번호 찾기</h2>
 			</div>
 			<div class="search-wrap">
-				<form id="authForm" method="post" action="/users/find-password-auth">
+				<form id="authForm" method="post" action="/Lush/member/changepass.do">
 					<input type="hidden" id="authType" name="authType">
-					<input type="text" name="loginId" placeholder="아이디">
-					<button type="button" id="nextBtn" class="black-btn large-btn">비밀번호 찾기</button>
+					<input type="text" name="id" placeholder="아이디">
+					<input type="text" name="email" placeholder="이메일">
+					<button type="submit" id="nextBtn" class="black-btn large-btn">비밀번호 찾기</button>
 				<div><input type="hidden" name="_csrf" value="96f52a54-18f2-4216-84c8-f2380fec3c3c"></div></form>
 				<ul class="login-opt">
 					<li><a href="SignUpMain.jsp">회원가입</a></li>
@@ -35,7 +36,10 @@
 	</div>
 </section>
 
-
+ <!-- 비정상적일 경우 
+ 
+ alert -> 아이디가 없습니다 
+  -->
 <script>
 </script>
 </body>

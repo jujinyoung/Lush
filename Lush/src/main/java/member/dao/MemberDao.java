@@ -100,6 +100,39 @@ public class MemberDao {
 		}
 	}
 	
+	public Member isMatchpass(Connection conn, String me_loginid, String me_email) throws SQLException {
+		// member 테이블에서 id컬럼과 email이 정확하게 일치하는 멤버가 있는지 조회
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		pstmt = conn.prepareStatement(
+				"select * from ltb_member where me_loginid = ? and me_email = ?"
+				);
+		pstmt.setString(1, me_loginid);
+		pstmt.setString(2, me_email);
+
+		System.out.println("아이디/이메일 매치 멤버 찾기 실행");
+		rs = pstmt.executeQuery();
+		Member member = null;
+		try {
+			// 존재한다면 member객체를 생성-> ?
+		if(rs.next()) {
+			member = new Member(
+					rs.getString("me_pass"),
+					rs.getString("me_name"),
+					rs.getString("me_add"),
+					rs.getString("me_tel"),
+					rs.getString("me_email"),
+					rs.getString("me_nick"),
+					rs.getString("me_loginid"));
+			}
+		System.out.println("비번 변경 - 멤버 객체 생성");
+					return member;
+				
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
+	}
 	
 	
 }

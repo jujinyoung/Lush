@@ -67,8 +67,7 @@ ol, ul, dl {
 }
 .tab-btn li {
     display: block;
-/*     border: 1px solid #949494; */
-/*     border-bottom: 2px solid #222; */
+
 }
 li {
     list-style: none;
@@ -93,29 +92,29 @@ li {
     letter-spacing: -0.45px;
 }
 
-.login-tab li a.on {
-	 color: #222 !important;
-	/*   border-bottom: 1px solid #222  !important; */
+/* .login-tab li a.on {
+ 	color: #949494; 
+	  border-bottom: 1px solid #222  !important;
 	font-weight: 400;
-	 height: 20px/*  !important */;
-}
+	 height: 20px !important;
+} */
 .login-tab li a {
     display: block;
     color: #949494;
     line-height: 18px !important;
     height: 20px;
 }
-
+/* 
 .tab-btn li a.on {
-/*     background: #222; */
-    color: #fff;
-    font-weight: 700;
+    background: #222;
+    color: #949494;
+  font-weight: 700;
     width: calc(100% + 2px);
     margin-left: -1px;
     margin-right: -1px;
     height: 65px;
     margin-top: -1px;
-}
+}  */
 
 * {
     box-sizing: border-box !important;
@@ -160,11 +159,11 @@ a {
     margin-bottom: 47px;
 }
 
-.tab-cont .tab-inner.on {
-    display: block;
+/* .tab-cont .tab-inner.on {
+    display: block; */
 }
 .tab-cont .tab-inner {
-    display: none;
+/*    display: none;  */
 }
 
 .search-wrap {
@@ -315,5 +314,10 @@ input[type="checkbox" i] {
     margin: 0px 12px;
 }
 
+
+.tab-cont .tab-inner.no-member {
+    width: 400px;
+    margin: 0 auto;
+}
 
 
