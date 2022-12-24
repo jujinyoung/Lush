@@ -1,0 +1,719 @@
+@import url(default.css);
+@import url(boardEvent.css);
+@import url(eventTab.css);
+@import url(paging.css);
+
+header{
+    height: 96px;
+}
+
+section {
+    min-height: calc(100vh - 96px - 320px);
+}
+
+.page-top {
+    display: block;
+    margin: 48px auto 56px auto;
+}
+
+.page-top .page-title {
+    font-size: 56px;
+    line-height: 56px;
+    letter-spacing: -1.57px;
+    text-align: center;
+}
+
+
+.tab-cont .tab-inner.on {
+    display: block;
+}
+
+.board-read-top {
+    padding: 0 24px;
+}
+
+.board-read-top li h3 {
+    font-size: 32px;
+    letter-spacing: -0.9px;
+}
+
+.board-read-top li:last-of-type {
+    margin-top: 8px;
+}
+
+.board-read-top li .body1 {
+    color: #535353;
+}
+
+.board-contents {
+    margin: 32px auto 128px auto;
+}
+
+.board-img-wrap {
+    position: relative;
+}
+
+.evt-section {
+    position: relative;
+}
+
+.board-img-wrap img {
+    /* display: block; */
+    max-width: 100%;
+}
+
+img {
+    border: 0;
+    vertical-align: middle;
+}
+
+.evt-section .btn-login {
+    left: 50.3%;
+    top: 87.9%;
+    width: 5%;
+    height: 1.45%;
+}
+
+.evt-section a, .evt-section button {
+    position: absolute;
+    display: block;
+    margin: 0;
+    z-index: 1;
+}
+
+.evt-section .btn-comment {
+    left: 38.4%;
+    top: 89.7%;
+    width: 5.3%;
+    height: 1.45%;
+}
+
+.evt-section .btn-result {
+    left: 49.4%;
+    top: 92.8%;
+    width: 13.3%;
+    height: 1.75%;
+}
+
+.evt-noti {
+    margin-top: 32px;
+}
+
+.evt-noti .noti-tit {
+    margin-bottom: 5px;
+    font-weight: normal;
+    color: #535353;
+    line-height: 1.5;
+}
+
+.evt-noti p, .evt-noti li {
+    color: #535353;
+    line-height: 1.5;
+}
+
+.evt-noti ul + p {
+    margin-top: 15px;
+}
+
+.board-read .btn-wrap {
+    margin-top: 74px;
+}
+
+.btn-wrap.right {
+    justify-content: flex-end;
+}
+
+.btn-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.btn-wrap.medium button, .btn-wrap.medium a {
+    width: 128px;
+    height: 48px;
+    line-height: 46px;
+}
+
+.border-btn {
+    position: relative;
+    border: 1px solid #222;
+    background: #fff;
+    color: #222;
+    text-align: center;
+}
+
+
+/*댓글 영역*/
+.reply {
+    margin-top: 128px;
+    border-top: 2px solid #535353;
+    padding-top: 68px;
+}
+
+.inner {
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    width: 1224px;
+}
+
+.review-title {
+    padding: 0 104px;
+    margin-bottom: 38px;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.reply .review-title p a {
+    color: #18a957;
+    border-bottom: 1px solid #18a957;
+}
+
+.reply .review-wrap {
+    margin-top: 48px;
+}
+
+.review-wrap ul li {
+    display: block;
+    padding: 12px 104px 24px 104px;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    margin-top: -1px;
+}
+
+.review-top {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 40px;
+    margin-bottom: 4px;
+}
+
+.review-wrap .subject {
+    display: table-cell;
+    padding-right: 24px;
+    background: url('../../images/ico/ico_lock.svg') no-repeat center right;
+    background-size: 16px auto;
+    max-width: 860px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.5px;
+    margin: 0;
+    color: #535353;
+}
+
+
+.dimmed {
+    position: fixed;
+    display: none;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(34, 34, 34, 0.4);
+    z-index: 12;
+}
+
+.popup {
+    display: none;
+    position: relative;
+    width: auto;
+    z-index: 11;
+    background: #fff;
+    min-width: 456px;
+}
+
+.popup .pop-head {
+    display: block;
+    position: relative;
+    padding-top: 40px;
+}
+
+.popup > * {
+    padding-left: 63px;
+    padding-right: 63px;
+}
+
+.popup .pop-content {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: auto;
+    max-height: 64vh;
+    overflow-y: auto;
+}
+
+.popup .pop-content p.body1 {
+    display: block;
+    min-height: 32px;
+    text-align: center;
+    color: #535353;
+}
+
+.popup .pop-content + .btn-wrap {
+    padding-top: 32px;
+    padding-bottom: 40px;
+}
+
+.btn-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.btn-wrap.double > button:first-child, .btn-wrap.double > a:first-child {
+    margin-right: 16px;
+}
+
+.btn-wrap.basic button, .btn-wrap.basic a {
+    width: 157px;
+    height: 60px;
+    line-height: 58px;
+}
+
+.border-btn {
+    position: relative;
+    border: 1px solid #222;
+    background: #fff;
+    color: #222;
+    text-align: center;
+}
+
+.popup .popup-close-btn {
+    position: absolute;
+    display: block;
+    width: 24px;
+    height: 24px;
+    top: 19px;
+    right: 20px;
+    background: url(../../images/ico/closePop.png) no-repeat center center;
+    text-indent: -9999px;
+    margin: 0;
+    padding: 0 !important;
+}
+
+.popup.biggest {
+    width: 1016px;
+    padding: 0px 104px;
+}
+
+.popup .pop-head .big {
+    font-size: 32px;
+    line-height: 42px;
+    letter-spacing: -0.9px;
+    margin-bottom: 28px;
+}
+
+.popup.biggest .pop-content {
+    padding: 0;
+}
+
+.popup form {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.btn-wrap.large button, .btn-wrap.large a {
+    width: 232px;
+    height: 64px;
+    line-height: 62px;
+}
+
+table.list-table.light {
+    border-top: 1px solid #eee;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.popup .pop-content table tr th {
+    font-weight: 400;
+}
+
+.popup.biggest .popup-close-btn {
+    top: 40px;
+    right: 100px;
+}
+
+.review-write .list-table tr th, .reply-write .list-table tr th {
+    text-align: left;
+    vertical-align: middle;
+    padding-left: 50px;
+}
+
+.dimmed.on {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+table.list-table tr th {
+    border-bottom: 1px solid #eee;
+    font-size: 16px;
+    line-height: 24px;
+    color: #757575;
+    font-weight: 400;
+    padding-top: 19px;
+    padding-bottom: 20px;
+}
+
+input[type="checkbox"] {
+    display: none;
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: none;
+}
+
+.list-table tr.title td label {
+    padding-left: 24px;
+    margin-left: 6px;
+}
+
+input[type="checkbox"] + label {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: url(../../images/ico/checkbox_off.svg) no-repeat center left;
+    padding-left: 36px;
+    color: #535353;
+    min-width: 20px;
+    min-height: 20px;
+    background-size: 20px 20px;
+}
+
+input[type="checkbox"]:checked + label {
+    background: url(../../images/ico/checkbox_on_black.svg) no-repeat center left;
+    background-size: 20px 20px;
+}
+
+.list-table tr.title td label span {
+    display: inline-block;
+    padding-right: 24px;
+    background: url(../../images/ico/ico_lock.svg) no-repeat center right;
+}
+
+table.list-table tr th {
+    border-bottom: 1px solid #eee;
+    font-size: 16px;
+    line-height: 24px;
+    color: #757575;
+    font-weight: 400;
+    padding-top: 19px;
+    padding-bottom: 20px;
+}
+
+.files td .file-btn span {
+    display: inline-block;
+    height: 26px;
+    background: url(../../images/ico/camera_black.svg) no-repeat center left;
+    padding-left: 40px;
+    cursor: pointer;
+    text-decoration: underline;
+    color: #535353;
+}
+
+table.list-table tr td {
+    border-bottom: 1px solid #eee;
+    font-size: 16px;
+    line-height: 24px;
+    padding-top: 19px;
+    padding-bottom: 20px;
+    color: #757575;
+}
+
+.list-table tr.contents td textarea {
+    width: 496px;
+    height: 240px;
+    font-size: 16px;
+}
+
+.popup .pop-content table tr th {
+    font-weight: 400;
+}
+
+.popup.biggest .pop-head {
+    padding: 40px 0 0 0;
+}
+
+.list-table tr.files th {
+    vertical-align: top;
+    padding-top: 28px;
+}
+
+.files .upload-box {
+    display: flex;
+}
+
+.files td .file-btn {
+    padding-top: 10px;
+    margin-bottom: 8px;
+}
+
+.file-notice {
+    font-size: 14px;
+    color: #535353;
+}
+
+.files td .input-wrap input[type="text"]:read-only {
+    background: #fff;
+}
+
+.files td .input-wrap {
+    position: relative;
+    width: 330px;
+    margin: 0 0 8px 0;
+}
+
+.files .file-tree .input-wrap input[type="text"] {
+    color: #949494;
+    font-size: 14px;
+}
+
+.files .file-tree li {
+    display: block;
+    margin-right: 24px;
+}
+
+.files td .input-wrap button {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    right: 10px;
+    top: 12px;
+    background: url(../../images/ico/ico_close_x.svg) no-repeat center;
+    background-size: 15px 15px;
+}
+
+.files td .input-wrap input[type="text"] {
+    display: block;
+    width: 100%;
+    padding-right: 48px;
+}
+
+input[type="text"]:read-only {
+    cursor: default;
+    background: #eee;
+}
+
+input[type="text"] {
+    background: #fff;
+    color: #222;
+    font-size: 1em;
+    padding: 0 10px;
+    border: 1px solid #949494;
+    height: 48px;
+    line-height: 46px;
+}
+
+.reply .review-top .writer {
+    margin-left: 0;
+}
+
+.review-top .writer img {
+    width: auto;
+    max-height: 40px;
+}
+
+.reply .review-top .writer .ducczi-cnt {
+    color: #757575;
+    display: inline-block;
+    padding: 2px 3px 3px 3px;
+    border-radius: 40px;
+    border: 1px solid #bdbdbd;
+    margin: 0 4px 0 2px;
+    font-size: 10px;
+}
+
+.review-top .writer span {
+    color: #535353;
+    font-size: 14px;
+    line-height: 1em;
+}
+
+.review-top .date {
+    margin-left: auto;
+    font-size: 14px;
+    line-height: 22px;
+    color: #535353;
+    letter-spacing: -0.45px;
+}
+
+.flex.top {
+    align-items: flex-start;
+}
+
+.review-wrap ul li.on {
+    border-top: 1px solid #bdbdbd;
+    border-bottom: 1px solid #bdbdbd;
+    margin-bottom: 1px;
+}
+
+.review-contents {
+    position: relative;
+    width: 855px;
+}
+
+.review-contents .no-cut {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin-top: 4px;
+    color: #535353;
+    font-weight: 500;
+    border-bottom: 1px solid #535353;
+    line-height: 17px;
+}
+
+.review-side {
+    display: block;
+    position: relative;
+    width: 80px;
+    margin-top: -6px;
+}
+
+.review-thumbnail {
+    display: block;
+    width: 80px;
+    height: 80px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.review-thumbnail img {
+    display: block;
+    min-width: 100%;
+    min-height: 100%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    height: 100%;
+}
+
+.review-thumbnail span {
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: 0px;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    background: rgba(34,34,34,.8);
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
+}
+
+.review-side .minimum-btn {
+    display: none;
+    width: 38px;
+    height: 24px;
+    margin: 10px 0 0 30px;
+}
+
+.review-contents img {
+    margin-top: 16px;
+    display: block;
+    width: auto;
+    max-width: 288px;
+    height: auto;
+}
+
+.review-contents.cut > p {
+    display: inline-block;
+    width: 800px;
+    max-height: 26px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.review-contents > p {
+    display: block;
+    position: relative;
+    max-width: 860px;
+    color: #535353;
+    word-break: break-all;
+}
+
+.reply .review-top .writer .ducczi-cnt {
+    color: #757575;
+    display: inline-block;
+    padding: 2px 3px 3px 3px;
+    border-radius: 40px;
+    border: 1px solid #bdbdbd;
+    margin: 0 4px 0 2px;
+    font-size: 10px;
+}
+
+.review-contents.cut img {
+    display: none;
+}
+
+.review-wrap .subject {
+    display: table-cell;
+    padding-right: 24px;
+    background: url(../../images/ico/ico_lock.svg) no-repeat center right;
+    background-size: 16px auto;
+    max-width: 860px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.5px;
+    margin: 0;
+    color: #535353;
+}
+
+.review-btn button {
+    color: #535353;
+    margin-right: 8px;
+    text-decoration: underline;
+}
+
+.review-btn {
+    display: block;
+    margin: 16px auto 0 auto;
+    color: #535353;
+}
+
+
+/*로그인 처리 후 버튼*/
+.review-title button {
+    width: 127px;
+    height: 48px;
+    line-height: 46px;
+    display: block;
+    font-size: 14px;
+}
+
+.black-btn {
+    position: relative;
+    background: #222;
+    color: #fff;
+    text-align: center;
+    border: 1px solid #222;
+}
+
+
+

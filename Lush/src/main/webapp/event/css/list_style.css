@@ -1,7 +1,8 @@
-/* 폰트사용 */
-@import url(default.css);
 
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+@import url(default.css);
+@import url(boardEvent.css);
+@import url(eventTab.css);
+@import url(paging.css);
 
 header{
   height: 96px;
@@ -29,142 +30,6 @@ img{
   line-height: 56px;
   letter-spacing: -1.57px;
   text-align: center;
-}
-
-.board-search-wrap{
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-  margin-bottom: 80px;
-}
-input{
-  letter-spacing: normal;
-  vertical-align: middle;
-  letter-spacing: normal;
-}
-
-input[type="radio"]{
-  display: none;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  border: none;
-}
-
-input[type="radio" i] {
-  background-color: initial;
-  cursor: default;
-  appearance: auto;
-  box-sizing: border-box;
-  margin: 3px 3px 0px 5px;
-  padding: initial;
-  border: initial;
-}
-
-.board-search-wrap input[type='radio'] + label{
-  margin-right: 32px;
-  display: inline-block;
-  position: relative;
-  cursor: pointer;
-  background: url(../../images/ico/radio_off.svg) no-repeat center left;
-  padding-left: 28px;
-  min-width: 18px;
-  min-height: 18px;
-}
-
-input[type="radio"]:checked + label {
-  background: url(../../images/ico/radio_on.svg) no-repeat center left;
-}
-
-.board-search-wrap input[type='text'] {
-  width: 257px;
-  margin-bottom: 0;
-}
-
-input[type="text"] {
-  background: #fff;
-  color: #222;
-  font-size: 1em;
-  padding: 0 10px;
-  border: 1px solid #949494;
-  height: 48px;
-  line-height: 46px;
-}
-
-.board-search-wrap input[type='radio'] + label:last-of-type {
-  margin-right: 60px;
-}
-
-.board-search-wrap button {
-  width: 127px;
-  height: 48px;
-  line-height: 46px;
-  font-size: 14px;
-  font-weight: 700;
-  margin-left: 8px;
-}
-
-.black-btn {
-  position: relative;
-  background: #222;
-  color: #fff !important;
-  text-align: center;
-  border: 1px solid #222;
-}
-
-.tab-btn.type3 {
-  margin-bottom: 32px;
-}
-
-.tab-btn {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 98.7%;
-  margin-bottom: 47px;
-}
-
-.tab-btn.type3 li {
-  width: calc(100% / 3);
-}
-
-.tab-btn li {
-  display: block;
-  border: 1px solid #949494;
-  border-bottom: 2px solid #222;
-}
-
-.tab-btn li a.on {
-  background: #222;
-  color: #fff;
-  font-weight: 700;
-  width: calc(100% + 2px);
-  margin-left: -1px;
-  margin-right: -1px;
-  height: 65px;
-  margin-top: -1px;
-}
-
-.tab-btn li a {
-  position: relative;
-  display: block;
-  width: 100%;
-  height: 64px;
-  line-height: 62px;
-  text-align: center;
-  color: #949494;
-  font-size: 16px;
-  letter-spacing: -0.45px;
-}
-
-.tab-btn li:not(:first-child) {
-  border-left: none;
 }
 
 .tab-cont .tab-inner.on {
@@ -200,6 +65,7 @@ input[type="text"] {
   letter-spacing: -.5px;
   font-weight: 700;
   text-align: center;
+  color: #222;
 }
 
 .list-thumb li .article-cate {
@@ -207,6 +73,7 @@ input[type="text"] {
   font-size: 18px;
   letter-spacing: -.5px;
   text-align: center;
+  color: #222;
 }
 
 .list-thumb li .date {
@@ -230,73 +97,5 @@ input[type="text"] {
 
 .list-thumb + .paginate {
   margin-top: 32px;
-}
-
-.paginate {
-  display: block;
-  position: relative;
-  margin: 100px auto;
-}
-
-.paginate ul {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  width: 100%;
-}
-
-.paginate ul li {
-  display: block;
-  padding: 0 8px;
-}
-
-.paginate ul li a.num.on {
-  border-bottom: 1px solid #535353;
-  pointer-events: none;
-  cursor: default;
-}
-
-.list-thumb li.end .article-thumb .mask {
-  display: block;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(34,34,34,.7);
-  z-index: 2;
-}
-
-.list-thumb li .article-thumb .mask {
-  display: none;
-}
-
-.list-thumb li.end .article-thumb .mask::after {
-  content: '종료';
-  display: block;
-  position: absolute;
-  width: 100%;
-  opacity: 1;
-  color: #fff;
-  text-align: center;
-  font-size: 22px;
-  top: 50%;
-  margin-top: -17px;
-  font-weight: 500;
-}
-
-.paginate ul li a.num {
-  font-size: 14px;
-  line-height: 19px;
-  border-bottom: 1px solid #fff;
-  text-decoration: none;
-}
-
-.paginate ul li a {
-  display: block;
-  height: 20px;
-  text-align: center;
-  color: #222;
 }
 

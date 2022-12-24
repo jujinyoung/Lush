@@ -1,6 +1,6 @@
 package event.dao;
 
-import com.util.ConnectionProvider;
+import com.util.DateFormmater;
 import com.util.JdbcUtil;
 import event.domain.Event;
 
@@ -9,11 +9,11 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EventDaoImpl implements EventDao{
+public class EventDAOImpl implements EventDAO {
 
-    private static EventDaoImpl instance = new EventDaoImpl();
-    private EventDaoImpl(){}
-    public static EventDaoImpl getInstance(){return  instance;}
+    private static EventDAOImpl instance = new EventDAOImpl();
+    private EventDAOImpl(){}
+    public static EventDAOImpl getInstance(){return  instance;}
     @Override
     public List<Event> selectEventList(Connection conn, int eventStatus, int currentPage, int numberPerPage) throws SQLException {
 
@@ -48,7 +48,7 @@ public class EventDaoImpl implements EventDao{
                 list = new ArrayList<>();
                 do {
                     list.add(new Event(rs.getInt("ev_id"), rs.getString("ev_image"), rs.getString("ev_title"), rs.getString("ev_subtitle")
-                            , rs.getString("ev_notice"), sliceDate(rs.getTimestamp("ev_rdate")), sliceDate(rs.getTimestamp("ev_edate"))));
+                            , rs.getString("ev_notice"), DateFormmater.sliceDatemm(rs.getTimestamp("ev_rdate")), DateFormmater.sliceDatemm(rs.getTimestamp("ev_edate"))));
                 }while (rs.next());
             }
         }finally {
@@ -90,7 +90,7 @@ public class EventDaoImpl implements EventDao{
                 list = new ArrayList<>();
                 do {
                     list.add(new Event(rs.getInt("ev_id"), rs.getString("ev_image"), rs.getString("ev_title"), rs.getString("ev_subtitle")
-                            , rs.getString("ev_notice"), sliceDate(rs.getTimestamp("ev_rdate")), sliceDate(rs.getTimestamp("ev_edate"))));
+                            , rs.getString("ev_notice"), DateFormmater.sliceDatemm(rs.getTimestamp("ev_rdate")), DateFormmater.sliceDatemm(rs.getTimestamp("ev_edate"))));
                 }while (rs.next());
             }
             return list;
@@ -124,8 +124,65 @@ public class EventDaoImpl implements EventDao{
         }
     }
 
-    private String sliceDate(Timestamp timestamp){
-        SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd HH:mm");
-        return sdf.format(timestamp);
+    @Override
+    public int getProceedTotalRecords(Connection conn) throws Exception {
+
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        String sql = "SELECT COUNT(*) FROM ltb_event WHERE ev_edate > sysdate";
+        try {
+            pstmt = conn.prepareStatement(sql);
+            rs = pstmt.executeQuery();
+
+            int result = 0;
+            if (rs.next()) result = rs.getInt(1);
+
+            return result;
+        }finally {
+            JdbcUtil.close(pstmt);
+            JdbcUtil.close(rs);
+        }
+    }
+
+    @Override
+    public int getEndTotalRecords(Connection conn) throws Exception {
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        String sql = "SELECT COUNT(*) FROM ltb_event WHERE ev_edate < sysdate";
+        try {
+            pstmt = conn.prepareStatement(sql);
+            rs = pstmt.executeQuery();
+
+            int result = 0;
+            if (rs.next()) result = rs.getInt(1);
+
+            return result;
+        } finally {
+            JdbcUtil.close(pstmt);
+            JdbcUtil.close(rs);
+        }
+    }
+
+    @Override
+    public String getTitle(Connection conn, int eventID) throws SQLException {
+
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        String sql = "SELECT ev_title FROM ltb_event WHERE ev_id=?";
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, eventID);
+            rs = pstmt.executeQuery();
+            String title = null;
+            if (rs.next()){
+                title = rs.getString(1);
+            }
+            return title;
+        }finally {
+            JdbcUtil.close(pstmt);
+            JdbcUtil.close(rs);
+        }
     }
 }

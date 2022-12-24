@@ -1,0 +1,49 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans+KR:wght@500&display=swap');
+
+body, form, div, p, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, ol, li, fieldset, th, td, input, textarea, button, select {
+    margin: 0;
+    padding: 0;
+    font-family: "NotoSans",dotum,'돋움';
+    color: #222;
+}
+
+.inner {
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    width: 1224px;
+}
+
+.join-wrap {
+    position: relative;
+    margin-top: 100px;
+    text-align: center;
+}
+
+.page-top {
+    display: block;
+    margin: 48px auto 56px auto;
+}
+
+.page-top .page-title-small {
+    font-size: 32px;
+    line-height: 46px;
+    letter-spacing: -0.6px;
+    text-align: center;
+}
+
+.search-wrap {
+    width: 328px;
+    margin: -31px auto 0 auto;
+}
+
+input[type="text"] {
+    background: #fff;
+    color: #222;
+    font-size: 1em;
+    padding: 0 10px;
+    border: 1px solid #949494;
+    height: 48px;
+    line-height: 46px;
+}

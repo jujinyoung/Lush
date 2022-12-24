@@ -1,0 +1,13 @@
+
+@charset "UTF-8";
+@import url(default.css);
+
+.textarea{
+    display: block;
+    width: 100%;
+    height: 270px;
+    margin-top: 16px;
+    border: 1px solid #bdbdbd;
+    padding: 10px;
+    overflow-y: auto;
+    }
