@@ -13,9 +13,9 @@ import java.util.List;
 
 public class FileRequest {
 
-    private final static String savePath = "D:\\LushUpload\\event";
+//    private final static String savePath = "D:\\LushUpload\\event";
 
-    public static MultipartRequest getFileRequest(HttpServletRequest request) throws IOException {
+    public static MultipartRequest getFileRequest(HttpServletRequest request, String savePath) throws IOException {
 
         //파일 경로
         File saveDir = new File(savePath);
@@ -35,7 +35,7 @@ public class FileRequest {
         while( en.hasMoreElements() ) {
             String name = (String) en.nextElement();
             String filesystemName = mrequest.getFilesystemName(name);
-            if (filesystemName!=null) uploadURL.add(savePath + "\\" + filesystemName);
+            if (filesystemName!=null) uploadURL.add(filesystemName);
         }
 
         return uploadURL;

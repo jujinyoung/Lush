@@ -61,7 +61,7 @@ public class DispatcherServlet extends HttpServlet {
         String viewPage = null;
         try {
             viewPage = handler.process(request, response);
-            System.out.println("viewPage = " + viewPage);
+//            System.out.println("viewPage = " + viewPage);
         } catch (Exception e) {
             e.printStackTrace();
         }

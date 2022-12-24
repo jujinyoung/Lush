@@ -1,5 +1,6 @@
 package event.dao;
 
+import com.util.DateFormmater;
 import com.util.JdbcUtil;
 import event.domain.Event;
 
@@ -47,7 +48,7 @@ public class EventDAOImpl implements EventDAO {
                 list = new ArrayList<>();
                 do {
                     list.add(new Event(rs.getInt("ev_id"), rs.getString("ev_image"), rs.getString("ev_title"), rs.getString("ev_subtitle")
-                            , rs.getString("ev_notice"), sliceDate(rs.getTimestamp("ev_rdate")), sliceDate(rs.getTimestamp("ev_edate"))));
+                            , rs.getString("ev_notice"), DateFormmater.sliceDatemm(rs.getTimestamp("ev_rdate")), DateFormmater.sliceDatemm(rs.getTimestamp("ev_edate"))));
                 }while (rs.next());
             }
         }finally {
@@ -89,7 +90,7 @@ public class EventDAOImpl implements EventDAO {
                 list = new ArrayList<>();
                 do {
                     list.add(new Event(rs.getInt("ev_id"), rs.getString("ev_image"), rs.getString("ev_title"), rs.getString("ev_subtitle")
-                            , rs.getString("ev_notice"), sliceDate(rs.getTimestamp("ev_rdate")), sliceDate(rs.getTimestamp("ev_edate"))));
+                            , rs.getString("ev_notice"), DateFormmater.sliceDatemm(rs.getTimestamp("ev_rdate")), DateFormmater.sliceDatemm(rs.getTimestamp("ev_edate"))));
                 }while (rs.next());
             }
             return list;
@@ -158,14 +159,9 @@ public class EventDAOImpl implements EventDAO {
             if (rs.next()) result = rs.getInt(1);
 
             return result;
-        }finally {
+        } finally {
             JdbcUtil.close(pstmt);
             JdbcUtil.close(rs);
         }
-    }
-
-    private String sliceDate(Timestamp timestamp){
-        SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd HH:mm");
-        return sdf.format(timestamp);
     }
 }
