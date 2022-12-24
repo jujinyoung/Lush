@@ -1,13 +1,10 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%
     int eventStatus = request.getParameter("eventStatus")==null ? 1 :Integer.parseInt(request.getParameter("eventStatus"));
     int searchCondition = request.getParameter("searchCondition")==null ? 1 :Integer.parseInt(request.getParameter("searchCondition"));
-    int currentPage = request.getParameter("currentPage")==null ? 1 :Integer.parseInt(request.getParameter("currentPage"));
-    String proceedRecords = request.getParameter("proceedRecords");
-    String endRecords = request.getParameter("endRecords");
-
-    String eventID = request.getParameter("eventID");
+    String searchWord = request.getParameter("searchWord")==null ? "" : request.getParameter("searchWord");
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,12 +30,12 @@
             <jsp:include page="/WEB-INF/inc/event/boardEvent.jsp">
                 <jsp:param name="eventStatus" value="<%=eventStatus%>"/>
                 <jsp:param name="searchCondition" value="<%=searchCondition%>"/>
-                <jsp:param name="currentPage" value="<%=currentPage%>"/>
+                <jsp:param name="currentPage" value="${pageBlock.currentPage}"/>
                 <jsp:param name="searchCondition" value="<%=searchCondition%>"/>
             </jsp:include>
             <jsp:include page="/WEB-INF/inc/event/eventTab.jsp">
-                <jsp:param name="proceedRecords" value="<%=proceedRecords%>"/>
-                <jsp:param name="endRecords" value="<%=endRecords%>"/>
+                <jsp:param name="proceedRecords" value="${proceedRecords}"/>
+                <jsp:param name="endRecords" value="${endRecords}"/>
                 <jsp:param name="eventStatus" value="<%=eventStatus%>"/>
             </jsp:include>
 
@@ -93,7 +90,7 @@
                         <div class="review">
                             <div class="inner">
                                 <div class="review-title flex">
-                                    <h2>총 ?개의 댓글</h2>
+                                    <h2>총 ${totalRecords}개의 댓글</h2>
 <%--                                    로그인 처리 전--%>
 <%--                                    <p>--%>
 <%--                                        <a>로그인</a>을 하셔야 댓글을 등록할 수 있습니다.--%>
@@ -101,9 +98,67 @@
 <%--                                    로그인 처리 후--%>
                                     <button type="button" class="pop-open black-btn">댓글 작성</button>
                                 </div>
+                                <div class="review-wrap">
+                                    <ul>
+                                        <c:forEach var="review" items="${reviews}" varStatus="status">
+                                            <li>
+                                                <div class="review-top">
+                                                    <span class="writer">
+<%--                                                        나중에 덕찌 기능 완성시 개수 더하기--%>
+                                                        <span class="ducczi-cnt">+0</span>
+<%--                                                        로그인작업 완료시 추가--%>
+                                                        <span>이름</span>
+                                                    </span>
+                                                    <span class="date">${review.eventReview.er_rdate}</span>
+                                                </div>
+                                                <c:choose>
+<%--                                                    비밀댓글 여부이면서 아이디도 틀려야함 추후 수정--%>
+                                                    <c:when test="${review.eventReview.er_secret eq '1'}">
+                                                        <p class="subject">비밀 댓글입니다.</p>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <div class="review-container flex top">
+                                                            <div id="imageSize" class="review-contents cut">
+                                                                <p>${review.eventReview.er_content}</p>
+<%--                                                                아이디 체크 후 같으면--%>
+                                                                <div class="review-btn">
+                                                                    <button type="button" id="updateReview">수정</button>
+                                                                    <button type="button" id="delReview">삭제</button>
+                                                                    <input type="text" id="rid" value="${review.eventReview.er_id}" hidden>
+                                                                </div>
+                                                                <c:if test="${review.imgPath ne null}">
+                                                                    <c:forEach var="images" items="${review.imgPath}">
+                                                                        <img src="/Lush/upload/event/${images}" alt="리뷰 상세 이미지">
+                                                                    </c:forEach>
+                                                                    <button type="button" class="no-cut" style="display: block">더보기</button>
+                                                                </c:if>
+                                                            </div>
+                                                            <div class="review-side">
+                                                                <c:if test="${review.imgPath ne null}">
+                                                                    <div class="review-thumbnail" style="display: block">
+                                                                        <img src="/Lush/upload/event/${review.imgPath[0]}" alt="리뷰 상세 이미지">
+                                                                        <span>+${fn:length(review.imgPath)}</span>
+                                                                    </div>
+                                                                </c:if>
+                                                                <button type="button" class="minimum-btn" style="display: none">
+                                                                    <img src="../images/ico/arrow_up_gray.svg" alt="닫기 버튼">
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </c:otherwise>
+                                                </c:choose>
+                                            </li>
+                                        </c:forEach>
+                                    </ul>
+                                </div>
+                                <jsp:include page="/WEB-INF/inc/event/paging.jsp">
+                                    <jsp:param name="eventStatus" value="<%=eventStatus%>"/>
+                                    <jsp:param name="searchCondition" value="<%=searchCondition%>"/>
+                                    <jsp:param name="searchWord" value="<%=searchWord%>"/>
+                                    <jsp:param name="url" value="/Lush/event/view.do?eventID=${eventID}&proceedRecords=${proceedRecords}&endRecords=${endRecords}&"/>
+                                </jsp:include>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -114,33 +169,6 @@
 
 
 <div class="dimmed" id="dimmedArea">
-<%--&lt;%&ndash;    <!-- 댓글작성 취소 팝업 -->&ndash;%&gt;--%>
-<%--   ------- <div class="popup reply-cancel" id="commentCancelPopup">--%>
-<%--        <div class="pop-head">--%>
-<%--        </div>--%>
-<%--        <div class="pop-content">--%>
-<%--            <p class="body1">작성중인 내용은 저장되지 않습니다.<br/> 취소하시겠습니까?</p>--%>
-<%--        </div>--%>
-<%--        <div class="btn-wrap basic double">--%>
-<%--            <button type="button" class="border-btn">취소</button>--%>
-<%--            <button type="button" class="black-btn pop-close confirm">확인</button>--%>
-<%--        </div>--%>
-<%--        <button type="button" class="pop-close popup-close-btn">팝업닫기</button>--%>
-<%--    </div>--%>
-
-<%--&lt;%&ndash;    <!-- 댓글등록 팝업 -->&ndash;%&gt;--%>
-<%--   -------- <div class="popup reply-ok" id="commentRegistSuccessPopup">--%>
-<%--        <div class="pop-head">--%>
-<%--        </div>--%>
-<%--        <div class="pop-content">--%>
-<%--            <p class="body1">댓글이 등록되었습니다.</p>--%>
-<%--        </div>--%>
-<%--        <div class="btn-wrap basic">--%>
-<%--            <button type="button" class="black-btn pop-close" >확인</button>--%>
-<%--        </div>--%>
-<%--        <button type="button" class="pop-close popup-close-btn" name="">팝업닫기</button>--%>
-<%--    </div>--%>
-
 <%--    댓글작성 버튼 클릭시 --%>
     <div class="popup biggest reply-write" id="commentRegistPopup">
         <div class="pop-head">
@@ -148,12 +176,14 @@
         </div>
         <div class="pop-content" id="commentRegistForm">
             <form id="boardComment" action="/Lush/event/view.do" method="post" enctype="multipart/form-data">
-                <input type="hidden" name="boardCommentId" value="0" />
-                <input type="hidden" name="eventID" value="<%=eventID%>"/>
+                <input type="hidden" name="btnval" value="0">
+                <input type="hidden" name="reviewID" value="0">
+                <input type="hidden" name="eventID" value="${eventID}"/>
                 <input type="hidden" name="eventStatus" value="<%=eventStatus%>">
-                <input type="hidden" name="currentPage" value="<%=currentPage%>">
-                <input type="hidden" name="proceedRecords" value="<%=proceedRecords%>">
-                <input type="hidden" name="endRecords" value="<%=endRecords%>">
+                <input type="hidden" name="currentPage" value="${pageBlock.currentPage}">
+                <input type="hidden" name="searchWord" value="<%=searchWord%>">
+                <input type="hidden" name="proceedRecords" value="${proceedRecords}">
+                <input type="hidden" name="endRecords" value="${endRecords}">
                 <table class="list-table light">
                     <colgroup>
                         <col width="210px">
@@ -211,20 +241,20 @@
     });
 
     $('button.popup-close-btn').click(function (){
+        $('input#cmntStatusCode1').val(0);
+        $('textarea#cmntContent').val('');
+        $('ul.file-tree li').remove();
         $('.dimmed').removeClass('on');
         $('.dimmed #commentRegistPopup').hidden();
-        // $('input#cmntStatusCode1').val(0);
-        // $('textarea#cmntContent').val(';');
-        // $('.upload-box ul.file-tree li').detach();
     });
 
-    // $('button.pop-change').click(function (){
-    //     $('.dimmed').removeClass('on');
-    //     $('.dimmed #commentRegistPopup').hidden();
-    //     // $('#cmntStatusCode1').val(0);
-    //     // $('#cmntContent').val('');
-    //     // $('.file-tree li').detach();
-    // });
+    $('button[type="reset"].pop-change').click(function (){
+        $('input#cmntStatusCode1').val(0);
+        $('textarea#cmntContent').val('');
+        $('ul.file-tree li').remove();
+        $('.dimmed').removeClass('on');
+        $('.dimmed #commentRegistPopup').hidden();
+    });
 
     $('#cmntStatusCode1').click(function (){
         if ($('#cmntStatusCode1').val() == 0){
@@ -241,14 +271,12 @@
             alert("이미지파일은 5개까지만 올릴 수 있습니다.")
         }else{
             $('.upload-box ul.file-tree').append('<li><div class="input-wrap"><input id="file' + n +'" type="text" readonly>' +
-                '<button id="delFile" type="button" onclick="delFileFunc()"></button>' +
+                '<button id="delFile" type="button"></button>' +
                 '</div></li>');
 
             var files = $('input[type="file"]')[n].files;
-            // alert(files[0].name);
-            // for (var i=0; files.length; i++){
             $('#file'+n).val(files[0].name);
-            // }
+
             $('.upload-box label').hide();
 
             $('.upload-box').append('<label for="boardCommentFiles' + n +'" class="file-btn"><span>파일선택</span></label>' +
@@ -256,37 +284,39 @@
         }
     });
 
-    // $(document).ready(function () {
-    //     $("#boardCommentFiles").change(function (event) {
-    //         var n = $('.upload-box ul.file-tree li').length;
-    //         if (n>=5){
-    //             alert("이미지파일은 5개까지만 올릴 수 있습니다.")
-    //         }else{
-    //             $('.upload-box ul.file-tree').append('<li><div class="input-wrap"><input id="file' + n +'" type="text" readonly>' +
-    //                 '<button id="delFile" type="button" onclick="delFileFunc()"></button>' +
-    //                 '</div></li>');
-    //
-    //             var files = $('input#boardCommentFiles')[0].files;
-    //             // alert(files[0].name);
-    //             // for (var i=0; files.length; i++){
-    //                 $('#file'+n).val(files[0].name);
-    //             // }
-    //             $('.upload-box label').hide();
-    //
-    //             $('.upload-box').append('<label for="boardCommentFiles" class="file-btn"><span>파일선택</span></label>' +
-    //                 '<input type="file" id="boardCommentFiles" name="boardCommentFiles' + n +'" hidden="" accept=".png, .jpg"/>');
-    //         }
-    //     });//  click
-    //
-    // }); // ready
+    $('button.no-cut').click(function (){
+        $(this).closest('li').addClass('on');
+        $(this).closest('#imageSize').removeClass('cut');
+        $(this).hide();
+        $(this).closest('.review-contents').next().find('.review-thumbnail').hide();
+        $(this).closest('.review-contents').next().find('.minimum-btn').css('display','inline-block');
+    });
 
-    function delFileFunc(){
-        alert('gd');
-        $(this).unwrap();
-        // $(this).closest('li').detach();
-    }
+    $('button.minimum-btn img').click(function (){
+        $(this).closest('button').hide();
+        $(this).closest('button.minimum-btn').prev().show();
+        $(this).closest('li').removeClass('on');
+        $(this).closest('.review-side').prev().addClass('cut');
+        $(this).closest('.review-side').prev().find('button.no-cut').show();
+    });
+
+    $(document).on('click','.file-tree li .input-wrap button',function (event) {
+            $(this).closest('li').remove();
+    });
 
     $('button#submit_eventReview').click(function (){
+        $('form#boardComment').submit();
+    });
+
+    $(document).on('click','button#updateReview', function (event) {
+        $('.dimmed').addClass('on');
+        $('.dimmed #commentRegistPopup').show();
+        $('form#boardComment input[name="reviewID"]').val($(this).next().next().val());
+        $('form#boardComment input[name="btnval"]').val(1);
+    });
+    $(document).on('click','button#delReview', function (event) {
+        $('form#boardComment input[name="reviewID"]').val($(this).next().val());
+        $('form#boardComment input[name="btnval"]').val(2);
         $('form#boardComment').submit();
     });
 </script>

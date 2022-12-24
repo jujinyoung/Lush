@@ -61,6 +61,7 @@
                     <jsp:param name="eventStatus" value="<%=eventStatus%>"/>
                     <jsp:param name="searchCondition" value="<%=searchCondition%>"/>
                     <jsp:param name="searchWord" value="<%=searchWord%>"/>
+                    <jsp:param name="url" value="/Lush/event/list.do?"/>
                 </jsp:include>
             </div>
         </div>

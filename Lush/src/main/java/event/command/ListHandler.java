@@ -26,7 +26,6 @@ public class ListHandler implements CommandHandler {
         //이벤트정보 조회 후 list.jsp페이지에 뿌리기
         EventListService listService = EventListService.getInstance();
         List<Event> events = null;
-        PageBlock pageBlock = null;
         int numberPerPage = 12;
         int numberOfPageBlock = 10;
 
@@ -40,7 +39,7 @@ public class ListHandler implements CommandHandler {
         int proceedRecords = listService.getProceedRecords();
         int endRecords = listService.getEndRecords();
 
-        pageBlock = PageService.pagingService(currentPage, numberPerPage, numberOfPageBlock, totalPages);
+        PageBlock pageBlock = PageService.pagingService(currentPage, numberPerPage, numberOfPageBlock, totalPages);
 
         request.setAttribute("eventStatus", eventStatus);
         request.setAttribute("searchCondition", searchCondition);
