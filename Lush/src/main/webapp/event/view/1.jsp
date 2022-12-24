@@ -215,8 +215,8 @@
 <%--                                        이미지 업로드시 li태그 생성--%>
 
                                     </ul>
-                                    <label for="boardCommentFiles" class="file-btn"><span>파일선택</span></label>
-                                    <input type="file" id="boardCommentFiles" name="boardCommentFiles0" hidden="" accept=".png, .jpg"/>
+                                    <label for="boardCommentFiles0" class="file-btn"><span>파일선택</span></label>
+                                    <input type="file" id="boardCommentFiles0" name="boardCommentFiles0" hidden="" accept=".png, .jpg"/>
 <%--                                    <input type="file" hidden=""  multiple="multiple" accept=".png, .jpg"/>--%>
                                 </div>
                                 <p class="file-notice">5MB이하 이미지파일(png, jpg)로 최대 5개까지 업로드 가능합니다.</p>
@@ -235,6 +235,7 @@
 </div>
 
 <script>
+    let val = 0;
     $('.review-title button.pop-open').click(function (){
         $('.dimmed').addClass('on');
         $('.dimmed #commentRegistPopup').show();
@@ -244,6 +245,10 @@
         $('input#cmntStatusCode1').val(0);
         $('textarea#cmntContent').val('');
         $('ul.file-tree li').remove();
+        $('label.file-btn').remove();
+        $('input[type="file"]').remove();
+        $('.upload-box').append('<label for="boardCommentFiles' + val +'" class="file-btn"><span>파일선택</span></label>' +
+            '<input type="file" id="boardCommentFiles' + val +'" name="boardCommentFiles' + val +'" hidden="" accept=".png, .jpg"/>');
         $('.dimmed').removeClass('on');
         $('.dimmed #commentRegistPopup').hidden();
     });
@@ -252,6 +257,10 @@
         $('input#cmntStatusCode1').val(0);
         $('textarea#cmntContent').val('');
         $('ul.file-tree li').remove();
+        $('label.file-btn').remove();
+        $('input[type="file"]').remove();
+        $('.upload-box').append('<label for="boardCommentFiles' + val +'" class="file-btn"><span>파일선택</span></label>' +
+            '<input type="file" id="boardCommentFiles' + val +'" name="boardCommentFiles' + val +'" hidden="" accept=".png, .jpg"/>');
         $('.dimmed').removeClass('on');
         $('.dimmed #commentRegistPopup').hidden();
     });
@@ -270,17 +279,16 @@
         if (n>=5){
             alert("이미지파일은 5개까지만 올릴 수 있습니다.")
         }else{
-            $('.upload-box ul.file-tree').append('<li><div class="input-wrap"><input id="file' + n +'" type="text" readonly>' +
-                '<button id="delFile" type="button"></button>' +
+            $('.upload-box ul.file-tree').append('<li><div class="input-wrap"><input id="file' + val +'" type="text" readonly>' +
+                '<button id="delFile" type="button" value="'+val+'"></button>' +
                 '</div></li>');
-
-            var files = $('input[type="file"]')[n].files;
-            $('#file'+n).val(files[0].name);
-
+            var files = $('input#boardCommentFiles'+ val)[0].files[0];
+            $('#file'+val).val(files.name);
+            val++;
             $('.upload-box label').hide();
 
-            $('.upload-box').append('<label for="boardCommentFiles' + n +'" class="file-btn"><span>파일선택</span></label>' +
-                '<input type="file" id="boardCommentFiles' + n +'" name="boardCommentFiles' + (n+1) +'" hidden="" accept=".png, .jpg"/>');
+            $('.upload-box').append('<label for="boardCommentFiles' + val +'" class="file-btn"><span>파일선택</span></label>' +
+                '<input type="file" id="boardCommentFiles' + val +'" name="boardCommentFiles' + val +'" hidden="" accept=".png, .jpg"/>');
         }
     });
 
@@ -302,10 +310,17 @@
 
     $(document).on('click','.file-tree li .input-wrap button',function (event) {
             $(this).closest('li').remove();
+            $('input#boardCommentFiles'+ $(this).val() +'[type="file"]').remove();
+            $('label[for="boardCommentFiles'+$(this).val()+'"]').remove();
     });
 
     $('button#submit_eventReview').click(function (){
-        $('form#boardComment').submit();
+        if ($('textarea#cmntContent').val() === ''){
+            alert("내용을 입력해주세요.");
+        }else{
+            $('form#boardComment').submit();
+        }
+
     });
 
     $(document).on('click','button#updateReview', function (event) {
