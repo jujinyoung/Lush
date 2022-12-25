@@ -43,6 +43,36 @@ public class ShipAddDaoImpl implements ShipAddDao{
         return shipadd;
     }
     
+    @Override
+    public long selectShipId(Connection con, Long mid ) throws SQLException {
+
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        String sql = "SELECT sh_id FROM ltb_shipAdd WHERE me_id = ? and ship_default = ? ";
+        long shid = 0;
+        
+        try {
+            pstmt = con.prepareStatement(sql);
+            pstmt.setLong(1, mid);
+            pstmt.setString(2, "1");
+            
+            rs = pstmt.executeQuery();
+            
+            if (rs.next()){
+
+                do { shid = rs.getLong("sh_id");
+                }while (rs.next());
+            }
+            
+        }finally {
+            JdbcUtil.close(pstmt);
+            JdbcUtil.close(rs);
+        }
+
+        return shid;
+    }
+    
+    @Override
     public int addShipAdd(Connection con, ShipAdd shipadd ) throws SQLException {
 
         PreparedStatement pstmt = null;
@@ -58,7 +88,6 @@ public class ShipAddDaoImpl implements ShipAddDao{
             pstmt.setString(5, shipadd.getTelnum2());
             pstmt.setString(6, shipadd.getShipdefault());
             pstmt.setLong(7, shipadd.getMid());
-        		
 
             rowCount = pstmt.executeUpdate(); 
             
@@ -69,6 +98,7 @@ public class ShipAddDaoImpl implements ShipAddDao{
         return rowCount;
     }
     
+    @Override
     public int updateShipAdd(Connection con, ShipAdd shipadd ) throws SQLException {
 
         PreparedStatement pstmt = null;
@@ -81,8 +111,6 @@ public class ShipAddDaoImpl implements ShipAddDao{
             pstmt.setString(1, "0");
             pstmt.setString(2, "1");
             pstmt.setLong(3, shipadd.getMid());
-
-        		
 
             rowCount = pstmt.executeUpdate(); 
             

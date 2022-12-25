@@ -517,7 +517,7 @@ label {
     width: 24px;
     height: 24px;
     margin-left: -41px;
-    background: url(https://www.lush.co.kr/content/renewal/pc/images/ico/ico_equal_gray.pngg) no-repeat bottom 4px center;
+    background: url(https://www.lush.co.kr/content/renewal/pc/images/ico/ico_equal_gray.png) no-repeat bottom 4px center;
 }
 
 .order-wrap .payment-info table {
@@ -902,3 +902,24 @@ button, input[type="button"], input[type="submit"], input[type="reset"], input[t
 	display:none;
 }
 
+.popup .no-border-table tr.address td button {
+    width: 93px;
+}
+
+.no-border-table tr.address td input:first-of-type {
+    display: inline-block;
+    width: 270px;
+    margin-right: 10px;
+}
+
+.no-border-table tr.address td button {
+    position: absolute;
+    right: 0;
+    top: 8px;
+}
+table.no-border-table tr td button {
+    width: 138px;
+    height: 48px;
+    line-height: 46px;
+    margin-bottom: 0;
+}

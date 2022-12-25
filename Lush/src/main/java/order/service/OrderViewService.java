@@ -125,7 +125,7 @@ public class OrderViewService {
             conn = ConnectionProvider.getConnection();
             list = dao.selectProductJoin(conn, psid, amount2);
             if (list == null){
-                throw new EmptyException("제품이 없습니다.");
+                throw new EmptyException("제품 조인이 없습니다.");
             }
         } catch (NamingException | SQLException e) {
             e.printStackTrace();
@@ -145,7 +145,7 @@ public class OrderViewService {
             conn = ConnectionProvider.getConnection();
             rowCount = dao.addShipAdd(conn, shipadd);
             if (rowCount == 0){
-                throw new EmptyException("추가 실패");
+                throw new EmptyException("배송지 추가 실패");
             }
         } catch (NamingException | SQLException e) {
             e.printStackTrace();
@@ -165,7 +165,7 @@ public class OrderViewService {
             conn = ConnectionProvider.getConnection();
             rowCount = dao.updateShipAdd(conn, shipadd);
             if (rowCount == 0){
-                throw new EmptyException("업데이트 실패");
+                throw new EmptyException("배송지 업데이트 실패");
             }
         } catch (NamingException | SQLException e) {
             e.printStackTrace();
@@ -185,7 +185,7 @@ public class OrderViewService {
             conn = ConnectionProvider.getConnection();
             num = dao.getOrderNum(conn);
             if (num == 0){
-                throw new EmptyException("값 불러오기 실패");
+                throw new EmptyException("주문 번호 불러오기 실패");
             }
         } catch (NamingException | SQLException e) {
             e.printStackTrace();

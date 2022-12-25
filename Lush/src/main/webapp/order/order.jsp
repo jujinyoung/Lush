@@ -18,12 +18,12 @@
 
     <!-- iamport.payment.js -->
     <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
-  
+    <link rel="icon" type="image/png" sizes="192x192" href="../images/ico/fabicon.png">
 </head>
 <body>
 <header></header>
 <section id="order" style="padding-top: 128px;">
-	<form id="buy" name="buy" action="/order/pay" method="post">
+	<form id="buy" name="buy" action="<%= contextPath %>/order/order.do" method="post">
 
 		<!-- 회원 정보 -->
 			<div class="order-wrap">
@@ -100,6 +100,7 @@
 										<!-- 구매 사은품 -->
 										<li>
 													<input type="checkbox" id="g2_94" name="giftItemIds">
+													<input type="hidden" id="giftbox" name="giftbox" value="">
 													<label for="g2_94">
 														<img src="https://www.lush.co.kr/upload/gift-item/GIFT155/20221108145413L.png" alt="사은품 이미지">
 														<p>[랜덤] 오늘의 스마트 샘플 [1]</p>
@@ -154,6 +155,7 @@
 											<col width="auto">
 										</colgroup>
 										<tbody>
+												<tr>
 														<th>배송지</th>
 														<td>
 															<ul class="info-ul no-border">
@@ -256,6 +258,8 @@
 					<input type="hidden" id="totalprice1" name="totalprice1" value=" ${totalprice + delprice }" />
 					<input type="hidden" id="amount" name="amount" value="${ amount }">
 					<input type="hidden" id="ordernum" name="ordernum" value="${ ordernum }">
+					<input type="hidden" name="pid" value=${ pid }>
+					<input type="hidden" name="weight" value=${ weight }>
 					<button type="submit" id="payment-button" name="" class="green-btn"><strong class="op-order-pay-amount-text"><strong>${totalprice + delprice }</strong> <strong>결제하기</strong></button>
 					<button type="submit" id="real"></button>
 				</article>
@@ -321,7 +325,9 @@
 					<tr class="address">
 						<th>주소</th>
 						<td>
-							<input type="text" name="address">
+						<input type="text" name="address" id="newaddress" class="required" readonly="" >
+						<button type="button" class="border-btn" onclick="findAddr()">주소 검색</button>
+
 
 						</td>
 					</tr>
@@ -363,10 +369,12 @@
 <script>
 	$("#payment-button").click(function(evt){
 		if($("input:checkbox[id='agree']").is(":checked") && ( $("#payType-kakaopay").is(':checked') || $("#payType-send").is(':checked') )){
-			IMP.init ("imp23237584");
-			evt.preventDefault();
-			payment(); //버튼 클릭하면 호출
+			if($("#payType-kakaopay").is(':checked')){
+				evt.preventDefault();
+				IMP.init ("imp23237584");
+				payment(); //버튼 클릭하면 호출
 			}
+		}
 		else{
 			alert("필수 버튼 체크!");
 			evt.preventDefault();
@@ -381,10 +389,10 @@
             pay_method: "card",
             merchant_uid: $('#ordernum').val(),
             name: $("#pname").val() + " 등 " + $('#amount').val() +  "개",
-            amount: $('#totalprice1').val(),
-            buyer_name: $('membername').val(),
-            buyer_tel: $('#telnum').val(),
-            buyer_addr: $('#addr1').val()
+            amount: $("#totalprice1").val(),
+            buyer_name: $("membername").val(),
+            buyer_tel: $("#telnum").val(),
+            buyer_addr: $("#addr1").val()
         }, function (rsp) { // callback
             if (rsp.success) {
             	alert("결제성공");
@@ -400,9 +408,31 @@
       }
 </script>
 
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
-
+function findAddr(){
+	new daum.Postcode({
+        oncomplete: function(data) {
+        	
+        	console.log(data);
+        	
+            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+            // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+            // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+            var roadAddr = data.roadAddress; // 도로명 주소 변수
+            var jibunAddr = data.jibunAddress; // 지번 주소 변수
+            // 우편번호와 주소 정보를 해당 필드에 넣는다.
+            if(roadAddr !== ''){
+                document.getElementById("newaddress").value = roadAddr;
+            } 
+            else if(jibunAddr !== ''){
+                document.getElementById("newaddress").value = jibunAddr;
+            }
+        }
+    }).open();
+}
 </script>
+
 <script>
 
 $("button.open-button").click( function (){
@@ -437,11 +467,24 @@ $("button.pop-close.popup-close-btn").click(function(){
 	$("#myForm input[name=address]").val("");
 }); 
 
+$("#delmsginput").val("부재시 경비실에 맡겨주세요");
+
 $("#delmsgselect").change(function(){
 	var valss = $("#delmsgselect option:selected").val();
 	$("#delmsginput").val(valss);
-
 }); 
+
+$("#giftbox").val("no");
+
+$("#g2_94").click(function() {
+    if($("#g2_94").is(":checked")) {
+        $("#giftbox").val("yes");
+    } else {
+        $("#giftbox").val("no");
+    }
+});
+
+
 
 </script>
 </html>

@@ -34,30 +34,30 @@ public class OrderViewHandler implements CommandHandler {
     			if(fromwhere == 1 || fromwhere == 3) {
     				OrderViewService orderViewService = OrderViewService.getInstance();
     		        
-    		        Long pid = Long.parseLong(request.getParameter("pid"));
+    		        long pid = Long.parseLong(request.getParameter("pid"));
     		        int weight = Integer.parseInt(request.getParameter("weight"));
     		        int amount = Integer.parseInt(request.getParameter("amount"));
     		        
     		    	String sid = (String)session.getAttribute("auth");
     		    	Member member = orderViewService.selectMember(sid);
     		    	 
-    		    	Long mid = member.getMid();
+    		    	long mid = member.getMid();
     		    	
 //    		    	Product product = orderViewService.selectProduct(pid);
     		    	ProductSangse productsangse = orderViewService.selectProductSangse(pid, weight);
     		    	
-    		    	Long psid = productsangse.getPsid();
+    		    	long psid = productsangse.getPsid();
     		    	
     		    	List<ProductJoin> list = orderViewService.selectProductJoin(pid, amount);
     		    	
-    		    	Long ordernum = orderViewService.getOrderNum();
+    		    	long ordernum = orderViewService.getOrderNum();
     		    	
     		        if(fromwhere == 3) {
             		    
             	        String default_add = request.getParameter("default-add"); //on
 //            	        String default_add_n= request.getParameter("default-add-no"); //on
             	        
-            		    long shid = 3;
+            		    long shid = 0;
             	        String address  = request.getParameter("address");
             	        String sname = request.getParameter("userName");
             	        String oname = request.getParameter("title");
@@ -76,11 +76,13 @@ public class OrderViewHandler implements CommandHandler {
             	        
             	        if(shipdefault.equals("1")) {
             	        	 rowCount1 = orderViewService.updateShipAdd(newship);
+            	        	 if(rowCount1 == 0) {
+            	        		return "/order/default.jsp";
+            	        	 }
             	        }
             	        int rowCount2 = orderViewService.addShipAdd(newship);
             	        
             	        
-            	        String location = "";
             	        if(rowCount2 == 0) {
             	        	return "/order/default.jsp";
             	        }
