@@ -1,4 +1,5 @@
-<body>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<link rel="stylesheet" href="/footer/css/footer.css" type="text/css">
 
 <!-- <h3>footer.jsp</h3> -->
 
@@ -22,7 +23,7 @@
 			<p class="body2">
 				매주 월요일 오후, 구독자님을 위한 제품과 브랜드 이야기를 전해 드립니다. 
 				<br>
-				구독은 언제든지 해지하실 수 있습니다. 
+				구독은 언제든지 해지하실 수 있습니다.
 				<a href="/email-subscrib-preview" class="link">미리보기</a>
 			</p>
 			<ul class="cscenter">
@@ -211,9 +212,3 @@
 	</script>
 	<!-- kakao pixel // -->
 </footer>
-
-<script>
-
-</script>
-</body>
-</html>
