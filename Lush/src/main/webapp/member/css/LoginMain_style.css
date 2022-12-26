@@ -1,7 +1,21 @@
+
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans+KR:wght@500&display=swap');
 @import url(default.css);
 
+body, form, div, p, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, ol, li, fieldset, th, td, input, textarea, button, select {
+   margin: 0;
+    padding: 0;
+    font-family: 'Noto Sans KR', sans-serif;
+    color: #222;
+}
+
+body {
+    font-size: 16px;
+    font-family: 'NotoSans';
+    color: #222;
+    font-weight: 400;
+}
 
 .inner {
     display: block;
@@ -40,6 +54,11 @@
 ol, ul, dl {
     list-style: none;
 }
+/* 회원 비회원 */
+.tab-btn .login-btn ul{
+	height: 20px; 
+}
+
 
 .login-tab li {
     display: inline-block;
@@ -48,35 +67,19 @@ ol, ul, dl {
 }
 .tab-btn li {
     display: block;
-    border: 1px solid #949494;
-    border-bottom: 2px solid #222;
+
 }
 li {
     list-style: none;
 }
 
-.login-tab li a.on {
-    color: #222;
-    border-bottom: 1px solid #222;
-    font-weight: 400;
-    height: 20px;
-}
-.tab-btn li a.on {
-/*     background: #222; */
-    color: #fff;
-    font-weight: 700;
-    width: calc(100% + 2px);
-    margin-left: -1px;
-    margin-right: -1px;
-    height: 65px;
-    margin-top: -1px;
-}
 .login-tab li a {
     display: block;
     color: #949494;
     line-height: 18px;
     height: 20px;
 }
+
 .tab-btn li a {
     position: relative;
     display: block;
@@ -88,17 +91,50 @@ li {
     font-size: 16px;
     letter-spacing: -0.45px;
 }
+
+/* .login-tab li a.on {
+ 	color: #949494; 
+	  border-bottom: 1px solid #222  !important;
+	font-weight: 400;
+	 height: 20px !important;
+} */
+.login-tab li a {
+    display: block;
+    color: #949494;
+    line-height: 18px !important;
+    height: 20px;
+}
+/* 
+.tab-btn li a.on {
+    background: #222;
+    color: #949494;
+  font-weight: 700;
+    width: calc(100% + 2px);
+    margin-left: -1px;
+    margin-right: -1px;
+    height: 65px;
+    margin-top: -1px;
+}  */
+
+* {
+    box-sizing: border-box !important;
+}
+* {
+    -webkit-text-size-adjust: none;
+    text-shadow: none !important;
+}
+
+
 a {
     text-decoration: none;
     color: #222;
 }
 
-.login-tab li a {
-    display: block;
-    color: #949494;
-    line-height: 18px;
-    height: 20px;
+.flex center{
+	padding: 0px;
 }
+
+
 .tab-btn li a {
     position: relative;
     display: block;
@@ -117,23 +153,24 @@ a {
 }
 .tab-btn {
     display: flex;
-    justify-content: space-between;
+/*     justify-content: space-between; */
     align-items: center;
     width: 100%;
     margin-bottom: 47px;
 }
 
-.tab-cont .tab-inner.on {
-    display: block;
+/* .tab-cont .tab-inner.on {
+    display: block; */
 }
 .tab-cont .tab-inner {
-    display: none;
+/*    display: none;  */
 }
 
 .search-wrap {
     width: 328px;
     margin: -31px auto 0 auto;
 }
+
 
 .search-wrap input {
     display: block;
@@ -161,7 +198,7 @@ input[type="text"] {
 }
 
 input[type="text"], input[type="password"] {
-    -webkit-appearance: none;
+  -webkit-appearance: none; 
 }
 
 input[type="password"] {
@@ -179,6 +216,7 @@ input[type="password"] {
     position: relative;
     text-align: left;
     margin: 14px auto;
+    width: 108%;
 }
 
 .search-wrap input {
@@ -187,7 +225,7 @@ input[type="password"] {
     margin: 0 auto 8px auto;
 }
 input[type="checkbox"] {
-   /*  display: none; */
+ /*    display: none; */
     position: absolute;
     opacity: 0;
     width: 1px;
@@ -203,11 +241,16 @@ input[type="checkbox"] + label {
     display: inline-block;
     position: relative;
     cursor: pointer;
- /*    background: url(../images/ico/checkbox_off.svg) no-repeat center left; */
+    background: url(../../images/ico/checkbox_off.svg) no-repeat center left; 
     padding-left: 36px;
     color: #535353;
     min-width: 20px;
     min-height: 20px;
+    background-size: 20px 20px;
+} 
+
+input[type="checkbox"]:checked + label {
+    background: url(../../images/ico/checkbox_on_black.svg) no-repeat center left;
     background-size: 20px 20px;
 }
 
@@ -240,6 +283,8 @@ button, input[type="button"], input[type="submit"], input[type="reset"], input[t
 
 .flex.center {
     justify-content: center;
+    padding: 0px;
+        width: 108%;
 }
 .login-opt {
     margin: 32px auto;
@@ -248,15 +293,31 @@ button, input[type="button"], input[type="submit"], input[type="reset"], input[t
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 108%;
+
 }
 
 input[type="checkbox" i] {
     background-color: initial;
     cursor: default;
-/*     appearance: auto; */
+    appearance: auto;
     box-sizing: border-box;
- /*    margin: 3px 3px 3px 4px;
+    margin: 3px 3px 3px 4px;
     padding: initial;
-    border: initial; */
+    border: initial;
+} 
+
+.login-opt li a {
+    color: #535353;
+    border-bottom: 1px solid #535353;
+    font-size: 14px;
+    margin: 0px 12px;
 }
+
+
+.tab-cont .tab-inner.no-member {
+    width: 400px;
+    margin: 0 auto;
+}
+
 

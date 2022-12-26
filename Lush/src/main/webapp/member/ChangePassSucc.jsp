@@ -12,7 +12,7 @@
 </head>
 <body>
 
-
+비밀번호 변경 성공 
 
 
 <script>

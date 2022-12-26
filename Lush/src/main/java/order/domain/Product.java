@@ -6,66 +6,51 @@ public class Product {
     private String name;
     private String vegan;
     private String domestic;
-    private String category1;
-    private String category2;
-    private String category3;
+    private String cat1;
+    private String cat2;
+    private String cat3;
     private String img;
-    private int price;
 
-    public Product(long pid, String name, String vegan, String domestic, String category1, String category2, String category3, String img, int price) {
-        this.pid = pid;
-        this.name = name;
-        this.vegan = vegan;
-        this.domestic = domestic;
-        this.category1 = category1;
-        this.category2 = category2;
-        this.category3 = category3;
-        this.img = img;
-        this.price = price;
+    public Product(long pid, String name,  String vegan, String domestic, String cat1, String cat2, String cat3, String img) {
+    	this.pid = pid;
+    	this.name = name;
+    	this.vegan = vegan;
+    	this.domestic = domestic;
+    	this.cat1 = cat1;
+    	this.cat2 = cat2;
+    	this.cat3 = cat3;
+    	this.img = img;
     }
 
-    public long getPid() {
-        return pid;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getVegan() {
-        return vegan;
-    }
-
-    public String getDomestic() {
-        return domestic;
-    }
-
-    public String getCategory1() {
-        return category1;
-    }
-
-    public String getCategoty2() {
-        return category2;
-    }
-
-    public String getCategory3() {
-        return category3;
-    }
-
-    public String getImg() {
-        return img;
-        
-        
-    }
-
-	public int getPrice() {
-		return price;
+	public long getPid() {
+		return pid;
 	}
 
-	public void setPrice(int price) {
-		this.price = price;
+	public String getName() {
+		return name;
 	}
 
+	public String getVegan() {
+		return vegan;
+	}
 
+	public String getDomestic() {
+		return domestic;
+	}
 
+	public String getCat1() {
+		return cat1;
+	}
+
+	public String getCat2() {
+		return cat2;
+	}
+
+	public String getCat3() {
+		return cat3;
+	}
+
+	public String getImg() {
+		return img;
+	}
 }

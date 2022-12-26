@@ -1,17 +1,17 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>로그인 화면</title>
+<title>Insert title here</title>
+<link href="css/LoginMain_style.css" rel="stylesheet" type="text/css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-<link href="css/Login_style.css" rel="stylesheet" type="text/css">
-<style>
-</style>
 </head>
 <body>
+
+
+23300
 
 
 <section id="login" style="padding-top: 128px;">
@@ -21,8 +21,8 @@
 				<h2 class="page-title-small">로그인</h2>
 			</div>
 			<ul class="tab-btn login-tab">
-				<li><a id="userTab" href="javascript:;" class="on">회원</a></li>
-				<li><a id="guestTab" href="javascript:;">비회원</a></li>
+				<li><a id="userTab" href="#" class="on">회원</a></li>
+				<li><a id="guestTab" href="#">비회원</a></li>
 			</ul>
 
 			<div class="tab-cont">
@@ -30,14 +30,14 @@
 				<div class="tab-inner on">
 					<div class="search-wrap">
 						<form id="loginForm" action="/Lush/member/login.do" method="POST">
-							<input type="hidden" name="_csrf" value="1b57ed98-63db-4c8a-9394-51c6884aac10"><input type="hidden" name="target" value="">
+							<input type="hidden" name="_csrf" value="3214ce37-95ac-4e17-aecf-91b9988fc852"><input type="hidden" name="target" value="/">
 							<input type="hidden" name="popup" value="">
-							<input type="hidden" name="failureUrl" value="/users/login?target=&amp;popup=">
+							<input type="hidden" name="failureUrl" value="/users/login?target=/&amp;popup=">
 							<input type="hidden" name="op_login_type" value="ROLE_USER">
 							<input type="text" name="id" id="id" placeholder="아이디">
-							<input type="password" name="password" id="password" placeholder="비밀번호">
+							<input type="password"name="password" id="password"  placeholder="비밀번호">
 							<div class="input-wrap">
-								<input type="checkbox" id="save_id" name="op_remember_me" value="true"><label for="save_id">아이디 저장</label>
+								<input type="checkbox" id="save_id" name="save_id" value="true"><label for="save_id">아이디 저장</label>
 							</div>
 							<button type="submit" class="black-btn large-btn">로그인</button>
 
@@ -46,10 +46,10 @@
 								<li><a href="FindId.jsp">아이디 찾기</a></li>
 								<li><a href="FindPass.jsp">비밀번호 찾기</a></li>
 							</ul>
-							<div class="sns-btns">
-								<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
-
-</page:csrf><div><input type="hidden" name="_csrf" value="1b57ed98-63db-4c8a-9394-51c6884aac10"></div></form></page:csrf><div><input type="hidden" name="_csrf" value="1b57ed98-63db-4c8a-9394-51c6884aac10"></div></form></div>
+							</form>
+						
+					</div>
+					</div>
 
 				<!-- 탭2번. 비회원 -->
 				<div class="tab-inner no-member">
@@ -60,9 +60,9 @@
 						<input type="text" name="orderCode" id="guestOrderNumber" placeholder="주문번호">
 						<button type="submit" class="black-btn large-btn">로그인</button>
 						</div>
-					<div><input type="hidden" name="_csrf" value="1b57ed98-63db-4c8a-9394-51c6884aac10"></div></form>
+					<div><input type="hidden" name="_csrf" value="3214ce37-95ac-4e17-aecf-91b9988fc852"></div></form>
 
-					<p class="body2">주문번호를 잊으신 경우, 고객센터로 문의하여 주시기 바랍니다.</p>
+					<p class="body2" id="etcinfo">주문번호를 잊으신 경우, 고객센터로 문의하여 주시기 바랍니다.</p>
 					</div>
 			</div>
 		</article>
@@ -70,27 +70,50 @@
 </section>
 
 
+
+
 <script>
+/* 회원/비회원 탭 변경  */
 
-<c:if test="${errors.idorpasserror}" var="idorpasserror">
-	alert('ID 또는 비밀번호를 다시 확인해 주시기 바랍니다.');
-</c:if>
-
+$(function() {
+	
+	$("#guestLoginForm").css("display", "none");
+	$("#etcinfo").css("display", "none");
+	
+    $('#userTab').click(function(){
+    	$("#loginForm").css("display", "block");
+ 	 	$("#guestLoginForm").css("display", "none");
+ 	 	 $("#etcinfo").css("display", "none");
+ 	    
+ 	 	$("#userTab").css("color", "#222");
+ 	 	$("#userTab").css("font-weight", "400");
+ 		$("#guestTab").css("color", "#949494;");
+	   	});
+   
+    $('#guestTab').click(function(){
+		
+		  $("#loginForm").css("display", "none");
+		  $("#guestLoginForm").css("display", "block");
+		  $("#etcinfo").css("display", "block");
+		  
+		   
+	 	 	$("#guestTab").css("color", "#222");
+	 	 	$("#guestTab").css("font-weight", "400");
+	 		$("#userTab").css("color", "#949494;");
+	 	 	
+	
+	   	});
+});
 </script>
 
 <script>
 
-/* id 
-save_id
-
-<input type="text" id="userId">
-<input type="checkbox" id="idSaveCheck">아이디 기억하기 */
-
-
+/* 아이디 저장  */
+ 
 $(document).ready(function(){
 	 
     // 저장된 쿠키값을 가져와서 ID 칸에 넣어준다. 없으면 공백으로 들어감.
-    var key = getCookie("key");
+    var key = getCookie("saveid");
     $("#id ").val(key); 
      
     if($("#id ").val() != ""){ // 그 전에 ID를 저장해서 처음 페이지 로딩 시, 입력 칸에 저장된 ID가 표시된 상태라면,
@@ -108,7 +131,7 @@ $(document).ready(function(){
     // ID 저장하기를 체크한 상태에서 ID를 입력하는 경우, 이럴 때도 쿠키 저장.
     $("#id ").keyup(function(){ // ID 입력 칸에 ID를 입력할 때,
         if($("#save_id").is(":checked")){ // ID 저장하기를 체크한 상태라면,
-            setCookie("key", $("#id ").val(), 7); // 7일 동안 쿠키 보관
+            setCookie("saveid", $("#id ").val(), 7); // 7일 동안 쿠키 보관
         }
     });
 });
@@ -140,46 +163,6 @@ function getCookie(cookieName) {
     return unescape(cookieValue);
 }
 
-</script>
-
-
-<!--  
-<section id="login" style="padding-top: 128px;">
-<div class="inner">
-<article class="login-wrap">
-<div class="page-top">
-	<h2 class="page-title-small">로그인</h2>
-</div>
-	<ul class="tab-btn login-tab">
-		<li><a id="userTab" href="javascript:;" class="on">회원</a></li>
-		<li><a id="guestTab" href="javascript:;">비회원</a></li>
-	</ul>
-	<div class="tab-cont">
-<div class="tab-inner on">
-<div class="search-wrap">
-<form id="loginForm" action="/Lush/member/login.do" method="post">
-<input type="text" name="id" placeholder="아이디"><Br>
-<input type="password" name="password" placeholder="비밀번호">
-	<div class="input-wrap">
-	<input type="checkbox" id="save_id" name="op_remember_me" value="true" data-gtm-form-interact-field-id="0">
-	<label for="save_id">아이디 저장</label>
-	</div>
-	<button type="submit" class="black-btn large-btn">로그인</button>
-	<ul class="login-opt flex center">
-		<li><a href="SignUp.jsp">회원가입</li>
-		<li><a href="FindId.jsp">아이디 찾기</li>
-		<li><a href="FindPass.jsp">비밀번호 찾기</li>
-	</ul>
-</form>
-</div>
-</div>
-</div> <!-- tabcont -->
-<!-- </article>
-</div>div inner
-</section>
- -->
-
-<script>
 </script>
 </body>
 </html>

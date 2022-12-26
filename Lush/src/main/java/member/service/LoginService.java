@@ -1,3 +1,4 @@
+
 package member.service;
 
 import java.sql.Connection;
@@ -35,14 +36,3 @@ public class LoginService { // 로그인
 	}
 }
 
-
-
-
-/*if(!member.matchPassword(password)) { // 패스워드가 맞지 않으면
-*/			// response.sendRedirect("LoginError.jsp"); 
-	/*
-	 * String path = "LoginError.jsp"; RequestDispatcher dispatcher =
-	 * request.getRequestDispatcher(path) ; request.sendre
-	 */
-//		error
-//	} //if

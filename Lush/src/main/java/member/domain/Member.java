@@ -1,3 +1,4 @@
+
 package member.domain;
 
 public class Member { // DTO / VO
@@ -12,6 +13,12 @@ public class Member { // DTO / VO
 	
 	
 	
+	
+	
+	public Member() {
+		
+	}
+
 	public Member(String me_pass, String me_name, String me_add, String me_tel, String me_email, String me_nick,
 			String me_loginid) {
 	
@@ -24,6 +31,21 @@ public class Member { // DTO / VO
 		this.me_loginid = me_loginid;
 	}
 	
+	public Member(String me_pass, String me_loginid) {
+		this.me_pass = me_pass;
+		this.me_loginid = me_loginid;
+	}
+
+
+
+
+	public Member(String me_name, String me_email, String me_loginid) {
+		this.me_name = me_name;
+		this.me_email = me_email;
+		this.me_loginid = me_loginid;
+	}
+
+
 	public int getMe_id() {
 		return me_id;
 	}
@@ -78,5 +100,8 @@ public class Member { // DTO / VO
 		return me_pass.equals(password);
 	}
 
+	public void changePassword(String newPwd) {
+		this.me_pass = newPwd;
+	}
 	
 }

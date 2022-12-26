@@ -15,6 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>러쉬 EVENT</title>
     <link rel="stylesheet" href="css/list_style.css" type="text/css">
+    <link rel="icon" type="image/png" sizes="192x192" href="../images/ico/fabicon.png">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
 <body>
@@ -43,17 +44,17 @@
                     <!-- db에서 이벤트정보가져다가 쓰기 -->
                     <c:forEach var="event" items="${events}">
                         <li>
-                            <a href="/Lush/event/view.do?eventID=${event.id}&eventStatus=<%=eventStatus%>&currentPage=${pageBlock.currentPage}&proceedRecords=<%=proceedRecords%>&endRecords=<%=endRecords%>" class="article-thumb">
-                                <img src="${event.image}" alt="${event.title}">
+                            <a href="/Lush/event/view.do?eventID=${event.event.id}&eventStatus=<%=eventStatus%>&currentPage=${pageBlock.currentPage}&proceedRecords=<%=proceedRecords%>&endRecords=<%=endRecords%>" class="article-thumb">
+                                <img src="${event.event.image}" alt="${event.event.title}">
                                 <div class="mask"></div>
                             </a>
-                            <a href="/Lush/event/view.do?eventID=${event.id}&eventStatus=<%=eventStatus%>&currentPage=${pageBlock.currentPage}&proceedRecords=<%=proceedRecords%>&endRecords=<%=endRecords%>" class="article-title">
-                                ${event.title} ?
+                            <a href="/Lush/event/view.do?eventID=${event.event.id}&eventStatus=<%=eventStatus%>&currentPage=${pageBlock.currentPage}&proceedRecords=<%=proceedRecords%>&endRecords=<%=endRecords%>" class="article-title">
+                                    ${event.event.title} (${event.review})
                             </a>
-                            <a href="/Lush/event/view.do?eventID=${event.id}&eventStatus=<%=eventStatus%>&currentPage=${pageBlock.currentPage}&proceedRecords=<%=proceedRecords%>&endRecords=<%=endRecords%>" class="article-cate">
-                                ${event.subtitle}
+                            <a href="/Lush/event/view.do?eventID=${event.event.id}&eventStatus=<%=eventStatus%>&currentPage=${pageBlock.currentPage}&proceedRecords=<%=proceedRecords%>&endRecords=<%=endRecords%>" class="article-cate">
+                                ${event.event.subtitle}
                             </a>
-                            <p class="date">${event.rdate}~${event.edate}</p>
+                            <p class="date">${event.event.rdate}~${event.event.edate}</p>
                         </li>
                     </c:forEach>
                 </ul>
@@ -61,6 +62,7 @@
                     <jsp:param name="eventStatus" value="<%=eventStatus%>"/>
                     <jsp:param name="searchCondition" value="<%=searchCondition%>"/>
                     <jsp:param name="searchWord" value="<%=searchWord%>"/>
+                    <jsp:param name="url" value="/Lush/event/list.do?"/>
                 </jsp:include>
             </div>
         </div>

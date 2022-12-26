@@ -10,37 +10,35 @@ public class ProductSangse {
 
 
     public ProductSangse(long psid, long  weight, long price, long pid, long amount) {
-        this.psid = psid;
-        this.weight = weight;
-        this.price = price;
-        this.pid = pid;
-        this.amount = amount;
+    	this.psid = psid;
+    	this.weight = weight;
+    	this.price = price;
+    	this.pid = pid;
+    	this.amount = amount;
 
     }
 
-    public long getPsid() {
-        return psid;
-    }
+	public long getPsid() {
+		return psid;
+	}
 
 
-    public long getWeight() {
-        return weight;
-    }
+	public long getWeight() {
+		return weight;
+	}
 
 
-    public long getPrice() {
-        return price;
-    }
+	public long getPrice() {
+		return price;
+	}
 
 
-    public long getPid() {
-        return pid;
-    }
-
-    public long getAmount() {
-        return amount;
-    }
-
-
+	public long getPid() {
+		return pid;
+	}
+    
+	public long getAmount() {
+		return amount;
+	}  
 
 }

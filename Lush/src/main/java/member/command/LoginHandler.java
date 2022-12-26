@@ -1,11 +1,14 @@
+
 package member.command;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import command.CommandHandler;
 import member.domain.User;
@@ -17,8 +20,10 @@ public class LoginHandler implements CommandHandler {
 	private LoginService loginservice = new LoginService();
 	
 	
+	
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
 		if(request.getMethod().equalsIgnoreCase("GET")) {
 			return processForm(request, response);	
 		} else if( request.getMethod().equalsIgnoreCase("POST")) {
@@ -28,18 +33,18 @@ public class LoginHandler implements CommandHandler {
 			return null;
 		}
 		
-	
 	}
 
 
 	private String processSubmit(HttpServletRequest request, HttpServletResponse response) {
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
+		String save_id = request.getParameter("save_id");
 		
 		Map<String, Boolean> errors = new HashMap<>();
 		request.setAttribute("errors", errors);
 
-		System.out.println(" 에러 만듦 ");
+		
 		if(id == null || id.isEmpty())
 			errors.put("id", Boolean.TRUE);
 		if(password == null || password.isEmpty())
@@ -56,10 +61,10 @@ public class LoginHandler implements CommandHandler {
 				errors.put("idorpasserror", Boolean.TRUE);
 				return "Login.jsp";
 			}
-			// user 객체를 authuser 속성에 저장 아이디 / 이름 
-		// 	request.getSession().setAttribute("authUser", id);
+	
+			HttpSession session = request.getSession();
 			 request.getSession().setAttribute("authUser", user);
-		//	response.sendRedirect(request.getContextPath() + "/index.jsp");
+			 System.out.println(" 세션 추가 ");
 			response.sendRedirect("main_temp.jsp");
 			return null;
 		}catch(IOException e) {

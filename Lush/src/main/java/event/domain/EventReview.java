@@ -7,14 +7,22 @@ public class EventReview {
     private int er_id;
     private int ev_id;
     private int me_id;
-    private char er_secret;
+    private String er_secret;
     private String er_content;
-    private Date er_rdate;
+    private String er_rdate;
 
     public EventReview() {
     }
 
-    public EventReview(int er_id, int ev_id, int me_id, char er_secret, String er_content, Date er_rdate) {
+    public EventReview( int ev_id, int me_id, String er_secret, String er_content) {
+        this.ev_id = ev_id;
+        this.me_id = me_id;
+        this.er_secret = er_secret;
+        this.er_content = er_content;
+        this.er_rdate = er_rdate;
+    }
+
+    public EventReview(int er_id, int ev_id, int me_id, String er_secret, String er_content, String er_rdate) {
         this.er_id = er_id;
         this.ev_id = ev_id;
         this.me_id = me_id;
@@ -35,7 +43,7 @@ public class EventReview {
         return me_id;
     }
 
-    public char getEr_secret() {
+    public String getEr_secret() {
         return er_secret;
     }
 
@@ -43,7 +51,11 @@ public class EventReview {
         return er_content;
     }
 
-    public Date getEr_rdate() {
+    public String getEr_rdate() {
         return er_rdate;
+    }
+
+    public void setEr_id(int er_id) {
+        this.er_id = er_id;
     }
 }

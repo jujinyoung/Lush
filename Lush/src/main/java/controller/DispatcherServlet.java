@@ -15,12 +15,13 @@ public class DispatcherServlet extends HttpServlet {
 
     @Override
     public void destroy() {System.out.println("DispatcherServlet.destroy");}
+    
 
     private Map<String, CommandHandler> commandHandlerMap = new HashMap<>();
 
     @Override
     public void init() throws ServletException {
-     //   System.out.println("DispatcherServlet.init");
+//        System.out.println("DispatcherServlet.init");
         String path = this.getInitParameter("path");
         String realPath = this.getServletContext().getRealPath(path);
 
@@ -38,7 +39,7 @@ public class DispatcherServlet extends HttpServlet {
             Map.Entry<Object, Object> entry = ir.next();
             String url = (String) entry.getKey();
             String className = (String) entry.getValue();
-            System.out.println("url = " + url);
+//            System.out.println("url = " + url);
 
             try {
                 Class<?> handlerClass = Class.forName(className);
@@ -53,35 +54,28 @@ public class DispatcherServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-     //  System.out.println("DispatcherServlet.doGet");
-        String requestURI = request.getRequestURI(); // url 분석 /list.do /join.do
-     //  System.out.println("requestURI = " + requestURI);
-        CommandHandler handler = commandHandlerMap.get(requestURI); // 핸들러 검색
-        System.out.println("체크");
-        
-     //     String viewPage = 핸들러.process
+       // System.out.println("DispatcherServlet.doGet");
+        String requestURI = request.getRequestURI();
+//        System.out.println("requestURI = " + requestURI);
+        CommandHandler handler = commandHandlerMap.get(requestURI);
+
         String viewPage = null;
         try {
             viewPage = handler.process(request, response);
-            System.out.println("viewPage = " + viewPage);
+//            System.out.println("viewPage = " + viewPage);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        // 포워딩 
+
         if (viewPage != null){
-//            System.out.println("forward실행");
+//           System.out.println("forward실행");
             RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
             dispatcher.forward(request, response);
         }
-        
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
-    
-    
-    
-    
 }

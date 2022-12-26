@@ -1,3 +1,4 @@
+
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans+KR:wght@500&display=swap');
 
@@ -160,6 +161,12 @@ article + .btn-wrap {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+}
+
+#fakeEmail{
+    width: 425px;
+    margin-right: 10px;
+
 }
 
 colgroup {

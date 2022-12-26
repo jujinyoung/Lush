@@ -1,3 +1,4 @@
+
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -28,11 +29,10 @@
 			<p class="sns-notice">* SNS 계정 연동시 연동하는 계정의 아이디가 아닌, 연동 계정에 등록된 이메일 주소가 러쉬 아이디로 등록됩니다.</p> -->
 
 			<span>이미 쇼핑몰 회원이세요?</span>
-			<a href="Login.jsp" class="go-login">로그인</a>
+			<a href="LoginMain.jsp" class="go-login">로그인</a>
 		</article>
 	</div>
 </section>
-
 
 
 <script>
