@@ -163,6 +163,12 @@ article + .btn-wrap {
     flex-wrap: wrap;
 }
 
+#fakeEmail{
+    width: 425px;
+    margin-right: 10px;
+
+}
+
 colgroup {
     display: table-column-group;
 }

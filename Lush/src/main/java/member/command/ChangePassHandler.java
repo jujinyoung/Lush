@@ -1,121 +1,126 @@
 package member.command;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import command.CommandHandler;
 import member.domain.Member;
 import member.service.ChangePassService;
-import member.service.GoogleMail;
 
-public class ChangePassHandler implements CommandHandler {
-	
+public class ChangePassHandler implements CommandHandler{
+
 	ChangePassService chpass = new ChangePassService();
-
+	
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		if(request.getMethod().equalsIgnoreCase("GET")) {
-			return changepass(request, response);	
+			return changePass(request, response);	
 		} else if( request.getMethod().equalsIgnoreCase("POST")) {
-			return ismember(request, response); 
+			return isMatch(request, response); 
 		} else {
 			response.setStatus(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
 			return null;
 		}
-		
 	}
 
-	private String ismember(HttpServletRequest request, HttpServletResponse response) {
-		String id = request.getParameter("id");
-		String email = request.getParameter("email");
-		System.out.println("post 방식으로 받음");
+	
+	private String isMatch(HttpServletRequest request, HttpServletResponse response) { // post (passemail.jsp에서)
+		String authcode = (String)request.getParameter("certificationCo");
+		String usercode = (String)request.getParameter("userCertifi");
+		String id = (String)request.getParameter("id");
+				
 		
+		
+		System.out.println("인증번호 >" + authcode);
+		System.out.println("유저번호 >" + usercode);
+		System.out.println("id >" + id);
 		Map<String, Boolean> errors = new HashMap<>();
 		request.setAttribute("errors", errors);
 		
-		if(id == null || id.isEmpty())
-		System.out.println("id 입력안함");
-		errors.put("id", Boolean.TRUE);
+
+		if(usercode == null || usercode.isEmpty()) {
+			System.out.println("usercode = null");
+			errors.put("nocode", Boolean.TRUE);
+			return "PassEmail.jsp";	
+		}
 		
-		if(email == null || email.isEmpty())
-			System.out.println("email 입력안함");
-			errors.put("email", Boolean.TRUE);
-	
 		try {
-			// 아이디 + 이메일 에 해당하는 멤버 객체가 있는지 확인
-			Member member = chpass.isMemhere(id, email);
-			if(member == null) { // 멤버 x 
-				System.out.println("member = null");
-				errors.put("nomember", Boolean.TRUE);
-				return "FindPassPre.jsp"; // 비밀번호 찾기 화면으로 돌아가 팝업 띄우기 
-			}
-			// 멤버 객체가 있음 -> 이메일 인증번호 전송하기 
-			
-			GoogleMail mail = new GoogleMail();
-			
-			// 인증키 랜덤 생성
-			Random rnd = new Random();
-			String certificationCode = "";
 	
+			Member member = chpass.isMemhere(id);
 			
-			int randum = 0;
-			for(int i = 0; i < 7; i++) {
-				randum = rnd.nextInt(9 - 0 + 1);
-				certificationCode += randum;
-			}
+			System.out.println(" 비번 변경 - member객체 있음");
 			
-			System.out.println(" 확인용 코드 ->  "+ certificationCode);
-			// 랜덤 생성 코드-> 사용자 email 전송 
-			HttpSession session = request.getSession();
+			String findid = member.getMe_loginid();
 			
-			try {
-				// 보낸 메일과 비교해서 맞으면 사용하겠다
-			mail.sendmail(email, certificationCode);
-			System.out.println("인증메일 전송");
-			
-			session.setAttribute("certificationCode", certificationCode); // 
-			// 자바에서 보낸 코드를 세션에 저장
-			System.out.println(certificationCode);
-			request.setAttribute("email", email);
-			// 적은 이메일 주소를 담음 -> { email} 로 발송되었습니다 
-			
-			
-			
-			request.setAttribute("certificationCodel",certificationCode);
-			System.out.println(certificationCode);
-			} catch(Exception e) {
-				e.printStackTrace();
-			}
-			
-			RequestDispatcher rd = request.getRequestDispatcher("PassEmail.jsp");
-			
-			//forward를 통해 지정된 경로로 request, reponse 객체 전달
+			System.out.println(findid);
+			request.setAttribute("findid", findid);
+
+			RequestDispatcher rd = request.getRequestDispatcher("ChangePass.jsp");
 			rd.forward(request, response);
 			return null;
 			
 			
-			
-			
-			
-		} catch (Exception e) {
-			// TODO: handle exception
+		}catch(IOException | ServletException e) {
+			errors.put("idOrPwNotMatch", Boolean.TRUE);
+			return "SignUp.jsp";
+		}
+	}
+
+
+
+		
+		
+	
+	
+
+	private String changePass(HttpServletRequest request, HttpServletResponse response) {
+		// changepass로부터 옴.
+		// 비밀번호 = 비밀번호 확인 이면 비밀번호 수정
+		String pass1 =  request.getParameter("pass1");
+		String pass2 =  request.getParameter("pass2");
+		String id = request.getParameter("id");
+		
+		System.out.println("changepass.jsp로부터 id > " + id);
+		System.out.println("pass1 > " + id);
+		
+		System.out.println("비번 변경 핸들러");
+		Map<String, Boolean> errors = new HashMap<>();
+		request.setAttribute("errors", errors);
+		
+		if( pass1 != pass2) {
+			errors.put("passnotmatch", Boolean.TRUE);
+			return "ChangePass.jsp";	
+		}
+		
+		if(pass1 == null || pass1.isEmpty()) {
+			errors.put("pass1null", Boolean.TRUE);
+			return "ChangePass.jsp";	
+		}
+		
+		if(pass2 == null || pass2.isEmpty()) {
+			errors.put("pass2null", Boolean.TRUE);
+			return "ChangePass.jsp";			
 		}
 		
 		
+		try {
+			System.out.println("try 안");
+			 chpass.updatepass(id, pass1, pass2);
+			 return "ChangePassSucc.jsp";
+					 
+			
+			
+			
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
+		
 		return null;
 	}
-
-	private String changepass(HttpServletRequest request, HttpServletResponse response) {
-			return null;
-	
-	}
-
-	
-	
 }

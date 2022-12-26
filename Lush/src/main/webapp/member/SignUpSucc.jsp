@@ -20,6 +20,7 @@
     <div class="page-"></div>
 </div>
 
+회원가입 성공 페이지!
 
 
 
