@@ -16,11 +16,8 @@ import member.dao.MemberDao;
 import member.domain.Member;
 import member.exception.DuplicateIdException;
 
-public class MemberJoinService {
-/*	private static  MemberJoinService instance = new  MemberJoinService();
-	private  MemberJoinService(){}
-    public static  MemberJoinService getInstance(){return  instance;}*/
-    
+public class JoinService {
+
 	MemberDao memberDao = new MemberDao();
 	
 
@@ -32,18 +29,16 @@ public class MemberJoinService {
 			conn.setAutoCommit(false);
 			
 		System.out.println("memberdao.insert트랜잭션");
-		Member member = memberDao.selectById(conn, joinReq.getMe_loginid());
-		if(member != null) { // 회원이 이미 존재 
-			JdbcUtil.rollback(conn); // 트랜잭션 롤백 
-			throw new DuplicateIdException();
-		}
 		
-			
-			
-			//// joinreq-> member 객체 생성, memberDAO의 insert 실행 -> 데이터 db에 삽입 
-			memberDao.insert(conn, 
-					new Member(
-						
+		  Member member = memberDao.selectById(conn, joinReq.getMe_loginid());
+		  System.out.println("select by id 하고 옴");
+		  if(member != null) { // 회원이 이미 존재 System.out.println("member != null");
+			  System.out.println("member != null");
+		  JdbcUtil.rollback(conn); // 트랜잭션 롤백 throw new DuplicateIdException(); }
+		  }
+		  System.out.println("try 문 나옴");
+			//joinreq-> member 객체 생성, memberDAO의 insert 실행 -> 데이터 db에 삽입 
+			memberDao.insert(conn, new Member(
 							
 							joinReq.getMe_pass(),
 							joinReq.getMe_name(),
@@ -56,12 +51,15 @@ public class MemberJoinService {
 							));
 			conn.commit();
 			
-	System.out.println("memberdao.insert 완료");
+	System.out.println("member.insert 완료");
 			
 		} catch (SQLException e) {
+			
+			System.out.println("SQLException");
 			JdbcUtil.rollback(conn);
-			//throw new RuntimeException(e);
+			throw new RuntimeException(e);
 		} catch (NamingException e) {
+			System.out.println("Namingxception");
 			e.printStackTrace();
 		}	finally {
 			JdbcUtil.close(conn);
