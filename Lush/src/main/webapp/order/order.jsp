@@ -397,9 +397,7 @@
             if (rsp.success) {
             	alert("결제성공");
              	$("#real").trigger("click");
-           	// ajax처리해서 넘겨주기
-            	// 주문번호 받아와서 먼저 merchant uid에넣어줌
-            	// 그 다음 성공하면 주문테이블 결제테이블 각각넣어주기 (submit)
+
             } else {
             	alert("결제실패");
 
