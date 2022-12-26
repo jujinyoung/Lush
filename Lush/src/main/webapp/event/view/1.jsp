@@ -151,12 +151,32 @@
                                         </c:forEach>
                                     </ul>
                                 </div>
-                                <jsp:include page="/WEB-INF/inc/event/paging.jsp">
-                                    <jsp:param name="eventStatus" value="<%=eventStatus%>"/>
-                                    <jsp:param name="searchCondition" value="<%=searchCondition%>"/>
-                                    <jsp:param name="searchWord" value="<%=searchWord%>"/>
-                                    <jsp:param name="url" value="/Lush/event/view.do?eventID=${eventID}&proceedRecords=${proceedRecords}&endRecords=${endRecords}&"/>
-                                </jsp:include>
+<%--                                <jsp:include page="/WEB-INF/inc/event/paging.jsp">--%>
+<%--                                    <jsp:param name="eventStatus" value="<%=eventStatus%>"/>--%>
+<%--                                    <jsp:param name="searchCondition" value="<%=searchCondition%>"/>--%>
+<%--                                    <jsp:param name="searchWord" value="<%=searchWord%>"/>--%>
+<%--                                    <jsp:param name="url" value="/Lush/event/view.do?eventID=${eventID}&proceedRecords=${proceedRecords}&endRecords=${endRecords}&"/>--%>
+<%--                                </jsp:include>--%>
+
+                                <div class="paginate">
+                                    <ul>
+                                        <c:if test="${pageBlock.prev}">
+                                            <li class="first"><a href="" onclick="page(${pageBlock.startOfPageBlock-1})"> &laquo; </a></li></c:if>
+                                        <c:forEach begin="${pageBlock.startOfPageBlock}" end="${pageBlock.endOfPageBlock}" var="i" step="1">
+                                            <c:choose>
+                                                <c:when test="${pageBlock.currentPage eq i}">
+                                                    <li><a id="pagenum${i}" class="num on" onclick="page(${i})">${i}</a></li>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <li><a id="pagenum${i}" onclick="page(${i})">${i}</a></li>
+                                                </c:otherwise>
+                                            </c:choose>
+                                        </c:forEach>
+                                        <c:if test="${pageBlock.next}">
+                                            <li class="last"><a href="" onclick="page(${pageBlock.endOfPageBlock+1})"> &raquo; </a></li>
+                                        </c:if>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -236,7 +256,7 @@
 
 <script>
     let val = 0;
-    $('.review-title button.pop-open').click(function (){
+    $(document).on('click', '.review-title button.pop-open', function (){
         $('.dimmed').addClass('on');
         $('.dimmed #commentRegistPopup').show();
     });
@@ -250,7 +270,7 @@
         $('.upload-box').append('<label for="boardCommentFiles' + val +'" class="file-btn"><span>파일선택</span></label>' +
             '<input type="file" id="boardCommentFiles' + val +'" name="boardCommentFiles' + val +'" hidden="" accept=".png, .jpg"/>');
         $('.dimmed').removeClass('on');
-        $('.dimmed #commentRegistPopup').hidden();
+        $('.dimmed #commentRegistPopup').hide();
     });
 
     $('button[type="reset"].pop-change').click(function (){
@@ -262,7 +282,7 @@
         $('.upload-box').append('<label for="boardCommentFiles' + val +'" class="file-btn"><span>파일선택</span></label>' +
             '<input type="file" id="boardCommentFiles' + val +'" name="boardCommentFiles' + val +'" hidden="" accept=".png, .jpg"/>');
         $('.dimmed').removeClass('on');
-        $('.dimmed #commentRegistPopup').hidden();
+        $('.dimmed #commentRegistPopup').hide();
     });
 
     $('#cmntStatusCode1').click(function (){
@@ -292,7 +312,7 @@
         }
     });
 
-    $('button.no-cut').click(function (){
+    $(document).on('click', 'button.no-cut', function (event){
         $(this).closest('li').addClass('on');
         $(this).closest('#imageSize').removeClass('cut');
         $(this).hide();
@@ -300,7 +320,7 @@
         $(this).closest('.review-contents').next().find('.minimum-btn').css('display','inline-block');
     });
 
-    $('button.minimum-btn img').click(function (){
+    $(document).on('click', 'button.minimum-btn img', function (){
         $(this).closest('button').hide();
         $(this).closest('button.minimum-btn').prev().show();
         $(this).closest('li').removeClass('on');
@@ -334,6 +354,65 @@
         $('form#boardComment input[name="btnval"]').val(2);
         $('form#boardComment').submit();
     });
+
+</script>
+<script>
+    function page(num){
+        $.ajax({
+            url:"/Lush/event/view.json" ,
+            dataType:"json",
+            type:"GET",
+            data: {
+                currentPage : num,
+                eventID : ${eventID}
+            },
+            cache:false ,
+            success: function ( data,  textStatus, jqXHR ){
+                $('.paginate ul li a').removeClass('num on');
+                $('.paginate ul li a#pagenum'+num).addClass('num on');
+                $('.review-wrap ul li').remove();
+                $.each(JSON.parse(JSON.stringify(data)), function (index, item){
+                   // console.log(index + ' : ' + item.eventReview.er_id);
+                    $('.review-wrap ul').append('<li><div class="review-top"><span class="writer"><span class="ducczi-cnt">+0</span><span>이름</span></span>' +
+                        '<span class="date">'+item.eventReview.er_rdate+'</span></div>');
+                    if (item.eventReview.er_secret == 0){
+                        $('.review-wrap ul li:nth-child('+(index+1)+')').append('<div class="review-container flex top"><div id="imageSize" class="review-contents cut">' +
+                            '<p>'+item.eventReview.er_content+'</p>');
+
+                        //로그인 비교 후 같으면 append
+                        $('.review-wrap ul li:nth-child('+(index+1)+') .review-container div#imageSize').append('<div class="review-btn"><button type="button" id="updateReview">수정</button>' +
+                            '<button type="button" id="delReview">삭제</button>' +
+                            ' <input type="text" id="rid" value="'+item.eventReview.er_id+'" hidden></div>');
+
+                        if (item.imgPath != null) {
+                            for (var num in item.imgPath) {
+                                $('.review-wrap ul li:nth-child(' + (index+1) + ') .review-container div#imageSize').append('<img src="/Lush/upload/event/' + item.imgPath[num] + '" alt="리뷰 상세 이미지">');
+                            }
+                            $('.review-wrap ul li:nth-child(' + (index+1) + ') .review-container div#imageSize').append('<button type="button" class="no-cut" style="display: block">더보기</button></div>');
+                        }
+                        $('.review-wrap ul li:nth-child(' + (index+1) + ') .review-container').append('<div class="review-side">');
+
+                        if (item.imgPath != null){
+                            $('.review-wrap ul li:nth-child(' + (index+1) + ') .review-container .review-side').append('<div class="review-thumbnail" style="display: block">' +
+                                '<img src="/Lush/upload/event/' + item.imgPath[0] + '" alt="리뷰 상세 이미지"><span>+'+ item.imgPath.length + '</span></div>');
+                        }
+
+
+                        $('.review-wrap ul li:nth-child(' + (index+1) + ') .review-container .review-side').append('<button type="button" class="minimum-btn" style="display: none"><img src="../images/ico/arrow_up_gray.svg" alt="닫기 버튼"></button></div></div></li>');
+
+
+                    }else{
+                        $('.review-wrap ul li:nth-child('+(index+1)+')').append('<p class="subject">비밀 댓글입니다.</p></li>');
+                    }
+
+
+                });
+            },
+            error:function (){
+                alert("에러~~~ ");
+            }
+        });
+    }
 </script>
 </body>
 </html>

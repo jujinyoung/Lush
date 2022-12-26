@@ -13,6 +13,8 @@ import event.exception.EventReviewDeleteException;
 import event.exception.EventReviewInsertException;
 import event.exception.EventReviewUpdateException;
 import file.FileNotFoundException;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 
 import java.io.File;
 import java.sql.Connection;
@@ -167,5 +169,35 @@ public class EventViewService {
             JdbcUtil.close(conn);
         }
         return 0;
+    }
+
+    public JSONArray ajaxReviewList(int currentPage, int numberPerPage){
+        Connection conn = null;
+
+        try {
+            conn = ConnectionProvider.getConnection();
+
+            List<EventReview> eventReviews = reviewDAO.selectReviewList(conn, currentPage, numberPerPage);
+
+            JSONArray jsonArray = null;
+            if (!eventReviews.isEmpty()){
+                jsonArray = new JSONArray();
+                JSONObject jsonObject = new JSONObject();
+                for (EventReview eventReview: eventReviews) {
+                    jsonObject.put("eventReview" , eventReview);
+                    ArrayList<String> list = imageDAO.selectImages(conn, eventReview.getEr_id());
+                    jsonObject.put("imgPath", list);
+
+                    jsonArray.add(jsonObject);
+                }
+            }
+
+            return jsonArray;
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            JdbcUtil.close(conn);
+        }
+        return null;
     }
 }

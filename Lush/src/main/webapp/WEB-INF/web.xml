@@ -44,4 +44,20 @@
     <url-pattern>*.do</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <description>ajax 서블릿 등록</description>
+    <servlet-name>ajax</servlet-name>
+    <servlet-class>controller.AjaxServlet</servlet-class>
+    <load-on-startup>2</load-on-startup>
+    <init-param>
+      <description>요청 URL과 Handler 매핑 정보를 가지고 있는 파일의 경로</description>
+      <param-name>ajaxPath</param-name>
+      <param-value>/WEB-INF/ajaxHandler.properties</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ajax</servlet-name>
+    <url-pattern>*.json</url-pattern>
+  </servlet-mapping>
+
  </web-app>

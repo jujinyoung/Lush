@@ -21,7 +21,7 @@ public class FileRequest {
         File saveDir = new File(savePath);
         if (!saveDir.exists()) saveDir.mkdirs();
 
-        int maxPostSize = 5 * 1024 * 1024;
+        int maxPostSize = 25 * 1024 * 1024;
         String encoding = "UTF-8";
         FileRenamePolicy policy = new DefaultFileRenamePolicy();
         MultipartRequest mrequest = new MultipartRequest(request, savePath, maxPostSize, encoding, policy);

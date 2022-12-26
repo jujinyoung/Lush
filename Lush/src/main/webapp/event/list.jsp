@@ -44,17 +44,17 @@
                     <!-- db에서 이벤트정보가져다가 쓰기 -->
                     <c:forEach var="event" items="${events}">
                         <li>
-                            <a href="/Lush/event/view.do?eventID=${event.id}&eventStatus=<%=eventStatus%>&currentPage=${pageBlock.currentPage}&proceedRecords=<%=proceedRecords%>&endRecords=<%=endRecords%>" class="article-thumb">
-                                <img src="${event.image}" alt="${event.title}">
+                            <a href="/Lush/event/view.do?eventID=${event.event.id}&eventStatus=<%=eventStatus%>&currentPage=${pageBlock.currentPage}&proceedRecords=<%=proceedRecords%>&endRecords=<%=endRecords%>" class="article-thumb">
+                                <img src="${event.event.image}" alt="${event.event.title}">
                                 <div class="mask"></div>
                             </a>
-                            <a href="/Lush/event/view.do?eventID=${event.id}&eventStatus=<%=eventStatus%>&currentPage=${pageBlock.currentPage}&proceedRecords=<%=proceedRecords%>&endRecords=<%=endRecords%>" class="article-title">
-                                ${event.title} ?
+                            <a href="/Lush/event/view.do?eventID=${event.event.id}&eventStatus=<%=eventStatus%>&currentPage=${pageBlock.currentPage}&proceedRecords=<%=proceedRecords%>&endRecords=<%=endRecords%>" class="article-title">
+                                    ${event.event.title} (${event.review})
                             </a>
-                            <a href="/Lush/event/view.do?eventID=${event.id}&eventStatus=<%=eventStatus%>&currentPage=${pageBlock.currentPage}&proceedRecords=<%=proceedRecords%>&endRecords=<%=endRecords%>" class="article-cate">
-                                ${event.subtitle}
+                            <a href="/Lush/event/view.do?eventID=${event.event.id}&eventStatus=<%=eventStatus%>&currentPage=${pageBlock.currentPage}&proceedRecords=<%=proceedRecords%>&endRecords=<%=endRecords%>" class="article-cate">
+                                ${event.event.subtitle}
                             </a>
-                            <p class="date">${event.rdate}~${event.edate}</p>
+                            <p class="date">${event.event.rdate}~${event.event.edate}</p>
                         </li>
                     </c:forEach>
                 </ul>
