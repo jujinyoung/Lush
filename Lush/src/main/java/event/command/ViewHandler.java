@@ -63,9 +63,6 @@ public class ViewHandler implements CommandHandler {
             String content = mrequest.getParameter("cmntContent");
             EventReview eventReview = new EventReview(Integer.parseInt(eventID), memberID, secret, content);
 
-            System.out.println("reviewID = " + reviewID);
-            System.out.println("btnval = " + btnval);
-
             //request 받은 변수
             String eventStatus = mrequest.getParameter("eventStatus");
             String currentPage = mrequest.getParameter("currentPage");

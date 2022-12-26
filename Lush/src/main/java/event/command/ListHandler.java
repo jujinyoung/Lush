@@ -2,12 +2,15 @@ package event.command;
 
 import command.CommandHandler;
 import event.domain.Event;
+import event.domain.Eventlist;
 import event.service.EventListService;
+import event.service.EventViewService;
 import paging.PageBlock;
 import paging.PageService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ListHandler implements CommandHandler {
@@ -24,6 +27,7 @@ public class ListHandler implements CommandHandler {
         int currentPage = request.getParameter("currentPage")==null ? 1 : Integer.parseInt(request.getParameter("currentPage"));
 
         //이벤트정보 조회 후 list.jsp페이지에 뿌리기
+        EventViewService viewService = EventViewService.getInstance();
         EventListService listService = EventListService.getInstance();
         List<Event> events = null;
         int numberPerPage = 12;
@@ -33,6 +37,11 @@ public class ListHandler implements CommandHandler {
             events = listService.selectEventList(eventStatus, currentPage, numberPerPage);
         }else {
             events = listService.searchEventList(eventStatus, currentPage, numberPerPage, searchCondition, searchWord);
+        }
+        ArrayList<Eventlist> eventList = new ArrayList<>();
+        for (Event event: events) {
+            int totalReview = viewService.getTotalReview((int) event.getId());
+            eventList.add(new Eventlist(event, totalReview));
         }
 
         int totalPages = listService.getTotalPages(numberPerPage, eventStatus);
@@ -44,7 +53,7 @@ public class ListHandler implements CommandHandler {
         request.setAttribute("eventStatus", eventStatus);
         request.setAttribute("searchCondition", searchCondition);
         request.setAttribute("searchWord", searchWord);
-        request.setAttribute("events", events);
+        request.setAttribute("events", eventList);
         request.setAttribute("pageBlock", pageBlock);
         request.setAttribute("proceedRecords", proceedRecords);
         request.setAttribute("endRecords", endRecords);
