@@ -13,7 +13,7 @@ public class ProductSangseDaoImpl implements ProductSangseDao{
     private ProductSangseDaoImpl(){}
     public static ProductSangseDaoImpl getInstance(){return  instance;}
     @Override
-    public ProductSangse selectProductSangse(Connection con, Long pid, Long weight ) throws SQLException {
+    public ProductSangse selectProductSangse(Connection con, Long pid, int weight ) throws SQLException {
 
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -30,7 +30,7 @@ public class ProductSangseDaoImpl implements ProductSangseDao{
             if (rs.next()){
 
                 do { productsangse= new ProductSangse(rs.getLong("ps_id"), rs.getLong("ps_weight"), 
-                		rs.getLong("ps_price"), rs.getLong("pd_id"), rs.getLong("pd_amount"));
+                		rs.getLong("ps_price"), rs.getLong("pd_id"), rs.getLong("ps_amount"));
                 }while (rs.next());
             }
 
