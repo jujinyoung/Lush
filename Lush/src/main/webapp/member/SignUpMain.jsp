@@ -108,7 +108,7 @@
 			</tbody></table>
 		</article>
 		<div class="btn-wrap large">
-			<a href="javascript:void(0);" class="black-btn" id="fakeJoinBtn">회원가입</a>
+		<!-- 	<a href="javascript:void(0);" class="black-btn" id="fakeJoinBtn">회원가입</a> -->
 			<button type="submit" class="black-btn"id="joinBtn">회원가입</button>
 		</div>
 		<div>
@@ -117,45 +117,91 @@
 </section>
 
 
+<!-- 유효성 검사 -->
 <script>
 
+var e_RegExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+var n_RegExp = /^[가-힣]+$/; 
 
+/* 비밀번호 유효성 */
+let pass = "";
 
+ $(function(){
+	$('#password').focusout(function(){
+		
+		pass = $.trim($('#password').val()); 
+		console.log(pass);
+		 if( pass ==''){ // 아이디 공백 
+	            alert("비밀번호를 입력해주세요.");
+	            return false;
+	        }
+	        if(!RegExp.test( pass =='')){ 
+	            alert("ID는 4~12자의 영문 대소문자와 숫자로만 입력하여 주세요.");        
+	            return false;
+	        }
+	})
 
-$(function(){
-	 $('#joinBtn').click(function(){
-		   let id = $("#loginId").val();
-		    let pw = $("#password").val();
-		    let number = pw.search(/[0-9]/g);
-		    let english = pw.search(/[a-z]/ig);
-		    let englishCap = pw.search(/[A-Z]/ig);
-		    let spece = pw.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
+ });
+
+/*  이름 유효성 검사 */
+let name = "";
+
+ $(function(){
+		$('#name').focusout(function(){
 			
-		    if()
-
-		    if (pw.length < 7 || pw.length > 20) {
-		        alert("8자리 ~ 20자리 이내로 입력해주세요.");
-		        return false;
-
-		    } else if (pw.search(/\s/) != -1) {
-		        alert("비밀번호는 공백 없이 입력해주세요.");
-		        return false;
-
-		    } else if ((number < 0 && english < 0) || (english < 0 && englishCap < 0) || (englishCap < 0 && number < 0)) {
-		        alert("영문 대소문자, 숫자 중 2가지 이상을 혼합하여 입력해주세요.");
-		        return false;
-
-
-		    } else if (pw.search(id) > -1) {
-		        alert("비밀번호에 아이디가 포함되었습니다.");
-		        return false;
-		    } 
-			 
+			name = $('#name').val();
+			console.log(name);
+			 if(name ==''){ // 이름 공백 
+		            alert("이름을 입력해주세요.");
+		            return false;
+		        }
+			 if(!n_RegExp.test(name)){ // 이름 특수 문자 사용 불가능 
+		            alert("특수문자,영어,숫자는 사용할수 없습니다. 한글만 입력하여주세요.");
+		            return false;
+		        }
 		})
-});
 
+	 });
+	 
+/* 휴대전화 유효성 검사  */	 
+	 
+let tel = "";
+$(function(){
+		$('#tel').focusout(function(){
+			
+			tel = $('#tel').val();
+			 if(tel ==''){ // 번호 공백 
+		            alert("번호를 입력해 주세요.");
+		            return false;
+		        }
+			 if( tel.search("-") != -1 ){ // - 포함시
+		            alert("- 를 제외한 숫자만 입력해 주세요.");
+		            return false;
+		        }
+		})
+
+	 });
+	 
+	 
+/* 우편번호 유효성 검사 */
+
+let zipcode = "";
+	 $(function(){
+		$('#sample6_postcode').focusout(function(){
+			
+			zipcode = $('#sample6_postcode').val();
+			 if(zipcode ==''){ // 번호 공백 
+		            alert("우편번호 검색을 클릭해 주세요.");
+		            return false;
+		        }
+			 if( tel.search("-") != -1 ){ // - 포함시
+		            alert("- 를 제외한 숫자만 입력해 주세요.");
+		            return false;
+		        }
+		})
+
+	 });
 </script>
-
 
 <!-- 이메일 인증 -->
 <script>
@@ -241,10 +287,26 @@ $(function(){
 </script>
 
 
-<!-- 아이디 중복체크  -->
+<!-- 아이디 중복체크 / 유효성 검사 -->
 <script>
+
+var e_RegExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+var RegExp = /^[a-zA-Z0-9]{4,12}$/; 
+
 	$('.input_id').focusout(function(){
+		
 		let userId = $('.input_id').val(); // input_id에 입력되는 값
+		
+		 if(userId == ''){ // 아이디 공백 
+	            alert("ID를 입력해주세요.");
+	            return false;
+	        }
+	        if(!RegExp.test(userId)){ //
+	            alert("ID는 4~12자의 영문 대소문자와 숫자로만 입력하여 주세요.");        
+	            return false;
+	        }
+		
+			
 		console.log(userId);
 		$.ajax({
 			url : "/Lush/member/idcheck.do",

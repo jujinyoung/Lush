@@ -3,7 +3,7 @@ package member.service;
 
 import java.util.Map;
 
-public class JoinRequest { // 회원가입할 때 필요한 
+public class JoinRequest { // 회원가입할 때 필요
 	private String me_loginid;
 	private String me_pass;
 	private String me_confirmpass;

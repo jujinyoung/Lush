@@ -4,6 +4,7 @@ import com.util.ConnectionProvider;
 
 import order.domain.Member;
 import order.domain.Product;
+import order.domain.ProductJoin;
 import order.domain.ProductSangse;
 import order.domain.ShipAdd;
 import order.exception.EmptyException;
@@ -11,6 +12,10 @@ import order.dao.MemberDao;
 import order.dao.MemberDaoImpl;
 import order.dao.ProductDao;
 import order.dao.ProductDaoImpl;
+import order.dao.ProductJoinDao;
+import order.dao.ProductJoinDaoImpl;
+import order.dao.ProductOrderDao;
+import order.dao.ProductOrderDaoImpl;
 import order.dao.ProductSangseDao;
 import order.dao.ProductSangseDaoImpl;
 import order.dao.ShipAddDao;
@@ -19,6 +24,7 @@ import order.dao.ShipAddDaoImpl;
 import javax.naming.NamingException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
 
 public class OrderViewService {
@@ -88,7 +94,7 @@ public class OrderViewService {
         return product;
     }
     
-    public ProductSangse selectProductSangse(Long pid, Long weight){
+    public ProductSangse selectProductSangse(Long pid, int weight){
         Connection conn = null;
         ProductSangseDao dao = ProductSangseDaoImpl.getInstance();
         ProductSangse productsangse = null;
@@ -109,6 +115,27 @@ public class OrderViewService {
         return productsangse;
     }
     
+    public List<ProductJoin> selectProductJoin(Long psid, int amount2){
+        Connection conn = null;
+        ProductJoinDao dao = ProductJoinDaoImpl.getInstance();
+        List<ProductJoin> list = null;
+        
+
+        try {
+            conn = ConnectionProvider.getConnection();
+            list = dao.selectProductJoin(conn, psid, amount2);
+            if (list == null){
+                throw new EmptyException("제품 조인이 없습니다.");
+            }
+        } catch (NamingException | SQLException e) {
+            e.printStackTrace();
+        } catch (EmptyException e) {
+            e.printStackTrace();
+        }
+        
+        return list;
+    }
+    
     public int addShipAdd(ShipAdd shipadd) {
         Connection conn = null;
         ShipAddDao dao = ShipAddDaoImpl.getInstance();        
@@ -118,7 +145,7 @@ public class OrderViewService {
             conn = ConnectionProvider.getConnection();
             rowCount = dao.addShipAdd(conn, shipadd);
             if (rowCount == 0){
-                throw new EmptyException("추가 실패");
+                throw new EmptyException("배송지 추가 실패");
             }
         } catch (NamingException | SQLException e) {
             e.printStackTrace();
@@ -138,7 +165,7 @@ public class OrderViewService {
             conn = ConnectionProvider.getConnection();
             rowCount = dao.updateShipAdd(conn, shipadd);
             if (rowCount == 0){
-                throw new EmptyException("업데이트 실패");
+                throw new EmptyException("배송지 업데이트 실패");
             }
         } catch (NamingException | SQLException e) {
             e.printStackTrace();
@@ -149,7 +176,25 @@ public class OrderViewService {
         return rowCount;
     }
     
-    
+    public long getOrderNum(){
+        Connection conn = null;
+        ProductOrderDao dao = ProductOrderDaoImpl.getInstance();        
+        long num = 0;
+        
+        try {
+            conn = ConnectionProvider.getConnection();
+            num = dao.getOrderNum(conn);
+            if (num == 0){
+                throw new EmptyException("주문 번호 불러오기 실패");
+            }
+        } catch (NamingException | SQLException e) {
+            e.printStackTrace();
+        } catch (EmptyException e) {
+            e.printStackTrace();
+        }
+        
+        return num;
+    }
     
 
 }

@@ -1,13 +1,14 @@
 package order.dao;
 
-import order.domain.ShipAdd;
+import order.domain.ProductOrder;
+import order.domain.ProductOrderDetails;
+import order.domain.ProductPay;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 
 public interface ProductOrderDao {
 
-    public ShipAdd selectShipAdd(Connection con, Long mid) throws SQLException;
-    public int addShipAdd(Connection con, ShipAdd shipadd) throws SQLException;
-    public int updateShipAdd(Connection con, ShipAdd shipadd) throws SQLException;
+    public long getOrderNum(Connection con) throws SQLException;
+    public int addOrder(Connection con, ProductOrder productorder, ProductOrderDetails productorderdetails, ProductPay productpay) throws SQLException;
 }
