@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="css/order_style.css" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
+
     <!-- iamport.payment.js -->
     <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
     <link rel="icon" type="image/png" sizes="192x192" href="../images/ico/fabicon.png">
@@ -163,9 +164,10 @@
 																	<strong id="deliveryTitle_0">기본 배송지</strong>
 																		<button type="button" class="open-button" id="baesong"><span> 배송지 추가 </span></button> 
 																</li>
-																<li id="deliveryName_0">${ shipadd.oname }</li>
-																<li id="deliveryMobile_0">${ shipadd.telnum1 }</li>
-																<li id="deliveryAddress_0"><span>${ shipadd.address }</span></li>
+																<li id="dellsname">${ shipadd.sname }</li>
+																<li id="delloname">${ shipadd.oname }</li>
+																<li id="dellmobile">${ shipadd.telnum1 }</li>
+																<li id="delladd"><span>${ shipadd.address }</span></li>
 																	</ul>
 														</td>
 													</tr>
@@ -298,8 +300,8 @@
 			<h2 class="big">배송지 추가</h2>
 			<!--p class="body2">※ 배송지를 입력하시면, 마이페이지 &gt; 배송지 관리에도 등록됩니다.</p-->
 		</div>
-		<form id="userDelivery" name="userDelivery" method="post">
-			<div class="pop-content">
+<!-- 		<form id="userDelivery" name="userDelivery" method="post">
+ -->			<div class="pop-content">
 				<table class="no-border-table">
 					<colgroup>
 						<col width="122px">
@@ -308,19 +310,23 @@
 					<tbody>
 					<tr>
 						<th>배송지명</th>
-						<td><input type="text" name="title" maxlength="50"></td>
+						<td><input type="text" name="title" maxlength="50" value="">
+						<input type="hidden" id="dtitle" value=""></td>
 					</tr>
 					<tr>
 						<th>받는사람 이름</th>
-						<td><input type="text" name="userName" maxlength="50"></td>
+						<td><input type="text" name="userName" maxlength="50" value="">
+						<input type="hidden" id="duserName" value=""></td>
 					</tr>
 					<tr>
 						<th>전화번호</th>
-						<td><input type="text" name="phone" maxlength="11"></td>
+						<td><input type="text" name="phone" maxlength="11" value="">
+						<input type="hidden" id="dphone" value=""></td>
 					</tr>
 					<tr>
 						<th>휴대전화 번호</th>
-						<td><input type="text" name="mobile" maxlength="11"></td>
+						<td><input type="text" name="mobile" maxlength="11" value="">
+						<input type="hidden" id="dmobile" value=""></td>
 					</tr>
 					<tr class="address">
 						<th>주소</th>
@@ -335,26 +341,28 @@
 				</table>
 				    <b>기본 배송지 설정하시겠습니까?</b><p>
     <div>
-        <input type="radio" id="yes" name="default-add" value="yes" checked>
+        <input type="radio" id="yes" name="defaultadd" value="yes" checked>
         <label for="yes">네</label>
     </div>
     
     <div>
-        <input type="radio" id="no" name="default-add" value="no">
+        <input type="radio" id="no" name="defaultadd" value="no">
         <label for="no">아니요</label>
+        <input type="hidden" id="ddefault" value="">
     </div>
 			</div>
 			<div class="btn-wrap large double">
 				<button type="button" class="border-btn pop-close" >취소 </button>
-				<button type="submit" class="black-btn" id="userDeliveryAdd"> 추가하기</button>
+				<button type="button" class="black-btn" id="userDeliveryAdd"> 추가하기</button>
 			</div>
 			<button type="button" id="closeBtn" class="pop-close popup-close-btn" name="">팝업닫기</button>
 		<div>
 		<input type="hidden" name="pid" value=${ pid }>
 <input type="hidden" name="weight" value=${ weight }>
 <input type="hidden" name="amount" value=${ amount }>
-<input type="hidden" name="fromwhere" value=3></div></form>
-	</div>
+</div>
+<!-- </form>
+ -->	</div>
 	
 	
 	
@@ -362,10 +370,54 @@
 </div> -->
 
 </div>
-
-
-
 </body>
+
+<script>
+/* $("#ddefault").val($('input[name="defaultadd"]'));
+$("#dtitle").val($('input[name="title"]'));
+$("#duserName").val($('input[name="userName"]'));
+$("#dphone").val($('input[name="phone"]'));
+$("#mobile").val($('input[name="mobile"]')); */
+
+
+	$("#userDeliveryAdd").click(function(){
+        $.ajax({
+            url:"/Lush/order/order.json" ,
+            dataType:"json",
+            type:"POST",
+            data: {
+            	mid : ${ member.mid },
+                defaultadd : $('input:radio[name="defaultadd"]:checked').val(),
+        	    address  : $('input[name=address]').val(),
+        	    sname : $('input[name=title]').val(),
+        	    oname : $('input[name=userName]').val(),
+        	    telnum1 : $('input[name=phone]').val(),
+        	    telnum2 : $('input[name=mobile]').val()
+            },
+            cache:false ,
+            success: function (data){
+            	var jo = JSON.parse(JSON.stringify(data));
+            	if(jo.dellup === "yes"){
+            		$("#delloname").text(jo.delloname);
+                	$("#dellsname").text(jo.dellsname);
+                	$("#dellmobile").text(jo.dellmobile);
+                	$("#delladd").text(jo.delladd);
+                	
+            	}
+            	$("#myForm").attr('class', 'dimmed');
+            	$("#myForm input[name=title]").val("");
+            	$("#myForm input[name=userName]").val("");
+            	$("#myForm input[name=phone]").val("");
+            	$("#myForm input[name=mobile]").val("");
+            	$("#myForm input[name=address]").val("");
+            },
+            error:function (){
+                alert("에러! ");
+            }
+        });
+    });
+</script>
+
 <script>
 	$("#payment-button").click(function(evt){
 		if($("input:checkbox[id='agree']").is(":checked") && ( $("#payType-kakaopay").is(':checked') || $("#payType-send").is(':checked') )){
@@ -436,7 +488,7 @@ function findAddr(){
 $("button.open-button").click( function (){
 	// alert("!!");
 	$("#myForm").attr('class', 'dimmed on');
-	$("#myForm input[name=title").focus();
+	$("#myForm input[name=title]").focus();
 });
 
 $("button.border-btn.pop-close").click(function(){
@@ -482,7 +534,8 @@ $("#g2_94").click(function() {
     }
 });
 
-
-
 </script>
+
+
+
 </html>

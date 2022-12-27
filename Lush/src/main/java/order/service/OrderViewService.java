@@ -156,14 +156,14 @@ public class OrderViewService {
         return rowCount;
     }
     
-    public int updateShipAdd(ShipAdd shipadd) {
+    public int updateShipAdd(long mid) {
         Connection conn = null;
         ShipAddDao dao = ShipAddDaoImpl.getInstance();        
         int rowCount = 0;
         
         try {
             conn = ConnectionProvider.getConnection();
-            rowCount = dao.updateShipAdd(conn, shipadd);
+            rowCount = dao.updateShipAdd(conn, mid);
             if (rowCount == 0){
                 throw new EmptyException("배송지 업데이트 실패");
             }

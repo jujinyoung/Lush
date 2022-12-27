@@ -52,45 +52,7 @@ public class OrderViewHandler implements CommandHandler {
     		    	
     		    	long ordernum = orderViewService.getOrderNum();
     		    	
-    		        if(fromwhere == 3) {
-            		    
-            	        String default_add = request.getParameter("default-add"); //on
-//            	        String default_add_n= request.getParameter("default-add-no"); //on
-            	        
-            		    long shid = 0;
-            	        String address  = request.getParameter("address");
-            	        String sname = request.getParameter("userName");
-            	        String oname = request.getParameter("title");
-            	        String telnum1 = request.getParameter("phone");
-            	        String telnum2 = request.getParameter("mobile");
-            	        String shipdefault = "";
-            	            	        
-            	        if(default_add.equals("yes")) {
-            	        	shipdefault = "1";
-            	        }else {
-            	        	shipdefault = "0";
-            	        }
-            	        ShipAdd newship = new ShipAdd(shid, address, sname, oname, telnum1, telnum2, shipdefault, mid);
-            	        
-            	        int rowCount1 = 0;
-            	        
-            	        if(shipdefault.equals("1")) {
-            	        	 rowCount1 = orderViewService.updateShipAdd(newship);
-            	        	 if(rowCount1 == 0) {
-            	        		return "/order/default.jsp";
-            	        	 }
-            	        }
-            	        int rowCount2 = orderViewService.addShipAdd(newship);
-            	        
-            	        
-            	        if(rowCount2 == 0) {
-            	        	return "/order/default.jsp";
-            	        }
-    		        }
-
     		    	ShipAdd shipadd = orderViewService.selectShipAdd(mid);
-    		    	 
-
     		    	
     		    	request.setAttribute("pid", pid);
     		    	request.setAttribute("weight", weight);
@@ -124,7 +86,9 @@ public class OrderViewHandler implements CommandHandler {
     		        
     		        request.setAttribute("delprice", delprice);
     		        
-    		        
+    		        response.setHeader("Set-Cookie", "Test1=TestCookieValue1; Secure; SameSite=None");
+    		        response.setHeader("Set-Cookie", "Test2=TestCookieValue2; Secure; SameSite=None");
+    		        response.setHeader("Set-Cookie", "Test3=TestCookieValue3; Secure; SameSite=None");
     		        return "/order/order.jsp";
     		        
     			}else if(fromwhere == 2) {
