@@ -36,10 +36,7 @@
 	</div>
 </section>
 
- <!-- 비정상적일 경우 
- 
- alert -> 아이디가 없습니다 
-  -->
+
 <script>
 </script>
 </body>

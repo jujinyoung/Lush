@@ -26,12 +26,8 @@
 				<div><input type="hidden" name="_csrf" value="96f52a54-18f2-4216-84c8-f2380fec3c3c"></div></form>
 				<ul class="login-opt">
 					<li><a href="FindPassPre.jsp">비밀번호 찾기</a></li>
-					<li><a href="Login.jsp">로그인 하기</a></li>
+					<li><a href="LoginMain.jsp">로그인 하기</a></li>
 				</ul>
-			<!-- 	<div class="sns-btns">
-					<a href="javascript:naverProcess();" class="naver-btn">네이버 아이디 로그인</a>
-					<a href="javascript:loginWithKakao();" class="kakao-btn">카카오 아이디 로그인</a>
-				</div> -->
 			</div>
 		</article>
 	</div>
