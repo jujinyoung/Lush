@@ -12,12 +12,14 @@ import java.util.List;
 //DAO 싱글톤 구현
 public class ArticleDaoImpl implements ArticleDao{
 
+	//싱글톤
 	private static ArticleDaoImpl instance = new ArticleDaoImpl();
     private ArticleDaoImpl(){}
     public static ArticleDaoImpl getInstance(){
     	return  instance;
     	}
     
+    //목록
     @Override
     public List<Article> selectArticleList(Connection conn, int categoryLink, int currentPage, int numberPerPage) throws SQLException {
 
@@ -54,8 +56,14 @@ public class ArticleDaoImpl implements ArticleDao{
             if (rs.next()){
                 list = new ArrayList<>();
                 do {
-                	list.add(new Article(rs.getInt("st_id"), rs.getString("st_title"), rs.getString("st_stitle"), rs.getString("st_content")
-                            , rs.getString("st_image"), rs.getString("st_product"), rs.getString("adm_id")));
+                	list.add(
+                			 new Article(rs.getInt("st_id"), 
+                					     rs.getString("st_title"), 
+                					     rs.getString("st_stitle"), 
+                					     rs.getString("st_content"), 
+                					     rs.getString("st_image"), 
+                					     rs.getString("st_product"), 
+                					     rs.getInt("adm_id")));
                 }while (rs.next());
             }
         }finally {
@@ -99,8 +107,13 @@ public class ArticleDaoImpl implements ArticleDao{
             if (rs.next()){
                 list = new ArrayList<>();
                 do {
-                	list.add(new Article(rs.getInt("st_id"), rs.getString("st_title"), rs.getString("st_stitle"), rs.getString("st_content")
-                            , rs.getString("st_image"), rs.getString("st_product"), rs.getString("adm_id")));
+                	list.add(new Article(rs.getInt("st_id"), 
+                			             rs.getString("st_title"), 
+                			             rs.getString("st_stitle"), 
+                			             rs.getString("st_content"), 
+                			             rs.getString("st_image"), 
+                			             rs.getString("st_product"), 
+                			             rs.getInt("adm_id")));
                 }while (rs.next());
             }
             return list;
@@ -110,8 +123,9 @@ public class ArticleDaoImpl implements ArticleDao{
         }
     }
 
+    //페이지
     @Override
-    public int getTotalPages(Connection conn, int numberPerPage, int categoryLink) throws SQLException {
+    public int getPages(Connection conn, int numberPerPage, int categoryLink) throws SQLException {
 
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -136,8 +150,34 @@ public class ArticleDaoImpl implements ArticleDao{
             JdbcUtil.close(rs);
         }
     }
+    
+    //상세글보기
+	@Override
+	public String getNum(Connection conn, int stID) throws SQLException {
+		
+		PreparedStatement pstmt = null;
+        ResultSet rs = null;
 
+        String sql = "SELECT st_title FROM ltb_story where st_id=?";
+        try {
+        	pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, stID);
+            rs = pstmt.executeQuery();
+            String num = null;
+            if(rs.next()) {
+            	num = rs.getString(1);
+            }
+            return num;
+        }finally {
+        	JdbcUtil.close(pstmt);
+            JdbcUtil.close(rs);
+        }
+	}		
 }
+
+
+    
+
 	/*
 	private static ArticleDaoImpl instance = new ArticleDaoImpl();
     private ArticleDaoImpl(){}

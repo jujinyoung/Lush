@@ -15,7 +15,10 @@ public interface ArticleDao {
 
     public List<Article> searchArticleList(Connection conn, int categoryLink ,int currentPage, int numberPerPage, int condition, String key) throws SQLException;
 
-    public int getTotalPages(Connection conn, int numberPerPage, int categoryLink) throws SQLException;
+    public int getPages(Connection conn, int numberPerPage, int categoryLink) throws SQLException;
+    
+    public String getNum(Connection conn, int stID) throws SQLException;
+    
 /*	
  * 
  * List<Article> selectArticleList(Connection con) throws SQLException;

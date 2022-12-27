@@ -8,12 +8,12 @@ public class Article {
     private String st_content;
     private String st_image;
     private String st_product;
-    private String adm_id;
+    private long adm_id;
     
     
     
 	public Article(long st_id, String st_title, String st_stitle, String st_content, String st_image, String st_product,
-			String adm_id) {
+			long adm_id) {
 		super();
 		this.st_id = st_id;
 		this.st_title = st_title;
@@ -23,7 +23,6 @@ public class Article {
 		this.st_product = st_product;
 		this.adm_id = adm_id;
 	}
-
 
 
 	public long getSt_id() {
@@ -62,7 +61,7 @@ public class Article {
 
 
 
-	public String getAdm_id() {
+	public long getAdm_id() {
 		return adm_id;
 	}
 	

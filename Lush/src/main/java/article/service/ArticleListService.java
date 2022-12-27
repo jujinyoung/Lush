@@ -71,7 +71,7 @@ public class ArticleListService {
         try {
             conn = ConnectionProvider.getConnection();
             ArticleDao dao = ArticleDaoImpl.getInstance();
-            return dao.getTotalPages(conn, numberPerPage, categoryLink);
+            return dao.getPages(conn, numberPerPage, categoryLink);
         } catch (NamingException | SQLException e) {
             throw new RuntimeException(e);
         } finally {

@@ -401,21 +401,13 @@ li {
     letter-spacing: -0.45px;
 }
 
- a:hover, a:focus, a:visited, a:active {
-    text-decoration-line: none;
-}
-
-a {
-    text-decoration-line: none;
-    color: #222;
-}
 
 .tab-btn li:not(:first-child) {
     border-left: none;
 }
 
 a:-webkit-any-link {
-    color: -webkit-link;
+/*     color: -webkit-link; */
     cursor: pointer;
 }
 
@@ -465,10 +457,6 @@ a:-webkit-any-link {
     overflow: hidden;
 }
 
-a {
-    text-decoration: none;
-    color: #222;
-}
 
 .list-thumb li .article-title {
     display: block;
@@ -605,6 +593,11 @@ a {
 
 a:hover, a:focus, a:visited, a:active {
     text-decoration: none; 
+    color: black;
+}
+
+li a:link{
+color: black;
 }
 
 ul {
@@ -684,7 +677,7 @@ img {
 <!--카테고리  -->
 <ul class="tab-btn type5">
 <li>
-	<a href="/Lush/article/list.do?categoryLink=1" >전체</a>
+	<a href="/Lush/article/list.do?categoryLink=1">전체</a>
 </li>
 <li>
 	<a href="/Lush/article/list.do?categoryLink=2">브랜드</a>
@@ -707,13 +700,13 @@ img {
 				<ul class="list-thumb">
 					<c:forEach var="article" items="${articles}">
                         <li>
-                            <a class="article-thumb">
+                            <a href="/Lush/article/view.do?stID=${article.st_id}&categoryLink=<%=categoryLink%>&currentPage=${pageBlock.currentPage}" class="article-thumb">
                                 <img src="${article.st_image}" alt="${article.st_title}">
                             </a>
-                            <a class="article-title">
+                            <a href="/Lush/article/view.do?stID=${article.st_id}&categoryLink=<%=categoryLink%>&currentPage=${pageBlock.currentPage}" class="article-title">
                                 ${article.st_title}
                             </a>
-                            <a class="article-cate">
+                            <a href="/Lush/article/view.do?stID=${article.st_id}&categoryLink=<%=categoryLink%>&currentPage=${pageBlock.currentPage}" class="article-cate">
                                 ${article.st_stitle}
                             </a>
                         </li>
@@ -750,16 +743,34 @@ img {
 </footer>
 <!-- 카테고리 -->
 <script>
-
- if(<%=categoryLink%> == 5){
+ 
+ if(<%=categoryLink%> == 1){
 	$('ul.tab-btn>li:first-child').find('a').addClass('on');
     $('.list-thumb li').addClass('end');
-}else {
-    $('ul.tab-btn>li:first-child').find('a').addClass('on');
-}
+}else if (<%=categoryLink%> == 2){
+   $('ul.tab-btn>li:nth-child(2)').find('a').addClass('on');
+   $('.list-thumb li').addClass('end');
+}else if (<%=categoryLink%> == 3){
+	   $('ul.tab-btn>li:nth-child(3)').find('a').addClass('on');
+	   $('.list-thumb li').addClass('end');
+}else if (<%=categoryLink%> == 4){
+	   $('ul.tab-btn>li:nth-child(4)').find('a').addClass('on');
+	   $('.list-thumb li').addClass('end');
+}else if (<%=categoryLink%> == 5){
+	   $('ul.tab-btn>li:nth-child(5)').find('a').addClass('on');
+	   $('.list-thumb li').addClass('end');
+}   
  
+ 
+  
+ 
+/*  
 
-
+ $('ul.tab-btn>li').click(function(){
+     $('ul.tab-btn>li').find('a').removeClass('on');
+     $(this).find('a').addClass('on');
+ })
+ */
 if (<%=searchCondition%> == 1){
     $('input[id="where1"]').prop('checked',true);
 }else{
