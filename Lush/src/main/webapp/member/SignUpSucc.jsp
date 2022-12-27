@@ -13,12 +13,6 @@
 </head>
 <body>
 
-<div class="inner">
-    <div class="page-top">
-        <h2 class="page-title">회원가입</h2>
-    </div>
-    <div class="page-"></div>
-</div>
 
 회원가입 성공 페이지!
 
