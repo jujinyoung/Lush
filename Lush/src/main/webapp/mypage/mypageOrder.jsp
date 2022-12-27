@@ -219,7 +219,6 @@
 	
 </section>
 
-<jsp:include page="/WEB-INF/inc/footer.jsp"></jsp:include>
 	<script>
 
 </script>

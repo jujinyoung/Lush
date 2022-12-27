@@ -1,16 +1,17 @@
-<body>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<link rel="stylesheet" href="/Lush/css/footer.css" type="text/css">
 
 <!-- <h3>footer.jsp</h3> -->
 
 <footer id="footer">
 	<div class="core">
 		<ul class="flex">
-			<li><a href="javascript:;" style="cursor: default;"><img src="/upload/mainCoreValue/20211018160815M.png" alt="" /></a></li>
-			<li><a href="javascript:;" style="cursor: default;"><img src="/upload/mainCoreValue/20211018160705M.png" alt="" /></a></li>
-			<li><a href="javascript:;" style="cursor: default;"><img src="/upload/mainCoreValue/20211018160646M.png" alt="" /></a></li>
-			<li><a href="javascript:;" style="cursor: default;"><img src="/upload/mainCoreValue/20211018160449M.png" alt="" /></a></li>
-			<li><a href="javascript:;" style="cursor: default;"><img src="/upload/mainCoreValue/20211018160436M.png" alt="" /></a></li>
-			<li><a href="javascript:;" style="cursor: default;"><img src="/upload/mainCoreValue/20211018160328M.png" alt="" /></a></li>
+			<li><a href="javascript:;" style="cursor: default;"><img src="/Lush/images/footer/20211018160815M.png" alt="" /></a></li>
+			<li><a href="javascript:;" style="cursor: default;"><img src="/Lush/images/footer/20211018160705M.png" alt="" /></a></li>
+			<li><a href="javascript:;" style="cursor: default;"><img src="/Lush/images/footer/20211018160646M.png" alt="" /></a></li>
+			<li><a href="javascript:;" style="cursor: default;"><img src="/Lush/images/footer/20211018160449M.png" alt="" /></a></li>
+			<li><a href="javascript:;" style="cursor: default;"><img src="/Lush/images/footer/20211018160436M.png" alt="" /></a></li>
+			<li><a href="javascript:;" style="cursor: default;"><img src="/Lush/images/footer/20211018160328M.png" alt="" /></a></li>
 		</ul>
 	</div>
 	<div class="footer-wrap">
@@ -22,7 +23,7 @@
 			<p class="body2">
 				매주 월요일 오후, 구독자님을 위한 제품과 브랜드 이야기를 전해 드립니다. 
 				<br>
-				구독은 언제든지 해지하실 수 있습니다. 
+				구독은 언제든지 해지하실 수 있습니다.
 				<a href="/email-subscrib-preview" class="link">미리보기</a>
 			</p>
 			<ul class="cscenter">
@@ -49,11 +50,11 @@
 				</li>
 			</ul>
 			<ul class="sns">
-				<li><a href="https://twitter.com/LUSHKOREA" target="_blank"><img src="/images/ico/ico_twitter.png" alt="러쉬 트위터 바로가기" style="width:40px" /></a></li>
-				<li><a href="https://www.instagram.com/lushkorea" target="_blank"><img src="/images/ico/ico_insta.svg" alt="러쉬 인스타그램 바로가기" ></a></li>
-				<li><a href="https://www.youtube.com/user/LUSHKOREA1" target="_blank"><img src="/images/ico/ico_youtube.svg" alt="러쉬 유튜브 바로가기"></a></li>
-				<li><a href="https://pf.kakao.com/_VEbUM" target="_blank"><img src="/images/ico/ico_kakao.svg" alt="러쉬 카카오플러스 바로가기"></a></li>
-				<li><a href="https://m.post.naver.com/lushkr1" target="_blank"><img src="/images/ico/ico_naver.svg" alt="러쉬 네이버 바로가기"></a></li>
+				<li><a href="https://twitter.com/LUSHKOREA" target="_blank"><img src="/Lush/images/ico/ico_twitter.png" alt="러쉬 트위터 바로가기" style="width:40px" /></a></li>
+				<li><a href="https://www.instagram.com/lushkorea" target="_blank"><img src="/Lush/images/ico/ico_insta.svg" alt="러쉬 인스타그램 바로가기" ></a></li>
+				<li><a href="https://www.youtube.com/user/LUSHKOREA1" target="_blank"><img src="/Lush/images/ico/ico_youtube.svg" alt="러쉬 유튜브 바로가기"></a></li>
+				<li><a href="https://pf.kakao.com/_VEbUM" target="_blank"><img src="/Lush/images/ico/ico_kakao.svg" alt="러쉬 카카오플러스 바로가기"></a></li>
+				<li><a href="https://m.post.naver.com/lushkr1" target="_blank"><img src="/Lush/images/ico/ico_naver.svg" alt="러쉬 네이버 바로가기"></a></li>
 			</ul>
 		</div>
 		<div class="footer-right">
@@ -63,14 +64,14 @@
 					<a href="/mypage/view/1931">
 					<span>2022-12-21</span>
 					[공지] 연말 택배 물량 증가 배송 지연 안내
-					<img src="/images/ico/ico_new.svg" alt="새글 아이콘" class="footer-ico" />
+					<img src="/Lush/images/ico/ico_new.svg" alt="새글 아이콘" class="footer-ico" />
 					</a>
 				</li>
 				<li>
 					<a href="/mypage/view/1929">
 					<span>2022-11-22</span>
 					네이버페이 결제 시, 덕찌 발급 재개 안내
-					<img src="/images/ico/ico_new.svg" alt="새글 아이콘" class="footer-ico" />
+					<img src="/Lush/images/ico/ico_new.svg" alt="새글 아이콘" class="footer-ico" />
 					</a>
 				</li>
 			</ul>
@@ -211,9 +212,3 @@
 	</script>
 	<!-- kakao pixel // -->
 </footer>
-
-<script>
-
-</script>
-</body>
-</html>
