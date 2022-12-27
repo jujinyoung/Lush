@@ -1,20 +1,12 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2022. 12. 27. 오전 10:57:47</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-<link rel="stylesheet" type="text/css" href="/header/header.css">
+<link rel="stylesheet" href="/Lush/css/header.css" type="text/css">
+
 <style>
 a:visited, a:hover, a:active, a:focus{
 	text-decoration: none;
 }
 </style>
-</head>
-<body>
+
 
 <header id="header">
 <!-- Google Tag Manager (noscript) -->
@@ -29,7 +21,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <div class="header-wrap no-bor main-header">
 	<div class="left-menu flex">
-		<a href="/" class="logo"><img src="/images/header/logo_christmas.gif" alt="lush 로고"></a>
+		<a href="/" class="logo"><img src="/Lush/images/header/logo_christmas.gif" alt="lush 로고"></a>
 		<nav>
 			<ul class="flex left">
 				<li class="open-menu" >
@@ -233,12 +225,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	</div>
 	<div class="right-menu">
 		<ul>
-			<li><a href="/service/shoplive" class="short-live"><img src="/images/header/logo_live.png" alt="숏핑 라이브" width=""></a></li>
-			<li><a href="javascript:;" class="search"><img src="/images/header/search.svg" alt="검색"></a></li>
-			<li><a href="/cart" class="basket"><img src="/images/header/bag.svg" alt="장바구니"><span class="basket-cnt" id="header_cart_quantity">0</span></a></li>
+			<li><a href="/service/shoplive" class="short-live"><img src="/Lush/images/header/logo_live.png" alt="숏핑 라이브" width=""></a></li>
+			<li><a href="javascript:;" class="search"><img src="/Lush/images/header/search.svg" alt="검색"></a></li>
+			<li><a href="/cart" class="basket"><img src="/Lush/images/header/bag.svg" alt="장바구니"><span class="basket-cnt" id="header_cart_quantity">0</span></a></li>
 			<li class="open-menu" id="atag3">
 				<a href="/users/login" class="member">
-					<img src="/images/header/account.svg" alt="마이페이지">
+					<img src="/Lush/images/header/account.svg" alt="마이페이지">
 				</a>
 				<div class="small-menu" id="small-menu">
 					<ul>
@@ -260,7 +252,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<div class="search-box">
 			<input type="text" id="mainSearchKeyword" name="mainSearchKeyword" placeholder=""
 				onkeyup="if(window.event.keyCode==13){ $('#btn-main-search').trigger('click'); }">
-			<button type="button" id="btn-main-search"><img src="/images/header/search.svg" width="40px" height="40px" alt="검색 버튼"></button>
+			<button type="button" id="btn-main-search"><img src="/Lush/images/header/search.svg" width="40px" height="40px" alt="검색 버튼"></button>
 		</div>
 		<div class="search-sub flex top">
 			<div class="search-popular">
@@ -288,7 +280,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				</div>
 			</div>
 		</div>
-		<button type="button" class="search-close-btn"><img src="/images/ico/ico_close_x.svg"></button>
+		<button type="button" class="search-close-btn"><img src="/Lush/images/ico/ico_close_x.svg"></button>
 	</div>
 </div>
 
@@ -317,5 +309,3 @@ $('#atag3').hover(function(){	$('#small-menu').css("display", "inline-block")},
 $('#small-menu').hover(function(){ $('#small-menu').css("display", "inline-block")},
 								(function(){$('#small-menu').css("display", "none")}));
 </script>
-</body>
-</html>

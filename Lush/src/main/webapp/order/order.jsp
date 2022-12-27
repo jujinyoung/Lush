@@ -22,7 +22,7 @@
     <link rel="icon" type="image/png" sizes="192x192" href="../images/ico/fabicon.png">
 </head>
 <body>
-<header></header>
+<jsp:include page="/WEB-INF/inc/headerfooter/header.jsp"></jsp:include>
 <section id="order" style="padding-top: 128px;">
 	<form id="buy" name="buy" action="<%= contextPath %>/order/order.do" method="post">
 
@@ -370,6 +370,8 @@
 </div> -->
 
 </div>
+<jsp:include page="/WEB-INF/inc/headerfooter/footer.jsp"></jsp:include>
+
 </body>
 
 <script>

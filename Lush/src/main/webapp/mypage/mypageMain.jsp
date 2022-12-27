@@ -6,11 +6,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="mypageMain.css" type="text/css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
 </head>
 <body>
 
-<jsp:include page="header.jsp"></jsp:include>
-
+<jsp:include page="/WEB-INF/inc/headerfooter/header.jsp"></jsp:include>
 <section id="mypage" class="my-page" style="padding-top: 128px;">
 <div class="inner flex top">
 	<!-- 마이페이지 좌측 메뉴 //-->
@@ -23,7 +24,7 @@
 	<!-- 상단 유저 정보 -->
 	<div class="user-box flex">
 		<div class="user-info flex center">
-	    	<img src="/images/mypage/Logo (1).png" alt="levelImg">
+	    	<img src="/Lush/images/mypage/Logo(1).png" alt="levelImg">
 			<div>
 			<p class="user-name">권재현님</p>
 			<a href="/mypage/user-modify">회원정보 변경</a><br>
@@ -225,7 +226,7 @@
 						</div>
 						<a href="javascript:;" class="prd-price">₩22,000</a>
 							<button type="button" class="del-btn" data-class="prd-delete" onclick="deleteConfirm('85');">
-								<img src="/content/renewal/pc/images/ico/ico_close_x.svg" width="15px" height="15px" alt="최근본 제품 삭제 버튼">
+								<img src="/Lush/images/ico/ico_close_x.svg" width="15px" height="15px" alt="최근본 제품 삭제 버튼">
 							</button>
 					</li>
 					<li id="recent_item_65">
@@ -234,10 +235,10 @@
 						</a>
 						<div class="buttons">
 							<button type="button" onclick="addToMypageWishList('65');">
-								<img src="/content/renewal/pc/images/ico/favourites.svg" alt="좋아요 버튼">
+								<img src="/Lush/images/ico/favourites.svg" alt="좋아요 버튼">
 							</button>
 							<button type="button" onclick="Shop.addToCart('65', '1', '1', 'false', '', '1', 'false', 'Y')">
-								<img src="/content/renewal/pc/images/ico/bag.svg" alt="장바구니 버튼">
+								<img src="/Lush/images/ico/bag.svg" alt="장바구니 버튼">
 							</button>
 						</div>
 						<a href="javascript:;" class="prd-name subtitle">오션 솔트 120g/250g</a>
@@ -246,7 +247,7 @@
 						</div>
 							<a href="javascript:;" class="prd-price">₩28,000</a>
 							<button type="button" class="del-btn" data-class="prd-delete" onclick="deleteConfirm('65');">
-								<img src="/content/renewal/pc/images/ico/ico_close_x.svg" width="15px" height="15px" alt="최근본 제품 삭제 버튼">
+								<img src="/Lush/images/ico/ico_close_x.svg" width="15px" height="15px" alt="최근본 제품 삭제 버튼">
 							</button>
 						</li>
 					</ul>
@@ -257,7 +258,7 @@
 	</div>
 </section>
 
-<jsp:include page="/WEB-INF/inc/footer.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/inc/headerfooter/footer.jsp"></jsp:include>
 
 <script>
 
