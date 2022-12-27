@@ -86,7 +86,7 @@ $(function() {
  	    
  	 	$("#userTab").css("color", "#222");
  	 	$("#userTab").css("font-weight", "400");
- 		$("#guestTab").css("color", "#949494;");
+ 		$("#guestTab").css("color", "#949494");
 	   	});
    
     $('#guestTab').click(function(){
@@ -98,7 +98,7 @@ $(function() {
 		   
 	 	 	$("#guestTab").css("color", "#222");
 	 	 	$("#guestTab").css("font-weight", "400");
-	 		$("#userTab").css("color", "#949494;");
+	 		$("#userTab").css("color", "#949494");
 	 	 	
 	
 	   	});
