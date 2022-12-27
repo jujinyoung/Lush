@@ -159,10 +159,15 @@ a {
 }
 
 /* .tab-cont .tab-inner.on {
-    display: block; */
-}
+    display: block; 
+}*/
 .tab-cont .tab-inner {
 /*    display: none;  */
+}
+
+#etcinfo{
+	width: 300%;
+    margin: 30px 10px 30px -10px;
 }
 
 .search-wrap {
