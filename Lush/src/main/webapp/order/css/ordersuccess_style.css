@@ -1,0 +1,93 @@
+/* 폰트사용 */
+@import url(default.css);
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+
+element.style {
+    padding-top: 128px;
+}
+section {
+    min-height: calc(100vh - 96px - 320px);
+}
+
+.complete-page .complete-inner {
+    display: block;
+    position: relative;
+    width: 1224px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 205px 0 184px 0;
+}
+
+.complete-page .complete-inner h2 {
+    font-size: 32px;
+    line-height: 46px;
+}
+
+.complete-page .complete-text {
+    display: block;
+    margin: 32px auto 36px auto;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.complete-page .complete-text a {
+    color: #18a957;
+}
+
+.complete-page .complete-text .addon {
+    display: block;
+    color: #757575;
+}
+
+.btn-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.btn-wrap.double > a:first-child {
+    margin-right: 16px;
+}
+
+.btn-wrap.large a {
+    width: 232px;
+    height: 64px;
+    line-height: 62px;
+}
+
+.btn-wrap.large button, .btn-wrap.large a {
+    width: 232px;
+    height: 64px;
+    line-height: 62px;
+}
+a:hover, a:focus, a:visited, a:active {
+    text-decoration: none;
+}
+.border-btn {
+    position: relative;
+    border: 1px solid #222;
+    background: #fff;
+    color: #222;
+    text-align: center;
+}
+
+.btn-wrap.large button, .btn-wrap.large a {
+    width: 232px;
+    height: 64px;
+    line-height: 62px;
+}
+
+a:hover, a:focus, a:visited, a:active {
+    text-decoration: none;
+}
+.black-btn {
+    position: relative;
+    background: #222;
+    color: #fff !important;
+    text-align: center;
+    border: 1px solid #222;
+}
+
+

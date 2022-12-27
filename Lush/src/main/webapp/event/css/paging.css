@@ -1,0 +1,68 @@
+.paginate {
+    display: block;
+    position: relative;
+    margin: 100px auto;
+}
+
+.paginate ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+}
+
+.paginate ul li {
+    display: block;
+    padding: 0 8px;
+}
+
+.paginate ul li a.num.on {
+    border-bottom: 1px solid #535353;
+    pointer-events: none;
+    cursor: default;
+}
+
+.list-thumb li.end .article-thumb .mask {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(34,34,34,.7);
+    z-index: 2;
+}
+
+.list-thumb li .article-thumb .mask {
+    display: none;
+}
+
+.list-thumb li.end .article-thumb .mask::after {
+    content: '종료';
+    display: block;
+    position: absolute;
+    width: 100%;
+    opacity: 1;
+    color: #fff;
+    text-align: center;
+    font-size: 22px;
+    top: 50%;
+    margin-top: -17px;
+    font-weight: 500;
+}
+
+.paginate ul li a.num {
+    font-size: 14px;
+    line-height: 19px;
+    border-bottom: 1px solid #fff;
+    text-decoration: none;
+}
+
+.paginate ul li a {
+    display: block;
+    height: 20px;
+    text-align: center;
+    color: #222;
+    cursor: pointer;
+}
