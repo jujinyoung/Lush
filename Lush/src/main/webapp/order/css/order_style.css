@@ -648,7 +648,7 @@ input, textarea, select {
     border: 1px solid #18a957;
 }
 
-button, input[type="button"], input[type="submit"], input[type="reset"], input[type="file"] {
+/* button, input[type="button"], input[type="submit"], input[type="reset"], input[type="file"] {
     -webkit-appearance: button;
     border-radius: 0;
     outline: none;
@@ -656,7 +656,7 @@ button, input[type="button"], input[type="submit"], input[type="reset"], input[t
     border: none;
     background: none;
     font-size: 1em;
-}
+} */
 
 b, strong {
     font-weight: 700;

@@ -3,9 +3,6 @@ package order.dao;
 import com.util.JdbcUtil;
 
 import order.domain.ProductOrder;
-import order.domain.ProductOrderDetails;
-import order.domain.ProductPay;
-import order.exception.EmptyException;
 
 import java.sql.*;
 
@@ -43,16 +40,13 @@ public class ProductOrderDaoImpl implements ProductOrderDao{
         return num;
     }
     
-    @Override
-    public int addOrder(Connection con, ProductOrder productorder, ProductOrderDetails productorderdetails, ProductPay productpay ) throws SQLException {
+	@Override
+	public int addOrder(Connection con, ProductOrder productorder) throws SQLException {
 
         PreparedStatement pstmt = null;
         String ordersql = "INSERT INTO ltb_prdct_order VALUES (  ?,?,default,?,?,?,?,?,?,?,?,? ) ";
-        String orderdetailssql = "INSERT INTO ltb_mbr_prdct_ordr_details VALUES (  seq_ltb_prdct_orderdetails.NEXTVAL,?,?,? ) ";
-        String paysql = "INSERT INTO ltb_mpay VALUES (  seq_ltb_mpay.NEXTVAL,?,?,default,null,null,?,?,? ) ";
         int rowCount = 0;
-        int rowCount2 = 0;
-        int rowCount3 = 0;
+
         
         try {
         	pstmt = con.prepareStatement(ordersql);
@@ -69,42 +63,13 @@ public class ProductOrderDaoImpl implements ProductOrderDao{
             pstmt.setLong(11, productorder.getOsid());
 
             rowCount = pstmt.executeUpdate(); 
-            
-            if(rowCount == 0) {
-            	System.out.println("1");
-            }
-            
-            pstmt = con.prepareStatement(orderdetailssql);
-        	pstmt.setLong(1, productorderdetails.getAmount());
-        	pstmt.setLong(2, productorderdetails.getPsid());
-        	pstmt.setLong(3, productorderdetails.getPoid());
 
-            rowCount2 = pstmt.executeUpdate(); 
-            if(rowCount2 == 0) {
-            	System.out.println("2");
-            }
-            
-            pstmt = con.prepareStatement(paysql);
-        	pstmt.setLong(1, productpay.getPoid());
-        	pstmt.setLong(2, productpay.getAmount());
-        	pstmt.setLong(3, productpay.getPsid());
-        	pstmt.setLong(4, productpay.getMid());
-        	pstmt.setLong(5, productpay.getPtid());
-
-
-            rowCount3 = pstmt.executeUpdate(); 
-            if(rowCount3 == 0) {
-            	System.out.println("3");
-            }
-            System.out.println(rowCount);
-            System.out.println(rowCount2);
-            System.out.println(rowCount3);
             
         }finally {
             JdbcUtil.close(pstmt);
         }
 
-        return rowCount3;
+        return rowCount;
     }
     
 
