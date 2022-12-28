@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%
-    int eventStatus = request.getParameter("eventStatus")==null ? 1 :Integer.parseInt(request.getParameter("eventStatus"));
+    int categoryLink = request.getParameter("categoryLink")==null ? 1 :Integer.parseInt(request.getParameter("categoryLink"));
     int searchCondition = request.getParameter("searchCondition")==null ? 1 :Integer.parseInt(request.getParameter("searchCondition"));
     String searchWord = request.getParameter("searchWord")==null ? "" : request.getParameter("searchWord");
 %>
@@ -604,7 +604,6 @@ ol, ul, dl {
 </style>
 
 <%
-    int categoryLink = request.getParameter("categoryLink")==null ? 1 :Integer.parseInt(request.getParameter("categoryLink"));
     int contentPage = request.getParameter("currentPage")==null ? 1 :Integer.parseInt(request.getParameter("currentPage"));
 %>
 
