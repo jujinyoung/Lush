@@ -1,19 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<link rel="stylesheet" href="mypageMain.css" type="text/css">
-
+<link rel="stylesheet" href="css/mypageMain.css" type="text/css">
+<%
+      request.setCharacterEncoding("UTF-8");
+      String contextPath = request.getContextPath();
+      session.setAttribute("auth", "test1" );
+%>
 
 
 <!-- 마이페이지 좌측 메뉴 -->
 <article class="my-menu">
 	<h2>
-		<a href="/mypage/index" class="on">마이페이지</a>
+		<a href="<%= contextPath %>/mypage/mypage.do" class="on">마이페이지</a>
 	</h2>
 
 	<div class="menu-box">
 		<p class="body2">쇼핑정보</p>
 		<ul>
-			<li><a href="/mypage/order/1">주문/배송 조회</a></li>
+			<li><a href="<%= contextPath %>/mypage/mypageorder.do">주문/배송 조회</a></li>
 		</ul>
 	</div>
 

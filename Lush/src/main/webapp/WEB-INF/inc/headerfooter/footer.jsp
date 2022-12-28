@@ -103,20 +103,19 @@
 	<div class="quick-menu">
 		<ul>
 			<!-- 20220725 러쉬타임즈 메뉴 추가 -->
-			<li><a href="/service/lushtimes_2022_winter" class="quick-times"
+			<li><a href="https://www.lush.co.kr/service/lushtimes_2022_winter" class="quick-times"
 				target="_blank">러쉬 타임즈</a></li>
 			<!-- 20220725 러쉬타임즈 메뉴 추가 // -->
 			<li><a
 				href="javascript:window.open('/common/kakao-chat', 'kakao-chat', 'width=1024, height=800');"
 				class="quick-kakao">카카오플러스</a></li>
 			<li>
-				<button type="button" class="quick-top">상단으로 이동</button>
+				<button type="button" class="quick-top"  onclick="$('html').animate({scrollTop : 0}, 1000)">상단으로 이동</button>
 			</li>
 		</ul>
 	</div>
 	<!-- 220520 네이버페이 스크립트 추가 -->
 	<script type="text/javascript">
-		wcs_do();
 	</script>
 	<!-- 220520 네이버페이 스크립트 추가 // -->
 	<script type="text/javascript">

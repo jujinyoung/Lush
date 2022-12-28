@@ -10,11 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class MypageHandler implements CommandHandler {
+public class MypageOrderHandler implements CommandHandler {
 
     @Override
     public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
-    	System.out.println("MypageHandler.process");
+    	System.out.println("MypageOrderHandler.process");
     	HttpSession session =  request.getSession(  false );
     	
     	if( session == null) {
@@ -23,17 +23,17 @@ public class MypageHandler implements CommandHandler {
     	}else {
         	String requestMethod = request.getMethod();  
     		if(requestMethod.equals("GET")) { 
-				MypageService mypageservice = MypageService.getInstance();
-		        
-		        
-		    	String sid = (String)session.getAttribute("auth");
-		    	Member member = mypageservice.selectMember(sid);
-		    	JinhangSum jinhangsum = mypageservice.selectJinhangSum(member.getMid());
+//				MypageService mypageservice = MypageService.getInstance();
+//		        
+//		        
+//		    	String sid = (String)session.getAttribute("auth");
+//		    	Member member = mypageservice.selectMember(sid);
+//		    	JinhangSum jinhangsum = mypageservice.selectJinhangSum(member.getMid());
+//
+//		        request.setAttribute("member", member);
+//		        request.setAttribute("jinhangsum", jinhangsum);  
 
-		        request.setAttribute("member", member);
-		        request.setAttribute("jinhangsum", jinhangsum);  
-
-		        return "/mypage/mypageMain.jsp";
+		        return "/mypage/mypageOrder.jsp";
 
     		}else if(requestMethod.equals("POST")) {
     			return null;

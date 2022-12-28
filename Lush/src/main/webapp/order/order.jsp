@@ -404,9 +404,17 @@ $("#mobile").val($('input[name="mobile"]')); */
             	$("#myForm input[name=phone]").val("");
             	$("#myForm input[name=mobile]").val("");
             	$("#myForm input[name=address]").val("");
+            	
             },
+            cache:false ,
             error:function (){
                 alert("에러! ");
+                $("#myForm").attr('class', 'dimmed');
+            	$("#myForm input[name=title]").val("");
+            	$("#myForm input[name=userName]").val("");
+            	$("#myForm input[name=phone]").val("");
+            	$("#myForm input[name=mobile]").val("");
+            	$("#myForm input[name=address]").val("");
             }
         });
     });
@@ -427,13 +435,12 @@ $("#mobile").val($('input[name="mobile"]')); */
 		}
 	})
 
-
     function payment() {
         // IMP.request_pay(param, callback) 결제창 호출
         IMP.request_pay({ // param
             pg: "kakaopay.TC0ONETIME",
             pay_method: "card",
-            merchant_uid: $('#ordernum').val(),
+            merchant_uid: 'b' + $('#ordernum').val(),
             name: $("#pname").val() + " 등 " + $('#amount').val() +  "개",
             amount: $("#totalprice1").val(),
             buyer_name: $("membername").val(),

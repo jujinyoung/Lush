@@ -20,11 +20,11 @@ String contextPath = request.getContextPath();
 <script type="text/javascript"
 	src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 <link rel="icon" type="image/png" sizes="192x192"
-	href="../images/ico/fabicon.png">
+	href="/Lush/images/ico/fabicon.png">
 
 </head>
 <body>
-	<header></header>
+	<jsp:include page="/WEB-INF/inc/headerfooter/header.jsp"></jsp:include>
 
 	<section id="order-complete" class="complete-page"
 		style="padding-top: 128px;">
@@ -47,6 +47,7 @@ String contextPath = request.getContextPath();
 		</div>
 
 	</section>
+	<jsp:include page="/WEB-INF/inc/headerfooter/footer.jsp"></jsp:include>
 
 
 </body>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -64,42 +65,42 @@
 					<ul class="flex">
 						<li>
 							<p>입금대기</p> <span id="waiting-deposit-count"><a
-								href="javascript:;"
-								onclick="searchOrder('waiting-deposit', this);">0</a></span>
+								href='javascript:void(0);'
+								onclick="searchOrder('waiting-deposit', this);">${jinhangsum.one}</a></span>
 						</li>
 						<li>
 							<p>결제완료</p> <span id="new-order-count"><a
-								href="javascript:;" onclick="searchOrder('new-order', this)">0</a></span>
+								href='javascript:void(0);' onclick="searchOrder('new-order', this)">${jinhangsum.two}</a></span>
 						</li>
 						<li>
 							<p>배송준비중</p> <span id="shipping-ready-count"><a
-								href="javascript:;"
-								onclick="searchOrder('shipping-ready', this)">0</a></span>
+								href='javascript:void(0);'
+								onclick="searchOrder('shipping-ready', this)">${jinhangsum.three}</a></span>
 						</li>
 						<li>
 							<p>배송중</p> <!-- 0720 KMJ 배송중 내 교환배송중 포함 위에 변경 --> <span
-							id="shipping-count"><a href="javascript:;"
-								onclick="searchOrder('shipping-mypage', this);">0</a></span>
+							id="shipping-count"><a href='javascript:void(0);'
+								onclick="searchOrder('shipping-mypage', this);">${jinhangsum.four}</a></span>
 						</li>
 						<li>
 							<p>배송완료</p> <span id="confirm-shipping-count"><a
-								href="javascript:;" onclick="searchOrder('35', this);">0</a></span>
+								href='javascript:void(0);' onclick="searchOrder('35', this);">${jinhangsum.five}</a></span>
 						</li>
 						<li>
 							<p>구매확정</p> <span id="confirm-count"><a
-								href="javascript:;" onclick="searchOrder('confirm', this)">0</a></span>
+								href='javascript:void(0);' onclick="searchOrder('confirm', this)">${jinhangsum.six}</a></span>
 						</li>
 						<li>
 							<ul>
 								<li><span>취소</span> <span id="cancel-process-count"><a
-										href="javascript:;"
-										onclick="searchOrder('cancel-process', this);" class="on">1</a></span></li>
+										href='javascript:void(0);'
+										onclick="searchOrder('cancel-process', this);" class="on">${jinhangsum.seven}</a></span></li>
 								<li><span>교환</span> <span id="exchange-process-count"><a
-										href="javascript:;"
-										onclick="searchOrder('exchange-process', this);">0</a></span></li>
+										href='javascript:void(0);'
+										onclick="searchOrder('exchange-process', this);">${jinhangsum.eight}</a></span></li>
 								<li><span>반품</span> <span id="return-process-count"><a
-										href="javascript:;"
-										onclick="searchOrder('return-process', this);">0</a></span></li>
+										href='javascript:void(0);'
+										onclick="searchOrder('return-process', this);">${jinhangsum.nine}</a></span></li>
 							</ul>
 						</li>
 					</ul>

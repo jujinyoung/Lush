@@ -18,7 +18,7 @@ public class ProductPayDaoImpl implements ProductPayDao{
     public int addPay(Connection con, ProductPay productpay ) throws SQLException {
 
         PreparedStatement pstmt = null;
-        String paysql = "INSERT INTO ltb_mpay VALUES (  seq_ltb_mpay.NEXTVAL,?,?,default,null,null,?,?,? ) ";
+        String paysql = "INSERT INTO ltb_mpay VALUES (  seq_ltb_mpay.NEXTVAL,?,?,default,null,null,?,?,?,? ) ";
         int rowCount = 0;
         
         try {            
@@ -28,6 +28,7 @@ public class ProductPayDaoImpl implements ProductPayDao{
         	pstmt.setLong(3, productpay.getPsid());
         	pstmt.setLong(4, productpay.getMid());
         	pstmt.setLong(5, productpay.getPtid());
+        	pstmt.setString(6, productpay.getPsname());
 
 
             rowCount = pstmt.executeUpdate(); 
