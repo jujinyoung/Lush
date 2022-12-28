@@ -15,6 +15,7 @@ public class DispatcherServlet extends HttpServlet {
 
     @Override
     public void destroy() {System.out.println("DispatcherServlet.destroy");}
+    
 
     private Map<String, CommandHandler> commandHandlerMap = new HashMap<>();
 
@@ -61,7 +62,7 @@ public class DispatcherServlet extends HttpServlet {
         String viewPage = null;
         try {
             viewPage = handler.process(request, response);
-            System.out.println("viewPage = " + viewPage);
+//            System.out.println("viewPage = " + viewPage);
         } catch (Exception e) {
             e.printStackTrace();
         }

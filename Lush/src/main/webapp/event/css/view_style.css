@@ -209,6 +209,7 @@ img {
     color: #535353;
 }
 
+
 .dimmed {
     position: fixed;
     display: none;
@@ -523,6 +524,178 @@ input[type="text"] {
     line-height: 46px;
 }
 
+.reply .review-top .writer {
+    margin-left: 0;
+}
+
+.review-top .writer img {
+    width: auto;
+    max-height: 40px;
+}
+
+.reply .review-top .writer .ducczi-cnt {
+    color: #757575;
+    display: inline-block;
+    padding: 2px 3px 3px 3px;
+    border-radius: 40px;
+    border: 1px solid #bdbdbd;
+    margin: 0 4px 0 2px;
+    font-size: 10px;
+}
+
+.review-top .writer span {
+    color: #535353;
+    font-size: 14px;
+    line-height: 1em;
+}
+
+.review-top .date {
+    margin-left: auto;
+    font-size: 14px;
+    line-height: 22px;
+    color: #535353;
+    letter-spacing: -0.45px;
+}
+
+.flex.top {
+    align-items: flex-start;
+}
+
+.review-wrap ul li.on {
+    border-top: 1px solid #bdbdbd;
+    border-bottom: 1px solid #bdbdbd;
+    margin-bottom: 1px;
+}
+
+.review-contents {
+    position: relative;
+    width: 855px;
+}
+
+.review-contents .no-cut {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin-top: 4px;
+    color: #535353;
+    font-weight: 500;
+    border-bottom: 1px solid #535353;
+    line-height: 17px;
+}
+
+.review-side {
+    display: block;
+    position: relative;
+    width: 80px;
+    margin-top: -6px;
+}
+
+.review-thumbnail {
+    display: block;
+    width: 80px;
+    height: 80px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.review-thumbnail img {
+    display: block;
+    min-width: 100%;
+    min-height: 100%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    height: 100%;
+}
+
+.review-thumbnail span {
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: 0px;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    background: rgba(34,34,34,.8);
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
+}
+
+.review-side .minimum-btn {
+    display: none;
+    width: 38px;
+    height: 24px;
+    margin: 10px 0 0 30px;
+}
+
+.review-contents img {
+    margin-top: 16px;
+    display: block;
+    width: auto;
+    max-width: 288px;
+    height: auto;
+}
+
+.review-contents.cut > p {
+    display: inline-block;
+    width: 800px;
+    max-height: 26px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.review-contents > p {
+    display: block;
+    position: relative;
+    max-width: 860px;
+    color: #535353;
+    word-break: break-all;
+}
+
+.reply .review-top .writer .ducczi-cnt {
+    color: #757575;
+    display: inline-block;
+    padding: 2px 3px 3px 3px;
+    border-radius: 40px;
+    border: 1px solid #bdbdbd;
+    margin: 0 4px 0 2px;
+    font-size: 10px;
+}
+
+.review-contents.cut img {
+    display: none;
+}
+
+.review-wrap .subject {
+    display: table-cell;
+    padding-right: 24px;
+    background: url(../../images/ico/ico_lock.svg) no-repeat center right;
+    background-size: 16px auto;
+    max-width: 860px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.5px;
+    margin: 0;
+    color: #535353;
+}
+
+.review-btn button {
+    color: #535353;
+    margin-right: 8px;
+    text-decoration: underline;
+}
+
+.review-btn {
+    display: block;
+    margin: 16px auto 0 auto;
+    color: #535353;
+}
 
 
 /*로그인 처리 후 버튼*/

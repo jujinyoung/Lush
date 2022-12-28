@@ -1,0 +1,460 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans+KR:wght@500&display=swap');
+
+section {
+    min-height: calc(100vh - 96px - 320px);
+}
+* {
+    box-sizing: border-box !important;
+}
+* {
+    -webkit-text-size-adjust: none;
+    text-shadow: none !important;
+}
+
+section {
+    display: block;
+}
+
+.page-top {
+    display: block;
+    margin: 48px auto 56px auto;
+}
+
+.page-top .page-title {
+    font-size: 56px;
+    line-height: 56px;
+    letter-spacing: -1.57px;
+    text-align: center;
+}
+
+h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+.inner {
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    width: 1224px;
+}
+
+.join-step {
+    display: block;
+    text-align: center;
+    margin: -20px auto 56px auto;
+}
+
+.flex.center {
+    justify-content: center;
+}
+.flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+ol, ul, dl {
+    list-style: none;
+}
+
+.join-step ul li:not(:last-of-type) {
+    margin-right: 88px;
+}
+.join-step ul li {
+    display: inline-block;
+    position: relative;
+    color: #949494;
+    font-size: 18px;
+    letter-spacing: -0.5px;
+}
+li {
+    list-style: none;
+}
+
+.join-step ul li:not(:last-of-type) {
+    margin-right: 88px;
+}
+.join-step ul li.on {
+    color: #222;
+}
+.join-step ul li {
+    display: inline-block;
+    position: relative;
+    color: #949494;
+    font-size: 18px;
+    letter-spacing: -0.5px;
+}
+li {
+    list-style: none;
+}
+
+.join-step ul li.on::after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    right: -44px;
+    top: 8px;
+    width: 8px;
+    height: 13px;
+    background: url(../../images/ico/arrow_next.svg) no-repeat center center;
+}
+
+.basic-info {
+    width: 840px;
+    margin: 0 auto;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.basic-info h3 {
+    font-size: 32px;
+    line-height: 46px;
+    letter-spacing: -0.8px;
+}
+
+.basic-info h3 + p {
+    display: inline-block;
+    position: relative;
+    color: #757575;
+    padding-left: 12px;
+}
+.body1 {
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.basic-info h3 + p span {
+    color: #c81b1b;
+    font-size: 22px;
+    font-weight: 500;
+    position: absolute;
+    left: 0;
+    top: 5px;
+}
+
+.basic-info .no-border-table {
+    margin-top: 25px;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    table-layout: fixed;
+}
+
+article + .btn-wrap {
+    margin-top: 64px;
+}
+.btn-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#fakeEmail{
+    width: 425px;
+    margin-right: 10px;
+
+}
+
+colgroup {
+    display: table-column-group;
+}
+
+col {
+    display: table-column;
+}
+
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+table.no-border-table tr th {
+    position: relative;
+    padding: 20px 0px 0px 26px;
+    color: #757575;
+    text-align: left;
+    letter-spacing: -0.45px;
+    vertical-align: top;
+}
+
+table.no-border-table tr th .req {
+    display: inline-block;
+    position: absolute;
+    left: 11px;
+    top: 25px;
+    font-size: 22px;
+    color: #c81b1b;
+    font-weight: 500;
+    line-height: 22px;
+}
+
+table.no-border-table tr td {
+    position: relative;
+    padding: 8px 0;
+    width: 100%;
+}
+
+table.no-border-table tr td .id-check {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+table.no-border-table tr td .id-check input[type="text"] {
+    width: calc(100% - 148px);
+}
+
+input[type="text"] {
+    background: #fff;
+    color: #222;
+    font-size: 1em;
+    padding: 0 10px;
+    border: 1px solid #949494;
+    height: 48px;
+    line-height: 46px;
+}
+input[type="text"], input[type="password"] {
+    -webkit-appearance: none;
+}
+input {
+    -webkit-border-radius: 0;
+}
+input {
+    vertical-align: middle;
+}
+input, textarea, select {
+    letter-spacing: normal;
+}
+
+table.no-border-table tr td button {
+    width: 138px;
+    height: 48px;
+    line-height: 46px;
+    margin-bottom: 0;
+}
+.border-btn {
+    position: relative;
+    border: 1px solid #222;
+    background: #fff;
+    color: #222;
+    text-align: center;
+}
+
+
+.btn-wrap.large button, .btn-wrap.large a {
+    width: 232px;
+    height: 64px;
+    line-height: 62px;
+}
+.black-btn {
+    position: relative;
+    background: #222;
+    color: #fff !important;
+    text-align: center;
+    border: 1px solid #222;
+}
+
+.btn-wrap.large button, .btn-wrap.large a {
+    width: 232px;
+    height: 64px;
+    line-height: 62px;
+}
+button, input[type="button"], input[type="submit"], input[type="reset"], input[type="file"] {
+    -webkit-appearance: button;
+    border-radius: 0;
+    outline: none;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-size: 1em;
+}
+
+table.no-border-table tr td input {
+    width: 100%;
+}
+input[type="password"] {
+    background: #fff;
+    color: #222;
+    font-size: 1em;
+    padding: 0 10px;
+    border: 1px solid #949494;
+    height: 48px;
+    line-height: 48px;
+}
+
+input[type="text"], input[type="password"] {
+    -webkit-appearance: none;
+}
+/*  이름 read - only */
+input[type="text"]:read-only {
+    cursor: default;
+    background: #eee;
+}
+
+table.no-border-table tr.basic-info-mail td input {
+    width: 371px;
+}
+table.no-border-table tr.basic-info-mail td * {
+    float: left;
+}
+
+table.no-border-table tr.basic-info-mail td .select-box {
+    width: 165px;
+    margin: 0 10px;
+}
+table.no-border-table tr.basic-info-mail td * {
+    float: left;
+}
+.select-box {
+    display: inline-block;
+    position: relative;
+    height: 48px;
+    border: 1px solid #949494;
+}
+
+
+.select-box .selected-value {
+    display: block;
+    line-height: 46px;
+    background: #fff url(../images/ico/select_off.svg) no-repeat center right 15px;
+    padding: 0 34px 0 16px;
+    height: 100%;
+    width: 100%;
+}
+a {
+    text-decoration: none;
+    color: #222;
+}
+
+.select-box .option-box {
+    display: none;
+    position: absolute;
+    top: 46px;
+    left: -1px;
+    width: calc(100% + 2px);
+    height: auto;
+    max-height: 250px;
+    overflow-y: auto;
+    border: 1px solid #949494;
+    background: #fff;
+    z-index: 10;
+    padding: 4px 0;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.select-box .option-box li {
+    color: #535353;
+    font-size: 16px;
+    padding: 12px 34px 12px 16px;
+    cursor: pointer;
+}
+li {
+    list-style: none;
+}
+
+table.no-border-table tr.basic-info-mail td * {
+    float: left;
+}
+table.no-border-table tr td button {
+    width: 138px;
+    height: 48px;
+    line-height: 46px;
+    margin-bottom: 0;
+}
+.border-btn {
+    position: relative;
+    border: 1px solid #222;
+    background: #fff;
+    color: #222;
+    text-align: center;
+}
+
+table.no-border-table tr.basic-info-mail td .auth-wrap {
+    display: block;
+    position: relative;
+    width: 100%;
+    margin-top: 12px;
+}
+table.no-border-table tr.basic-info-mail td * {
+    float: left;
+}
+
+table.no-border-table tr.basic-info-mail td .auth-wrap label {
+    display: inline-block;
+    line-height: 48px;
+    color: #757575;
+    width: 121px;
+    text-align: left;
+}
+table.no-border-table tr.basic-info-mail td * {
+    float: left;
+}
+
+table.no-border-table tr.basic-info-mail td .auth-wrap input {
+    width: 425px;
+    margin-right: 10px;
+}
+input[type="checkbox"] {
+    display: none;
+    position: absolute;
+    opacity: 0;
+    /* width: 1px; */
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: none;
+}
+
+input[type="checkbox"] + label {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: url(../images/ico/checkbox_off.svg) no-repeat center left;
+    padding-left: 36px;
+    color: #535353;
+    min-width: 20px;
+    min-height: 20px;
+    background-size: 20px 20px;
+}
+
+table.no-border-table tr.basic-info-address td input:first-of-type {
+    width: 184px;
+}
+table.no-border-table tr.basic-info-address td input {
+    margin-bottom: 8px;
+}
+
+/* 주소 창 */
+input[type="text"]:read-only {
+    cursor: default;
+    background: #eee;
+}
+
+table.no-border-table tr.basic-info-address td button {
+    position: absolute;
+    left: 194px;
+    top: 8px;
+}
+
+table.no-border-table tr.basic-info-address td input {
+    margin-bottom: 8px;
+}
+
+

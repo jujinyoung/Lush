@@ -111,28 +111,6 @@ table.list-table tr th {
     padding-bottom: 20px;
 }
 
-table.list-table tr td {
-    border-bottom: 1px solid #eee;
-    font-size: 16px;
-    line-height: 24px;
-    padding-top: 19px;
-    padding-bottom: 20px;
-    color: #757575;
-}
-
-table.list-table tr td {
-    border-bottom: 1px solid #eee;
-    font-size: 16px;
-    line-height: 24px;
-    padding-top: 19px;
-    padding-bottom: 20px;
-    color: #757575;
-}
-
-table.list-table tr td a {
-    color: #222;
-}
-
 .ico-hot {
     display: inline-block;
     position: absolute;
@@ -141,7 +119,7 @@ table.list-table tr td a {
     text-indent: -9999px;
     width: 22px;
     height: 10px;
-    background: url(../images/ico/ico_hot.png) no-repeat center right 1px;
+    background: url(../../images/ico/ico_hot.png) no-repeat center right 1px;
 }
 
 .ico-new + .ico-hot, .ico-hot + .ico-new {
@@ -159,6 +137,21 @@ table.list-table tr td {
 
 table .center {
     text-align: center !important;
+}
+
+table.list-table tr td a {
+    color: #222;
+}
+
+.ico-new {
+    display: inline-block;
+    position: absolute;
+    margin-left: 8px;
+    margin-top: 3px;
+    text-indent: -9999px;
+    width: 22px;
+    height: 10px;
+    background: url(../../images/ico/ico_new.svg) no-repeat center right 1px;
 }
 
 

@@ -1,0 +1,452 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+
+html {
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+body, form, div, p, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, ol, li, fieldset, th, td, input, textarea, button, select {
+    margin: 0;
+    padding: 0;
+    font-family: "Noto Sans KR",dotum,'돋움';
+    color: #222;
+}
+
+body {
+    font-size: 16px;
+    font-family: 'Noto Sans KR';
+    color: #222;
+    font-weight: 400;
+}
+
+a {
+    text-decoration: none;
+    color: #222;
+}
+
+.inner {
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    width: 1224px;
+}
+
+.inner.wide {
+    width: 1432px;
+}
+
+fieldset, img {
+    border: 0;
+}
+
+img {
+    border: 0;
+    vertical-align: middle;
+}
+
+input, textarea, select {
+    letter-spacing: normal;
+}
+
+input {
+    vertical-align: middle;
+}
+
+input {
+    -webkit-border-radius: 0;
+}
+
+input[type="text"], input[type="password"] {
+    -webkit-appearance: none;
+}
+
+input[type="text"] {
+    background: #fff;
+    color: #222;
+    font-size: 1em;
+    padding: 0 10px;
+    border: 1px solid #949494;
+    height: 48px;
+    line-height: 46px;
+}
+
+button, input[type="button"], input[type="submit"], input[type="reset"], input[type="file"] {
+    -webkit-appearance: button;
+    border-radius: 0;
+    outline: none;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-size: 1em;
+}
+
+* {
+    -webkit-text-size-adjust: none;
+    text-shadow: none !important;
+}
+
+* {
+    box-sizing: border-box !important;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flex.left {
+    justify-content: flex-start;
+}
+
+.flex.top {
+    align-items: flex-start;
+}
+
+li {
+    list-style: none;
+}
+
+ol, ul, dl {
+    list-style: none;
+}
+
+header {
+    position: fixed;
+    display: block;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background: #fff;
+    z-index: 13;
+}
+
+header .top-banner {
+    background: #222;
+    text-align: center;
+}
+
+header .top-banner a {
+    width: 100%;
+    padding: 0 16px;
+    display: inline-block;
+    color: #fff;
+    line-height: 30px;
+    font-size: 14px;
+    font-weight: 300;
+    min-height: 32px;
+}
+
+header .header-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1272px;
+    height: 96px;
+    margin: 0 auto;
+    padding: 0 24px;
+    border-bottom: 1px solid #eee;
+}
+
+header .header-wrap.no-bor {
+    border-bottom: 1px solid #fff;
+}
+
+header .header-wrap::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #eee;
+}
+
+header .header-wrap.no-bor::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #fff;
+}
+
+header .left-menu {
+    height: 100%;
+}
+
+header .left-menu .logo {
+    display: inline-block;
+}
+
+header .left-menu nav {
+    display: inline-block;
+    height: 100%;
+    margin-left: 70px;
+}
+
+header .left-menu nav > ul {
+    height: 100%;
+}
+
+header .left-menu nav > ul > li {
+    height: 100%;
+    margin-bottom: -1px;
+}
+
+header .left-menu nav > ul > li > a {
+    display: block;
+    height: 100%;
+    color: #222;
+    padding: 38px 24px 0;
+}
+
+header .all-menu {
+    position: absolute;
+    display: none;
+    left: 0;
+    top: 99%;
+    width: 100%;
+    background: #fff;
+    z-index: 10;
+    box-shadow: 0px 10px 14px rgb(0 0 0 / 10%);
+}
+
+header .all-menu > div {
+    border-top: none;
+    padding: 30px 0 24px 0;
+}
+
+header .all-menu ul li a.depth2 {
+    display: block;
+    color: #222;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+header .all-menu ul li a.depth2:hover, header .left-menu nav > ul > li > a:hover
+,	header .all-menu ul.depth3 li a:hover, header .small-menu ul li a:hover{
+	color: #18a957
+}
+
+header .all-menu ul.depth3 li a {
+    display: block;
+    color: #535353;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 6px 0;
+    letter-spacing: -0.34px;
+}
+
+header .all-menu.type2 .inner > ul {
+    justify-content: left;
+    padding-left: 42px;
+}
+
+header .all-menu.type2 .inner > ul > li {
+    width: 100px;
+    margin-right: 32px;
+}
+
+header .all-menu.type2 .inner > ul > li:first-of-type {
+    width: 120px;
+}
+
+header .right-menu {
+    display: block;
+    height: 100%;
+    margin-left: auto;
+}
+
+header .right-menu > ul {
+    display: block;
+    height: 100%;
+}
+
+header .right-menu > ul > li {
+    display: inline-block;
+    position: relative;
+    height: 100%;
+    padding-top: 36px;
+    margin-bottom: -1px;
+}
+
+header .right-menu ul li a {
+    position: relative;
+}
+
+header .right-menu ul li .short-live {
+    display: block;
+    width: 46px;
+}
+
+header .right-menu ul li .short-live img {
+    width: 100%;
+}
+
+header .right-menu > ul > li:nth-of-type(2) {
+    margin: 0 0 0 21px;
+}
+
+header .right-menu > ul > li:nth-of-type(3) {
+    margin: 0 21px;
+}
+
+header .right-menu .basket-cnt {
+    position: absolute;
+    right: -3px;
+    top: 3px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #18a957;
+    font-size: 10px;
+    line-height: 14px;
+    color: #fff;
+    text-align: center;
+    text-indent: -1px;
+}
+
+header .small-menu {
+    display: none;
+    position: absolute;
+    width: 160px;
+    top: 95px;
+    left: 0;
+    background: #fff;
+    z-index: 10;
+    box-shadow: 0px 10px 14px rgb(0 0 0 / 10%);
+    margin-left: -65px;
+}
+
+header .small-menu ul {
+    padding: 24px 0 24px 54px;
+    display: block;
+    width: 100%;
+    border-top: 1px solid #eee;
+}
+
+header .small-menu ul li {
+    display: block;
+}
+
+header .small-menu ul li a {
+    font-size: 14px;
+    line-height: 32px;
+}
+
+.search-container {
+    display: none;
+    position: absolute;
+    width: 100%;
+    z-index: 10;
+    background: #fff;
+    margin-top: -1px;
+}
+
+.search-container > div {
+    padding: 0 208px;
+}
+
+.search-container .search-box {
+    position: relative;
+    border-bottom: 1px solid #757575;
+    padding: 64px 0 16px 0;
+}
+
+.search-container .search-box input[type='text'] {
+    display: inline-block;
+    width: 850px;
+    height: 56px;
+    line-height: 56px;
+    border: none;
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.search-container .search-box button {
+    width: 56px;
+    height: 56px;
+    position: absolute;
+    right: 0;
+}
+
+.search-container .search-sub {
+    margin-top: 42px;
+    padding-bottom: 56px;
+}
+
+.search-container .search-sub .search-popular {
+    position: relative;
+    width: 540px;
+}
+
+.search-container .search-sub .search-popular h2 {
+    margin-bottom: 24px;
+    font-size: 24px;
+    line-height: 34px;
+}
+
+.search-container .search-sub .search-popular a {
+    display: inline-block;
+    position: relative;
+    padding: 6px 10px;
+    border-radius: 20px;
+    border: 1px solid #dcdcdc;
+    color: #535353;
+    letter-spacing: -0.45px;
+    margin-bottom: 24px;
+    margin-right: 24px;
+}
+
+.search-container .search-sub .search-popular span {
+    display: inline-block;
+    position: absolute;
+    bottom: 30px;
+    padding: 0px;
+    color: #535353;
+    letter-spacing: -0.45px;
+    line-height: 38px;
+    opacity: .3;
+}
+
+.search-container .search-sub .search-recently {
+    width: 392px;
+}
+
+.search-container .search-sub .search-recently h2 {
+    margin-bottom: 24px;
+    font-size: 24px;
+    line-height: 34px;
+}
+
+.search-container .search-recently-keyword, .search-container .search-keyword {
+    position: relative;
+    display: block;
+    max-height: 122px;
+    overflow: hidden;
+}
+
+.search-container .search-sub .search-recently a {
+    display: inline-block;
+    position: relative;
+    color: #535353;
+    letter-spacing: -0.45px;
+    margin-bottom: 24px;
+    margin-right: 20px;
+    padding: 6px 0;
+}
+
+.search-container .search-close-btn {
+    position: absolute;
+    right: 104px;
+    top: 77px;
+}
+
+
+
+
+
