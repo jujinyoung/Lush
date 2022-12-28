@@ -10,12 +10,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import command.CommandHandler;
+import member.dao.FindDAO;
+import member.dao.FindDAOImpl;
+import member.dao.LoginDAO;
+import member.dao.LoginDAOImpl;
 import member.domain.Member;
 import member.service.ChangePassService;
 
 public class ChangePassHandler implements CommandHandler{
 
 	ChangePassService chpass = new ChangePassService();
+	
 	
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -40,6 +45,7 @@ public class ChangePassHandler implements CommandHandler{
 		System.out.println("인증번호 >" + authcode);
 		System.out.println("유저번호 >" + usercode);
 		System.out.println("id >" + id);
+		
 		Map<String, Boolean> errors = new HashMap<>();
 		request.setAttribute("errors", errors);
 		
@@ -87,13 +93,15 @@ public class ChangePassHandler implements CommandHandler{
 		String id = request.getParameter("id");
 		
 		System.out.println("changepass.jsp로부터 id > " + id);
-		System.out.println("pass1 > " + id);
+		System.out.println("pass1 > " +	pass1);
+		System.out.println("pass2 > " + pass2);
+		
 		
 		System.out.println("비번 변경 핸들러");
 		Map<String, Boolean> errors = new HashMap<>();
 		request.setAttribute("errors", errors);
 		
-		if( pass1 != pass2) {
+		if( !pass1.equals(pass2) ) {
 			errors.put("passnotmatch", Boolean.TRUE);
 			return "ChangePass.jsp";	
 		}
@@ -113,12 +121,9 @@ public class ChangePassHandler implements CommandHandler{
 			System.out.println("try 안");
 			 chpass.updatepass(id, pass1, pass2);
 			 return "ChangePassSucc.jsp";
-					 
-			
-			
+
 			
 		}catch (Exception e) {
-			// TODO: handle exception
 		}
 		
 		return null;

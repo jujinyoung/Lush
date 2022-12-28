@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import command.CommandHandler;
-import member.dao.MemberDao;
 import member.service.GoogleMail;
 import member.service.IdCheckService;
 import net.sf.json.JSONObject;

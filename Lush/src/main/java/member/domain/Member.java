@@ -11,10 +11,7 @@ public class Member { // DTO / VO
 	private String me_nick;
 	private String me_loginid;
 	
-	
-	
-	
-	
+
 	public Member() {
 		
 	}
