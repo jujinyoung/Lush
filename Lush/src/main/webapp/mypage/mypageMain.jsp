@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<jsp:include page="header.jsp"></jsp:include>
+<jsp:include page="/header/header.jsp"></jsp:include>
 
 <section id="mypage" class="my-page" style="padding-top: 128px;">
 <div class="inner flex top">
