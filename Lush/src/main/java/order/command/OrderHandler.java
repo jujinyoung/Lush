@@ -48,14 +48,26 @@ public class OrderHandler implements CommandHandler {
 				long temppaypsid = 0;
 				long temppayptid = 0;
 				long temposid = 0;
+				
+				String temposname = "";
+				String temppsname = "";
 
 				if (payType.equals("kakaopay")) {
 					temposid = 2;
+					temposname = "결제완료";
+					
+					
 					temppaypsid = 2;
+					temppsname = "결제완료";
+					
 					temppayptid = 1;
 				} else if (payType.equals("send")) {
 					temposid = 1;
+					temposname = "입금대기";
+					
 					temppaypsid = 1;
+					temppsname = "입금전";
+					
 					temppayptid = 2;
 				}
 
@@ -71,9 +83,10 @@ public class OrderHandler implements CommandHandler {
 				String add = member.getAddress();
 				String fcheck = request.getParameter("giftbox");
 				long osid = temposid;
+				String osname = temposname;
 
 				ProductOrder productorder = new ProductOrder(poid, pomid, odate, total, oname, email, tel, msg, did,
-						add, fcheck, osid);
+						add, fcheck, osid, osname);
 
 				long podid = 0;
 				long podamount = amount;
@@ -91,9 +104,10 @@ public class OrderHandler implements CommandHandler {
 				long paypsid = temppaypsid;
 				long paymid = mid;
 				long payptid = temppayptid;
+				String psname = temppsname;
 
 				ProductPay productpay = new ProductPay(payid, payoid, payamount, paydate, payname, bank, paypsid,
-						paymid, payptid);
+						paymid, payptid, psname);
 
 				int orderCheck = 0;
 				orderCheck = orderService.addOrder(productorder, productorderdetails, productpay);

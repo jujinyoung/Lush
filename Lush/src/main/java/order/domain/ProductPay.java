@@ -11,9 +11,10 @@ public class ProductPay {
     private long psid;
     private long mid;
     private long ptid;
+    private String psname;
     
 
-    public ProductPay(long payid, long poid, long amount, String paydate, String payname, String bank, long psid, long mid, long ptid) {
+    public ProductPay(long payid, long poid, long amount, String paydate, String payname, String bank, long psid, long mid, long ptid, String psname) {
     	this.payid = payid;
     	this.poid = poid;
     	this.amount = amount;
@@ -23,6 +24,7 @@ public class ProductPay {
     	this.psid = psid;
     	this.mid = mid;
     	this.ptid = ptid;
+    	this.psname = psname;
     }
 
 
@@ -70,6 +72,8 @@ public class ProductPay {
 		return ptid;
 	}
     
-    
+	public String getPsname() {
+		return psname;
+	}
     
 }

@@ -404,9 +404,17 @@ $("#mobile").val($('input[name="mobile"]')); */
             	$("#myForm input[name=phone]").val("");
             	$("#myForm input[name=mobile]").val("");
             	$("#myForm input[name=address]").val("");
+            	
             },
+            cache:false ,
             error:function (){
                 alert("에러! ");
+                $("#myForm").attr('class', 'dimmed');
+            	$("#myForm input[name=title]").val("");
+            	$("#myForm input[name=userName]").val("");
+            	$("#myForm input[name=phone]").val("");
+            	$("#myForm input[name=mobile]").val("");
+            	$("#myForm input[name=address]").val("");
             }
         });
     });
@@ -417,23 +425,24 @@ $("#mobile").val($('input[name="mobile"]')); */
 		if($("input:checkbox[id='agree']").is(":checked") && ( $("#payType-kakaopay").is(':checked') || $("#payType-send").is(':checked') )){
 			if($("#payType-kakaopay").is(':checked')){
 				evt.preventDefault();
+				//재고 체크 (장바구니 클릭할때도 재고체크) -> ajax
+				//수량 빼기
 				IMP.init ("imp23237584");
 				payment(); //버튼 클릭하면 호출
 			}
 		}
 		else{
-			alert("필수 버튼 체크!");
+			alert("필수 버튼 체크!"); 
 			evt.preventDefault();
 		}
 	})
-
 
     function payment() {
         // IMP.request_pay(param, callback) 결제창 호출
         IMP.request_pay({ // param
             pg: "kakaopay.TC0ONETIME",
             pay_method: "card",
-            merchant_uid: $('#ordernum').val(),
+            merchant_uid: 'b' + $('#ordernum').val(),
             name: $("#pname").val() + " 등 " + $('#amount').val() +  "개",
             amount: $("#totalprice1").val(),
             buyer_name: $("membername").val(),
@@ -446,6 +455,7 @@ $("#mobile").val($('input[name="mobile"]')); */
 
             } else {
             	alert("결제실패");
+            	//수량 올리기
 
             }
         });

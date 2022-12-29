@@ -1,6 +1,9 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="/Lush/css/header.css" type="text/css">
-
+<%
+      request.setCharacterEncoding("UTF-8");
+      String contextPath = request.getContextPath();
+%>
 <style>
 a:visited, a:hover, a:active, a:focus {
 	text-decoration: none;
@@ -283,7 +286,7 @@ a:visited, a:hover, a:active, a:focus {
 				<li><a href="/cart" class="basket"><img
 						src="/Lush/images/header/bag.svg" alt="장바구니"><span
 						class="basket-cnt" id="header_cart_quantity">0</span></a></li>
-				<li class="open-menu" id="atag3"><a href="/users/login"
+				<li class="open-menu" id="atag3"><a href="<%= contextPath %>/mypage/mypage.do"
 					class="member"> <img src="/Lush/images/header/account.svg"
 						alt="마이페이지">
 				</a>
