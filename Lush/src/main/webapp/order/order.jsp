@@ -425,12 +425,14 @@ $("#mobile").val($('input[name="mobile"]')); */
 		if($("input:checkbox[id='agree']").is(":checked") && ( $("#payType-kakaopay").is(':checked') || $("#payType-send").is(':checked') )){
 			if($("#payType-kakaopay").is(':checked')){
 				evt.preventDefault();
+				//재고 체크 (장바구니 클릭할때도 재고체크) -> ajax
+				//수량 빼기
 				IMP.init ("imp23237584");
 				payment(); //버튼 클릭하면 호출
 			}
 		}
 		else{
-			alert("필수 버튼 체크!");
+			alert("필수 버튼 체크!"); 
 			evt.preventDefault();
 		}
 	})
@@ -453,6 +455,7 @@ $("#mobile").val($('input[name="mobile"]')); */
 
             } else {
             	alert("결제실패");
+            	//수량 올리기
 
             }
         });

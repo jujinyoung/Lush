@@ -337,15 +337,15 @@ input {
 }
 
 footer .quick-menu ul li .quick-times {
-    background: #222 url(/Lush/images/ico/lushtimes.png) no-repeat center center;
+    background: #222 url(/Lush/images/ico/lushtimes1.png) no-repeat center center;
 }
 
 footer .quick-menu ul li .quick-top {
-    background: #222 url(/Lush/images/ico/lushup.svg) no-repeat center center;
+    background: #222 url(/Lush/images/ico/lushup1.svg) no-repeat center center;
 }
 
 footer .quick-menu ul li .quick-kakao {
-    background: #fae100 url(/Lush/images/ico/lush_kakao.svg) no-repeat top 15px center;
+    background: #fae100 url(/Lush/images/ico/lush_kakao1.svg) no-repeat top 15px center;
     background-size: 32px auto;
 }
 
