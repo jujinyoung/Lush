@@ -112,15 +112,16 @@
 					<p class="sub-page-title">
 						최근 주문내역 <span class="body2">최근 30일 내에 주문하신 내역입니다.</span>
 					</p>
+					<c:forEach var="map" items="${maps}"> 
+
 					<div class="table-wrap">
 
 						<div class="table-top">
 							<p class="sub-page-title">일반배송</p>
 							<p>
 								<span>주문일 : 2022-12-20</span> / <span>주문번호 : <a
-									href="/mypage/order-detail/0/K1000079212">K1000079212</a></span>
+									href="/mypage/order-detail/0/K1000079212">KFBGKD-${map.key}</a></span>
 							</p>
-							<a href="/mypage/order/1" class="link">상세보기</a>
 						</div>
 
 
@@ -143,21 +144,23 @@
 									<th>관리</th>
 								</tr>
 							</thead>
+							
 							<tbody>
+								<c:forEach var="pro" items="${map.value}"> 
 								<tr>
 									<td><img src="/Lush/images/ico/prdimg.png" alt="일반배송상품"></td>
 									<td>
-										<p class="name">사쿠라</p>
-										<p class="cate">보디 스프레이</p>
+										<p class="name">${pro.name}</p>
+										<p class="cate">${pro.cat3}</p>
 										<p class="cate"></p>
 									</td>
-									<td>￦ 70,000</td>
-									<td>1개</td>
-									<td class="complete">취소완료</td>
+									<td>￦ ${pro.price}</td>
+									<td>${pro.amount}개</td>
+									<td class="complete">${pro.os_name}</td>
 									<td>
 										<div class="btn-wrap xsmall right">
 											<a href="/mypage/order-detail/0/K1000079212/0"
-												class="border-btn">내역보기</a>
+												class="border-btn">취소하기</a>
 										</div>
 									</td>
 								</tr>
@@ -166,9 +169,11 @@
 										<div class="btn-wrap xsmall right"></div>
 									</td>
 								</tr>
+								</c:forEach>
 							</tbody>
 						</table>
 					</div>
+					</c:forEach>
 				</div>
 				<!-- 최근 주문 내역 //-->
 
@@ -200,6 +205,7 @@
 
 					</ul>
 				</div>
+				
 				<!-- 최근본 제품 //-->
 			</article>
 			<!-- 마이페이지 우측 컨텐츠 영역 //-->
