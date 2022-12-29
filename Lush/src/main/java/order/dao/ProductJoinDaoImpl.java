@@ -22,7 +22,7 @@ public class ProductJoinDaoImpl implements ProductJoinDao{
         String sql = " SELECT * " +
         			" FROM ltb_product,ltb_ps " +
         			" WHERE ltb_product.pd_id = ltb_ps.pd_id " +
-        			" AND ps_id = ? or ps_id = 2";
+        			" AND ps_id = ?";
         List<ProductJoin> list = null;
         
         try {

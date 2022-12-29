@@ -1,9 +1,6 @@
 package mypage.command;
 
 import command.CommandHandler;
-import mypage.service.MypageService;
-import mypage.domain.JinhangSum;
-import mypage.domain.Member;
 
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,15 +20,7 @@ public class MypageOrderHandler implements CommandHandler {
     	}else {
         	String requestMethod = request.getMethod();  
     		if(requestMethod.equals("GET")) { 
-//				MypageService mypageservice = MypageService.getInstance();
-//		        
-//		        
-//		    	String sid = (String)session.getAttribute("auth");
-//		    	Member member = mypageservice.selectMember(sid);
-//		    	JinhangSum jinhangsum = mypageservice.selectJinhangSum(member.getMid());
-//
-//		        request.setAttribute("member", member);
-//		        request.setAttribute("jinhangsum", jinhangsum);  
+
 
 		        return "/mypage/mypageOrder.jsp";
 

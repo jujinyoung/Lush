@@ -432,7 +432,6 @@ var tradeupdate = {
 	$("#payment-button").click(function(evt){
 		if($("input:checkbox[id='agree']").is(":checked") && ( $("#payType-kakaopay").is(':checked') || $("#payType-send").is(':checked') )){
 			if($("#payType-kakaopay").is(':checked')){
-				evt.preventDefault();				
             	// 재고 빼기
  				$.ajax({
             		url:"/Lush/order/ordercm.json",
@@ -445,7 +444,6 @@ var tradeupdate = {
             			if(jo.isAmountZero === "0"){
             				IMP.init ("imp23237584");
         					payment(); //버튼 클릭하면 호출
-        					alert("실행은 됨");
             			}
             			else{
             				alert("재고없음! ");
@@ -456,10 +454,50 @@ var tradeupdate = {
             		}
         		}); 
 			}
+			else{
+				// 무통장 입금 실행
+				$.ajax({
+	        		url:"/Lush/order/ordercm.json",
+	        		dataType:"json",
+	        		type:"POST",
+	        		data: ordercheck,
+	        		cache:false ,
+	        		success: function (data){
+	        			var jo = JSON.parse(JSON.stringify(data));
+	        			if(jo.isAmountZero === "0"){
+	        				alert("재고 감소 완료! ");
+	        			}
+	        			else{
+	        				alert("재고없음! ");
+	        			}
+	        		},
+	        		error:function (){
+	            		alert("ordercm 에러! ");
+	        		}
+	    		}); 
+				
+				//해당 제품 거래수 증가 
+	        	$.ajax({
+	        		url:"/Lush/order/ordert.json",
+	        		dataType:"json",
+	        		type:"POST",
+	        		data: tradeupdate,
+	        		cache:false ,
+	        		success: function (data){
+	        			alert("거래수 증가 ajax 성공! ");
+	        		},
+	        		error:function (){
+	            		alert("거래수 증가 ajax 실패! ");
+	        		}
+	    		}); 
+				
+	        	// submit으로 form 태그 원래대로 post
+	         	$("#real").trigger("click");
+			}
+			
 		}
 		else{
 			alert("필수 버튼 체크!"); 
-			evt.preventDefault();
 		}
 	})
 
@@ -468,7 +506,7 @@ var tradeupdate = {
         IMP.request_pay({ // param
             pg: "kakaopay.TC0ONETIME",
             pay_method: "card",
-            merchant_uid: 'b' + $('#ordernum').val(),
+            merchant_uid: 'c' + $('#ordernum').val(),
             name: $("#pname").val() + " 등 " + $('#amount').val() +  "개",
             amount: $("#totalprice1").val(),
             buyer_name: $("membername").val(),
@@ -492,6 +530,7 @@ var tradeupdate = {
             		}
         		}); 
             	
+            	// submit으로 form 태그 원래대로 post
              	$("#real").trigger("click");
 
             } else {
@@ -517,7 +556,8 @@ var tradeupdate = {
 </script>
 
 <script
-	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js">
+</script>
 <script>
 function findAddr(){
 	new daum.Postcode({
