@@ -8,5 +8,6 @@ import java.util.List;
 
 public interface ProductJoinDao {
 
-    public  List<ProductJoin> selectProductJoin(Connection con, Long pid, int amount2) throws SQLException;
+    public  List<ProductJoin> selectProductJoin(Connection con, Long pid, int amount) throws SQLException;
+    
 }

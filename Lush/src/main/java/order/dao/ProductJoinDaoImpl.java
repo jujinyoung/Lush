@@ -15,14 +15,14 @@ public class ProductJoinDaoImpl implements ProductJoinDao{
     private ProductJoinDaoImpl(){}
     public static ProductJoinDaoImpl getInstance(){return  instance;}
     @Override
-    public List<ProductJoin> selectProductJoin(Connection con, Long psid, int amount2 ) throws SQLException {
+    public List<ProductJoin> selectProductJoin(Connection con, Long psid, int amount ) throws SQLException {
 
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         String sql = " SELECT * " +
         			" FROM ltb_product,ltb_ps " +
         			" WHERE ltb_product.pd_id = ltb_ps.pd_id " +
-        			" AND ps_id = ? ";
+        			" AND ps_id = ? or ps_id = 2";
         List<ProductJoin> list = null;
         
         try {
@@ -34,8 +34,7 @@ public class ProductJoinDaoImpl implements ProductJoinDao{
             if (rs.next()){
             	list = new ArrayList<>();
                 do { list.add(new ProductJoin(rs.getLong("pd_id"), rs.getString("pd_name"), 
-                		rs.getString("pd_vegan"), rs.getString("pd_domestic"), rs.getString("pd_category1"), rs.getString("pd_category2"), rs.getString("pd_category3"), 
-                		rs.getString("pd_image"), rs.getLong("ps_id"), rs.getLong("ps_weight"), rs.getLong("ps_price"), rs.getLong("ps_amount"), amount2));
+                		rs.getString("pd_cate3"), rs.getLong("ps_id"), rs.getLong("ps_weight"), rs.getLong("ps_price"), amount));
                 }while (rs.next());
             }
 

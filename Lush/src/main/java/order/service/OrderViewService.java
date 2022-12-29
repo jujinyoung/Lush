@@ -115,15 +115,35 @@ public class OrderViewService {
 
 		return productsangse;
 	}
+	
+	public long selectProductSangseId(Long pid, int weight) {
+		Connection conn = null;
+		ProductSangseDao dao = ProductSangseDaoImpl.getInstance();
+		long psid = 0;
 
-	public List<ProductJoin> selectProductJoin(Long psid, int amount2) {
+		try {
+			conn = ConnectionProvider.getConnection();
+			psid = dao.selectProductSangseId(conn, pid, weight);
+			if (psid == 0) {
+				throw new EmptyException("제품상세 아이디가 없습니다.");
+			}
+		} catch (NamingException | SQLException e) {
+			e.printStackTrace();
+		} catch (EmptyException e) {
+			e.printStackTrace();
+		}
+
+		return psid;
+	}
+
+	public List<ProductJoin> selectProductJoin(Long psid, int amount) {
 		Connection conn = null;
 		ProductJoinDao dao = ProductJoinDaoImpl.getInstance();
 		List<ProductJoin> list = null;
 
 		try {
 			conn = ConnectionProvider.getConnection();
-			list = dao.selectProductJoin(conn, psid, amount2);
+			list = dao.selectProductJoin(conn, psid, amount);
 			if (list == null) {
 				throw new EmptyException("제품 조인이 없습니다.");
 			}
