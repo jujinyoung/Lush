@@ -59,7 +59,8 @@ String contextPath = request.getContextPath();
 
 								<c:forEach var="pro" items="${productlist}">
 									<tr>
-										<td class="cart-prd-img"><img src=${ pro.img }
+										<td class="cart-prd-img"><img
+											src="https://www.lush.co.kr/upload/item/15/20220929153226L.png"
 											alt="dummy 제품 이미지"> <input type="hidden" id="pname"
 											name="pname" value="${ pro.name }"></td>
 
@@ -76,11 +77,11 @@ String contextPath = request.getContextPath();
 										<td>
 											<div class="quantity-box">
 												<input type="text" class="quantity" id="quantity-0"
-													value="${ pro.amount2 }" readonly="">
+													value="${ pro.amount }" readonly="">
 											</div>
 										</td>
 										<td id="itemSalePrice-0">￦ ${ pro.price }</td>
-										<td id="itemSaleAmount-0"><p id="result">￦ ${ pro.price * pro.amount2 }</p></td>
+										<td id="itemSaleAmount-0"><p id="result">￦ ${ pro.price * pro.amount }</p></td>
 									</tr>
 								</c:forEach>
 							</tbody>
@@ -90,11 +91,11 @@ String contextPath = request.getContextPath();
 										<ul class="total-wrap flex">
 											<li><span>선택제품</span> <strong>${ totalamount }
 													개</strong></li>
-											<li><span>제품합계</span> <strong>${totalprice }</strong></li>
+											<li><span>제품합계</span> <strong>￦ ${totalprice }</strong></li>
 											<li class="d-charge"><span>배송비</span> <strong
 												class="op-total-delivery-charge-text">￦ ${ delprice }</strong></li>
 											<li><span>주문금액</span> <strong
-												class="op-order-pay-amount-text">${totalprice + delprice}</strong></li>
+												class="op-order-pay-amount-text">￦ ${totalprice + delprice}</strong></li>
 										</ul>
 									</td>
 								</tr>
@@ -109,8 +110,7 @@ String contextPath = request.getContextPath();
 								발급 덕찌 안내 <span>(덕찌는 구매확정 시 지급됩니다.)</span>
 							</h3>
 							<img src="/Lush/images/order/dukzzi.png" class="dukzzi-image"
-								alt="덕찌 이미지"> <span>12월 또담아찌</span><br>
-							<br>
+								alt="덕찌 이미지"> <span>12월 또담아찌</span><br> <br>
 						</div>
 						<div class="gift">
 							<h3>
@@ -214,11 +214,11 @@ String contextPath = request.getContextPath();
 						<h3>결제 정보</h3>
 
 						<ul class="total-wrap flex">
-							<li><span>합계</span> <strong>${totalprice }</strong></li>
+							<li><span>합계</span> <strong>￦ ${totalprice }</strong></li>
 							<li class="d-charge"><span>배송비</span> <strong
 								class="op-total-delivery-charge-text">￦ ${delprice}</strong></li>
 							<li class="total-price "><span>최종 결제 금액</span> <strong
-								class="op-order-pay-amount-text">${totalprice + delprice }</strong>
+								class="op-order-pay-amount-text">￦ ${totalprice + delprice }</strong>
 							</li>
 						</ul>
 
@@ -273,10 +273,11 @@ String contextPath = request.getContextPath();
 							id="amount" name="amount" value="${ amount }"> <input
 							type="hidden" id="ordernum" name="ordernum" value="${ ordernum }">
 						<input type="hidden" name="pid" value=${ pid }> <input
-							type="hidden" name="weight" value=${ weight }>
-						<button type="submit" id="payment-button" name=""
+							type="hidden" name="weight" value=${ weight }> <input
+							type="hidden" name="fromwhere" value=${ fromwhere }>
+						<button type="button" id="payment-button" name=""
 							class="green-btn">
-							<strong class="op-order-pay-amount-text"><strong>${totalprice + delprice }</strong>
+							<strong class="op-order-pay-amount-text"><strong>￦ ${totalprice + delprice }</strong>
 								<strong>결제하기</strong>
 						</button>
 						<button type="submit" id="real"></button>
@@ -349,18 +350,8 @@ String contextPath = request.getContextPath();
 			</div>
 			<button type="button" id="closeBtn" class="pop-close popup-close-btn"
 				name="">팝업닫기</button>
-			<div>
-				<input type="hidden" name="pid" value=${ pid }> <input
-					type="hidden" name="weight" value=${ weight }> <input
-					type="hidden" name="amount" value=${ amount }>
-			</div>
+			<div></div>
 		</div>
-
-
-
-		<!--   </form>
-</div> -->
-
 	</div>
 	<jsp:include page="/WEB-INF/inc/headerfooter/footer.jsp"></jsp:include>
 
@@ -376,7 +367,7 @@ $("#mobile").val($('input[name="mobile"]')); */
 
 	$("#userDeliveryAdd").click(function(){
         $.ajax({
-            url:"/Lush/order/order.json" ,
+            url:"/Lush/order/ordership.json" ,
             dataType:"json",
             type:"POST",
             data: {
@@ -406,7 +397,6 @@ $("#mobile").val($('input[name="mobile"]')); */
             	$("#myForm input[name=address]").val("");
             	
             },
-            cache:false ,
             error:function (){
                 alert("에러! ");
                 $("#myForm").attr('class', 'dimmed');
@@ -421,14 +411,50 @@ $("#mobile").val($('input[name="mobile"]')); */
 </script>
 
 <script>
+var psidArr = new Array();
+var pdidArr = new Array();
+
+<c:forEach var="pro" items="${productlist}">
+	psidArr.push(${ pro.psid })
+	psidArr.push(${ pro.amount })
+	pdidArr.push(${ pro.pid })
+	pdidArr.push(${ pro.amount })
+</c:forEach>
+	
+var ordercheck = {
+		"psidamountlist": psidArr
+};
+
+var tradeupdate = {
+		"pdidlist": pdidArr
+};
+
 	$("#payment-button").click(function(evt){
 		if($("input:checkbox[id='agree']").is(":checked") && ( $("#payType-kakaopay").is(':checked') || $("#payType-send").is(':checked') )){
 			if($("#payType-kakaopay").is(':checked')){
-				evt.preventDefault();
-				//재고 체크 (장바구니 클릭할때도 재고체크) -> ajax
-				//수량 빼기
-				IMP.init ("imp23237584");
-				payment(); //버튼 클릭하면 호출
+				evt.preventDefault();				
+            	// 재고 빼기
+ 				$.ajax({
+            		url:"/Lush/order/ordercm.json",
+            		dataType:"json",
+            		type:"POST",
+            		data: ordercheck,
+            		cache:false ,
+            		success: function (data){
+            			var jo = JSON.parse(JSON.stringify(data));
+            			if(jo.isAmountZero === "0"){
+            				IMP.init ("imp23237584");
+        					payment(); //버튼 클릭하면 호출
+        					alert("실행은 됨");
+            			}
+            			else{
+            				alert("재고없음! ");
+            			}
+            		},
+            		error:function (){
+                		alert("ordercm 에러! ");
+            		}
+        		}); 
 			}
 		}
 		else{
@@ -451,15 +477,43 @@ $("#mobile").val($('input[name="mobile"]')); */
         }, function (rsp) { // callback
             if (rsp.success) {
             	alert("결제성공");
+            	//해당 제품 거래수 증가 
+            	$.ajax({
+            		url:"/Lush/order/ordert.json",
+            		dataType:"json",
+            		type:"POST",
+            		data: tradeupdate,
+            		cache:false ,
+            		success: function (data){
+            			alert("거래수 증가 ajax 성공! ");
+            		},
+            		error:function (){
+                		alert("거래수 증가 ajax 실패! ");
+            		}
+        		}); 
+            	
              	$("#real").trigger("click");
 
             } else {
             	alert("결제실패");
-            	//수량 올리기
-
+            	// 재고 다시 원상복귀
+            	$.ajax({
+            		url:"/Lush/order/orderp.json" ,
+            		dataType:"json",
+            		type:"POST",
+            		data: ordercheck,
+            		cache:false ,
+            		success: function (data){
+            			alert("재고 원상복귀 ajax 성공! ");
+            		},
+            		error:function (){
+                		alert("재고 원상복귀 ajax 실패! ");
+            		}
+        		}); 
             }
         });
       }
+	
 </script>
 
 <script

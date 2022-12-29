@@ -5,6 +5,8 @@ import com.util.JdbcUtil;
 
 import order.dao.MemberDao;
 import order.dao.MemberDaoImpl;
+import order.dao.ProductJoinDao;
+import order.dao.ProductJoinDaoImpl;
 import order.dao.ProductOrderDao;
 import order.dao.ProductOrderDaoImpl;
 import order.dao.ProductOrderDetailsDao;
@@ -16,6 +18,7 @@ import order.dao.ProductSangseDaoImpl;
 import order.dao.ShipAddDao;
 import order.dao.ShipAddDaoImpl;
 import order.domain.Member;
+import order.domain.ProductJoin;
 import order.domain.ProductOrder;
 import order.domain.ProductOrderDetails;
 import order.domain.ProductPay;
@@ -26,6 +29,7 @@ import order.exception.OrderException;
 import javax.naming.NamingException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
 public class OrderService {
 	private static OrderService instance = new OrderService();
@@ -134,6 +138,86 @@ public class OrderService {
 		}
 
 		return shid;
+	}
+	
+	public List<Long> getAmountList(List<Long> psidlist) {
+		Connection conn = null;
+		ProductSangseDao dao = ProductSangseDaoImpl.getInstance();
+		List<Long> list = null;
+
+		try {
+			conn = ConnectionProvider.getConnection();
+			list = dao.getAmountList(conn, psidlist);
+			if (list == null) {
+				throw new EmptyException("제품 수량 리스트가 없습니다.");
+			}
+		} catch (NamingException | SQLException e) {
+			e.printStackTrace();
+		} catch (EmptyException e) {
+			e.printStackTrace();
+		}
+
+		return list;
+	}
+	
+	public int minusAmount(List<Long> psidlist, List<Long> customeramountlist) {
+		Connection conn = null;
+		ProductSangseDao dao = ProductSangseDaoImpl.getInstance();
+		int rowCount = 0;
+
+		try {
+			conn = ConnectionProvider.getConnection();
+			rowCount = dao.minusAmount(conn, psidlist, customeramountlist);
+			if (rowCount != psidlist.size()) {
+				throw new EmptyException("제품 수량 마이너스 실패");
+			}
+		} catch (NamingException | SQLException e) {
+			e.printStackTrace();
+		} catch (EmptyException e) {
+			e.printStackTrace();
+		}
+
+		return rowCount;
+	}
+	
+	public int plusAmount(List<Long> psidlist, List<Long> customeramountlist) {
+		Connection conn = null;
+		ProductSangseDao dao = ProductSangseDaoImpl.getInstance();
+		int rowCount = 0;
+
+		try {
+			conn = ConnectionProvider.getConnection();
+			rowCount = dao.plusAmount(conn, psidlist, customeramountlist);
+			if (rowCount != psidlist.size()) {
+				throw new EmptyException("제품 수량 플러스 실패");
+			}
+		} catch (NamingException | SQLException e) {
+			e.printStackTrace();
+		} catch (EmptyException e) {
+			e.printStackTrace();
+		}
+
+		return rowCount;
+	}
+	
+	public int plusTrade(List<Long> pdidlist, List<Long> customeramountlist) {
+		Connection conn = null;
+		ProductSangseDao dao = ProductSangseDaoImpl.getInstance();
+		int rowCount = 0;
+
+		try {
+			conn = ConnectionProvider.getConnection();
+			rowCount = dao.plusTrade(conn, pdidlist, customeramountlist);
+			if (rowCount != pdidlist.size()) {
+				throw new EmptyException("제품 수량 플러스 실패");
+			}
+		} catch (NamingException | SQLException e) {
+			e.printStackTrace();
+		} catch (EmptyException e) {
+			e.printStackTrace();
+		}
+
+		return rowCount;
 	}
 
 }

@@ -32,7 +32,7 @@ public class OrderViewHandler implements CommandHandler {
 			} else if (requestMethod.equals("POST")) {
 				int fromwhere = Integer.parseInt(request.getParameter("fromwhere"));
 
-				if (fromwhere == 1 || fromwhere == 3) {
+				if (fromwhere == 1) {
 					OrderViewService orderViewService = OrderViewService.getInstance();
 
 					long pid = Long.parseLong(request.getParameter("pid"));
@@ -47,12 +47,11 @@ public class OrderViewHandler implements CommandHandler {
 					long mid = member.getMid();
 
 //    		    	Product product = orderViewService.selectProduct(pid);
-					ProductSangse productsangse = orderViewService.selectProductSangse(pid, weight);
+					long psid = orderViewService.selectProductSangseId(pid, weight);
 
-					long psid = productsangse.getPsid();
-
-					List<ProductJoin> list = orderViewService.selectProductJoin(pid, amount);
-
+					List<ProductJoin> list = orderViewService.selectProductJoin(psid, amount);
+					
+					
 					long ordernum = orderViewService.getOrderNum();
 
 					ShipAdd shipadd = orderViewService.selectShipAdd(mid);
@@ -64,10 +63,9 @@ public class OrderViewHandler implements CommandHandler {
 
 					request.setAttribute("member", member);
 					request.setAttribute("shipadd", shipadd);
-//    		        request.setAttribute("productsangse", productsangse);
-//    		        request.setAttribute("product", product);
 					request.setAttribute("productlist", list);
 					request.setAttribute("ordernum", ordernum);
+					request.setAttribute("fromwhere", fromwhere);
 
 					long totalprice = 0;
 					int totalamount = 0;
@@ -75,8 +73,8 @@ public class OrderViewHandler implements CommandHandler {
 
 					while (iterator.hasNext()) {
 						ProductJoin pd = iterator.next();
-						totalprice += pd.getAmount2() * pd.getPrice();
-						totalamount += pd.getAmount2();
+						totalprice += pd.getAmount() * pd.getPrice();
+						totalamount += pd.getAmount();
 					}
 
 					request.setAttribute("totalprice", totalprice);

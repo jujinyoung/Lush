@@ -27,99 +27,110 @@ public class OrderHandler implements CommandHandler {
 			if (requestMethod.equals("GET")) {
 				return null;
 			} else if (requestMethod.equals("POST")) {
+				int fromwhere = Integer.parseInt(request.getParameter("fromwhere"));
 
-				OrderService orderService = OrderService.getInstance();
+				if (fromwhere == 1) {
 
-				long pid = Long.parseLong(request.getParameter("pid"));
-				int weight = Integer.parseInt(request.getParameter("weight"));
-				int amount = Integer.parseInt(request.getParameter("amount"));
+					OrderService orderService = OrderService.getInstance();
 
-				String sid = (String) session.getAttribute("auth");
+					long pid = Long.parseLong(request.getParameter("pid"));
+					int weight = Integer.parseInt(request.getParameter("weight"));
+					int amount = Integer.parseInt(request.getParameter("amount"));
 
-				Member member = orderService.selectMember(sid);
+					String sid = (String) session.getAttribute("auth");
 
-				long mid = member.getMid();
+					Member member = orderService.selectMember(sid);
 
-				ProductSangse productsangse = orderService.selectProductSangse(pid, weight);
+					long mid = member.getMid();
 
-				long psid = productsangse.getPsid();
+					ProductSangse productsangse = orderService.selectProductSangse(pid, weight);
 
-				String payType = request.getParameter("payType");
-				long temppaypsid = 0;
-				long temppayptid = 0;
-				long temposid = 0;
-				
-				String temposname = "";
-				String temppsname = "";
+					long psid = productsangse.getPsid();
 
-				if (payType.equals("kakaopay")) {
-					temposid = 2;
-					temposname = "결제완료";
+					String payType = request.getParameter("payType");
+					long temppaypsid = 0;
+					long temppayptid = 0;
+					long temposid = 0;
+
+					String temposname = "";
+					String temppsname = "";
+
+					if (payType.equals("kakaopay")) {
+						temposid = 2;
+						temposname = "결제완료";
+
+						temppaypsid = 2;
+						temppsname = "결제완료";
+
+						temppayptid = 1;
+					} else if (payType.equals("send")) {
+						temposid = 1;
+						temposname = "입금대기";
+
+						temppaypsid = 1;
+						temppsname = "입금전";
+
+						temppayptid = 2;
+
+						// 재고 감소
+					}
+
+					long poid = Long.parseLong(request.getParameter("ordernum"));
+					long pomid = mid;
+					String odate = "0";
+					long total = Long.parseLong(request.getParameter("totalprice1").trim());
+					String oname = member.getName();
+					String email = member.getEmail();
+					String tel = member.getTelnum();
+					String msg = request.getParameter("delmsg");
+					long did = orderService.selectShipId(mid);
+					String add = member.getAddress();
+					String fcheck = request.getParameter("giftbox");
+					long osid = temposid;
+					String osname = temposname;
+
+					ProductOrder productorder = new ProductOrder(poid, pomid, odate, total, oname, email, tel, msg, did,
+							add, fcheck, osid, osname);
+
+					long podid = 0;
+					long podamount = amount;
+					long podpsid = psid;
+					long podpoid = poid;
+
+					ProductOrderDetails productorderdetails = new ProductOrderDetails(podid, podamount, podpsid,
+							podpoid);
+
+					long payid = 0;
+					long payoid = poid;
+					long payamount = amount;
+					String paydate = "0";
+					String payname = "0";
+					String bank = "0";
+					long paypsid = temppaypsid;
+					long paymid = mid;
+					long payptid = temppayptid;
+					String psname = temppsname;
+
+					ProductPay productpay = new ProductPay(payid, payoid, payamount, paydate, payname, bank, paypsid,
+							paymid, payptid, psname);
+
+					int orderCheck = 0;
+					orderCheck = orderService.addOrder(productorder, productorderdetails, productpay);
 					
+					// 거래수 증가
 					
-					temppaypsid = 2;
-					temppsname = "결제완료";
-					
-					temppayptid = 1;
-				} else if (payType.equals("send")) {
-					temposid = 1;
-					temposname = "입금대기";
-					
-					temppaypsid = 1;
-					temppsname = "입금전";
-					
-					temppayptid = 2;
+					String location = "/Lush/order/ordersuccess.jsp";
+					if (orderCheck != 0) {
+						location += "?order=success";
+					} else {
+						location += "?order=fail";
+					}
+					response.sendRedirect(location);
+				} else if (fromwhere == 2) {
+					return null;
 				}
-
-				long poid = Long.parseLong(request.getParameter("ordernum"));
-				long pomid = mid;
-				String odate = "0";
-				long total = Long.parseLong(request.getParameter("totalprice1").trim());
-				String oname = member.getName();
-				String email = member.getEmail();
-				String tel = member.getTelnum();
-				String msg = request.getParameter("delmsg");
-				long did = orderService.selectShipId(mid);
-				String add = member.getAddress();
-				String fcheck = request.getParameter("giftbox");
-				long osid = temposid;
-				String osname = temposname;
-
-				ProductOrder productorder = new ProductOrder(poid, pomid, odate, total, oname, email, tel, msg, did,
-						add, fcheck, osid, osname);
-
-				long podid = 0;
-				long podamount = amount;
-				long podpsid = psid;
-				long podpoid = poid;
-
-				ProductOrderDetails productorderdetails = new ProductOrderDetails(podid, podamount, podpsid, podpoid);
-
-				long payid = 0;
-				long payoid = poid;
-				long payamount = amount;
-				String paydate = "0";
-				String payname = "0";
-				String bank = "0";
-				long paypsid = temppaypsid;
-				long paymid = mid;
-				long payptid = temppayptid;
-				String psname = temppsname;
-
-				ProductPay productpay = new ProductPay(payid, payoid, payamount, paydate, payname, bank, paypsid,
-						paymid, payptid, psname);
-
-				int orderCheck = 0;
-				orderCheck = orderService.addOrder(productorder, productorderdetails, productpay);
-
-				String location = "/Lush/order/ordersuccess.jsp";
-				if (orderCheck != 0) {
-					location += "?order=success";
-				} else {
-					location += "?order=fail";
-				}
-				response.sendRedirect(location);
 			}
+
 		}
 		return null;
 	}

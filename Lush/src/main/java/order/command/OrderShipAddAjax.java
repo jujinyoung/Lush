@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 
-public class ShipAjax implements CommandHandler {
+public class OrderShipAddAjax implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -28,12 +28,6 @@ public class ShipAjax implements CommandHandler {
 		String telnum1 = request.getParameter("telnum1");
 		String telnum2 = request.getParameter("telnum2");
 		String shipdefault = "";
-
-		System.out.println(address);
-		System.out.println(sname);
-		System.out.println(oname);
-		System.out.println(telnum1);
-		System.out.println(telnum2);
 
 		int rowCount1 = 0;
 		int rowCount2 = 0;
