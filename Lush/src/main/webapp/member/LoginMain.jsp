@@ -43,7 +43,7 @@
 							<ul class="login-opt flex center">
 								<li><a href="SignUp.jsp">회원가입</a></li>
 								<li><a href="FindId.jsp">아이디 찾기</a></li>
-								<li><a href="FindPass.jsp">비밀번호 찾기</a></li>
+								<li><a href="FindPassPre.jsp">비밀번호 찾기</a></li>
 							</ul>
 							</form>
 						

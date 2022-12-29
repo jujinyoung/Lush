@@ -7,17 +7,22 @@ import javax.naming.NamingException;
 
 import com.util.ConnectionProvider;
 
-import member.dao.MemberDao;
+import member.dao.FindDAO;
+import member.dao.FindDAOImpl;
+
 
 public class IdCheckService {
+	
+	FindDAO findDao = FindDAOImpl.getInstance();
 
-	MemberDao  memberDao = new MemberDao();
+	// MemberDao  memberDao = new MemberDao();
 	
 	public int checkid(String id){
 	
 		try(
 				Connection conn = ConnectionProvider.getConnection()){
-				int idch = memberDao.checkId(conn, id);
+				int idch = findDao.checkId(conn, id);
+						// memberDao.checkId(conn, id);
 				
 				if(idch == 1) {
 					return 1;

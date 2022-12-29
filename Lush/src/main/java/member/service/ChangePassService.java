@@ -9,18 +9,27 @@ import javax.naming.NamingException;
 import com.util.ConnectionProvider;
 import com.util.JdbcUtil;
 
-import member.dao.MemberDao;
+import member.dao.FindDAO;
+import member.dao.FindDAOImpl;
+import member.dao.LoginDAO;
+import member.dao.LoginDAOImpl;
+import member.dao.MemDAO;
+import member.dao.MemberImpl;
 import member.domain.Member;
 
 public class ChangePassService {
 
-	MemberDao memberDao = new MemberDao();
+	FindDAO findDao = FindDAOImpl.getInstance();
+	// MemberDao memberDao = new MemberDao();
+	LoginDAO loginDao = LoginDAOImpl.getInstance();
+	MemDAO memDao = MemberImpl.getInstance();
 	
 	// 아이디 입력 -> 비밀번호 찾기 버튼 -> 멤버가 있는지 확인 
 	public Member isMemhere(String id, String email) {
 		try( 
 				Connection conn = ConnectionProvider.getConnection()){
-				Member member = memberDao.isMatchpass(conn, id, email);
+				Member member = findDao.isMatchpass(conn, id, email);
+						// memberDao.isMatchpass(conn, id, email);
 		
 				if(member == null ){ 
 					return null;
@@ -46,10 +55,12 @@ public class ChangePassService {
 
 	}
 	
+	
 	public Member isMemhere(String id) {
 		try( 
 				Connection conn = ConnectionProvider.getConnection()){
-				Member member = memberDao.passmember(conn, id);
+				Member member = findDao.passmember(conn, id);
+					//	memberDao.passmember(conn, id);
 				
 				if(member == null ){ 
 					return null;
@@ -81,7 +92,8 @@ public class ChangePassService {
 			 conn = ConnectionProvider.getConnection();
 			 conn.setAutoCommit(false);
 				System.out.println("멤버객체");
-			 Member member = memberDao.selectById(conn, id);
+			 Member member = loginDao.selectById(conn, id);
+				//	 memberDao.selectById(conn, id);
 			 if(member == null) {
 					System.out.println("멤버 없음 - chservice");
 			 }
@@ -90,7 +102,10 @@ public class ChangePassService {
 			 }
 			 
 			 member.changePassword(newpass);
-			 memberDao.uppass(conn, member);
+			 memDao.uppass(conn, member);
+			 
+			 
+		// memberDao.uppass(conn, member);
 			 conn.commit();
 		 }catch (SQLException | NamingException e) {
 			JdbcUtil.rollback(conn);
