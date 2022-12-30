@@ -1,0 +1,261 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans+KR:wght@500&display=swap');
+
+.my-page .my-contents {
+    display: block;
+    position: relative;
+    width: 1016px;
+    height: auto;
+}
+* {
+    box-sizing: border-box !important;
+}
+* {
+    -webkit-text-size-adjust: none;
+    text-shadow: none !important;
+}
+
+.mypage-top {
+    display: block;
+    margin-bottom: 42px;
+}
+
+.mypage-top .mypage-title {
+    font-size: 26px;
+    line-height: 38px;
+    letter-spacing: -0.72px;
+}
+
+form {
+    display: block;
+    margin-top: 0em;
+}
+
+.modify-table .table-wrap .require-notice {
+    position: relative;
+    padding-left: 139px;
+    color: #757575;
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 8px;
+}
+
+.modify-table .table-wrap .require-notice span {
+    display: inline-block;
+    position: absolute;
+    left: 123px;
+    top: 5px;
+    color: #c81b1b;
+    font-size: 22px;
+    font-weight: 500;
+}
+.red {
+    color: #c81b1b !important;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    table-layout: fixed;
+}
+
+input {
+    -webkit-border-radius: 0;
+}
+input {
+    vertical-align: middle;
+}
+input, textarea, select {
+    letter-spacing: normal;
+}
+
+colgroup {
+    display: table-column-group;
+}
+
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+
+.modify-table .no-border-table th {
+    padding: 19px 10px 8px 15px;
+    word-break: keep-all;
+}
+table.no-border-table tr th {
+    position: relative;
+    padding: 20px 0px 0px 26px;
+    color: #757575;
+    text-align: left;
+    letter-spacing: -0.45px;
+    vertical-align: top;
+}
+
+.modify-table .no-border-table tr th .req {
+    left: 0;
+}
+table.no-border-table tr th .req {
+    display: inline-block;
+    position: absolute;
+    left: 11px;
+    top: 25px;
+    font-size: 22px;
+    color: #c81b1b;
+    font-weight: 500;
+    line-height: 22px;
+}
+
+table.no-border-table tr td {
+    position: relative;
+    padding: 8px 0;
+    width: 100%;
+}
+
+.modify-table .no-border-table td input:disabled {
+    color: #757575;
+}
+.modify-table .no-border-table td input[type="text"], .modify-table .no-border-table td input[type="password"] {
+    width: 496px;
+}
+input[type="text"]:read-only {
+    cursor: default;
+    background: #eee;
+}
+table.no-border-table tr td input {
+    width: 100%;
+}
+input[type="text"] {
+    background: #fff;
+    color: #222;
+    font-size: 1em;
+    padding: 0 10px;
+    border: 1px solid #949494;
+    height: 48px;
+    line-height: 46px;
+}
+
+input {
+    -webkit-border-radius: 0;
+}
+input {
+    vertical-align: middle;
+}
+input, textarea, select {
+    letter-spacing: normal;
+}
+
+.modify-table .no-border-table td input[type="text"], .modify-table .no-border-table td input[type="password"] {
+    width: 496px;
+}
+
+.modify-table .no-border-table td button.sub-btn {
+    position: absolute;
+    margin-left: 10px;
+    font-weight: 400;
+    font-size: 14px;
+    top: 8px;
+    left: 496px;
+}
+table.no-border-table tr td button {
+    width: 138px;
+    height: 48px;
+    line-height: 46px;
+    margin-bottom: 0;
+}
+.border-btn {
+    position: relative;
+    border: 1px solid #222;
+    background: #fff;
+    color: #222;
+    text-align: center;
+}
+button, input[type="button"], input[type="submit"], input[type="reset"], input[type="file"] {
+    -webkit-appearance: button;
+    border-radius: 0;
+    outline: none;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-size: 1em;
+}
+
+.modify-table .no-border-table tr.modify-address td input[type='text']:first-of-type {
+    margin-bottom: 8px;
+}
+.modify-table .no-border-table td input[type="text"], .modify-table .no-border-table td input[type="password"] {
+    width: 496px;
+}
+input[type="text"]:read-only {
+    cursor: default;
+    background: #eee;
+}
+
+.modify-table .no-border-table tr.modify-address button {
+    left: 496px;
+    top: 8px;
+}
+
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+
+.modify-table .table-wrap .require-notice {
+    position: relative;
+    padding-left: 139px;
+    color: #757575;
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 8px;
+}
+
+.modify-table .btn-wrap {
+    margin-top: 64px;
+}
+.btn-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.btn-wrap.double > button:first-child, .btn-wrap.double > a:first-child {
+    margin-right: 16px;
+}
+.btn-wrap.large button, .btn-wrap.large a {
+    width: 232px;
+    height: 64px;
+    line-height: 62px;
+}
+
+.border-btn {
+    position: relative;
+    border: 1px solid #222;
+    background: #fff;
+    color: #222;
+    text-align: center;
+}
+.black-btn {
+    position: relative;
+    background: #222;
+    color: #fff !important;
+    text-align: center;
+    border: 1px solid #222;
+}
+
+#email1{
+	width: 30px;
+}
+
+#numconfirm2{
+	top: 60px;
+}

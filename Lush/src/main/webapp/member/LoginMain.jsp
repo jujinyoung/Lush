@@ -33,8 +33,8 @@
 							<input type="hidden" name="popup" value="">
 							<input type="hidden" name="failureUrl" value="/users/login?target=/&amp;popup=">
 							<input type="hidden" name="op_login_type" value="ROLE_USER">
-							<input type="text" name="id" id="id" placeholder="아이디">
-							<input type="password"name="password" id="password"  placeholder="비밀번호">
+							<input type="text" name="id" id="id" placeholder="아이디" value="nana">
+							<input type="password"name="password" id="password"  placeholder="비밀번호" value="1234">
 							<div class="input-wrap">
 								<input type="checkbox" id="save_id" name="save_id" value="true"><label for="save_id">아이디 저장</label>
 							</div>

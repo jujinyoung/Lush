@@ -65,6 +65,7 @@ public class MemberImpl implements MemDAO {
 				pstmt = conn.prepareStatement(sql);
 				
 				pstmt.setString(1, member.getMe_pass());
+				System.out.println( member.getMe_pass());
 				pstmt.setString(2, member.getMe_loginid());
 				System.out.println("memberdao");
 				pstmt.executeUpdate();
@@ -77,4 +78,75 @@ public class MemberImpl implements MemDAO {
         }
 
     }
+		
+		
+		@Override
+		public void upinfo(Connection conn, Member member) throws SQLException{ 
+			//String nick, String email, String tel, String add, String loginid
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			
+			System.out.println("memberdao - upinfo 실행 ");
+			
+			String sql = "update ltb_member set me_nick = ?, me_email = ?,me_tel = ?, me_add =  ? where me_loginid= ?";
+			
+			try {
+				System.out.println("memberdao - update info1");
+				pstmt = conn.prepareStatement(sql);
+				//Member member = new Member();
+				System.out.println("memberdao - update info2");// 여기까지 실행 
+				pstmt.setString(1, member.getMe_nick());
+				
+				System.out.println(member.getMe_nick()); 
+				
+				pstmt.setString(2, member.getMe_email());
+				
+				System.out.println(member.getMe_email()); 
+				pstmt.setString(3, member.getMe_tel());
+				
+				System.out.println("memberdao - update info5");
+				pstmt.setString(4, member.getMe_add());
+				pstmt.setString(5, member.getMe_loginid());
+				System.out.println("memberdao - update info4");
+				
+				pstmt.executeUpdate();
+				
+    
+			
+		} catch(SQLException e){
+			 e.printStackTrace();
+		}catch (Exception e) {
+			 e.printStackTrace();
+		}
+			
+			finally {
+            JdbcUtil.close(pstmt);
+            JdbcUtil.close(rs);
+        }
+
+    }
+		@Override
+		public void delete(Connection conn, Member member) throws SQLException{
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			
+			String sql = "delete from  LTB_MEMBER where me_loginid = ?";
+
+			try {	
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setString(1, member.getMe_loginid());
+		
+				System.out.println("memberdao");
+				pstmt.executeUpdate();
+				
+    
+			
+		} finally {
+            JdbcUtil.close(pstmt);
+            JdbcUtil.close(rs);
+        }
+		}
+		
+		
 }

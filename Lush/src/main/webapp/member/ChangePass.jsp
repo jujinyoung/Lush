@@ -11,11 +11,35 @@
 <head>
 <meta charset="UTF-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<link href="css/ChangePass_style.css" rel="stylesheet" type="text/css">
 <title>Insert title here</title>
 </head>
 <body>
 
-비밀번호 변경 창입니다.
+
+<section id="searchPw" style="padding-top: 128px;">
+	<div class="inner">
+		<article class="join-wrap">
+			<div class="page-top">
+				<h2 class="page-title-small">비밀번호 변경</h2>
+			</div>
+			<div class="search-wrap">
+				<form id="authForm" method="GET" action="/Lush/member/changepass.do" >
+					<input type="hidden" name="id" value="<%=(String)request.getAttribute("findid")%>">
+					<input type="password" name="pass1" placeholder="비밀번호">
+					<input type="password" name="pass2" placeholder="비밀번호 확인">
+					<button type="submit" id="nextBtn" class="black-btn large-btn">비밀번호 변경하기</button>
+				<div><input type="hidden" name="_csrf" value="96f52a54-18f2-4216-84c8-f2380fec3c3c"></div></form>
+				</div>
+		</article>
+	</div>
+</section>
+
+
+
+
+
+<%-- 비밀번호 변경 창입니다.
 
 <form action="/Lush/member/changepass.do" method="GET">
 <input type="hidden" name="id" value="<%=(String)request.getAttribute("findid")%>">
@@ -23,7 +47,7 @@
 <input type="password" name="pass2" placeholder="비번 확인">
 <button type="submit">비밀번호 변경하기</button>
 </form>
-
+ --%>
 <script>
 <c:if test="${errors.passnotmatch}">
 alert('비밀번호가 일치하지 않습니다.');
