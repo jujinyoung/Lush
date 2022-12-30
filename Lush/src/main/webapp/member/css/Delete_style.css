@@ -1,0 +1,230 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans+KR:wght@500&display=swap');
+
+.my-page {
+    margin-top: 64px;
+}
+section {
+    min-height: calc(100vh - 96px - 320px);
+}
+
+.flex.top {
+    align-items: flex-start;
+}
+.flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.inner {
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    width: 1224px;
+}
+
+.my-page .my-contents {
+    display: block;
+    position: relative;
+    width: 1016px;
+    height: auto;
+}
+
+.mypage-top {
+    display: block;
+    margin-bottom: 42px;
+}
+
+.mypage-top .mypage-title {
+    font-size: 26px;
+    line-height: 38px;
+    letter-spacing: -0.72px;
+}
+
+.withraw-wrap .sub-title {
+    display: block;
+    margin-bottom: 24px;
+    font-size: 26px;
+    line-height: 36px;
+    font-weight: 700;
+}
+
+.withraw-wrap .guide {
+    border: 1px solid #eee;
+    padding: 19px 24px;
+    margin-bottom: 48px;
+}
+
+.withraw-wrap .guide p {
+    color: #535353;
+    letter-spacing: -0.34px;
+}
+.body1 {
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.withraw-wrap .sub-title {
+    display: block;
+    margin-bottom: 24px;
+    font-size: 26px;
+    line-height: 36px;
+    font-weight: 700;
+}
+
+.withraw-wrap .process {
+    margin-top: 36px;
+}
+ol, ul, dl {
+    list-style: none;
+}
+
+.withraw-wrap .process > li:not(:last-of-type) {
+    margin-bottom: 32px;
+}
+.withraw-wrap .process > li {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+li {
+    list-style: none;
+}
+
+.withraw-wrap .process > li .th {
+    display: block;
+    width: 240px;
+    padding-left: 24px;
+    font-size: 22px;
+    line-height: 32px;
+    font-weight: 700;
+}
+
+.withraw-wrap .process > li .reason-box {
+    margin-top: 5px;
+}
+.withraw-wrap .process > li .reason-box, .withraw-wrap .process > li textarea {
+    width: calc(100% - 240px);
+}
+
+.withraw-wrap .process > li .reason-box ul li {
+    display: inline-block;
+    width: 50%;
+    float: left;
+    margin-bottom: 12px;
+}
+li {
+    list-style: none;
+}
+
+input[type="checkbox"] {
+    display: none;
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: none;
+}
+input {
+    -webkit-border-radius: 0;
+}
+input {
+    vertical-align: middle;
+}
+input, textarea, select {
+    letter-spacing: normal;
+}
+
+input[type="checkbox"] + label {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: url(../../images/ico/checkbox_off.svg) no-repeat center left;
+    padding-left: 36px;
+    color: #535353;
+    min-width: 20px;
+    min-height: 20px;
+    background-size: 20px 20px;
+}
+
+.withraw-wrap .process > li:not(:last-of-type) {
+    margin-bottom: 32px;
+}
+.withraw-wrap .process > li {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.withraw-wrap .process > li .th {
+    display: block;
+    width: 240px;
+    padding-left: 24px;
+    font-size: 22px;
+    line-height: 32px;
+    font-weight: 700;
+}
+
+.withraw-wrap .process > li textarea {
+    height: 176px;
+}
+.withraw-wrap .process > li .reason-box, .withraw-wrap .process > li textarea {
+    width: calc(100% - 240px);
+}
+textarea {
+    -webkit-appearance: none;
+    border: 1px solid #949494;
+    padding: 10px 10px;
+    background: #fff;
+    resize: none;
+    overflow-y: auto;
+    font-size: 16px;
+}
+input, textarea, select {
+    letter-spacing: normal;
+}
+
+.withraw-wrap .btn-wrap {
+    margin-top: 64px;
+}
+.btn-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.btn-wrap.double > button:first-child, .btn-wrap.double > a:first-child {
+    margin-right: 16px;
+}
+.btn-wrap.large button, .btn-wrap.large a {
+    width: 232px;
+    height: 64px;
+    line-height: 62px;
+}
+.border-btn {
+    position: relative;
+    border: 1px solid #222;
+    background: #fff;
+    color: #222;
+    text-align: center;
+}
+
+.btn-wrap.large button, .btn-wrap.large a {
+    width: 232px;
+    height: 64px;
+    line-height: 62px;
+}
+.black-btn {
+    position: relative;
+    background: #222;
+    color: #fff !important;
+    text-align: center;
+    border: 1px solid #222;
+}
+
+

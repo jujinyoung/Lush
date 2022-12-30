@@ -55,16 +55,24 @@ public class LoginHandler implements CommandHandler {
 		}
 		
 		try {
-			// loginService 를 이용해 인증을 수행 -> 로그인에 성공하면 user객체 리턴 
+			// loginService 를 이용해 인증을 수행 -> 로그인에 성공하면 user객체를 필터에 넘겨줌 
 			User user = loginservice.login(id, password);
 			if(user == null) {
 				errors.put("idorpasserror", Boolean.TRUE);
 				return "Login.jsp";
 			}
-	
+			System.out.println( user );
+			System.out.println( user.getId() ); // user 저장된 아이디 
+			System.out.println( user.getName() ); // user 이름 
+		
+			
+			// 세션 처리 
 			HttpSession session = request.getSession();
-			 request.getSession().setAttribute("authUser", user);
+			// authUser에 user(loginid, name) 저장
+			session.setAttribute("authUser" , user);
+			System.out.println(request.getSession() );
 			 System.out.println(" 세션 추가 ");
+			 
 			response.sendRedirect("main_temp.jsp");
 			return null;
 		}catch(IOException e) {

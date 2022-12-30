@@ -5,45 +5,42 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 import javax.naming.NamingException;
-import javax.servlet.RequestDispatcher;
-
 import com.util.ConnectionProvider;
+import com.util.JdbcUtil;
 
-import member.dao.MemberDao;
+import member.dao.LoginDAO;
+import member.dao.LoginDAOImpl;
 import member.domain.Member;
 import member.domain.User;
-import member.exception.LoginFailException;
+
 
 public class LoginService { // 로그인 
 
-	
-	private MemberDao memberDao = new MemberDao();
+
+	LoginDAO loginDao = LoginDAOImpl.getInstance();
 	
 	public User login(String id, String password) {
-		try( 
-				Connection conn = ConnectionProvider.getConnection()){
-				Member member = memberDao.selectById(conn, id);
-				// 패스워드가 맞지 않거나 아이디가 잘못되면 
-				// ID 또는 비밀번호를 다시 확인해 주시기 바랍니다.
+		 Connection conn = null;
+		 
+		try { 
+				conn = ConnectionProvider.getConnection();
+				
+				Member member = loginDao.selectById(conn, id);
+				System.out.println("loginservice member 선언");
+				
+				System.out.println(member.getMe_pass());
+				
 				if(member == null || !member.matchPassword(password ) ){ 
+					System.out.println("matchPassword");
 					return null;
 				}
 
 				return new User(member.getMe_loginid(), member.getMe_name());
-	}catch(SQLException | NamingException e) {
-		throw new RuntimeException(e);
-	}
-	}
+				}catch(SQLException | NamingException e) {
+						throw new RuntimeException(e);
+					}finally {
+			            JdbcUtil.close(conn);
+			        }
+			}
 }
 
-
-
-
-/*if(!member.matchPassword(password)) { // 패스워드가 맞지 않으면
-*/			// response.sendRedirect("LoginError.jsp"); 
-	/*
-	 * String path = "LoginError.jsp"; RequestDispatcher dispatcher =
-	 * request.getRequestDispatcher(path) ; request.sendre
-	 */
-//		error
-//	} //if
