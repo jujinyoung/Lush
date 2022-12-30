@@ -20,14 +20,14 @@ public class ManagerListService {
     private ManagerListService(){}
     public static ManagerListService getInstance(){return instance;}
 
-    public List<Member> selectManagerList(int currentPage, int numberPerPage){
+    public List<Member> selectManagerList(int categoryLink, int currentPage, int numberPerPage){
         Connection conn = null;
         ManageDao dao = ManageImpl.getInstance();
         List<Member> managers = null;
 
         try {
             conn = ConnectionProvider.getConnection();
-            managers = dao.selectManagerList(conn, currentPage, numberPerPage);
+            managers = dao.selectManagerList(conn, categoryLink ,currentPage, numberPerPage);
             if (managers == null){
                 throw new EventListEmptyException("이벤트 목록이 비어있습니다.");
             }
@@ -41,14 +41,14 @@ public class ManagerListService {
         return managers;
     }
 
-    public List<Member> searchManagerList(int currentPage, int numberPerPage, int searchCondition, String searchWord){
+    public List<Member> searchManagerList(int categoryLink, int currentPage, int numberPerPage, int searchCondition, String searchWord){
         Connection conn = null;
 
         List<Member> list = null;
         try {
             conn = ConnectionProvider.getConnection();
             ManageDao dao = ManageImpl.getInstance();
-            list = dao.searchManagerList(conn, currentPage, numberPerPage, searchCondition, searchWord);
+            list = dao.searchManagerList(conn, categoryLink, currentPage, numberPerPage, searchCondition, searchWord);
         } catch (NamingException | SQLException e) {
             throw new RuntimeException(e);
         } finally {
@@ -57,13 +57,13 @@ public class ManagerListService {
         return list;
     }
 
-    public int getTotalPages(int numberPerPage){
+    public int getTotalPages(int numberPerPage, int categoryLink){
         Connection conn = null;
 
         try {
             conn = ConnectionProvider.getConnection();
             ManageDao dao = ManageImpl.getInstance();
-            return dao.getPages(conn, numberPerPage);
+            return dao.getPages(conn, numberPerPage, categoryLink);
         } catch (NamingException | SQLException e) {
             throw new RuntimeException(e);
         } finally {

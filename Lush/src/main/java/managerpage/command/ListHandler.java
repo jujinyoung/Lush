@@ -15,6 +15,9 @@ public class ListHandler implements CommandHandler{
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		  
+		//카테고리	
+	      int categoryLink = request.getParameter("categoryLink")==null ? 1 : Integer.parseInt(request.getParameter("categoryLink"));	
+	      
 		  //검색
 	      int searchCondition = request.getParameter("searchCondition")==null ? 1 : Integer.parseInt(request.getParameter("searchCondition"));
 	      String searchWord = request.getParameter("searchWord") == null ? "" : request.getParameter("searchWord");
@@ -28,15 +31,16 @@ public class ListHandler implements CommandHandler{
 
 	      System.out.println("searchWord = " + searchWord);
 	      if (searchWord.equals("")){
-	    	  managers = listService.selectManagerList(currentPage, numberPerPage); 
+	    	  managers = listService.selectManagerList(categoryLink, currentPage, numberPerPage); 
 	      }else {
-	    	  managers = listService.searchManagerList(currentPage, numberPerPage, searchCondition, searchWord);
+	    	  managers = listService.searchManagerList(categoryLink, currentPage, numberPerPage, searchCondition, searchWord);
 	      }
 
-	      int totalPages = listService.getTotalPages(numberPerPage);
+	      int totalPages = listService.getTotalPages(numberPerPage, categoryLink);
 
 	      pageBlock = PageService.pagingService(currentPage, numberPerPage, numberOfPageBlock, totalPages);
 
+	      request.setAttribute("categoryLink", categoryLink);
 	      request.setAttribute("searchCondition", searchCondition);
 	      request.setAttribute("searchWord", searchWord);
 	      request.setAttribute("managers", managers);

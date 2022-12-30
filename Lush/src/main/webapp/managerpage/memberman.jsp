@@ -4,10 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원관리</title>
+<link rel="icon" type="image/png" sizes="192x192" href="../images/ico/fabicon.png">
 <link rel="stylesheet"   href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script   src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script   src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="icon" type="image/png" sizes="192x192" href="../images/ico/fabicon.png">
 
 <style>
 /* 전체 */
@@ -490,15 +492,16 @@ table.list-table td {
 </style>
 
 <%
+	int categoryLink = request.getParameter("categoryLink")==null ? 1 :Integer.parseInt(request.getParameter("categoryLink"));
 	int contentPage = request.getParameter("currentPage")==null ? 1 :Integer.parseInt(request.getParameter("currentPage"));
     int searchCondition = request.getParameter("searchCondition")==null ? 1 :Integer.parseInt(request.getParameter("searchCondition"));
     String searchWord = request.getParameter("searchWord")==null ? "" : request.getParameter("searchWord");
 %>
 </head>
 <body>
-<body>
+
 <header id ="header"></header>
-<form id="searchParam" action="/Lush/managerpage/memberman.do" method="get">
+<form id="lushBoardSearchParam" action="/Lush/managerpage/memberman.do" method="get">
 <section id="mypage-inquiry" class="my-page" style="padding-top: 128px;">	
 <div class="inner flex top">
 
@@ -513,6 +516,7 @@ table.list-table td {
 		<div class="inner">
 		
 				<div class="board-search-wrap">
+					<input name="categoryLink" type="hidden" value="<%=categoryLink%>">
             		<input name="currentPage" type="hidden" value="<%=contentPage%>">
             		<input id="where1" name="searchCondition" type="radio" value="1">
             		<label for="where1">이름</label>
@@ -521,6 +525,11 @@ table.list-table td {
             		<input name="searchWord" type="text" value="<%=searchWord%>">
             		<button type="submit" class="black-btn">검색</button>
         </div>
+        
+<div>
+<input type="hidden" name="_csrf" value="3b0351a8-f783-4f60-86aa-5cc142894a38">
+</div>
+
 <div>
 </div>
 	

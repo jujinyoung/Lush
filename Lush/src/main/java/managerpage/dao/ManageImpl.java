@@ -21,7 +21,7 @@ public class ManageImpl implements ManageDao {
 	
 	//목록
 	@Override
-	public List<Member> selectManagerList(Connection conn, int currentPage, int numberPerPage) throws SQLException {
+	public List<Member> selectManagerList(Connection conn, int categoryLink, int currentPage, int numberPerPage) throws SQLException {
 		int begin = (currentPage-1)*numberPerPage + 1;
         int end = begin + numberPerPage - 1;
 
@@ -32,12 +32,11 @@ public class ManageImpl implements ManageDao {
                      " FROM( " +
                      " SELECT ROWNUM no, t.* " +
                      " FROM( " +
-   		             " SELECT * FROM ltb_member ";
-                    
-        	   sql += " ORDER BY me_id ASC " +
-        			  " )t " +
-        			  " )a "+
-        			  "WHERE a.no BETWEEN ? and ? ";
+   		             " SELECT * FROM ltb_member " +
+        			 " ORDER BY me_id ASC " +
+        			 " )t " +
+        			 " )a "+
+        			 " WHERE a.no BETWEEN ? and ? ";
 
         List<Member> list = null;
         try {
@@ -71,7 +70,7 @@ public class ManageImpl implements ManageDao {
     }
 
 	@Override
-	public List<Member> searchManagerList(Connection conn, int currentPage, int numberPerPage, int condition, String key) throws SQLException {
+	public List<Member> searchManagerList(Connection conn, int categoryLink, int currentPage, int numberPerPage, int condition, String key) throws SQLException {
 		
 		PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -81,9 +80,9 @@ public class ManageImpl implements ManageDao {
 
         String sql = " SELECT b.* FROM( " +
                      " SELECT ROWNUM no, t.* FROM( " +
-        		     " SELECT * FROM ltb_member";        
-        if(condition ==1) sql += " and REGEXP_LIKE(me_name, ?, 'i') ";
-        else sql += "and REGEXP_LIKE(me_loginid, ?, 'i') ";
+        		     " SELECT * FROM ltb_member ";        
+        if(condition ==1) sql += " WHERE REGEXP_LIKE(me_name, ?, 'i') ";
+        else sql += " WHERE REGEXP_LIKE(me_email, ?, 'i') ";
         sql += " ORDER BY me_id DESC)t)b WHERE b.no BETWEEN ? AND ?";
 
         List<Member> list = null;
@@ -116,7 +115,7 @@ public class ManageImpl implements ManageDao {
     }
 
 	@Override
-	public int getPages(Connection conn, int numberPerPage) throws SQLException {
+	public int getPages(Connection conn, int numberPerPage, int categoryLink) throws SQLException {
 		// TODO Auto-generated method stub
 		PreparedStatement pstmt = null;
         ResultSet rs = null;
