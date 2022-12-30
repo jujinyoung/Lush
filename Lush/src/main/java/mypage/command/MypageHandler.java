@@ -8,6 +8,7 @@ import mypage.domain.Member;
 import mypage.domain.MypageJoin;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -36,6 +37,7 @@ public class MypageHandler implements CommandHandler {
 		    	JinhangSum jinhangsum = mypageservice.selectJinhangSum(mid);
 		    	
 		    	List<Long> orderIdList = mypageservice.getIdList(mid);
+		    	
 		    	HashMap<Long, List<MypageJoin>> map = mypageservice.selectMypageJoin(mid, orderIdList);
 
 		        request.setAttribute("member", member);
