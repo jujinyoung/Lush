@@ -582,7 +582,7 @@ table .right {
 		<div class="menu-box">
 			<p class="body2">주문관리</p>
 			<ul>
-				<li><a href="/mypage/badge/2022">주문상태 관리</a></li>
+				<li><a href="/Lush/managerpage/managerOrder.do">주문상태 관리</a></li>
 			</ul>
 		</div>
 		<hr style="border:solid 1px white;">
@@ -597,7 +597,6 @@ table .right {
 		<div class="menu-box">
 			<p class="body2">이벤트 관리</p>
 			<ul>
-				<li><a href="/Lush/managerpage/managerEvent.jsp">이벤트 관리</a></li>
 				<li><a href="/Lush/managerpage/eventAdd.jsp">이벤트 등록</a></li>
 			</ul>
 		</div>
