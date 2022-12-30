@@ -55,6 +55,7 @@
             <li>#클렌저 #부드러운아침세안</li>
           </ul>
           <form id="cartForm" class="" action="/Lush/order/orderview.do" method="post">
+            <input type="hidden" name="fromwhere" value=1>
             <c:forEach var="p" items="${productSangses}">
               <input type="hidden" class="${p.psid}" division="${p.weight}">
               <input type="hidden" class="${p.amount}" amount="${p.psid}">
@@ -488,57 +489,6 @@
     </div>
     <button type="button" id="closeBtn" class="pop-close popup-close-btn" name="">팝업닫기</button>
   </div>
-
-<%--  <!-- 재입고 알림신청 팝업 -->--%>
-<%--  <div class="popup big re-alert" id="op-layer-restock">--%>
-<%--    <div class="pop-head">--%>
-<%--      <h2 class="big">재입고 알림신청</h2>--%>
-<%--      <p class="re-option">허벌리즘 100g/250g</p>--%>
-<%--    </div>--%>
-<%--    <div class="pop-content">--%>
-<%--      <form id="restockFrm">--%>
-<%--        <table class="no-border-table">--%>
-<%--          <colgroup>--%>
-<%--            <col width="122px">--%>
-<%--            <col width="auto">--%>
-<%--          </colgroup>--%>
-<%--          <tbody>--%>
-<%--          <tr>--%>
-<%--            <th>신청자</th>--%>
-<%--            <td><input type="text" id="userName" name="userName" maxlength="20"></td>--%>
-<%--          </tr>--%>
-<%--          <tr>--%>
-<%--            <th>휴대전화 번호</th>--%>
-<%--            <td><input type="text" class="phone-number-check" id="phoneNumber" name="phoneNumber" value="" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" placeholder="- 없이 입력하세요." maxlength="11"></td>--%>
-<%--          </tr>--%>
-<%--          </tbody>--%>
-<%--        </table>--%>
-<%--        <div class="input-wrap">--%>
-<%--          <input type="checkbox" id="re-agree" name="re-agree"><label for="re-agree"><span>(필수)</span> 개인정보 수집 및 이용에 동의합니다.</label>--%>
-<%--          <div class="terms-box">--%>
-<%--            <p>&nbsp;</p><div>(1) 비회원 제품 구입</div><div>- 수집항목</div><div>&nbsp;&lt;구매자 정보&gt;</div><div>&nbsp; *성명, 이메일, 휴대전화번호, 체결 비밀번호</div><div>&nbsp;&lt;결제 정보&gt;</div><div>&nbsp; *신용카드: 카드사명, 카드번호</div><div>&nbsp; *휴대폰소액결제: 통신사명, 휴대폰번호</div><div>&nbsp; *계좌이체: 은행명, 계좌번호</div><div>&nbsp; *무통장입금: 은행명, 입금자명</div><div>&nbsp; *구매내역: 상품명, 주문일시 등</div><div>&nbsp;&lt;수취인 정보&gt;</div><div>&nbsp; *이름, 휴대전화번호, 연락처, 배송주소, 배송메시지&nbsp;</div><div><br></div><div>- 수집/이용목적</div><div>&nbsp; *재화 또는 용역에 대한 정보 제공 및 구매계약의 체결, 구매 계약이 체결된 재화 또는 용역의 배송 및 고객 불만 처리업무</div><div><br></div><div>- 이용기간: 5년(계약 및 철회, 결제 및 공급에 관한 기록)</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;원칙적으로 개인정보 수집 및 이용목적이 달성된 후에는 해당 정보를 지체 없이 파기합니다.&nbsp;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;단, 관계법령의 규정에 의하여 보전할 필요가 있는 경우 일정기간 동안 개인정보를 보관할 수 있습니다.</div><div><br></div><div>(2)&nbsp; 비회원 입고 알림 서비스 이용</div><div><br></div><div>- 목적 : 제품 입고 알림 문자 발송</div><div>- 항목 : 성명, 휴대전화번호</div><div>- 보유기간 : 알림 신청 후, 3개월 내지 SMS 수신거부 및 동의 철회 시 파기</div><div><br></div><div>위와 같이 수집하는 개인정보에 대해, 동의하지 않거나 거부할 수 있습니다. 다만, 동의하지 않거나 거부할 경우 제공되는 서비스가 제한될 수 있습니다.</div><div>그 밖의 사항은 (주)러쉬코리아 개인정보처리방침을 준수합니다.</div><p>&nbsp;</p></div>--%>
-<%--          <p class="body2">※ 제품 재입고 시 순차적으로 카카오톡 알림톡을 발송해 드립니다.<br/>--%>
-<%--            알림톡 발송이 불가한 경우 SMS를 통해 안내해 드려요.</p>--%>
-<%--        </div>--%>
-<%--      </form>--%>
-<%--    </div>--%>
-<%--    <div class="btn-wrap large">--%>
-<%--      <button type="button" class="black-btn" onclick="javascript:restockNotice();">재입고 알림 신청하기</button>--%>
-<%--    </div>--%>
-<%--    <button type="button" id="closeBtn" class="pop-close popup-close-btn" onClick="formReset('restockFrm');">팝업닫기</button>--%>
-<%--  </div>--%>
-
-<%--  <!-- 재입고 알림신청 완료 팝업 -->--%>
-<%--  <div class="popup re-complete" id="op-layer-restockComplete">--%>
-<%--    <div class="pop-head"></div>--%>
-<%--    <div class="pop-content">--%>
-<%--      <p class="body1">재입고 알림이 신청되었습니다.</p>--%>
-<%--    </div>--%>
-<%--    <div class="btn-wrap basic">--%>
-<%--      <button type="button" class="black-btn pop-close">확인</button>--%>
-<%--    </div>--%>
-<%--    <button type="button" id="closeBtn" class="pop-close popup-close-btn" name="">팝업닫기</button>--%>
-<%--  </div>--%>
 
 
 <%--  <!-- 플러스 리뷰 팝업 -->--%>
