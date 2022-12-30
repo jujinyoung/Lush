@@ -4,10 +4,12 @@ import command.CommandHandler;
 import order.domain.Member;
 import order.domain.Product;
 import order.domain.ProductJoin;
+import order.domain.ProductParameter;
 import order.domain.ProductSangse;
 import order.domain.ShipAdd;
 import order.service.OrderViewService;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -35,31 +37,31 @@ public class OrderViewHandler implements CommandHandler {
 				if (fromwhere == 1) {
 					OrderViewService orderViewService = OrderViewService.getInstance();
 
-					long pid = Long.parseLong(request.getParameter("pid"));
-					int weight = Integer.parseInt(request.getParameter("weight"));
-					int amount = Integer.parseInt(request.getParameter("amount"));
+					String[] pids = request.getParameterValues("pid");
+					String[] psids = request.getParameterValues("psid");
+					String[] amounts = request.getParameterValues("amount");
 
 					String sid = (String) session.getAttribute("auth");
 //    		    	User user = session.getAttribute("authUser");
 //    		    	user.getId();
 					Member member = orderViewService.selectMember(sid);
-
 					long mid = member.getMid();
+					
+					List<ProductParameter> productparameterlist = new ArrayList<>();
+					ProductParameter productparameter = null;
+					
+					for(int i=0; i<psids.length; i++) {
+						productparameter = new ProductParameter(Long.parseLong(pids[i]), Long.parseLong(psids[i]), Integer.parseInt(amounts[i]));
+						productparameterlist.add(productparameter);
+					}
 
-//    		    	Product product = orderViewService.selectProduct(pid);
-					long psid = orderViewService.selectProductSangseId(pid, weight);
 
-					List<ProductJoin> list = orderViewService.selectProductJoin(psid, amount);
+					List<ProductJoin> list = orderViewService.selectProductJoin(productparameterlist);
 					
 					
 					long ordernum = orderViewService.getOrderNum();
-
+					
 					ShipAdd shipadd = orderViewService.selectShipAdd(mid);
-
-					request.setAttribute("pid", pid);
-					request.setAttribute("weight", weight);
-					request.setAttribute("amount", amount);
-					request.setAttribute("psid", psid);
 
 					request.setAttribute("member", member);
 					request.setAttribute("shipadd", shipadd);

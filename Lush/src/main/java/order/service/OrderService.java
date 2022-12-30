@@ -29,6 +29,7 @@ import order.exception.OrderException;
 import javax.naming.NamingException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Iterator;
 import java.util.List;
 
 public class OrderService {
@@ -45,7 +46,7 @@ public class OrderService {
 	ProductOrderDetailsDao orderdetailsdao = ProductOrderDetailsDaoImpl.getInstance();
 	ProductPayDao paydao = ProductPayDaoImpl.getInstance();
 
-	public int addOrder(ProductOrder productorder, ProductOrderDetails productorderdetails, ProductPay productpay) {
+	public int addOrder(ProductOrder productorder, List<ProductOrderDetails> productorderdetailslist, ProductPay productpay) {
 		Connection conn = null;
 		int rowCount1 = 0;
 		int rowCount2 = 0;
@@ -59,8 +60,14 @@ public class OrderService {
 			if (rowCount1 == 0) {
 				throw new OrderException("주문 넣기 실패!");
 			}
-			rowCount2 = orderdetailsdao.addOrderDetails(conn, productorderdetails);
-			if (rowCount2 == 0) {
+			
+			Iterator<ProductOrderDetails> iterator = productorderdetailslist.iterator();
+			while (iterator.hasNext()) {
+				ProductOrderDetails pod = iterator.next();
+				rowCount2 = rowCount2+orderdetailsdao.addOrderDetails(conn, pod);
+			}
+			
+			if (rowCount2 != productorderdetailslist.size()) {
 				throw new OrderException("주문상세 넣기 실패!");
 			}
 			rowCount3 = paydao.addPay(conn, productpay);

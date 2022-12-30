@@ -51,35 +51,44 @@ public class ProductSangseDaoImpl implements ProductSangseDao {
 		return productsangse;
 	}
 
-	@Override
-	public long selectProductSangseId(Connection con, Long pid, int weight) throws SQLException {
-
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		String sql = "SELECT ps_id FROM ltb_ps WHERE pd_id = ? and ps_weight = ?";
-		long psid = 0;
-
-		try {
-			pstmt = con.prepareStatement(sql);
-			pstmt.setLong(1, pid);
-			pstmt.setLong(2, weight);
-
-			rs = pstmt.executeQuery();
-
-			if (rs.next()) {
-
-				do {
-					psid = (rs.getLong("ps_id"));
-				} while (rs.next());
-			}
-
-		} finally {
-			JdbcUtil.close(pstmt);
-			JdbcUtil.close(rs);
-		}
-
-		return psid;
-	}
+//	@Override
+//	public List<Long> selectProductSangseId(Connection con, Long pid, String[] weights) throws SQLException {
+//
+//		PreparedStatement pstmt = null;
+//		ResultSet rs = null;
+//		String sql = "SELECT ps_id FROM ltb_ps WHERE pd_id = ? and ps_weight = IN(?";
+//		List<Long> psidlist = null;
+//		
+//		for(int i=1; i<weights.length;i++) {
+//			sql += ",?";
+//		}
+//		sql+=" ) ";
+//		
+//		sql.substring(0, sql.length() - 1);
+//		try {
+//			pstmt = con.prepareStatement(sql);
+//			pstmt.setLong(1, pid);
+//			int i;
+//            for (i=0; i<weights.length; i++){
+//                pstmt.setInt((i+2), Integer.parseInt(weights[i]));
+//            }
+//
+//			rs = pstmt.executeQuery();
+//
+//			if (rs.next()) {
+//
+//				do {
+//					psidlist.add(rs.getLong("ps_id"));
+//				} while (rs.next());
+//			}
+//
+//		} finally {
+//			JdbcUtil.close(pstmt);
+//			JdbcUtil.close(rs);
+//		}
+//
+//		return psidlist;
+//	}
 
 	@Override
 	public List<Long> getAmountList(Connection con, List<Long> psidlist) throws SQLException {

@@ -58,6 +58,8 @@ String contextPath = request.getContextPath();
 							<tbody>
 
 								<c:forEach var="pro" items="${productlist}">
+								<input type="hidden" name="psid" value=${ pro.psid }>
+								<input type="hidden" name="amount" value=${ pro.amount }>
 									<tr>
 										<td class="cart-prd-img"><img
 											src="https://www.lush.co.kr/upload/item/15/20220929153226L.png"
@@ -270,11 +272,9 @@ String contextPath = request.getContextPath();
 						</div>
 						<input type="hidden" id="totalprice1" name="totalprice1"
 							value=" ${totalprice + delprice }" /> <input type="hidden"
-							id="amount" name="amount" value="${ amount }"> <input
+							id="amount" name="totalamount" value="${ totalamount }"> <input
 							type="hidden" id="ordernum" name="ordernum" value="${ ordernum }">
-						<input type="hidden" name="pid" value=${ pid }> <input
-							type="hidden" name="weight" value=${ weight }> <input
-							type="hidden" name="fromwhere" value=${ fromwhere }>
+						 <input type="hidden" name="fromwhere" value=${ fromwhere }>
 						<button type="button" id="payment-button" name=""
 							class="green-btn">
 							<strong class="op-order-pay-amount-text"><strong>￦ ${totalprice + delprice }</strong>
@@ -507,7 +507,7 @@ var tradeupdate = {
             pg: "kakaopay.TC0ONETIME",
             pay_method: "card",
             merchant_uid: 'c' + $('#ordernum').val(),
-            name: $("#pname").val() + " 등 " + $('#amount').val() +  "개",
+            name: $("#pname").val() + " 등 " + $('#totalamount').val() +  "개",
             amount: $("#totalprice1").val(),
             buyer_name: $("membername").val(),
             buyer_tel: $("#telnum").val(),

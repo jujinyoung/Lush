@@ -4,9 +4,13 @@ import command.CommandHandler;
 import order.domain.Member;
 import order.domain.ProductOrder;
 import order.domain.ProductOrderDetails;
+import order.domain.ProductParameter;
 import order.domain.ProductPay;
 import order.domain.ProductSangse;
 import order.service.OrderService;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -33,19 +37,14 @@ public class OrderHandler implements CommandHandler {
 
 					OrderService orderService = OrderService.getInstance();
 
-					long pid = Long.parseLong(request.getParameter("pid"));
-					int weight = Integer.parseInt(request.getParameter("weight"));
-					int amount = Integer.parseInt(request.getParameter("amount"));
-
+					String[] psids = request.getParameterValues("psid");
+					String[] amounts = request.getParameterValues("amount");
+					
+					long totalprice = Long.parseLong(request.getParameter("totalprice1").trim());
+					
 					String sid = (String) session.getAttribute("auth");
-
 					Member member = orderService.selectMember(sid);
-
 					long mid = member.getMid();
-
-					ProductSangse productsangse = orderService.selectProductSangse(pid, weight);
-
-					long psid = productsangse.getPsid();
 
 					String payType = request.getParameter("payType");
 					long temppaypsid = 0;
@@ -92,17 +91,22 @@ public class OrderHandler implements CommandHandler {
 					ProductOrder productorder = new ProductOrder(poid, pomid, odate, total, oname, email, tel, msg, did,
 							add, fcheck, osid, osname);
 
-					long podid = 0;
-					long podamount = amount;
-					long podpsid = psid;
-					long podpoid = poid;
-
-					ProductOrderDetails productorderdetails = new ProductOrderDetails(podid, podamount, podpsid,
-							podpoid);
+					
+					List<ProductOrderDetails> productorderdetailslist = new ArrayList<>();
+					ProductOrderDetails productorderdetails = null;
+					for(int i=0; i<psids.length; i++) {
+						long podid = 0;
+						int podamount = Integer.parseInt(amounts[i]);
+						long podpsid = Long.parseLong(psids[i]);
+						long podpoid = poid;
+						
+						productorderdetails = new ProductOrderDetails(podid, podamount, podpsid, podpoid);
+						productorderdetailslist.add(productorderdetails);
+					}
 
 					long payid = 0;
 					long payoid = poid;
-					long payamount = amount;
+					long payamount = totalprice;
 					String paydate = "0";
 					String payname = "0";
 					String bank = "0";
@@ -115,7 +119,7 @@ public class OrderHandler implements CommandHandler {
 							paymid, payptid, psname);
 
 					int orderCheck = 0;
-					orderCheck = orderService.addOrder(productorder, productorderdetails, productpay);
+					orderCheck = orderService.addOrder(productorder, productorderdetailslist, productpay);
 					
 					// 거래수 증가
 					
