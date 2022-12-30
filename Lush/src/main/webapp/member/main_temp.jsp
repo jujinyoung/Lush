@@ -40,6 +40,10 @@
 
 <a href="Login2.jsp">로그인 페이지</a>
 
+<form action="/Lush/member/logout.do">
+<button type="submit">로그아웃 하기</button>
+</form>
+
 <script>
 </script>
 </body>

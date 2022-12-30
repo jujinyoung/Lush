@@ -10,7 +10,15 @@ public class User {
 	public User(String id, String name) {
 		this.id = id;
 		this.name = name;
+
 	}
+	
+	public User() {
+		// TODO Auto-generated constructor stub
+	}
+
+
+
 	public String getId() {
 		return id;
 	}

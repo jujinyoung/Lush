@@ -1,0 +1,156 @@
+@charset "UTF-8";
+/* @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans+KR:wght@500&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+
+.modal{
+/* 	position: absolute;
+rgba(0,0,0,0,8);
+	width: 100%; height:100%; */
+	background: black;
+	font: white;
+	background: rgba(0,0,0,0.15);
+	display: none;
+	  position: fixed;
+	  width:400px;
+	  height: 300px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#smsbutton{
+	cursor: pointer;
+}
+
+.smsmsend{
+	/* // background: rgba(0,0,0,0.2); */
+    font: gray;
+    margin: 90px 45px 45px;
+    border: none;
+    padding: 10px;
+    background: #222;
+    color: #fff !important;
+    text-align: center;
+    border: 1px solid #222;
+    height: 50px;
+}
+
+.smsnum{
+	    width: 70% !important;
+    margin: 100px 50px 10px 50px !important;
+}
+
+.numsend{
+	     width: 75% !important;
+    margin: 0px 50px 50px 50px !important;
+    background: #222;
+    color: #fff !important;
+    text-align: center;
+    border: 1px solid #222;
+    height: 50px;
+	
+}
+
+.close{
+	     background-color: #F9B514;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-block;
+    margin: 0 10px 10px 367px;
+	
+}
+.my-page {
+    margin-top: 64px;
+}
+section {
+    min-height: calc(100vh - 96px - 320px);
+}
+
+.flex.top {
+    align-items: flex-start;
+}
+.flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.inner {
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    width: 1224px;
+}
+
+input[type="text"] {
+    background: #fff;
+    color: #222;
+    font-size: 1em;
+    padding: 0 10px;
+    border: 1px solid #949494;
+    height: 48px;
+    line-height: 46px;
+        width: 100%;
+    margin: 0 0 10px 0;
+}
+
+.my-page .my-contents {
+    display: block;
+    position: relative;
+    width: 1016px;
+    height: auto;
+}
+
+.mypage-top {
+    display: block;
+    margin-bottom: 42px;
+}
+
+.mypage-top .mypage-title {
+    font-size: 26px;
+    line-height: 38px;
+    letter-spacing: -0.72px;
+   
+}
+
+.auth-box {
+    display: block;
+    width: 328px;
+    margin: 120px auto 0 auto;
+    text-align: center;
+}
+
+.auth-box p {
+    margin-bottom: 32px;
+}
+.body1 {
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.btn-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.auth-box button {
+    display: block;
+    width: 100%;
+    margin-bottom: 16px;
+}
+.large-btn {
+    height: 64px;
+    line-height: 62px;
+    width: 232px;
+}
+.black-btn {
+    position: relative;
+    background: #222;
+    color: #fff !important;
+    text-align: center;
+    border: 1px solid #222;
+    font-size: 20px;
+}
+
