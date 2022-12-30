@@ -466,6 +466,23 @@ var tradeupdate = {
 	        			var jo = JSON.parse(JSON.stringify(data));
 	        			if(jo.isAmountZero === "0"){
 	        				alert("재고 감소 완료! ");
+	        				//해당 제품 거래수 증가 
+	        	        	$.ajax({
+	        	        		url:"/Lush/order/ordert.json",
+	        	        		dataType:"json",
+	        	        		type:"POST",
+	        	        		data: tradeupdate,
+	        	        		cache:false ,
+	        	        		success: function (data){
+	        	        			alert("거래수 증가 ajax 성공! ");
+	        	        		},
+	        	        		error:function (){
+	        	            		alert("거래수 증가 ajax 실패! ");
+	        	        		}
+	        	    		}); 
+	        				
+	        	        	// submit으로 form 태그 원래대로 post
+	        	         	$("#real").trigger("click");
 	        			}
 	        			else{
 	        				alert("재고없음! ");
@@ -475,26 +492,7 @@ var tradeupdate = {
 	            		alert("ordercm 에러! ");
 	        		}
 	    		}); 
-				
-				//해당 제품 거래수 증가 
-	        	$.ajax({
-	        		url:"/Lush/order/ordert.json",
-	        		dataType:"json",
-	        		type:"POST",
-	        		data: tradeupdate,
-	        		cache:false ,
-	        		success: function (data){
-	        			alert("거래수 증가 ajax 성공! ");
-	        		},
-	        		error:function (){
-	            		alert("거래수 증가 ajax 실패! ");
-	        		}
-	    		}); 
-				
-	        	// submit으로 form 태그 원래대로 post
-	         	$("#real").trigger("click");
 			}
-			
 		}
 		else{
 			alert("필수 버튼 체크!"); 
