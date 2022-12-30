@@ -1,0 +1,169 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+
+button, input[type="button"], input[type="submit"], input[type="reset"], input[type="file"] {
+    -webkit-appearance: button;
+    border-radius: 0;
+    outline: none;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-size: 1em;
+}
+
+.my-page .my-contents {
+    display: block;
+    position: relative;
+    width: 1016px;
+    height: auto;
+}
+
+.mypage-top {
+    display: block;
+    margin-bottom: 42px;
+}
+
+.mypage-top .mypage-title {
+    font-size: 26px;
+    line-height: 38px;
+    letter-spacing: -0.72px;
+}
+
+.destination {
+    text-align: center;
+}
+
+.destination .table-top {
+    padding-bottom: 16px;
+}
+
+.destination .table-top p {
+    color: #535353;
+    font-size: 16px;
+    line-height: 24px;
+    display: block;
+    text-align: left;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    table-layout: fixed;
+}
+
+table .left {
+    text-align: left !important;
+}
+
+table.list-table {
+    border-top: 1px solid #bdbdbd;
+}
+
+table.border {
+    border-top: 2px solid #222;
+}
+
+table.list-table tr th {
+    border-bottom: 1px solid #eee;
+    font-size: 16px;
+    line-height: 24px;
+    color: #757575;
+    font-weight: 400;
+    padding-top: 19px;
+    padding-bottom: 20px;
+}
+
+table.list-table tr td {
+    border-bottom: 1px solid #eee;
+    font-size: 16px;
+    line-height: 24px;
+    padding-top: 19px;
+    padding-bottom: 20px;
+    color: #757575;
+}
+
+.destination .list-table td {
+    color: #222;
+}
+
+.destination .list-table tbody tr td:nth-of-type(2), .destination .list-table tbody tr td:nth-of-type(3) {
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.user-delivery-address {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.destination .list-table tbody td:last-of-type a {
+    display: inline-block;
+    height: 24px;
+    border-bottom: 1px solid #222;
+    margin: 0 2px;
+}
+
+.border-btn {
+    position: relative;
+    border: 1px solid #222;
+    background: #fff;
+    color: #222;
+    text-align: center;
+}
+
+.small-btn {
+    height: 42px;
+    line-height: 40px;
+    width: 128px;
+    font-size: 14px;
+}
+
+.destination .list-table tbody td button {
+    letter-spacing: -0.025em;
+}
+
+.destination .list-table tbody tr td:nth-of-type(2), .destination .list-table tbody tr td:nth-of-type(3) {
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.destination .list-table tfoot td {
+    border-bottom: none;
+    padding: 0;
+}
+
+.btn-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+table .right {
+    text-align: right !important;
+}
+
+.btn-wrap.right {
+    justify-content: flex-end;
+}
+
+.table-wrap table tfoot .btn-wrap {
+    margin-top: 16px;
+}
+
+.black-btn {
+    position: relative;
+    background: #222;
+    color: #fff !important;
+    text-align: center;
+    border: 1px solid #222;
+}
+
+.btn-wrap.xsmall button, .btn-wrap.xsmall a {
+    width: 96px;
+    height: 42px;
+    line-height: 40px;
+    font-size: 14px;
+}
+
