@@ -1,3 +1,608 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
 
+.flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.body1 {
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.body2 {
+    font-size: 14px;
+    line-height: 20px;
+}
+
+body, form, div, p, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, ol, li, fieldset, th, td, input, textarea, button, select {
+    margin: 0;
+    padding: 0;
+    font-family: "Noto Sans KR",dotum,'돋움';
+    color: #222;
+}
+
+fieldset, img {
+    border: 0;
+}
+
+img {
+    border: 0;
+    vertical-align: middle;
+}
+
+ol, ul, dl {
+    list-style: none;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #222;
+}
+
+a:hover, a:focus, a:visited, a:active {
+    text-decoration: none;
+}
+
+section {
+    min-height: calc(100vh - 96px - 320px);
+}
+
+.inner {
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    width: 1224px;
+}
+
+input, textarea, select {
+    letter-spacing: normal;
+}
+
+input {
+    vertical-align: middle;
+}
+
+input {
+    -webkit-border-radius: 0;
+}
+
+input[type="text"], input[type="password"] {
+    -webkit-appearance: none;
+}
+
+input[type="text"] {
+    background: #fff;
+    color: #222;
+    font-size: 1em;
+    padding: 0 10px;
+    border: 1px solid #949494;
+    height: 48px;
+    line-height: 46px;
+}
+
+button, input[type="button"], input[type="submit"], input[type="reset"], input[type="file"] {
+    -webkit-appearance: button;
+    border-radius: 0;
+    outline: none;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-size: 1em;
+}
+
+.page-top {
+    display: block;
+    margin: 48px auto 56px auto;
+}
+
+.page-top .page-title {
+    font-size: 56px;
+    line-height: 56px;
+    letter-spacing: -1.57px;
+    text-align: center;
+}
+
+.tab-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 47px;
+}
+
+.tab-btn li {
+    display: block;
+    border: 1px solid #949494;
+    border-bottom: 2px solid #222;
+}
+
+.tab-btn.type2 li {
+    width: 50%;
+}
+
+.tab-btn li a {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 64px;
+    line-height: 62px;
+    text-align: center;
+    color: #949494;
+    font-size: 16px;
+    letter-spacing: -0.45px;
+}
+
+.tab-btn li a.on {
+    background: #222;
+    color: #fff;
+    font-weight: 700;
+    width: calc(100% + 2px);
+    margin-left: -1px;
+    margin-right: -1px;
+    height: 65px;
+    margin-top: -1px;
+}
+
+.tab-btn li:not(:first-child) {
+    border-left: none;
+}
+
+.tab-cont .tab-inner {
+    display: none;
+}
+
+.tab-cont .tab-inner.on {
+    display: block;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.cart-wrap .check-table {
+    margin-top: -47px;
+}
+
+table.check-table tr th {
+    border-top: 1px solid #bdbdbd;
+    border-bottom: 1px solid #eee;
+    font-size: 16px;
+    color: #757575;
+    font-weight: 400;
+    height: 48px;
+    vertical-align: middle;
+    padding-top: 19px;
+    padding-bottom: 20px;
+}
+
+input[type="checkbox"] {
+    display: none;
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: none;
+}
+
+input[type="checkbox"] + label {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: url(../images/ico/checkbox_off.svg) no-repeat center left;
+    padding-left: 36px;
+    color: #535353;
+    min-width: 20px;
+    min-height: 20px;
+    background-size: 20px 20px;
+}
+
+input[type="checkbox"]:checked + label {
+    background: url(../images/ico/checkbox_on_black.svg) no-repeat center left;
+    background-size: 20px 20px;
+}
+
+table.check-table thead th:nth-of-type(3) {
+    padding-left: 24px;
+    text-align: left;
+}
+
+table.check-table tr td {
+    border-bottom: 1px solid #eee;
+    font-size: 16px;
+    padding: 16px 0;
+    color: #757575;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.cart-wrap .check-table {
+    margin-top: -47px;
+}
+
+.cart-wrap .check-table tr td {
+    color: #222;
+}
+
+table.check-table tr td:first-of-type {
+    text-align: center;
+}
+
+.cart-wrap .check-table tr td.cart-prd-img {
+    padding: 16px 0;
+}
+
+table.check-table tr td a {
+    color: #222;
+}
+
+table.check-table tr td:nth-of-type(2) img {
+    display: block;
+    width: 100%;
+    background: #f6f6f6;
+}
+
+.cart-wrap .check-table tr td.cart-prd-img img {
+    width: 100px;
+    background: #f6f6f6;
+}
+
+table.check-table tr td:nth-of-type(3) {
+    padding: 16px 24px;
+    text-align: left;
+}
+
+.subtitle {
+    font-size: 18px;
+    line-height: 26px;
+}
+
+.cart-wrap .check-table tr td .cate, .cart-wrap .check-table tr td .option {
+    color: #757575;
+}
+
+.quantity-box button[class^='q-'] {
+    width: 24px;
+    height: 24px;
+}
+
+.quantity-box .quantity {
+    width: 42px;
+    height: 24px;
+    line-height: 24px;
+    margin-top: -3px;
+    border: none;
+    outline: none;
+    text-align: center;
+    font-size: 18px;
+    padding: 0;
+}
+
+.table-button {
+    margin: 24px auto 40px auto;
+}
+
+.border-btn {
+    position: relative;
+    border: 1px solid #222;
+    background: #fff;
+    color: #222;
+    text-align: center;
+}
+
+.table-button button {
+    padding: 10px 16px;
+    font-size: 14px;
+    margin-right: 8px;
+}
+
+.total-wrap {
+    padding: 24px 82px;
+    background: #fafafa;
+}
+
+.total-wrap li {
+    position: relative;
+}
+
+.total-wrap li span {
+    font-size: 18px;
+    line-height: 38px;
+    letter-spacing: -0.5px;
+    color: #757575;
+}
+
+b, strong {
+    font-weight: 700;
+}
+
+.total-wrap li strong {
+    display: inline-block;
+    font-size: 22px;
+    margin-left: 24px;
+    line-height: 38px;
+}
+
+.total-wrap li.d-charge::after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 24px;
+    height: 24px;
+    margin-left: -41px;
+    background: url(/images/ico/ico_plus_gray.svg) no-repeat center center;
+}
+
+.total-wrap li:last-of-type strong {
+    font-size: 26px;
+}
+
+.total-wrap li.total-price::after, .total-wrap li.total-order::after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: 7px;
+    width: 24px;
+    height: 24px;
+    margin-left: -41px;
+    background: url(/images/ico/ico_equal_gray.png) no-repeat bottom 4px center;
+}
+
+.cart-notice {
+    margin: 24px auto 32px auto;
+}
+
+.cart-notice p {
+    color: #757575;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -0.39px;
+}
+
+.green {
+    color: #18a957;
+}
+
+.cart-notice p span {
+    color: #18a957;
+}
+
+.btn-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.btn-wrap.large button, .btn-wrap.large a {
+    width: 232px;
+    height: 64px;
+    line-height: 62px;
+}
+
+.black-btn {
+    position: relative;
+    background: #222;
+    color: #fff !important;
+    text-align: center;
+    border: 1px solid #222;
+}
+
+.btn-wrap.double > button:first-child, .btn-wrap.double > a:first-child {
+    margin-right: 16px;
+}
+
+.naver-dummy {
+    display: block;
+    margin-left: 156px;
+}
+
+.cart-wrap .naver-dummy {
+    text-align: center;
+    margin: 16px auto 0 auto;
+}
+
+.npay_storebtn_bx, .npay_button_box, .npay_button_box2, .npay_storebtn_bx *, .npay_button_box *, .npay_button_box2 * {
+    display: block !important;
+    overflow: hidden !important;
+    float: none !important;
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    width: auto !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 none !important;
+    font-size: 12px !important;
+    line-height: 16px !important;
+    font-family: '돋움',Dotum,Helvetica,sans-serif !important;
+    text-align: left !important;
+    text-decoration: none !important;
+    vertical-align: top !important;
+    background: none !important;
+    border-radius: 0 !important;
+}
+
+.npay_storebtn_bx {
+    display: inline-block !important;
+}
+
+.npay_type_A_1 {
+    width: 236px !important;
+    height: 88px !important;
+}
+
+.npay_button_box, .npay_button_box2 {
+    width: auto !important;
+    height: 100% !important;
+    *height: auto !important;
+    zoom: 1 !important;
+    padding: 0 4px !important;
+    border-top: 2px solid #2b2f3a !important;
+    background-color: #fff !important;
+}
+
+.npay_button {
+    position: relative !important;
+    margin: 0 !important;
+    padding: 11px 0 11px 86px !important;
+    zoom: 1 !important;
+}
+
+.npay_text {
+    display: block !important;
+    *display: inline !important;
+    position: absolute !important;
+    top: 11px !important;
+    left: 0 !important;
+    width: 79px !important;
+    height: 36px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: url(/images/icol/npay_sp_text.png) no-repeat !important;
+}
+
+.npay_button_box .npay_blind, .npay_button_box .yellow, .npay_button_box .blue, .npay_button_box2 .npay_blind, .npay_button_box2 .yellow .npay_button_box2 .blue {
+    overflow: hidden !important;
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    margin: -1px !important;
+    padding: 0 !important;
+    clip: rect(0 0 0 0) !important;
+}
+
+.npay_btn_list {
+    *zoom: 1 !important;
+    display: table !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    table-layout: fixed !important;
+    list-style: none !important;
+}
+
+.npay_btn_list tbody {
+    display: table-row-group !important;
+}
+
+.npay_btn_list tr {
+    display: table-row !important;
+}
+
+.npay_btn_item {
+    display: table-cell !important;
+    height: 37px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    text-align: left !important;
+}
+
+.npay_btn_link {
+    display: block !important;
+    height: 35px !important;
+    margin: 0 0 0 3px !important;
+    padding: 0 !important;
+    border: 1px solid #bfc4c7 !important;
+    background-color: #fcfcfc !important;
+    background-repeat: no-repeat !important;
+    background-repeat: no-repeat !important;
+    text-align: center !important;
+    text-decoration: none !important;
+}
+
+.npay_btn_link.npay_btn_pay {
+    background-image: url(/images/ico/2022_09_diff/npay_sp_payment.png) !important;
+    background-position: 50% 0 !important;
+    background-repeat: no-repeat !important;
+    background-size: 63px auto !important;
+}
+
+.npay_btn_link.btn_green {
+    border-color: #00bd39 !important;
+    background-color: #00c73c !important;
+    background-position: 50% -35px !important;
+}
+
+.npay_btn_item:first-child .npay_btn_link {
+    margin: 0 !important;
+}
+
+.npay_event {
+    position: relative !important;
+    margin: 0 !important;
+    padding: 0 40px 0 0 !important;
+    border: 0 none !important;
+    border-top: 1px solid #eaecee !important;
+}
+
+.npay_more {
+    position: absolute !important;
+    top: 5px !important;
+    width: 16px !important;
+    height: 16px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: url(/images/ico/npay_sp_more.png) no-repeat !important;
+    text-decoration: none !important;
+}
+
+.npay_more_prev {
+    right: 15px !important;
+    background-position: 0 0 !important;
+}
+
+.npay_event_text {
+    display: block !important;
+    *display: inline !important;
+    overflow: hidden !important;
+    *width: 100% !important;
+    margin: 0 !important;
+    padding: 5px 0 !important;
+    letter-spacing: 0 !important;
+    white-space: nowrap !important;
+    *zoom: 1 !important;
+    text-overflow: ellipsis !important;
+    word-wrap: normal !important;
+}
+
+.npay_event_text .event_title {
+    display: inline !important;
+    margin: 0 5px 0 0 !important;
+    padding: 0 !important;
+    font-weight: normal !important;
+    color: #00bd39 !important;
+    vertical-align: middle !important;
+}
+
+.npay_event .npay_event_text .event_link {
+    display: inline !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-weight: normal !important;
+    color: #727272 !important;
+    text-decoration: none !important;
+    vertical-align: middle !important;
+}
+
+.npay_more_next {
+    right: 0 !important;
+    background-position: -15px 0 !important;
+}
