@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<link rel="icon" type="image/png" sizes="192x192" href="../images/ico/fabicon.png">
 <link rel="stylesheet"   href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script   src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script   src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -16,28 +16,6 @@
 <style>
 /* 전체 */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap');
-
-body {
-    font-size: 16px;
-    font-family: 'NotoSans';
-    color: #222;
-    font-weight: 400;
-}
-
-body, form, div, p, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, ol, li, fieldset, th, td, input, textarea, button, select {
-    margin: 0;
-    padding: 0;
-    font-family: "Noto Sans KR", sans-serif;
-    color: #222;
-}
-
-element.style {
-    padding-top: 128px;
-}
-
-section {
-    min-height: calc(100vh - 96px - 320px);
-}
 
 * {
     box-sizing: border-box !important;
@@ -48,59 +26,60 @@ section {
     text-shadow: none !important;
 }
 
-section {
-    display: block;
-}
-
 article {
     display: block;
 }
 
-h2 {
-    display: block;
-    font-size: 1.5em;
-    margin-block-start: 0.83em;
-    margin-block-end: 0.83em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    font-weight: bold;
+body, form, div, p, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, ol, li, fieldset, th, td, input, textarea, button, select {
+    margin: 0;
+    padding: 0;
+    font-family: "Noto Sans KR", sans-serif;
+    color: #222;
 }
 
-ol, ul, dl {
-    list-style: none;
-}
-
-ul {
-    display: block;
-    list-style-type: disc;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    padding-inline-start: 40px;
-}
-
-element.style {
-    color: #757575;
-}
-
-element.style {
-    margin-bottom: 10px;
-}
-
-li {
-    list-style: none;
+body {
+    font-size: 16px;
+    font-family: 'NotoSans';
+    color: #222;
+    font-weight: 400;
 }
 
 /* 탑 */
-.flex.top {
-    align-items: flex-start;
+/* 카테고리 */
+
+
+
+/* 검색 */
+.flex.left {
+    justify-content: flex-start;
+}
+
+.inquiry-top ul {
+    margin-top: 48px;
+    border: 1px solid #eee;
+    padding: 24px;
 }
 
 .flex {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.flex.top {
+    align-items: flex-start;
+}
+
+.inquiry-top ul li:first-of-type {
+    color: #757575;
+}
+
+.inquiry-top ul li {
+    margin-right: 24px;
+}
+
+li {
+    list-style: none;
 }
 
 .inner {
@@ -110,47 +89,78 @@ li {
     width: 1224px;
 }
 
-/* 가운데 */
-.my-page .my-contents {
+form {
     display: block;
-    position: relative;
-    width: 1016px;
-    height: auto;
+    margin-top: 0em;
 }
 
-.mypage-top {
-    display: block;
-    margin-bottom: 42px;
-}
-
-.mypage-top .mypage-title {
-    font-size: 26px;
-    line-height: 38px;
-    letter-spacing: -0.72px;
-}
-
-.od-contents > div:first-of-type {
-    margin-top: 40px;
-}
-
-.spa-voucher-box {
+.board-search-wrap {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    border: 1px solid #eee;
-    padding: 32px 0;
     margin-bottom: 80px;
 }
 
-.spa-voucher-box label {
-    color: #757575;
+input[type="radio"] {
+    display: none;
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: none;
 }
 
-.spa-voucher-box input[type="text"] {
-    width: 496px;
-    display: block;
-    margin: 0 8px 0 24px;
+input[type="radio"] {
+    border: none;
+    -webkit-appearance: none;
+}
+
+input {
+    -webkit-border-radius: 0;
+}
+
+input {
+    vertical-align: middle;
+}
+
+input, textarea, select {
+    letter-spacing: normal;
+}
+
+.board-search-wrap input[type='radio'] + label:last-of-type {
+    margin-right: 60px;
+}
+
+
+.board-search-wrap input[type='radio'] + label {
+    margin-right: 32px;
+} 
+
+input[type="radio"]:checked + label {
+    background: url(../images/ico/radio_on.svg) no-repeat center left;
+}
+
+input[type="radio"] + label {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: url(../images/ico/radio_off.svg) no-repeat center left;
+    padding-left: 28px;
+    min-width: 18px;
+    min-height: 18px;
+}
+
+label {
+    cursor: default;
+}
+
+.board-search-wrap input[type='text'] {
+    width: 257px;
+    margin-bottom: 0;
 }
 
 input[type="text"] {
@@ -167,22 +177,13 @@ input[type="text"], input[type="password"] {
     -webkit-appearance: none;
 }
 
-input {
-    -webkit-border-radius: 0;
-}
-
-input {
-    vertical-align: middle;
-}
-
-input, textarea, select {
-    letter-spacing: normal;
-}
-
-.medium-btn {
+.board-search-wrap button {
+    width: 127px;
     height: 48px;
     line-height: 46px;
-    width: 128px;
+    font-size: 14px;
+    font-weight: 700;
+    margin-left: 8px;
 }
 
 .black-btn {
@@ -203,6 +204,180 @@ button, input[type="button"], input[type="submit"], input[type="reset"], input[t
     font-size: 1em;
 }
 
+input[type="radio" i] {
+    background-color: initial;
+    cursor: default;
+    appearance: auto;
+    box-sizing: border-box;
+    margin: 3px 3px 0px 5px;
+    padding: initial;
+    border: initial;
+}
+
+input {
+    writing-mode: horizontal-tb !important;
+    font-style: ;
+    font-variant-ligatures: ;
+    font-variant-caps: ;
+    font-variant-numeric: ;
+    font-variant-east-asian: ;
+    font-weight: ;
+    font-stretch: ;
+    font-size: ;
+    font-family: ;
+    text-rendering: auto;
+    color: fieldtext;
+    letter-spacing: normal;
+    word-spacing: normal;
+    line-height: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    appearance: auto;
+    -webkit-rtl-ordering: logical;
+    cursor: text;
+    background-color: field;
+    margin: 0em;
+    padding: 1px 2px;
+    border-width: 2px;
+    border-style: inset;
+    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+    border-image: initial;
+}
+
+
+.btn-wrap.right {
+    justify-content: flex-end;
+}
+
+.btn-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+
+/* 페이징처리 */
+.list-thumb + .paginate {
+    margin-top: 32px;
+}
+
+.paginate {
+    display: block;
+    position: relative;
+    margin: 100px auto;
+}
+
+.paginate ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+}
+
+.paginate ul li {
+    display: block;
+    padding: 0 8px;
+}
+
+li {
+    list-style: none;
+}
+
+.paginate ul li a.num.on {
+    border-bottom: 1px solid #535353;
+    pointer-events: none;
+    cursor: default;
+}
+
+.paginate ul li a.num {
+    font-size: 14px;
+    line-height: 19px;
+    border-bottom: 1px solid #fff;
+    text-decoration: none;
+}
+
+.paginate ul li a {
+    display: block;
+    height: 20px;
+    text-align: center;
+    color: #222;
+}
+
+a {
+    text-decoration: none;
+    color: #222;
+}
+
+.paginate ul li.prev, .paginate ul li.last {
+    padding-left: 0;
+}
+
+a:hover, a:focus, a:visited, a:active {
+    text-decoration: none; 
+    color: black;
+}
+
+li a:link{
+color: black;
+}
+
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+.paginate ul li a img {
+    display: block;
+}
+
+img {
+    border: 0;
+    vertical-align: middle;
+}
+
+fieldset, img {
+    border: 0;
+}
+
+img {
+    overflow-clip-margin: content-box;
+    overflow: clip;
+}
+
+
+table.list-table {
+  border-collapse: collapse;
+  text-align: left;
+  line-height: 1.5;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  margin: 20px 10px;
+}
+
+table.list-table th {
+  width: 150px;
+  padding: 10px;
+  font-weight: bold;
+  vertical-align: top;
+}
+
+table.list-table td {
+  width: 350px;
+  padding: 10px;
+  vertical-align: top;
+}
+
+/* 카테고리 */
 .tab-btn {
     display: flex;
     justify-content: space-between;
@@ -211,14 +386,21 @@ button, input[type="button"], input[type="submit"], input[type="reset"], input[t
     margin-bottom: 47px;
 }
 
-.tab-btn.type5 li {
-    width: 20%;
+ol, ul, dl {
+    list-style: none;
 }
 
+.tab-btn.type6 li {
+    width: calc(100% / 6);
+}
 .tab-btn li {
     display: block;
     border: 1px solid #949494;
     border-bottom: 2px solid #222;
+}
+
+li {
+    list-style: none;
 }
 
 .tab-btn li a.on {
@@ -244,10 +426,6 @@ button, input[type="button"], input[type="submit"], input[type="reset"], input[t
     letter-spacing: -0.45px;
 }
 
-a:hover, a:focus, a:visited, a:active {
-    text-decoration: none;
-}
-
 a {
     text-decoration: none;
     color: #222;
@@ -257,22 +435,24 @@ a {
     border-left: none;
 }
 
-.od-contents > div:not(:first-of-type) {
-    margin-top: 64px;
+.tab-btn.type6 li {
+    width: calc(100% / 3);
 }
 
-.od-contents .table-top {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    position: relative;
+.tab-cont .tab-inner.on {
+    display: block;
 }
 
-table.border {
-    border-top: 2px solid #222;
+.tab-cont .tab-inner {
+    display: none;
 }
 
-table.thumb-table {
+.faq-table table {
+    margin-top: -50px;
+    border-top: none;
+}
+
+table.list-table {
     border-top: 1px solid #bdbdbd;
 }
 
@@ -300,12 +480,6 @@ col {
     display: table-column;
 }
 
-tbody {
-    display: table-row-group;
-    vertical-align: middle;
-    border-color: inherit;
-}
-
 thead {
     display: table-header-group;
     vertical-align: middle;
@@ -318,125 +492,219 @@ tr {
     border-color: inherit;
 }
 
-table.thumb-table tr th {
-    border-bottom: 1px solid #eee;
-    font-size: 16px;
-    color: #757575;
-    font-weight: 400;
-    height: 48px;
-    vertical-align: middle;
-    padding-top: 19px;
-    padding-bottom: 20px;
-}
-
 th {
     display: table-cell;
     vertical-align: inherit;
     font-weight: bold;
-    text-align: -internal-center;
 }
 
-.od-contents .table-wrap table th:nth-of-type(2) {
+table.list-table tr th {
+    border-bottom: 1px solid #eee;
+    font-size: 16px;
+    line-height: 24px;
+    color: #757575;
+    font-weight: 400;
+    padding-top: 19px;
+    padding-bottom: 20px;
+}
+
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+.faq-table table td:first-of-type {
     text-align: left;
+    padding: 20px 0;
 }
 
-table.thumb-table thead th:nth-of-type(2) {
-    padding-left: 24px;
+table.list-table tr td {
+    border-bottom: 1px solid #eee;
+    font-size: 16px;
+    line-height: 24px;
+    padding-top: 19px;
+    padding-bottom: 20px;
+    color: #757575;
 }
 
-.empty.small {
-    padding: 40px 0;
-    width: 100%;
-    margin: 0;
-    margin-right: 0;
-    margin-left: 0;
+.faq-table table td {
+    position: relative;
+    padding: 20px 20px 0px 0;
 }
 
+table.list-table tr td a {
+    color: #222;
+}
 
+a {
+    text-decoration: none;
+    color: #222;
+}
 
-</style>    
+input.underline {
+	border:0;
+	border-bottom:1 solid black;
+}
+
+</style>
+
+<%
+	int categoryLink = request.getParameter("categoryLink")==null ? 1 :Integer.parseInt(request.getParameter("categoryLink"));
+	int contentPage = request.getParameter("currentPage")==null ? 1 :Integer.parseInt(request.getParameter("currentPage"));
+    int searchCondition = request.getParameter("searchCondition")==null ? 1 :Integer.parseInt(request.getParameter("searchCondition"));
+    String searchWord = request.getParameter("searchWord")==null ? "" : request.getParameter("searchWord");
+%>
+
 </head>
 <body>
 
-<!-- 헤더 -->
-<header></header>
-
-<section id="mypage" class="my-page" style="padding-top: 128px;">
+<section id="mypage-faq" class="my-page" style="padding-top: 128px;">
 	<div class="inner flex top">
-		<!-- 좌측메뉴 -->
-		<jsp:include page="/managerpage/managerLeft.jsp"></jsp:include>
-		
-		<!-- 가운데 -->
-		<article class="my-contents ">
-			<div class="mypage-top">
-				<h2 class="mypage-title">제품관리</h2>
-			</div>
-			<div class="od-top">
-	<div class="od-contents">
-		<div class="spa-voucher-box">
-				<label for="spaVoucher">상품 번호 </label>
-				<input type="text" id="spaVoucher" name="" onkeypress="this.value=this.value.replace(/[^a-zA-Z-_0-9]/g,'');" placeholder="직접 등록하려면 번호를 입력해 주세요.">
-				<button type="button" class="black-btn medium-btn" onclick="selfRegistSpaVoucher();">등록하기</button>
-			</div>
-			<ul style="margin-bottom:10px">
-				<li></li>
-			</ul>
+	<!-- 좌측 메뉴 -->
+	<jsp:include page="/managerpage/managerLeft.jsp"></jsp:include>
 
-			<ul class="tab-btn type5">
-				<li>
-					<a href="/mypage/order/2" class="on">전체</a>
-				</li>
-				<li>
-					<a href="/mypage/order/2?voucherStatusCode=2">사용가능</a>
-				</li>
-				<li>
-					<a href="/mypage/order/2?voucherStatusCode=6">등록완료</a>
-				</li>
-				<li>
-					<a href="/mypage/order/2?voucherStatusCode=4">사용완료</a>
-				</li>
-				<li>
-					<a href="/mypage/order/2?voucherStatusCode=3">사용불가</a>
-				</li>
-			</ul>
-		<div class="table-wrap">
-					<div class="table-top">
-					</div>
-					<table class="thumb-table border">
-						<colgroup>
-							<col width="100px">
-							<col width="auto">
-							<col width="120px">
-							<col width="120px">
-							<col width="120px">
-							<col width="136px">
-						</colgroup>
-						<tbody>
-						</tbody><thead>
-						<tr>
-							<th></th>
-							<th>상품 정보</th>
-							<th>가격</th>
-							<th>수량</th>
-							<th>상태</th>
-							<th>관리</th>
-						</tr>
-						</thead>
-						<tbody><tr>
-							<td colspan="6" class="empty small">
-								<p>확인되는 내역이 없습니다.</p>
-							</td>
-						</tr>
-						</tbody>
-					</table>
-				</div>
+	<!-- 가운데 -->
+		<article class="my-contents faq">
+			<div class="mypage-top">
+				<h2 class="mypage-title">제품 관리</h2>
 			</div>
+			<hr style="border:solid 20px white;">
+			<form id="faqDto" action="/Lush/managerpage/managergoods.do" method="get">
+				<div class="faq-top">
+				<ul class="flex center">
+					<li>
+						<div class="board-search-wrap">
+					<input name="categoryLink" type="hidden" value="<%=categoryLink%>">
+            		<input name="currentPage" type="hidden" value="<%=contentPage%>">
+            		<input id="where1" name="searchCondition" type="radio" value="1">
+            		<label for="where1">카테고리1</label>
+            		<input id="where2" name="searchCondition" type="radio" value="2">
+            		<label for="where2">카테고리2</label>
+            		<input name="searchWord" type="text" value="<%=searchWord%>">
+            		<button type="submit" class="black-btn">검색</button>
+        				</div>
+					</li>
+					
+					</ul>
+				</div>
+			<div>
+			<input type="hidden" name="_csrf" value="9a123f00-436b-4192-be61-ad2b854b54ed">
+			</div>
+			</form>
+
+			<div class="tab-cont" id="faqList">
+				<div class="faq-table tab-inner on">
+					<table class="toggle-box type2 list-table">
+						<colgroup>
+							<col width="auto">
+							<col width="auto">
+							<col width="auto">
+							<col width="auto">
+							<col width="auto">
+						</colgroup>
+						
+			<thead class="container">
+			<tr>
+				<th>번호</th>
+				<th>상품명</th>
+				<th>용량</th>
+				<th>수량</th>
+				<th>가격</th>
+				<th>삭제</th>
+			</tr>
+			</thead>
+			<tbody>
+			<c:forEach var="goods" items="${goods}">
+				<tr>
+						 <td>
+						 <a>
+						 &nbsp;&nbsp;&nbsp;&nbsp; ${goods.pd_id}
+						 </a>
+						 </td>
+						  <td>
+                         <a>
+                         &nbsp;&nbsp; ${goods.pd_name}
+                         </a>
+                         </td>
+						  <td>
+						  <a>
+                         &nbsp;&nbsp;&nbsp; ${goods.ps_amount}
+                         </a>
+                         </td>
+                         <td>
+                         <a>
+                         &nbsp;&nbsp;&nbsp; ${goods.ps_weight}
+                         </a>
+                         </td>
+                         <td>
+                         <a>
+                         &nbsp;&nbsp;&nbsp; ${goods.ps_price}
+                         </a>
+                         </td>
+                         <td>
+                         <a>
+                         &nbsp;&nbsp;&nbsp;<input class="underline" type="button" id="boardCommentFiles" value="삭제">
+                         </a>
+                         </td>
+                        
+				</tr>
+				 </c:forEach>
+			</tbody>
+			</table>
+			
+			<div class="paginate">
+					<ul>
+						<c:if test="${pageBlock.prev}">
+                            <li class="first"><a href="/Lush/managerpage/memberman.do?&currentPage=${pageBlock.startOfPageBlock-1}&searchCondition=${searchCondition}&searchWord=${searchWord}"> &laquo; </a></li></c:if>
+                        <c:forEach begin="${pageBlock.startOfPageBlock}" end="${pageBlock.endOfPageBlock}" var="i" step="1">
+                            <c:choose>
+                                <c:when test="${pageBlock.currentPage eq i}">
+                                    <li><a href="#" class="num on">${i}</a></li>
+                                </c:when>
+                                <c:otherwise>
+                                    <li><a href="/Lush/managerpage/memberman.do?&currentPage=${i}&searchCondition=${searchCondition}&searchWord=${searchWord}">${i}</a></li>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:forEach>
+                        <c:if test="${pageBlock.next}">
+                            <li class="last"><a href="/Lush/managerpage/memberman.do?&currentPage=${pageBlock.endOfPageBlock+1}&searchCondition=${searchCondition}&searchWord=${searchWord}"> &raquo; </a></li>
+                        </c:if>
+					</ul>
+				</div>
+			
 		</div>
-	 </article>
-   </div>
+		</div>
+		</article>
+	</div>		
 </section>
 
-<!-- 푸터 -->
-<footer></footer>
+<script>
+
+if(<%=categoryLink%> == 1){
+	$('ul.tab-btn>li:first-child').find('a').addClass('on');
+    $('.list-thumb li').addClass('end');
+}else if (<%=categoryLink%> == 2){
+   $('ul.tab-btn>li:nth-child(2)').find('a').addClass('on');
+   $('.list-thumb li').addClass('end');
+}else if (<%=categoryLink%> == 3){
+	   $('ul.tab-btn>li:nth-child(3)').find('a').addClass('on');
+	   $('.list-thumb li').addClass('end');
+}else if (<%=categoryLink%> == 4){
+	   $('ul.tab-btn>li:nth-child(4)').find('a').addClass('on');
+	   $('.list-thumb li').addClass('end');
+}else if (<%=categoryLink%> == 5){
+	   $('ul.tab-btn>li:nth-child(5)').find('a').addClass('on');
+	   $('.list-thumb li').addClass('end');
+}   
+
+
+	if (<%=searchCondition%> == 1){
+	    $('input[id="where1"]').prop('checked',true);
+	}else{
+	    $('input[id="where2"]').prop('checked',true);
+	}
+	</script>
+
 </body>
 </html>

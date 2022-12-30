@@ -4,16 +4,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원관리</title>
+<title>이벤트 관리</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" sizes="192x192" href="../images/ico/fabicon.png">
 <link rel="stylesheet"   href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script   src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script   src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="icon" type="image/png" sizes="192x192" href="../images/ico/fabicon.png">
 
 <style>
 /* 전체 */
-
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap');
 
 * {
@@ -43,50 +44,10 @@ body {
     font-weight: 400;
 }
 
-div {
-    display: block;
-}
-
-ol, ul, dl {
-    list-style: none;
-}
-
-section {
-    min-height: calc(100vh - 96px - 320px);
-}
-
-section {
-    display: block;
-}
-
-form {
-    display: block;
-    margin-top: 0em;
-}
-
 /* 탑 */
-.my-page {
-    margin-top: 64px;
-}
+/* 카테고리 */
 
 
-.my-page .my-contents {
-    display: block;
-    position: relative;
-    width: 1000px;
-    height: auto;
-}
-
-.mypage-top {
-    display: block;
-    margin-bottom: 42px;
-}
-
-.mypage-top .mypage-title {
-    font-size: 26px;
-    line-height: 38px;
-    letter-spacing: -0.72px;
-}
 
 /* 검색 */
 .flex.left {
@@ -298,80 +259,6 @@ input {
     flex-wrap: wrap;
 }
 
-/* 하단 */
-.inq-contents {
-    margin-top: 40px;
-}
-
-.inq-contents .inq-table-top {
-    position: relative;
-}
-
-.inq-contents table {
-    margin-top: 32px;
-}
-
-table.list-table {
-    border-top: 1px solid #bdbdbd;
-}
-
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
-    width: 100%;
-    table-layout: fixed;
-}
-
-colgroup {
-    display: table-column-group;
-}
-
-thead {
-    display: table-header-group;
-    vertical-align: middle;
-    border-color: inherit;
-}
-
-tr {
-    display: table-row;
-    vertical-align: inherit;
-    border-color: inherit;
-}
-
-table.list-table tr th {
-    border-bottom: 1px solid #eee;
-    font-size: 16px;
-    line-height: 24px;
-    color: #757575;
-    font-weight: 400;
-    padding-top: 19px;
-    padding-bottom: 20px;
-}
-
-th {
-    display: table-cell;
-    vertical-align: inherit;
-    font-weight: bold;
-    text-align: -internal-center;
-}
-
-tbody {
-    display: table-row-group;
-    vertical-align: middle;
-    border-color: inherit;
-}
-
-div.inquiry-top{
-	width: 162px;
-}
-
-div.board-search-wrap{
-	width: 1016px;
-}
-
-div.inq-contents{
-	width: 1016px;
-}
 
 /* 페이징처리 */
 .list-thumb + .paginate {
@@ -489,6 +376,172 @@ table.list-table td {
   padding: 10px;
   vertical-align: top;
 }
+
+/* 카테고리 */
+.tab-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 47px;
+}
+
+ol, ul, dl {
+    list-style: none;
+}
+
+.tab-btn.type6 li {
+    width: calc(100% / 6);
+}
+.tab-btn li {
+    display: block;
+    border: 1px solid #949494;
+    border-bottom: 2px solid #222;
+}
+
+li {
+    list-style: none;
+}
+
+.tab-btn li a.on {
+    background: #222;
+    color: #fff;
+    font-weight: 700;
+    width: calc(100% + 2px);
+    margin-left: -1px;
+    margin-right: -1px;
+    height: 65px;
+    margin-top: -1px;
+}
+
+.tab-btn li a {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 64px;
+    line-height: 62px;
+    text-align: center;
+    color: #949494;
+    font-size: 16px;
+    letter-spacing: -0.45px;
+}
+
+a {
+    text-decoration: none;
+    color: #222;
+}
+
+.tab-btn li:not(:first-child) {
+    border-left: none;
+}
+
+.tab-btn.type6 li {
+    width: calc(100% / 2);
+}
+
+.tab-cont .tab-inner.on {
+    display: block;
+}
+
+.tab-cont .tab-inner {
+    display: none;
+}
+
+.faq-table table {
+    margin-top: -50px;
+    border-top: none;
+}
+
+table.list-table {
+    border-top: 1px solid #bdbdbd;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    table-layout: fixed;
+}
+
+table {
+    display: table;
+    border-collapse: separate;
+    box-sizing: border-box;
+    text-indent: initial;
+    border-spacing: 2px;
+    border-color: grey;
+}
+
+colgroup {
+    display: table-column-group;
+}
+
+col {
+    display: table-column;
+}
+
+thead {
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+
+th {
+    display: table-cell;
+    vertical-align: inherit;
+    font-weight: bold;
+    text-align: -internal-center;
+}
+
+table.list-table tr th {
+    border-bottom: 1px solid #eee;
+    font-size: 16px;
+    line-height: 24px;
+    color: #757575;
+    font-weight: 400;
+    padding-top: 19px;
+    padding-bottom: 20px;
+}
+
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+.faq-table table td:first-of-type {
+    text-align: center;
+    padding: 20px 0;
+}
+
+table.list-table tr td {
+    border-bottom: 1px solid #eee;
+    font-size: 16px;
+    line-height: 24px;
+    padding-top: 19px;
+    padding-bottom: 20px;
+    color: #757575;
+}
+
+.faq-table table td {
+    position: relative;
+    padding: 20px 20px 20px 128px;
+}
+
+table.list-table tr td a {
+    color: #222;
+}
+
+a {
+    text-decoration: none;
+    color: #222;
+}
 </style>
 
 <%
@@ -497,88 +550,64 @@ table.list-table td {
     int searchCondition = request.getParameter("searchCondition")==null ? 1 :Integer.parseInt(request.getParameter("searchCondition"));
     String searchWord = request.getParameter("searchWord")==null ? "" : request.getParameter("searchWord");
 %>
+
 </head>
 <body>
 
-<header id ="header"></header>
-<form id="lushBoardSearchParam" action="/Lush/managerpage/memberman.do" method="get">
-<section id="mypage-inquiry" class="my-page" style="padding-top: 128px;">	
-<div class="inner flex top">
+<section id="mypage-faq" class="my-page" style="padding-top: 128px;">
+	<div class="inner flex top">
+	<!-- 좌측 메뉴 -->
+	<jsp:include page="/managerpage/managerLeft.jsp"></jsp:include>
 
-<!-- 사이드 -->
-<jsp:include page="/managerpage/managerLeft.jsp"></jsp:include>
-<!-- 가운데 -->
-<article class="my-contents inquiry">
-		<div class="mypage-top">
-			<h2 class="mypage-title">회원관리</h2>
-		</div>
-		
-		<div class="inner">
-		
-				<div class="board-search-wrap">
+	<!-- 가운데 -->
+		<article class="my-contents faq">
+			<div class="mypage-top">
+				<h2 class="mypage-title">이벤트 관리</h2>
+			</div>
+			<hr style="border:solid 20px white;">
+			<form id="faqDto" action="/mypage/faq" method="get">
+				<div class="faq-top">
+				<ul class="flex center">
+					<li>
+						<div class="board-search-wrap">
 					<input name="categoryLink" type="hidden" value="<%=categoryLink%>">
             		<input name="currentPage" type="hidden" value="<%=contentPage%>">
             		<input id="where1" name="searchCondition" type="radio" value="1">
             		<label for="where1">이름</label>
             		<input id="where2" name="searchCondition" type="radio" value="2">
-            		<label for="where2">이메일</label>
+            		<label for="where2">아이디</label>
             		<input name="searchWord" type="text" value="<%=searchWord%>">
             		<button type="submit" class="black-btn">검색</button>
-        </div>
-        
-<div>
-<input type="hidden" name="_csrf" value="3b0351a8-f783-4f60-86aa-5cc142894a38">
-</div>
-
-<div>
-</div>
-	
-		<div class="inq-contents">
-			<div class="inq-table-top">
+        				</div>
+					</li>
+					
+					</ul>
+				</div>
+			<div>
+			<input type="hidden" name="_csrf" value="9a123f00-436b-4192-be61-ad2b854b54ed">
 			</div>
+			</form>
 			
-		<table class="list-table">
-		
-				<col width="30px">
-				<col width="30px">
-				<col width="30px">
-				<col width="30px">
-			
-			
+			<ul class="tab-btn type6">
+					<li><a href="javascript:getFaqList(1);" class="on">진행중인 이벤트</a></li>
+					<li><a href="javascript:getFaqList(1, 'SC');">종료된 이벤트</a></li>
+			</ul>
+
+			<div class="tab-cont" id="faqList">
+				<div class="faq-table tab-inner on">
+					<table class="toggle-box type2 list-table">
+						<colgroup>
+							<col width="70px">
+							<col width="auto">
+						</colgroup>
 			<thead>
-				<tr>
-					<th>번호</th>
-					<th>이름</th>
-					<th>아이디</th>
-					<th>이메일</th>
-				</tr>
+			<tr>
+				<th>번호</th>
+				<th>제목</th>
+				<th></th>
+			</tr>
 			</thead>
-			<tbody>
-			<c:forEach var="manager" items="${managers}">
-				<tr>
-						 <td>
-						 <a href="/Lush/managerpage/view.do?meID=${manager.me_id}&currentPage=${pageBlock.currentPage}">
-						 ${manager.me_id}
-						 </a>
-						 </td>
-                         <td>
-                         <a href="/Lush/managerpage/view.do?meID=${manager.me_id}&currentPage=${pageBlock.currentPage}">
-                         ${manager.me_name}
-                         </a>
-                         </td>
-                         <td>
-                         <a href="/Lush/managerpage/view.do?meID=${manager.me_id}&currentPage=${pageBlock.currentPage}">
-                         ${manager.me_loginid}
-                         </a>
-                         </td>
-                         <td>
-                         <a href="/Lush/managerpage/view.do?meID=${manager.me_id}&currentPage=${pageBlock.currentPage}">
-                         ${manager.me_email}
-                         </a>
-                         </td>
-				</tr>
-				 </c:forEach>
-			</tbody>
+			<tbody></tbody>
 			</table>
 			
 			<div class="paginate">
@@ -600,25 +629,29 @@ table.list-table td {
                         </c:if>
 					</ul>
 				</div>
-				</div>
-					
-			</div>
-		</article>
-	</div>
-	</section>
-<div>
-<input type="hidden" name="_csrf" value="3ef3ef5a-8ab4-4a3a-bcf9-b4a7637bf34d"></div>
-</form>
 			
-<!-- 푸터 -->
-<jsp:include page="/WEB-INF/inc/footer.jsp"></jsp:include>
+		</div>
+		</div>
+		</article>
+	</div>		
+</section>
 
 <script>
-if (<%=searchCondition%> == 1){
-    $('input[id="where1"]').prop('checked',true);
-}else{
-    $('input[id="where2"]').prop('checked',true);
-}
-</script>
+
+	function updateFaqHit(aTag, faqId) {
+
+		if (!$(aTag).closest("tr").hasClass("on")) {
+			$.post("/mypage/updateFaqHit",{id:faqId}, function(res) {})
+		}
+	}
+	
+	<script>
+	if (<%=searchCondition%> == 1){
+	    $('input[id="where1"]').prop('checked',true);
+	}else{
+	    $('input[id="where2"]').prop('checked',true);
+	}
+	</script>
+
 </body>
 </html>

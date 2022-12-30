@@ -3,7 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%
-     int searchCondition = request.getParameter("searchCondition")==null ? 1 :Integer.parseInt(request.getParameter("searchCondition"));
+	int categoryLink = request.getParameter("categoryLink")==null ? 1 :Integer.parseInt(request.getParameter("categoryLink"));
+	int contentPage = request.getParameter("currentPage")==null ? 1 :Integer.parseInt(request.getParameter("currentPage"));
+    int searchCondition = request.getParameter("searchCondition")==null ? 1 :Integer.parseInt(request.getParameter("searchCondition"));
     String searchWord = request.getParameter("searchWord")==null ? "" : request.getParameter("searchWord");
 %>
 <!DOCTYPE html>
@@ -320,12 +322,12 @@ button, input[type="button"], input[type="submit"], input[type="reset"], input[t
 						<tr>
 							<th>이름</th>
 							<td>
-								<input id="userName" name="userName" disabled="disabled" type="text" >	
+								<input id="userName" name="userName" disabled="disabled" type="text" value="정민지">	
 							</td>
 						</tr>
 						<tr>
 							<th>닉네임</th>
-							<td><input type="text" id="userNickName" name="userNickName" disabled="disabled" ></td>
+							<td><input type="text" id="userNickName" name="userNickName" disabled="disabled"  ></td>
 						</tr>
 						<tr>
 							<th>이메일</th>
