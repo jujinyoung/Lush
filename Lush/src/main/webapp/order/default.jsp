@@ -23,9 +23,16 @@ session.setAttribute("auth", "test1");
  --%>
 
 	<form action="<%=contextPath%>/order/orderview.do" method="post">
-		<input type="hidden" name="pid" value=1> <input type="hidden"
-			name="weight" value=150> <input type="hidden" name="amount"
-			value=2> <input type="hidden" name="fromwhere" value=1>
+		<input type="hidden" name="pid" value=1> 
+		<input type="hidden" name="pid" value=1> 
+		<input type="hidden" name="pid" value=1> 
+		<input type="hidden" name="psid" value=1> 
+		<input type="hidden" name="psid" value=2> 
+		<input type="hidden" name="psid" value=3> 
+		<input type="hidden" name="amount" value=2> 
+		<input type="hidden" name="amount" value=3> 
+		<input type="hidden" name="amount" value=5> 
+		<input type="hidden" name="fromwhere" value=1>
 		<button type="submit">이동하기</button>
 	</form>
 
