@@ -83,7 +83,7 @@ public class ManageImpl implements ManageDao {
         		     " SELECT * FROM ltb_member ";        
         if(condition ==1) sql += " WHERE REGEXP_LIKE(me_name, ?, 'i') ";
         else sql += " WHERE REGEXP_LIKE(me_email, ?, 'i') ";
-        sql += " ORDER BY me_id DESC)t)b WHERE b.no BETWEEN ? AND ?";
+        sql += " ORDER BY me_id ASC)t)b WHERE b.no BETWEEN ? AND ?";
 
         List<Member> list = null;
         try {

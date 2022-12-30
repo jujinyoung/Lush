@@ -319,28 +319,29 @@ button, input[type="button"], input[type="submit"], input[type="reset"], input[t
 							<col width="auto">
 						</colgroup>
 						<tbody>
+						<c:forEach var="manager" items="${managers}">
 						<tr>
 							<th>이름</th>
 							<td>
-								<input id="userName" name="userName" disabled="disabled" type="text" value="정민지">	
+								<input id="userName" name="userName" disabled="disabled" type="text" value="${manager.me_name}">	
 							</td>
 						</tr>
 						<tr>
 							<th>닉네임</th>
-							<td><input type="text" id="userNickName" name="userNickName" disabled="disabled"  ></td>
+							<td><input type="text" id="userNickName" name="userNickName" disabled="disabled" value="${manager.me_nick}" ></td>
 						</tr>
 						<tr>
 							<th>이메일</th>
-							<td><input type="text"  readonly=""></td>
+							<td><input type="text"  readonly="" value="${manager.me_email}"></td>
 						</tr>
 						<tr>
 							<th>휴대전화 번호</th>
-							<td><input id="phoneNumber" name="phoneNumber" readonly="readonly" type="text" ></td>
+							<td><input id="phoneNumber" name="phoneNumber" readonly="readonly" type="text" value="${manager.me_tel}" ></td>
 						</tr>
 						<tr class="modify-address">
 							<th>주소</th>
 							<td>
-							<input type="text" name="address" id="address" disabled="disabled">
+							<input type="text" name="address" id="address" disabled="disabled" value="${manager.me_add}">
 							</td>
 						</tr>
 						<tr>
@@ -349,7 +350,7 @@ button, input[type="button"], input[type="submit"], input[type="reset"], input[t
 								<input type="text" value="카카오" disabled="">
 							</td>
 						</tr>
-					
+					</c:forEach>
 						</tbody>
 					</table>
 					<p class="require-notice">* 회원 정보 변경시 로그아웃 이후 정상적으로 반영됩니다.</p>

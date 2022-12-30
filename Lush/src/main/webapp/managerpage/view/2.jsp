@@ -1,10 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%
+	int categoryLink = request.getParameter("categoryLink")==null ? 1 :Integer.parseInt(request.getParameter("categoryLink"));
+	int contentPage = request.getParameter("currentPage")==null ? 1 :Integer.parseInt(request.getParameter("currentPage"));
+    int searchCondition = request.getParameter("searchCondition")==null ? 1 :Integer.parseInt(request.getParameter("searchCondition"));
+    String searchWord = request.getParameter("searchWord")==null ? "" : request.getParameter("searchWord");
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="192x192" href="../images/ico/fabicon.png">
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<title>회원상세정보</title>
 
 <style>
 /* 공통 */
@@ -289,14 +301,15 @@ button, input[type="button"], input[type="submit"], input[type="reset"], input[t
 <section id="mypage-member" class="my-page" style="padding-top: 128px;">
 	<div class="inner flex top">
 		<!-- 사이드 -->
-		<article class="my-menu"></article>
+		<!-- 사이드 -->
+		<jsp:include page="/managerpage/managerLeft.jsp"></jsp:include>
 		<!-- 가운데 -->
 		<article class="my-contents modify">
 			<div class="mypage-top">
 				<h2 class="mypage-title">회원상세정보</h2>
 			</div>
 			<div class="modify-table">
-			`<form id="user" action="/mypage/user-modify-sns" method="post">
+			<form id="user" action="/mypage/user-modify-sns" method="post">
 				<div class="table-wrap">
 					<p class="require-notice"></p>
 					<table class="no-border-table">
@@ -306,26 +319,30 @@ button, input[type="button"], input[type="submit"], input[type="reset"], input[t
 							<col width="auto">
 						</colgroup>
 						<tbody>
+						<c:forEach var="manager" items="${managers}">
 						<tr>
 							<th>이름</th>
 							<td>
-								<input id="userName" name="userName" disabled="disabled" type="text" value="정민지"></td>
+								<input id="userName" name="userName" disabled="disabled" type="text" value="${manager.me_name}">	
+							</td>
 						</tr>
 						<tr>
 							<th>닉네임</th>
-							<td><input type="text" id="userNickName" name="userNickName" value="정민지"></td>
+							<td><input type="text" id="userNickName" name="userNickName" disabled="disabled" value="${manager.me_nick}" ></td>
 						</tr>
 						<tr>
 							<th>이메일</th>
-							<td><input type="text" value="hyungjs1234@nate.com" readonly=""></td>
+							<td><input type="text"  readonly="" value="${manager.me_email}"></td>
 						</tr>
 						<tr>
 							<th>휴대전화 번호</th>
-							<td><input id="phoneNumber" name="phoneNumber" readonly="readonly" type="text" value="010-2484-2887"></td>
+							<td><input id="phoneNumber" name="phoneNumber" readonly="readonly" type="text" value="${manager.me_tel}" ></td>
 						</tr>
 						<tr class="modify-address">
 							<th>주소</th>
-							<input type="text" name="address" id="address" value="" readonly="">
+							<td>
+							<input type="text" name="address" id="address" disabled="disabled" value="${manager.me_add}">
+							</td>
 						</tr>
 						<tr>
 							<th>계정 연결정보</th>
@@ -333,13 +350,13 @@ button, input[type="button"], input[type="submit"], input[type="reset"], input[t
 								<input type="text" value="카카오" disabled="">
 							</td>
 						</tr>
-					
+					</c:forEach>
 						</tbody>
 					</table>
 					<p class="require-notice">* 회원 정보 변경시 로그아웃 이후 정상적으로 반영됩니다.</p>
 					<hr style="border:solid 40px white;">
 					<div class="btn-wrap large double">
-						<button type="button" class="black-btn" id="saveBtn">목록</button>
+						<button type="button" class="black-btn" id="saveBtn" onclick="location.href='/Lush/managerpage/memberman.do'">목록</button>
 					</div>
 				</div>
 			
