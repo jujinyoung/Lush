@@ -644,7 +644,7 @@ input.underline {
                          </td>
                          <td>
                          <a>
-                         &nbsp;&nbsp;&nbsp;<input class="underline" type="button" id="boardCommentFiles" value="삭제">
+                         &nbsp;&nbsp;&nbsp;<input class="btnDelete" type="button" id="boardCommentFiles" value="삭제">
                          </a>
                          </td>
                         
@@ -656,19 +656,19 @@ input.underline {
 			<div class="paginate">
 					<ul>
 						<c:if test="${pageBlock.prev}">
-                            <li class="first"><a href="/Lush/managerpage/memberman.do?&currentPage=${pageBlock.startOfPageBlock-1}&searchCondition=${searchCondition}&searchWord=${searchWord}"> &laquo; </a></li></c:if>
+                            <li class="first"><a href="/Lush/managerpage/managergoods.do?&currentPage=${pageBlock.startOfPageBlock-1}&searchCondition=${searchCondition}&searchWord=${searchWord}"> &laquo; </a></li></c:if>
                         <c:forEach begin="${pageBlock.startOfPageBlock}" end="${pageBlock.endOfPageBlock}" var="i" step="1">
                             <c:choose>
                                 <c:when test="${pageBlock.currentPage eq i}">
                                     <li><a href="#" class="num on">${i}</a></li>
                                 </c:when>
                                 <c:otherwise>
-                                    <li><a href="/Lush/managerpage/memberman.do?&currentPage=${i}&searchCondition=${searchCondition}&searchWord=${searchWord}">${i}</a></li>
+                                    <li><a href="/Lush/managerpage/managergoods.do?&currentPage=${i}&searchCondition=${searchCondition}&searchWord=${searchWord}">${i}</a></li>
                                 </c:otherwise>
                             </c:choose>
                         </c:forEach>
                         <c:if test="${pageBlock.next}">
-                            <li class="last"><a href="/Lush/managerpage/memberman.do?&currentPage=${pageBlock.endOfPageBlock+1}&searchCondition=${searchCondition}&searchWord=${searchWord}"> &raquo; </a></li>
+                            <li class="last"><a href="/Lush/managerpage/managergoods.do?&currentPage=${pageBlock.endOfPageBlock+1}&searchCondition=${searchCondition}&searchWord=${searchWord}"> &raquo; </a></li>
                         </c:if>
 					</ul>
 				</div>
@@ -679,24 +679,12 @@ input.underline {
 	</div>		
 </section>
 
+
+
+
 <script>
 
-if(<%=categoryLink%> == 1){
-	$('ul.tab-btn>li:first-child').find('a').addClass('on');
-    $('.list-thumb li').addClass('end');
-}else if (<%=categoryLink%> == 2){
-   $('ul.tab-btn>li:nth-child(2)').find('a').addClass('on');
-   $('.list-thumb li').addClass('end');
-}else if (<%=categoryLink%> == 3){
-	   $('ul.tab-btn>li:nth-child(3)').find('a').addClass('on');
-	   $('.list-thumb li').addClass('end');
-}else if (<%=categoryLink%> == 4){
-	   $('ul.tab-btn>li:nth-child(4)').find('a').addClass('on');
-	   $('.list-thumb li').addClass('end');
-}else if (<%=categoryLink%> == 5){
-	   $('ul.tab-btn>li:nth-child(5)').find('a').addClass('on');
-	   $('.list-thumb li').addClass('end');
-}   
+  
 
 
 	if (<%=searchCondition%> == 1){
