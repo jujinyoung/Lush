@@ -13,15 +13,15 @@ import java.util.List;
 
 public class FileRequest {
 
-    private final static String savePath = "D:\\LushUpload\\event";
+//    private final static String savePath = "D:\\LushUpload\\event";
 
-    public static MultipartRequest getFileRequest(HttpServletRequest request) throws IOException {
+    public static MultipartRequest getFileRequest(HttpServletRequest request, String savePath) throws IOException {
 
         //파일 경로
         File saveDir = new File(savePath);
         if (!saveDir.exists()) saveDir.mkdirs();
 
-        int maxPostSize = 5 * 1024 * 1024;
+        int maxPostSize = 25 * 1024 * 1024;
         String encoding = "UTF-8";
         FileRenamePolicy policy = new DefaultFileRenamePolicy();
         MultipartRequest mrequest = new MultipartRequest(request, savePath, maxPostSize, encoding, policy);
@@ -35,7 +35,7 @@ public class FileRequest {
         while( en.hasMoreElements() ) {
             String name = (String) en.nextElement();
             String filesystemName = mrequest.getFilesystemName(name);
-            if (filesystemName!=null) uploadURL.add(savePath + "\\" + filesystemName);
+            if (filesystemName!=null) uploadURL.add(filesystemName);
         }
 
         return uploadURL;
