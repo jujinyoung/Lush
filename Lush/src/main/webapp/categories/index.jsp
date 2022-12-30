@@ -24,7 +24,14 @@
       <c:set var="categoriesID" value="<%=categoriesID%>"></c:set>
       <c:forEach var="top" items="${categoriesTops}">
         <c:if test="${top.categories.pc_id eq categoriesID}">
-          <h2 class="category-title">${top.categories.pc_cate2}</h2>
+          <c:choose>
+            <c:when test="${top.categories.pc_cate2 == '전체'}">
+              <h2 class="category-title">${top.categories.pc_cate1}</h2>
+            </c:when>
+            <c:otherwise>
+              <h2 class="category-title">${top.categories.pc_cate2}</h2>
+            </c:otherwise>
+          </c:choose>
           <p class="category-sub">찬란히 빛나는 물결에 부드럽게 몸을 맡겨 보세요</p>
         </c:if>
       </c:forEach>
@@ -84,7 +91,7 @@
                   </c:otherwise>
                 </c:choose>
                 <div class="item">
-                  <a href="/products/view.do?productID=${product.product.pd_id}" class="prd-img-box">
+                  <a href="/Lush/products/view.do?productID=${product.product.pd_id}" class="prd-img-box">
                     <img src="../images/products/${product.product.pd_id}.png" class="prd-img" alt="${product.product.pd_name}">
                   </a>
                   <div class="tag-box flex center">
@@ -116,9 +123,9 @@
                       </c:otherwise>
                     </c:choose>
                   </div>
-                  <a href="/products/view.do?productID=${product.product.pd_id}" class="name">${product.product.pd_name}</a>
-                  <a href="/products/view.do?productID=${product.product.pd_id}" class="cate">${product.product.pd_cate3}</a>
-                  <a href="/products/view.do?productID=${product.product.pd_id}" class="price">￦ ${product.productSangse.price}</a>
+                  <a href="/Lush/products/view.do?productID=${product.product.pd_id}" class="name">${product.product.pd_name}</a>
+                  <a href="/Lush/products/view.do?productID=${product.product.pd_id}" class="cate">${product.product.pd_cate3}</a>
+                  <a href="/Lush/products/view.do?productID=${product.product.pd_id}" class="price">￦ ${product.productSangse.price}</a>
                   <div class="item-mask"></div>
                 </div>
                 <div class="buttons">
@@ -189,8 +196,8 @@
 
   $(document).ready(function (){
     var a = ${selectStatus}
-    var selectValue = $('ul#listFilter li:nth-child('+a+')').val();
-    $('.list-top .select-box selected-value').val(selectValue);
+    var selectValue = $('ul#listFilter li:nth-child('+a+')').text();
+    $('.list-top .select-box .selected-value').text(selectValue);
   });
 
 

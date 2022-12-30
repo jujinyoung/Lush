@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class ProductSangseDaoImpl implements ProductSangseDao {
 
@@ -35,6 +36,32 @@ public class ProductSangseDaoImpl implements ProductSangseDao {
             }
 
             return sangse;
+        }finally {
+            JdbcUtil.close(pstmt);
+            JdbcUtil.close(rs);
+        }
+    }
+
+    @Override
+    public ArrayList<ProductSangse> selectSangseList(Connection conn, int productID) throws SQLException {
+
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        String sql = "SELECT * FROM ltb_ps WHERE pd_id=?";
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, productID);
+            rs = pstmt.executeQuery();
+            ArrayList<ProductSangse> list = null;
+            if (rs.next()){
+                list = new ArrayList<>();
+                do {
+                    list.add(new ProductSangse(rs.getInt("ps_id"), rs.getInt("ps_weight")
+                            , rs.getInt("ps_price"), rs.getInt("pd_id"), rs.getInt("ps_amount")));
+
+                }while (rs.next());
+            }
+            return list;
         }finally {
             JdbcUtil.close(pstmt);
             JdbcUtil.close(rs);
