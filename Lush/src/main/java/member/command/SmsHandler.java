@@ -60,8 +60,8 @@ public class SmsHandler implements CommandHandler {
 		
 		 System.out.println( session ); 
 		 User user =  (User)session.getAttribute("authUser");
-		 System.out.println(user.getId() ); 	
-		 String userid = user.getId();
+		 System.out.println(user.getLoginid()); 	
+		 String userid = user.getLoginid();
 		 
 		 PrintWriter out = response.getWriter();
 		 

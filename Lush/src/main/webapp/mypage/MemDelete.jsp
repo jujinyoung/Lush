@@ -5,16 +5,19 @@
 <head>
 <meta charset="UTF-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-<link href="css/Delete_style.css" rel="stylesheet" type="text/css">
-<title>Insert title here</title>
+<link href="css/MemDelete_style.css" rel="stylesheet" type="text/css">
+<title>러쉬 MYPAGE</title>
+<link rel="icon" type="image/png" sizes="192x192"
+	href="/Lush/images/ico/fabicon.png">
 </head>
 <body>
-
+ <jsp:include page="/WEB-INF/inc/headerfooter/header.jsp"></jsp:include>
 <section id="mypage-member" class="my-page" style="padding-top: 128px;">
 	<div class="inner flex top">
 	<!-- 	<!-- 마이페이지 좌측 메뉴
-		<article class="my-menu">
-    <h2><a href="/mypage/index">마이페이지</a></h2>
+		<article class="my-menu"> -->
+		<jsp:include page="/mypage/mypageLeft.jsp"></jsp:include>
+  <!--   <h2><a href="/mypage/index">마이페이지</a></h2>
 
     <div class="menu-box">
         <p class="body2">쇼핑정보</p>
@@ -146,7 +149,7 @@
 		</article>
 	</div>
 </section>
-
+<jsp:include page="/WEB-INF/inc/headerfooter/footer.jsp"></jsp:include>
 <script>
 
 

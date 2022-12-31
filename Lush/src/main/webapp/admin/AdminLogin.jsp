@@ -6,13 +6,14 @@
 <meta charset="UTF-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <link href="css/ManagerLogin_style.css" rel="stylesheet" type="text/css">
-<title>Insert title here</title>
+<link rel="icon" type="image/png" sizes="192x192" href="/Lush/images/ico/fabicon.png">
+<title>러쉬코리아</title>
 </head>
 <body>
 
 
 
-
+ <jsp:include page="/WEB-INF/inc/headerfooter/header.jsp"></jsp:include>
 <section id="login" style="padding-top: 128px;">
 	<div class="inner">
 		<article class="login-wrap">
@@ -23,9 +24,9 @@
 			<div class="tab-cont">
 				<div class="tab-inner on">
 					<div class="search-wrap">
-						<form id="loginForm" action="" method="POST">
-							<input type="text" name="id" id="id" placeholder="관리자 아이디">
-							<input type="password"name="password" id="password"  placeholder="비밀번호">
+						<form id="loginForm" action="/Lush/admin/admlogin.do" method="POST">
+							<input type="text" name="adminid" id="adminid" placeholder="관리자 아이디">
+							<input type="password"name="adpassword" id="adpassword"  placeholder="비밀번호">
 							<div class="input-wrap">
 							
 							</div>
@@ -37,10 +38,15 @@
 		</article>
 			</div>
 	</section>
+<jsp:include page="/WEB-INF/inc/headerfooter/footer.jsp"></jsp:include>
 
 
+<script>
 
+<c:if test="${errors.idorpasserror}">
+	alert('아이디 또는 패스워드를 확인해 주세요.');
+</c:if>
 
-
+</script>
 </body>
 </html>

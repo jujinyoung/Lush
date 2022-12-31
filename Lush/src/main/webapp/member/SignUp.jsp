@@ -6,7 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>회원가입 - 홈피</title>
+<link rel="icon" type="image/png" sizes="192x192" href="/Lush/images/ico/fabicon.png">
+<title>러쉬코리아</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <link href="css/SignUp_style.css" rel="stylesheet" type="text/css">
 <style>
@@ -17,7 +18,7 @@
 
 
 
-
+ <jsp:include page="/WEB-INF/inc/headerfooter/header.jsp"></jsp:include>
 <section id="consent" style="padding-top: 128px;">
 	<div class="page-top">
 		<h2 class="page-title">회원가입</h2>
@@ -79,7 +80,7 @@
 	</div>
 </section>
 
-
+<jsp:include page="/WEB-INF/inc/headerfooter/footer.jsp"></jsp:include>
 
 <!-- 체크박스 체크 시에만 넘어가게  -->
 <script>

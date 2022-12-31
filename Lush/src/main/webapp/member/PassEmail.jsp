@@ -18,15 +18,16 @@ request.setAttribute("id", id);
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>비밀번호 찾기 - 이메일 인증</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <link href="css/PassEmail_style.css" rel="stylesheet" type="text/css">
+<link rel="icon" type="image/png" sizes="192x192" href="/Lush/images/ico/fabicon.png">
+<title>러쉬코리아</title>
 <style>
 </style>
 </head>
 <body>
 
- 
+ <jsp:include page="/WEB-INF/inc/headerfooter/header.jsp"></jsp:include>
  <section id="authPw" style="padding-top: 128px;">
 	<div class="inner">
 		<article class="join-wrap">
@@ -49,7 +50,7 @@ request.setAttribute("id", id);
 			</article>
 	</div>
 </section>
-
+<jsp:include page="/WEB-INF/inc/headerfooter/footer.jsp"></jsp:include>
 
 
 

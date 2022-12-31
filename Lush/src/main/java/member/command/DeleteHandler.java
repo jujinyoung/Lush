@@ -15,7 +15,7 @@ public class DeleteHandler implements CommandHandler{
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
 		User user = (User)session.getAttribute("authUser");
-		String id = user.getId();
+		String id = user.getLoginid();
 		
 		 try {
 				System.out.println("try 안");
