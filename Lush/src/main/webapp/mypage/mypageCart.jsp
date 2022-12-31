@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>2022. 12. 28. 오전 10:49:03</title>
-<link rel="stylesheet" type="text/css" href="mypageCart.css">
+<link rel="stylesheet" type="text/css" href="css/mypageCart.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <style>
 
