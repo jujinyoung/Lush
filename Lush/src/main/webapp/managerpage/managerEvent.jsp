@@ -545,7 +545,7 @@ a {
 </style>
 
 <%
-	int categoryLink = request.getParameter("categoryLink")==null ? 1 :Integer.parseInt(request.getParameter("categoryLink"));
+	int eventStatus = request.getParameter("eventStatus")==null ? 1 :Integer.parseInt(request.getParameter("eventStatus"));
 	int contentPage = request.getParameter("currentPage")==null ? 1 :Integer.parseInt(request.getParameter("currentPage"));
     int searchCondition = request.getParameter("searchCondition")==null ? 1 :Integer.parseInt(request.getParameter("searchCondition"));
     String searchWord = request.getParameter("searchWord")==null ? "" : request.getParameter("searchWord");
@@ -565,12 +565,12 @@ a {
 				<h2 class="mypage-title">이벤트 관리</h2>
 			</div>
 			<hr style="border:solid 20px white;">
-			<form id="faqDto" action="/mypage/faq" method="get">
+			<form id="lushBoardSearchParam" action="/Lush/managerpage/managerEvent.do" method="get">
 				<div class="faq-top">
 				<ul class="flex center">
 					<li>
 						<div class="board-search-wrap">
-					<input name="categoryLink" type="hidden" value="<%=categoryLink%>">
+					<input name="eventStatus" type="hidden" value="<%=eventStatus%>">
             		<input name="currentPage" type="hidden" value="<%=contentPage%>">
             		<input id="where1" name="searchCondition" type="radio" value="1">
             		<label for="where1">이름</label>
@@ -589,8 +589,8 @@ a {
 			</form>
 			
 			<ul class="tab-btn type6">
-					<li><a href="javascript:getFaqList(1);" class="on">진행중인 이벤트</a></li>
-					<li><a href="javascript:getFaqList(1, 'SC');">종료된 이벤트</a></li>
+					<li><a href="/Lush/managerpage/managerEvent.do?eventStatus=1">진행중인 이벤트</a></li>
+					<li><a href="/Lush/managerpage/managerEvent.do?eventStatus=1">종료된 이벤트</a></li>
 			</ul>
 
 			<div class="tab-cont" id="faqList">
@@ -604,10 +604,34 @@ a {
 			<tr>
 				<th>번호</th>
 				<th>제목</th>
-				<th></th>
+				<th>등록날짜</th>
+				<th>종료날짜</th>
+				<th>삭제</th>
 			</tr>
 			</thead>
-			<tbody></tbody>
+			<tbody class="list-thumb">
+			<c:forEach var="event" items="${events}">
+				<tr>
+						 <td>
+						 ${event.event.id}
+						 </td>
+                         <td>
+                         ${event.event.title}
+                         </td>
+                         <td>
+                         ${event.event.rdate}
+                         </td>
+                         <td>
+                         ${event.event.edate}
+                         </td>
+                         <td>
+                         <a>
+                         <input class="underline" type="button" id="boardCommentFiles" value="삭제">
+                         </a>
+                         </td>
+				</tr>
+				 </c:forEach>
+			</tbody>
 			</table>
 			
 			<div class="paginate">
@@ -638,14 +662,12 @@ a {
 
 <script>
 
-	function updateFaqHit(aTag, faqId) {
-
-		if (!$(aTag).closest("tr").hasClass("on")) {
-			$.post("/mypage/updateFaqHit",{id:faqId}, function(res) {})
-		}
-	}
-	
-	<script>
+if(<%=eventStatus%> == 2){
+    $('tbody.tab-btn>tr:last-child').find('a').addClass('on');
+  }else{
+    $('tbody.tab-btn>tr:first-child').find('a').addClass('on');
+  }
+   
 	if (<%=searchCondition%> == 1){
 	    $('input[id="where1"]').prop('checked',true);
 	}else{

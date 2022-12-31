@@ -149,7 +149,8 @@ public class ManGoodsImpl implements ManGoodsDAO {
             JdbcUtil.close(rs);
         }
     }
-	
+
+
 
 
 }

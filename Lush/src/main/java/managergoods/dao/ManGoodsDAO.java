@@ -15,5 +15,4 @@ public interface ManGoodsDAO {
     public int getPages(Connection conn, int numberPerPage) throws SQLException;
 
 
-
 }

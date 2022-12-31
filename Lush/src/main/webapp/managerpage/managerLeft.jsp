@@ -561,7 +561,7 @@ table .right {
 	<!-- 마이페이지 좌측 메뉴 -->
 	<article class="my-menu">
 		<h2>
-			<a href="/mypage/index" class="on">관리페이지</a>
+			<a href="/Lush/managerpage/managerMain.jsp" class="on">관리페이지</a>
 		</h2>
 
 		<div class="menu-box">
