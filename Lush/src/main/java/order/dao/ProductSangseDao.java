@@ -9,7 +9,7 @@ import java.util.List;
 public interface ProductSangseDao {
 
     public ProductSangse selectProductSangse(Connection con, Long pid, int weight) throws SQLException;
-    public long selectProductSangseId(Connection con, Long pid, int weight) throws SQLException;
+//    public List<Long> selectProductSangseId(Connection con, Long pid, String[] weights) throws SQLException;
     public List<Long> getAmountList(Connection con, List<Long> psidlist) throws SQLException;
     public int minusAmount(Connection con, List<Long> psidlist, List<Long> customeramountlist) throws SQLException;
     public int plusAmount(Connection con, List<Long> psidlist, List<Long> customeramountlist) throws SQLException;

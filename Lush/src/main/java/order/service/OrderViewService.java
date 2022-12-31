@@ -5,6 +5,7 @@ import com.util.ConnectionProvider;
 import order.domain.Member;
 import order.domain.Product;
 import order.domain.ProductJoin;
+import order.domain.ProductParameter;
 import order.domain.ProductSangse;
 import order.domain.ShipAdd;
 import order.exception.EmptyException;
@@ -116,34 +117,34 @@ public class OrderViewService {
 		return productsangse;
 	}
 	
-	public long selectProductSangseId(Long pid, int weight) {
-		Connection conn = null;
-		ProductSangseDao dao = ProductSangseDaoImpl.getInstance();
-		long psid = 0;
+//	public List<Long> selectProductSangseId(Long pid, String[] weights) {
+//		Connection conn = null;
+//		ProductSangseDao dao = ProductSangseDaoImpl.getInstance();
+//		List<Long> psidlist = null;
+//
+//		try {
+//			conn = ConnectionProvider.getConnection();
+//			psidlist = dao.selectProductSangseId(conn, pid, weights);
+//			if (psidlist == null) {
+//				throw new EmptyException("제품상세 아이디가 없습니다.");
+//			}
+//		} catch (NamingException | SQLException e) {
+//			e.printStackTrace();
+//		} catch (EmptyException e) {
+//			e.printStackTrace();
+//		}
+//
+//		return psidlist;
+//	}
 
-		try {
-			conn = ConnectionProvider.getConnection();
-			psid = dao.selectProductSangseId(conn, pid, weight);
-			if (psid == 0) {
-				throw new EmptyException("제품상세 아이디가 없습니다.");
-			}
-		} catch (NamingException | SQLException e) {
-			e.printStackTrace();
-		} catch (EmptyException e) {
-			e.printStackTrace();
-		}
-
-		return psid;
-	}
-
-	public List<ProductJoin> selectProductJoin(Long psid, int amount) {
+	public List<ProductJoin> selectProductJoin(List<ProductParameter> productparameterlist) {
 		Connection conn = null;
 		ProductJoinDao dao = ProductJoinDaoImpl.getInstance();
 		List<ProductJoin> list = null;
 
 		try {
 			conn = ConnectionProvider.getConnection();
-			list = dao.selectProductJoin(conn, psid, amount);
+			list = dao.selectProductJoin(conn, productparameterlist);
 			if (list == null) {
 				throw new EmptyException("제품 조인이 없습니다.");
 			}

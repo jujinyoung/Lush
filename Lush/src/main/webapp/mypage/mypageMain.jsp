@@ -119,7 +119,7 @@
 						<div class="table-top">
 							<p class="sub-page-title">일반배송</p>
 							<p>
-								<span>주문일 : 2022-12-20</span> / <span>주문번호 : <a
+								<span>주문일 : ${map.value.get(0).getOdate()}</span> / <span>주문번호 : <a
 									href="/mypage/order-detail/0/K1000079212">KFBGKD-${map.key}</a></span>
 							</p>
 						</div>

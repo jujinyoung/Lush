@@ -34,8 +34,6 @@ public class OrderCheckMinusAjax implements CommandHandler {
 		String isAmountZero = "0"; // 0이면 재고 있고 1이면 재고 없음
 		for (int i = 0; i < psidlist.size(); i++) {
 			if (amountlist.get(i) < customerAmountList.get(i)) {
-				System.out.println("호");
-				System.out.println(i);
 				isAmountZero = "1";
 				break;
 			}
