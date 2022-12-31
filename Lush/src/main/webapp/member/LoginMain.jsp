@@ -4,15 +4,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 <link href="css/LoginMain_style.css" rel="stylesheet" type="text/css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<link rel="icon" type="image/png" sizes="192x192" href="/Lush/images/ico/fabicon.png">
+<title>러쉬코리아</title>
 </head>
 <body>
 
 
 
-
+<jsp:include page="/WEB-INF/inc/headerfooter/header.jsp"></jsp:include>
 <section id="login" style="padding-top: 128px;">
 	<div class="inner">
 		<article class="login-wrap">
@@ -69,7 +70,7 @@
 </section>
 
 
-
+<jsp:include page="/WEB-INF/inc/headerfooter/footer.jsp"></jsp:include>
 
 <script>
 /* 회원/비회원 탭 변경  */

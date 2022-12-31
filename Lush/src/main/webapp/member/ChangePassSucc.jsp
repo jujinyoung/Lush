@@ -8,11 +8,13 @@
 <title></title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <link href="css/FindPassSucc_style.css" rel="stylesheet" type="text/css">
+<link rel="icon" type="image/png" sizes="192x192" href="/Lush/images/ico/fabicon.png">
+<title>러쉬코리아</title>
 <style>
 </style>
 </head>
 <body>
-
+ <jsp:include page="/WEB-INF/inc/headerfooter/header.jsp"></jsp:include>
 
 <section id="resultId" style="padding-top: 128px;">
 	<div class="inner">
@@ -31,7 +33,7 @@
 			</article>
 	</div>
 </section>
-
+<jsp:include page="/WEB-INF/inc/headerfooter/footer.jsp"></jsp:include>
 <script>
 </script>
 </body>

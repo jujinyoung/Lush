@@ -49,7 +49,7 @@ public class ChangeInfoHandler implements CommandHandler {
 		User user = (User)session.getAttribute("authUser");
 		System.out.println( user.getId() ); // 세션 존재
 		
-		String id = user.getId(); // 세션에서 아이디 읽어옴 
+		String id = user.getLoginid(); // 세션에서 아이디 읽어옴 
 
 		 try {
 				System.out.println("try 안");
@@ -74,7 +74,7 @@ public class ChangeInfoHandler implements CommandHandler {
 		User user = (User)session.getAttribute("authUser");
 		System.out.println( user.getId() ); // 세션 존재
 		
-		String id = user.getId(); // 아이디 읽어옴 
+		String id = user.getLoginid(); // 아이디 읽어옴 
 		
 		Member member = changeinfo.isMem(id);
 		

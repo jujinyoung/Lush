@@ -5,7 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>회원가입 정보 입력</title>
+<link rel="icon" type="image/png" sizes="192x192" href="/Lush/images/ico/fabicon.png">
+<title>러쉬코리아</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <link href="css/SignUpMain_style.css" rel="stylesheet" type="text/css">
 <style>
@@ -13,7 +14,7 @@
 </head>
 <body>
 
-
+ <jsp:include page="/WEB-INF/inc/headerfooter/header.jsp"></jsp:include>
 <section id="joinInfo" style="padding-top: 128px;">
 	<div class="page-top">
 		<h2 class="page-title">회원가입</h2>
@@ -115,7 +116,7 @@
 <input type="hidden" name="_csrf" value="cc5689a3-7cae-4304-8cae-43102270f4be">
 </div></form></div>
 </section>
-
+<jsp:include page="/WEB-INF/inc/headerfooter/footer.jsp"></jsp:include>
 
 <!-- 유효성 검사 -->
 <script>

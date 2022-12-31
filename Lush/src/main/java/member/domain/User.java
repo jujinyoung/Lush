@@ -3,27 +3,14 @@ package member.domain;
 
 public class User {
 	
-	private String id;
+	private String loginid;
 	private String name;
-	
-	
-	public User(String id, String name) {
-		this.id = id;
-		this.name = name;
-
+	private int id;
+	public String getLoginid() {
+		return loginid;
 	}
-	
-	public User() {
-		// TODO Auto-generated constructor stub
-	}
-
-
-
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
+	public void setLoginid(String loginid) {
+		this.loginid = loginid;
 	}
 	public String getName() {
 		return name;
@@ -31,6 +18,25 @@ public class User {
 	public void setName(String name) {
 		this.name = name;
 	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public User(String loginid, String name, int id) {
+		this.loginid = loginid;
+		this.name = name;
+		this.id = id;
+	}
+	public User() {
+
+	}
+	public User(String loginid, String name) {
+		this.loginid = loginid;
+		this.name = name;
+	}
+	
 	
 	
 

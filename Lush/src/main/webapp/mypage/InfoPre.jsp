@@ -8,14 +8,16 @@
 <meta charset="UTF-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <link href="css/InfoPre_style.css" rel="stylesheet" type="text/css">
-<title>회원정보 변경 이전</title>
+<title>러쉬 MYPAGE</title>
+<link rel="icon" type="image/png" sizes="192x192"
+	href="/Lush/images/ico/fabicon.png">
 </head>
 <body>
-
+<jsp:include page="/WEB-INF/inc/headerfooter/header.jsp"></jsp:include>
 <section id="mypage-member" class="my-page" style="padding-top: 128px;">
     <div class="inner flex top">
         <!-- 마이페이지 좌측 메뉴 -->
-
+<jsp:include page="/mypage/mypageLeft.jsp"></jsp:include>
         <!-- 마이페이지 우측 컨텐츠 영역 -->
         <article class="my-contents modify">
             <div class="mypage-top">
@@ -31,7 +33,7 @@
         </article>
     </div>
 </section>
-
+<jsp:include page="/WEB-INF/inc/headerfooter/footer.jsp"></jsp:include>
 <div id="modal" class="modal">
 	<div class="modal_content" title="클릭시 창이 닫힙니다">
 	<button id="close" class="close">x</button>
