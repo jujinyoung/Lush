@@ -100,4 +100,53 @@ public class ProductDaoImpl implements ProductDao{
             JdbcUtil.close(rs);
         }
     }
+
+    @Override
+    public int plusReview(Connection conn, int productID, int count) throws SQLException {
+        PreparedStatement pstmt = null;
+        String sql = "UPDATE ltb_product SET pd_review=? WHERE pd_id=?";
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, ++count);
+            pstmt.setInt(2, productID);
+
+            return pstmt.executeUpdate();
+        }finally {
+            JdbcUtil.close(pstmt);
+        }
+    }
+
+    @Override
+    public int minusReview(Connection conn, int productID, int count) throws SQLException {
+        PreparedStatement pstmt = null;
+        String sql = "UPDATE ltb_product SET pd_review=? WHERE pd_id=?";
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, --count);
+            pstmt.setInt(2, productID);
+
+            return pstmt.executeUpdate();
+        }finally {
+            JdbcUtil.close(pstmt);
+        }
+    }
+
+    @Override
+    public int countReview(Connection conn, int productID) throws SQLException {
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        String sql = "SELECT pd_review FROM ltb_product WHERE pd_id = ?";
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, productID);
+            rs = pstmt.executeQuery();
+            int result = 0;
+            if (rs.next()) result = rs.getInt(1);
+
+            return result;
+        }finally {
+            JdbcUtil.close(pstmt);
+            JdbcUtil.close(rs);
+        }
+    }
 }
