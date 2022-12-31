@@ -17,7 +17,8 @@
   <title>러쉬</title>
 </head>
 <body>
-<section id="list">
+<jsp:include page="/WEB-INF/inc/headerfooter/header.jsp"></jsp:include>
+<section id="list" style="padding-top: 128px;">
   <!-- 서브페이지 탑배너 -->
   <article class="top-visual">
     <div class="flex center">
@@ -167,6 +168,8 @@
   </article>
 
 </section>
+
+<jsp:include page="/WEB-INF/inc/headerfooter/footer.jsp"></jsp:include>
 
 <script>
   $('.list-top .select-box').on('click', function (event){

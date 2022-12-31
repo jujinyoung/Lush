@@ -13,6 +13,8 @@
     <title>러쉬코리아</title>
 </head>
 <body>
+<jsp:include page="/WEB-INF/inc/headerfooter/header.jsp"></jsp:include>
+
 <section class="table-template" id="event">
   <article class="top-visual">
     <div class="flex center">
@@ -108,6 +110,8 @@
     </div>
   </div>
 </section>
+
+<jsp:include page="/WEB-INF/inc/headerfooter/footer.jsp"></jsp:include>
 
 <script>
   if (${searchCondition} == 1){
