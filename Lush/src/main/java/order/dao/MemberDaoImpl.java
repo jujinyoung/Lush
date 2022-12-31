@@ -41,4 +41,28 @@ public class MemberDaoImpl implements MemberDao{
         return member;
     }
 
+    @Override
+    public Member selectMemberById(Connection conn, int me_id) throws SQLException {
+
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        String sql = "SELECT * FROM ltb_member WHERE me_id = ?";
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, me_id);
+            rs = pstmt.executeQuery();
+            Member member = null;
+            if (rs.next()){
+                member = new Member(rs.getLong("me_id"), rs.getString("me_pass"), rs.getString("me_name"),
+                        rs.getString("me_add"), rs.getString("me_tel"), rs.getString("me_email"),
+                        rs.getString("me_nick"), rs.getString("me_loginid"));
+            }
+
+            return member;
+        }finally {
+            JdbcUtil.close(pstmt);
+            JdbcUtil.close(rs);
+        }
+    }
+
 }
