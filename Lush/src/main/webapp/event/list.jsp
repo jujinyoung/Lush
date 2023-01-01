@@ -19,8 +19,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
 <body>
-<header></header>
-<div class="inner">
+
+<jsp:include page="/WEB-INF/inc/headerfooter/header.jsp"></jsp:include>
+
+<div class="inner" style="padding-top: 128px;">
     <div class="page-top">
         <h2 class="page-title">이벤트</h2>
     </div>
@@ -68,7 +70,7 @@
         </div>
     </div>
 
-
+    <jsp:include page="/WEB-INF/inc/headerfooter/footer.jsp"></jsp:include>
 <script>
     if(<%=eventStatus%> == 2){
         $('.list-thumb li').addClass('end');

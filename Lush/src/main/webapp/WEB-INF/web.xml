@@ -26,7 +26,27 @@
     <url-pattern>/*</url-pattern>
     <dispatcher>REQUEST</dispatcher>
   </filter-mapping>
+  
+  
+<!-- 로그인 필터  -->
+<filter>
+	<filter-name>LoginCheckFilter</filter-name>
+	<filter-class>com.filter.LoginCheckFilter</filter-class>
+</filter>
+<filter-mapping>
+	<filter-name>LoginCheckFilter</filter-name>
+	<url-pattern>/member/logout.do</url-pattern>
+</filter-mapping>
 
+<!-- 관리자 로그인 필터 -->
+<filter>
+	<filter-name>AdmCheckFilter</filter-name>
+	<filter-class>com.filter.AdmCheckFilter</filter-class>
+</filter>
+<filter-mapping>
+	<filter-name>AdmCheckFilter</filter-name>
+	<url-pattern>/manager/*</url-pattern>
+</filter-mapping>
 <!--  이벤트 시스템 서블릿 등록-->
   <servlet>
     <description>시스템 서블릿 등록</description>

@@ -29,6 +29,7 @@ ul, ol, li {
 
 a {
     text-decoration: none;
+    color: #222;
 }
 
 *{
@@ -90,4 +91,11 @@ input, textarea, select {
 img {
     border: 0;
     vertical-align: middle;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    min-width: 1224px;
 }

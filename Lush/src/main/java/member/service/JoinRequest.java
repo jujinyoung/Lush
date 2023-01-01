@@ -3,7 +3,7 @@ package member.service;
 
 import java.util.Map;
 
-public class JoinRequest { // 회원가입할 때 필요한 
+public class JoinRequest { // 회원가입할 때 필요
 	private String me_loginid;
 	private String me_pass;
 	private String me_confirmpass;
@@ -13,19 +13,6 @@ public class JoinRequest { // 회원가입할 때 필요한
 	private String me_email;
 	private String me_nick;
 
-	
-	
-
-
-	/*
-	 * 
-	 * public JoinRequest() { this.me_loginid = me_loginid; this.me_pass = me_pass;
-	 * this.me_confirmpass = me_confirmpass; this.me_name = me_name; this.me_add =
-	 * me_add; this.me_tel = me_tel; this.me_email = me_email; this.me_nick =
-	 * me_nick;
-	 * 
-	 * }
-	 */
 
 
 
@@ -34,31 +21,18 @@ public class JoinRequest { // 회원가입할 때 필요한
 	}
 
 
-
-
-
 	public void setMe_pass(String me_pass) {
 		this.me_pass = me_pass;
 	}
-
-
-
 
 
 	public String getMe_confirmpass() {
 		return me_confirmpass;
 	}
 
-
-
-
-
 	public void setMe_confirmpass(String me_confirmpass) {
 		this.me_confirmpass = me_confirmpass;
 	}
-
-
-
 
 
 	public String getMe_name() {
@@ -66,15 +40,9 @@ public class JoinRequest { // 회원가입할 때 필요한
 	}
 
 
-
-
-
 	public void setMe_name(String me_name) {
 		this.me_name = me_name;
 	}
-
-
-
 
 
 	public String getMe_add() {
@@ -82,56 +50,31 @@ public class JoinRequest { // 회원가입할 때 필요한
 	}
 
 
-
-
-
 	public void setMe_add(String me_add) {
 		this.me_add = me_add;
 	}
-
-
-
 
 
 	public String getMe_tel() {
 		return me_tel;
 	}
 
-
-
-
-
 	public void setMe_tel(String me_tel) {
 		this.me_tel = me_tel;
 	}
-
-
-
 
 
 	public String getMe_email() {
 		return me_email;
 	}
 
-
-
-
-
 	public void setMe_email(String me_email) {
 		this.me_email = me_email;
 	}
 
-
-
-
-
 	public String getMe_nick() {
 		return me_nick;
 	}
-
-
-
-
 
 	public void setMe_nick(String me_nick) {
 		this.me_nick = me_nick;
@@ -146,14 +89,9 @@ public class JoinRequest { // 회원가입할 때 필요한
 	}
 
 
-
-
-
 	public void setMe_loginid(String me_loginid) {
 		this.me_loginid = me_loginid;
 	}
-
-
 
 
 

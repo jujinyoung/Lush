@@ -1,21 +1,29 @@
 package inquiry.domain;
 
+import java.util.Date;
+
 public class Inquiry {
 
+	private int me_id;
 	private int q_qid;
-	private String q_date;
-	private String q_category;
+	private Date q_date;
+	private int q_category;
 	private String q_title;
 	private String q_status;
 	private String me_name;
 	private String q_content;
-	private String q_attach;
 	private String q_answer;
-	private int me_id;
+	private String q_file;
+
 	
+	public Inquiry() {
+		super();
+	}
 	
-	public Inquiry(int q_qid, String q_date, String q_category, String q_title, String q_status, String me_name,
-			String q_content, String q_attach, String q_answer,  int me_id) {
+	public Inquiry(int me_id, int q_qid, Date q_date, int q_category, String q_title, String q_status, String me_name,
+			String q_content, String q_answer, String q_file) {
+		super();
+		this.me_id = me_id;
 		this.q_qid = q_qid;
 		this.q_date = q_date;
 		this.q_category = q_category;
@@ -23,31 +31,31 @@ public class Inquiry {
 		this.q_status = q_status;
 		this.me_name = me_name;
 		this.q_content = q_content;
-		this.q_attach = q_attach;
 		this.q_answer = q_answer;
+		this.q_file = q_file;
+	}
+	public int getMe_id() {
+		return me_id;
+	}
+	public void setMe_id(int me_id) {
 		this.me_id = me_id;
 	}
-	
-	public Inquiry() {
-		// TODO Auto-generated constructor stub
-	}
-
 	public int getQ_qid() {
 		return q_qid;
 	}
 	public void setQ_qid(int q_qid) {
 		this.q_qid = q_qid;
 	}
-	public String getQ_date() {
+	public Date getQ_date() {
 		return q_date;
 	}
-	public void setQ_date(String q_date) {
+	public void setQ_date(Date q_date) {
 		this.q_date = q_date;
 	}
-	public String getQ_category() {
+	public int getQ_category() {
 		return q_category;
 	}
-	public void setQ_category(String q_category) {
+	public void setQ_category(int q_category) {
 		this.q_category = q_category;
 	}
 	public String getQ_title() {
@@ -74,12 +82,6 @@ public class Inquiry {
 	public void setQ_content(String q_content) {
 		this.q_content = q_content;
 	}
-	public String getQ_attach() {
-		return q_attach;
-	}
-	public void setQ_attach(String q_attach) {
-		this.q_attach = q_attach;
-	}
 	public String getQ_answer() {
 		return q_answer;
 	}
@@ -87,13 +89,13 @@ public class Inquiry {
 		this.q_answer = q_answer;
 	}
 
-	public int getMe_id() {
-		return me_id;
+	public String getQ_file() {
+		return q_file;
 	}
 
-	public void setMe_id(int me_id) {
-		this.me_id = me_id;
+	public void setQ_file(String q_file) {
+		this.q_file = q_file;
 	}
-	
+
 	
 }

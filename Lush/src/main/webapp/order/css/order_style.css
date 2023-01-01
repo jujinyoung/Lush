@@ -505,7 +505,7 @@ label {
     width: 24px;
     height: 24px;
     margin-left: -41px;
-    background: url(https://www.lush.co.kr/content/renewal/pc/images/ico/ico_plus_gray.svg) no-repeat center center;
+    background: url(/Lush/images/order/plusbutton.svg) no-repeat center center;
 }
 
 .total-wrap li.total-price::after, .total-wrap li.total-order::after {
@@ -517,7 +517,7 @@ label {
     width: 24px;
     height: 24px;
     margin-left: -41px;
-    background: url(https://www.lush.co.kr/content/renewal/pc/images/ico/ico_equal_gray.pngg) no-repeat bottom 4px center;
+    background: url("/Lush/images/order/equalimg.png") no-repeat bottom 4px center;
 }
 
 .order-wrap .payment-info table {
@@ -648,7 +648,7 @@ input, textarea, select {
     border: 1px solid #18a957;
 }
 
-button, input[type="button"], input[type="submit"], input[type="reset"], input[type="file"] {
+/* button, input[type="button"], input[type="submit"], input[type="reset"], input[type="file"] {
     -webkit-appearance: button;
     border-radius: 0;
     outline: none;
@@ -656,7 +656,7 @@ button, input[type="button"], input[type="submit"], input[type="reset"], input[t
     border: none;
     background: none;
     font-size: 1em;
-}
+} */
 
 b, strong {
     font-weight: 700;
@@ -804,7 +804,7 @@ table.no-border-table tr td input {
     height: 24px;
     top: 19px;
     right: 20px;
-    background: url(https://www.lush.co.kr/content/renewal/pc/images/ico/closePop.png) no-repeat center center;
+    background: url(/Lush/images/ico/cabutton.png) no-repeat center center;
     text-indent: -9999px;
     margin: 0;
     padding: 0 !important;
@@ -873,3 +873,53 @@ input[type="text"] {
     line-height: 46px;
 }
 
+.btn-wrap.double > button:first-child, .btn-wrap.double > a:first-child {
+    margin-right: 16px;
+}
+.btn-wrap.large button, .btn-wrap.large a {
+    width: 232px;
+    height: 64px;
+    line-height: 62px;
+}
+.border-btn {
+    position: relative;
+    border: 1px solid #222;
+    background: #fff;
+    color: #222;
+    text-align: center;
+}
+button, input[type="button"], input[type="submit"], input[type="reset"], input[type="file"] {
+    -webkit-appearance: button;
+    border-radius: 0;
+    outline: none;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-size: 1em;
+}
+
+#real {
+	display:none;
+}
+
+.popup .no-border-table tr.address td button {
+    width: 93px;
+}
+
+.no-border-table tr.address td input:first-of-type {
+    display: inline-block;
+    width: 270px;
+    margin-right: 10px;
+}
+
+.no-border-table tr.address td button {
+    position: absolute;
+    right: 0;
+    top: 8px;
+}
+table.no-border-table tr td button {
+    width: 138px;
+    height: 48px;
+    line-height: 46px;
+    margin-bottom: 0;
+}

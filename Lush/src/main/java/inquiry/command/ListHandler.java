@@ -1,33 +1,31 @@
 package inquiry.command;
 
+
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import command.CommandHandler;
+import inquiry.domain.Inquiry;
 import inquiry.service.InquiryListService;
-import inquiry.service.InquiryListView;
+import member.domain.User;
 
 public class ListHandler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("> /inquiry/inquiry.do : ListHandler.process() 호출됨...");
-		
-		int me_id=12;
-		String me_name="김경연";
-		
-		String  pCurrentPage = request.getParameter("page");  // 현재페이지 번호  page 파라미터명
-	      int currentPage = 1;
-	      if( pCurrentPage != null ) {
-	         currentPage = Integer.parseInt( pCurrentPage );
-	      }
-	    
 
-	      InquiryListService inquiryListService = InquiryListService.getInstance(); 
-	      
-	      InquiryListView viewData  = inquiryListService.getInquiryList(currentPage);
+		User user = (User) request.getSession(false).getAttribute("authUser");
+		int me_id = user.getId();
 
-	      request.setAttribute("viewData", viewData);
+		InquiryListService listService = InquiryListService.getInstance();
+		List<Inquiry> inquirys = listService.selectEventList(me_id);
+		
+		request.setAttribute("inquirys", inquirys);
+		
+		
+		
 		
 		return "/inquiry/inquiry.jsp";
 	}
