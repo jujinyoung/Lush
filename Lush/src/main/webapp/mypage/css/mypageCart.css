@@ -186,23 +186,9 @@ table.check-table tr th {
 }
 
 input[type="checkbox"] {
-    display: none;
-    position: absolute;
-    opacity: 0;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    border: none;
-}
-
-input[type="checkbox"] + label {
     display: inline-block;
     position: relative;
     cursor: pointer;
-    background: url(../images/ico/checkbox_off.svg) no-repeat center left;
     padding-left: 36px;
     color: #535353;
     min-width: 20px;
@@ -210,8 +196,10 @@ input[type="checkbox"] + label {
     background-size: 20px 20px;
 }
 
+
+
 input[type="checkbox"]:checked + label {
-    background: url(../images/ico/checkbox_on_black.svg) no-repeat center left;
+    background: url(/Lush/images/ico/checkbox_on_black.svg) no-repeat center left;
     background-size: 20px 20px;
 }
 
@@ -345,7 +333,7 @@ b, strong {
     width: 24px;
     height: 24px;
     margin-left: -41px;
-    background: url(/images/ico/ico_plus_gray.svg) no-repeat center center;
+    background: url(/Lush/images/ico/ico_plus_gray.svg) no-repeat center center;
 }
 
 .total-wrap li:last-of-type strong {
@@ -361,7 +349,7 @@ b, strong {
     width: 24px;
     height: 24px;
     margin-left: -41px;
-    background: url(/images/ico/ico_equal_gray.png) no-repeat bottom 4px center;
+    background: url(/Lush/images/ico/ico_equal_gray.png) no-repeat bottom 4px center;
 }
 
 .cart-notice {
@@ -606,3 +594,109 @@ b, strong {
     right: 0 !important;
     background-position: -15px 0 !important;
 }
+
+.dimmed.on {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.dimmed {
+    position: fixed;
+    display: none;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(34, 34, 34, 0.4);
+    z-index: 12;
+}
+
+.popup {
+    position: relative;
+    width: auto;
+    z-index: 11;
+    background: #fff;
+    min-width: 456px;
+}
+
+.popup .pop-content p.body1 {
+    display: block;
+    min-height: 32px;
+    text-align: center;
+    color: #535353;
+}
+
+.popup .pop-content + .btn-wrap {
+    padding-top: 32px;
+    padding-bottom: 40px;
+}
+.popup > * {
+    padding-left: 63px;
+    padding-right: 63px;
+}
+.btn-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.popup .popup-close-btn {
+    position: absolute;
+    display: block;
+    width: 24px;
+    height: 24px;
+    top: 19px;
+    right: 20px;
+    background: url(../images/ico/closePop.png) no-repeat center center;
+    text-indent: -9999px;
+    margin: 0;
+    padding: 0 !important;
+}
+
+.btn-wrap.double > button:first-child, .btn-wrap.double > a:first-child {
+    margin-right: 16px;
+}
+.btn-wrap.basic button, .btn-wrap.basic a {
+    width: 157px;
+    height: 60px;
+    line-height: 58px;
+}
+
+.border-btn {
+    position: relative;
+    border: 1px solid #222;
+    background: #fff;
+    color: #222;
+    text-align: center;
+}
+
+.btn-wrap.basic button, .btn-wrap.basic a {
+    width: 157px;
+    height: 60px;
+    line-height: 58px;
+}
+
+.black-btn {
+    position: relative;
+    background: #222;
+    color: #fff !important;
+    text-align: center;
+    border: 1px solid #222;
+}
+
+.popup .pop-head {
+    display: block;
+    position: relative;
+    padding-top: 40px;
+}
+
+.popup > * {
+    padding-left: 63px;
+    padding-right: 63px;
+}
+
+
+
+

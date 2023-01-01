@@ -504,7 +504,7 @@ var tradeupdate = {
         IMP.request_pay({ // param
             pg: "kakaopay.TC0ONETIME",
             pay_method: "card",
-            merchant_uid: 'c' + $('#ordernum').val(),
+            merchant_uid: 'ds' + $('#ordernum').val(),
             name: $("#pname").val() + " 등 " + $('#totalamount').val() +  "개",
             amount: $("#totalprice1").val(),
             buyer_name: $("membername").val(),
