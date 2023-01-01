@@ -73,7 +73,7 @@ public class LoginHandler implements CommandHandler {
 			System.out.println(request.getSession() );
 			 System.out.println(" 세션 추가 ");
 			 
-			response.sendRedirect("main_temp.jsp");
+			response.sendRedirect("/Lush/index.do");
 			return null;
 		}catch(IOException e) {
 			errors.put("idOrPwNotMatch", Boolean.TRUE);

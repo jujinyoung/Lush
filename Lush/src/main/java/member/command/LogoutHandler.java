@@ -23,7 +23,7 @@ public class LogoutHandler implements CommandHandler {
 		if(session != null) {
 			System.out.println("세션이 존재");
 			session.invalidate();
-			response.sendRedirect("MyPage_temp.jsp"); // 임의 메인으로 이동
+			response.sendRedirect("/Lush/index.do"); // 임의 메인으로 이동
 			return null;
 		}
 		System.out.println("세션이 없다");
