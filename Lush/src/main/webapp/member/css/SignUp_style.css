@@ -9,6 +9,7 @@ body, form, div, p, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, ol, li, fieldset, th
     color: #222;
 }
 
+
 section {
     min-height: calc(100vh - 96px - 320px);
 }
@@ -61,13 +62,14 @@ ol, ul, dl {
     list-style: none;
 }
 
+
 .join-step ul li:not(:last-of-type) {
     margin-right: 88px;
 }
 .join-step ul li.on {
     color: #222;
 }
-.join-step ul li {
+.join-step ul li  {
     display: inline-block;
     position: relative;
     color: #949494;

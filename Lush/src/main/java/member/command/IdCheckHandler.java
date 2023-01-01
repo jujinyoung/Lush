@@ -70,7 +70,7 @@ public class IdCheckHandler implements CommandHandler{
 		System.out.println("이메일 인증 실행");
 		
 		
-		String userEmail = request.getParameter("userEmail");
+		String userEmail = request.getParameter("useremail");
 		
 
 		System.out.println("유저 이메일 : " + userEmail);

@@ -40,15 +40,6 @@
 
 
 
-<%-- 비밀번호 변경 창입니다.
-
-<form action="/Lush/member/changepass.do" method="GET">
-<input type="hidden" name="id" value="<%=(String)request.getAttribute("findid")%>">
-<input type="password" name="pass1" placeholder="비번">
-<input type="password" name="pass2" placeholder="비번 확인">
-<button type="submit">비밀번호 변경하기</button>
-</form>
- --%>
 <script>
 <c:if test="${errors.passnotmatch}">
 alert('비밀번호가 일치하지 않습니다.');

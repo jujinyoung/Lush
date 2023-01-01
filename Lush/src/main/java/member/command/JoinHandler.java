@@ -71,7 +71,7 @@ public class JoinHandler implements CommandHandler {
 		
 		if(!errors.isEmpty()) {  
 			System.out.println("error에 데이터가 있습니다.");
-			return "SignUpMain.jsp"; // 폼 뷰로 경로를 리턴. -> 다시 폼을 보여준다.
+			return "/Lush/member/SignUpMain.jsp"; // 폼 뷰로 경로를 리턴. -> 다시 폼을 보여준다.
 	//	
 		}
 		
@@ -79,6 +79,7 @@ public class JoinHandler implements CommandHandler {
 	
 		try {
 			joinService.join(joinReq); 
+			
 			return "SignUpSucc.jsp"; // 가입에 성공하면 성공결과를 보여줄 경로를 리턴 
 		}catch(DuplicateIdException e) {
 	//		errors.put("duplicated", Boolean.TRUE);

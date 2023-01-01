@@ -73,7 +73,7 @@ public class GoogleMail {
 
             msg.setText(certificationCode, "UTF-8");            
 
-            
+            System.out.println("google mail 실행");
 
             Transport.send(msg);
 

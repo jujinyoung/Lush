@@ -13,6 +13,7 @@ public class DeleteHandler implements CommandHandler{
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	System.out.println("delete handler");
 		HttpSession session = request.getSession();
 		User user = (User)session.getAttribute("authUser");
 		String id = user.getLoginid();
@@ -20,6 +21,7 @@ public class DeleteHandler implements CommandHandler{
 		 try {
 				System.out.println("try 안");
 				delete.deleteinfo(id);
+				session.invalidate();
 				 return "/member/main_temp.jsp";
 
 				

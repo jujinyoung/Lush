@@ -157,7 +157,7 @@ $(function(){
 	 $('#userLeaveBtn').click(function(){
 		 let f = document.createElement('form');
 		    f.setAttribute('method', 'post');
-		    f.setAttribute('action', 'delete.do');
+		    f.setAttribute('action', '/Lush/member/delete.do');
 		    document.body.appendChild(f);
 		    f.submit();
 			 
