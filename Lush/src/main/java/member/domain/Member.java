@@ -11,13 +11,23 @@ public class Member { // DTO / VO
 	private String me_nick;
 	private String me_loginid;
 	
-	
-	
-	
-	
+
 	public Member() {
 		
 	}
+	
+	
+
+	public Member(String me_nick, String me_email, String me_tel, String me_add, String me_loginid) {
+	
+		this.me_add = me_add;
+		this.me_tel = me_tel;
+		this.me_email = me_email;
+		this.me_nick = me_nick;
+		this.me_loginid = me_loginid;
+	}
+
+
 
 	public Member(String me_pass, String me_name, String me_add, String me_tel, String me_email, String me_nick,
 			String me_loginid) {
@@ -36,6 +46,12 @@ public class Member { // DTO / VO
 		this.me_loginid = me_loginid;
 	}
 
+
+
+
+	public Member(String me_loginid) {
+		this.me_loginid = me_loginid;
+	}
 
 
 

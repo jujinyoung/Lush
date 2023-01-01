@@ -34,16 +34,6 @@ public class JoinHandler implements CommandHandler {
 
 	private String processSubmit(HttpServletRequest request, HttpServletResponse response){
 		// 폼에 입력받은 데이터를 이용해 JoinRequest객체 생성 
-		/*
-		 * Member member = new Member();
-		 * 
-		 * member.setMe_add(request.getParameter("sample6_address" + " " +
-		 * "sample6_detailAddress")); member.setMe_name(request.getParameter("name"));
-		 * member.setMe_pass(request.getParameter("passWord"));
-		 * member.setMe_tel(request.getParameter("cellPhoneNum"));
-		 * member.setMe_nick(request.getParameter("nickName"));
-		 * member.setMe_nick(request.getParameter("nickName"));
-		 */
 		
 		String id = request.getParameter("loginId");
 		String name = request.getParameter("name");
@@ -81,7 +71,7 @@ public class JoinHandler implements CommandHandler {
 		
 		if(!errors.isEmpty()) {  
 			System.out.println("error에 데이터가 있습니다.");
-			return "SignUpMain.jsp"; // 폼 뷰로 경로를 리턴. -> 다시 폼을 보여준다.
+			return "/Lush/member/SignUpMain.jsp"; // 폼 뷰로 경로를 리턴. -> 다시 폼을 보여준다.
 	//	
 		}
 		
@@ -89,6 +79,7 @@ public class JoinHandler implements CommandHandler {
 	
 		try {
 			joinService.join(joinReq); 
+			
 			return "SignUpSucc.jsp"; // 가입에 성공하면 성공결과를 보여줄 경로를 리턴 
 		}catch(DuplicateIdException e) {
 	//		errors.put("duplicated", Boolean.TRUE);

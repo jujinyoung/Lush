@@ -1,21 +1,5 @@
-
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-  <%
-    String msg = (String)request.getAttribute("msg");
-    System.out.println(" 다시 로그인 페이지 돌아옴 ");
-    Cookie[] c = request.getCookies();
-    String cookieVal="";
-    if(c!=null){
-        for(Cookie i:c){
-            if(i.getName().equals("save_id")){
-                cookieVal=i.getValue();
-            }
-        }
-    }
-    
-%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,6 +23,10 @@
 </c:if>
 
 <a href="Login2.jsp">로그인 페이지</a>
+
+<form action="/Lush/member/logout.do">
+<button type="submit">로그아웃 하기</button>
+</form>
 
 <script>
 </script>

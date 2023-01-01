@@ -99,7 +99,7 @@ public class ShipAddDaoImpl implements ShipAddDao{
     }
     
     @Override
-    public int updateShipAdd(Connection con, ShipAdd shipadd ) throws SQLException {
+    public int updateShipAdd(Connection con, long mid ) throws SQLException {
 
         PreparedStatement pstmt = null;
         String sql = "UPDATE ltb_shipAdd SET ship_default = ? WHERE  ship_default = ? and me_id = ?";
@@ -110,7 +110,7 @@ public class ShipAddDaoImpl implements ShipAddDao{
         	pstmt = con.prepareStatement(sql);
             pstmt.setString(1, "0");
             pstmt.setString(2, "1");
-            pstmt.setLong(3, shipadd.getMid());
+            pstmt.setLong(3, mid);
 
             rowCount = pstmt.executeUpdate(); 
             

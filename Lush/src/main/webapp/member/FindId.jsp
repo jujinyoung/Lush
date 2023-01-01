@@ -12,6 +12,7 @@
 </style>
 </head>
 <body>
+<jsp:include page="/WEB-INF/inc/headerfooter/header.jsp"></jsp:include>
 <section id="searchId" style="padding-top: 128px;">
 	<div class="inner">
 		<article class="join-wrap">
@@ -32,7 +33,7 @@
 		</article>
 	</div>
 </section>
-
+<jsp:include page="/WEB-INF/inc/headerfooter/footer.jsp"></jsp:include>
 
 
 <script>

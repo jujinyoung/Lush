@@ -10,7 +10,7 @@ public class MySMTPAuthenticator extends Authenticator{ // 지메일 인증번�
 	  @Override
 	  protected PasswordAuthentication getPasswordAuthentication() {
 //		  지메일 아이디, 비밀번호
-	    return new PasswordAuthentication("lushmaster22" , "비밀번호");
+		  return new PasswordAuthentication("lushmaster22" , "비밀번호");
 	  }
 	}
 

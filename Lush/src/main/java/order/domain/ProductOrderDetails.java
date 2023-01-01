@@ -3,12 +3,12 @@ package order.domain;
 public class ProductOrderDetails {
 
     private long podid;
-    private long amount;
+    private int amount;
     private long psid;
     private long poid;
     
 
-    public ProductOrderDetails(long podid, long amount, long psid, long poid) {
+    public ProductOrderDetails(long podid, int amount, long psid, long poid) {
     	this.podid = podid;
     	this.amount = amount;
     	this.psid = psid;
@@ -21,7 +21,7 @@ public class ProductOrderDetails {
 	}
 
 
-	public long getAmount() {
+	public int getAmount() {
 		return amount;
 	}
 
