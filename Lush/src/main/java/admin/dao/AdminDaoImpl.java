@@ -41,7 +41,7 @@ public class AdminDaoImpl implements AdminDao {
 					
 				  rs.getInt("adm_id"), 
 				  rs.getString("adm_pw"), 
-				  rs.getString("amd_name")
+				  rs.getString("adm_name")
 				
 				 );
 				System.out.println("admin 객체 생성 완료");

@@ -639,7 +639,7 @@ img {
 </head>
 
 <body>
-
+<jsp:include page="/WEB-INF/inc/headerfooter/header.jsp"></jsp:include>
 <header id ="header">
 </header>
 
@@ -738,7 +738,7 @@ img {
 </div>
 </article>
 </section>
-
+<jsp:include page="/WEB-INF/inc/headerfooter/footer.jsp"></jsp:include>
 <footer>
 </footer>
 <!-- 카테고리 -->
