@@ -57,10 +57,10 @@ public class SmsHandler implements CommandHandler {
 		// 세션 USER
 		//request.getSession().invalidate();
 		HttpSession session  = request.getSession();
-		
+		 System.out.println("smshadnler numcheck" );
 		 System.out.println( session ); 
 		 User user =  (User)session.getAttribute("authUser");
-		 System.out.println(user.getLoginid()); 	
+	
 		 String userid = user.getLoginid();
 		 
 		 PrintWriter out = response.getWriter();

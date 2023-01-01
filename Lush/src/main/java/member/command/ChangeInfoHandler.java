@@ -35,7 +35,7 @@ public class ChangeInfoHandler implements CommandHandler {
 
 	private String updateinfo(HttpServletRequest request, HttpServletResponse response) {
 		// post 회원정보 업데이트 
-		
+		System.out.println(" changeinfoservice" );
 		String nick = request.getParameter("userNickName");
 		String email = request.getParameter("realemail");
 		String tel  = request.getParameter("phoneNumber");
@@ -94,7 +94,7 @@ public class ChangeInfoHandler implements CommandHandler {
 		System.out.println( name ); // null 
 		
 		System.out.println("changeinfo - 이동");
-		RequestDispatcher rd = request.getRequestDispatcher("InfoChange.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/mypage/InfoChange.jsp");
 		rd.forward(request, response);
 		return null;
 		

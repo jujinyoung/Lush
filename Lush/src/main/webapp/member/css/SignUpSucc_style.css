@@ -1,26 +1,135 @@
-
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans+KR:wght@500&display=swap');
 
-header{
-  height: 96px;
+.welcome {
+    text-align: center;
+}
+section {
+    min-height: calc(100vh - 96px - 320px);
+        display: block;
 }
 
-.inner{
-  display: block;
-  position: relative;
-  margin: 0 auto;
-  width: 1224px;
+.page-top {
+    display: block;
+    margin: 48px auto 56px auto;
 }
 
-.page-top{
-  display: block;
-  margin: 48px auto 56px auto;
+.page-top .page-title {
+    font-size: 56px;
+    line-height: 56px;
+    letter-spacing: -1.57px;
+    text-align: center;
+}
+.inner {
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    width: 1224px;
 }
 
-.page-top .page-title{
-  font-size: 56px;
-  line-height: 56px;
-  letter-spacing: -1.57px;
-  text-align: center;
+.join-step {
+    display: block;
+    text-align: center;
+    margin: -20px auto 56px auto;
 }
+
+.flex.center {
+    justify-content: center;
+}
+.flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+ol, ul, dl {
+    list-style: none;
+}
+
+.join-step ul li:not(:last-of-type) {
+    margin-right: 88px;
+}
+.join-step ul li {
+    display: inline-block;
+    position: relative;
+    color: #949494;
+    font-size: 18px;
+    letter-spacing: -0.5px;
+}
+li {
+    list-style: none;
+}
+
+.join-step ul li::after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    right: -44px;
+    top: 8px;
+    width: 8px;
+    height: 13px;
+    background: url(../../images/ico/arrow_next.svg) no-repeat center center;
+}
+
+.join-step ul li:not(:last-of-type) {
+    margin-right: 88px;
+}
+
+.join-step ul li.on {
+    color: #222;
+}
+.join-step ul li {
+    display: inline-block;
+    position: relative;
+    color: #949494;
+    font-size: 18px;
+    letter-spacing: -0.5px;
+}
+
+.welcome .welcome-message {
+    font-size: 32px;
+    line-height: 46px;
+    font-weight: 700;
+    margin: 0 auto 26px auto;
+}
+
+.body1 {
+    font-size: 16px;
+    line-height: 24px;
+}
+
+input {
+    -webkit-border-radius: 0;
+}
+input {
+    vertical-align: middle;
+}
+input, textarea, select {
+    letter-spacing: normal;
+}
+
+.welcome .btn-wrap {
+    margin-top: 56px;
+}
+.btn-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.btn-wrap.large button, .btn-wrap.large a {
+    width: 232px;
+    height: 64px;
+    line-height: 62px;
+}
+a:hover, a:focus, a:visited, a:active {
+    text-decoration: none;
+}
+.black-btn {
+    position: relative;
+    background: #222;
+    color: #fff !important;
+    text-align: center;
+    border: 1px solid #222;
+}
+

@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-<link href="css/InfoChange_style.css" rel="stylesheet" type="text/css">
+<link href="/Lush/mypage/css/InfoChange_style.css" rel="stylesheet" type="text/css">
 <title>러쉬 MYPAGE</title>
 <link rel="icon" type="image/png" sizes="192x192"
 	href="/Lush/images/ico/fabicon.png">
@@ -37,7 +37,7 @@
 								<input id="userName" name="userName" disabled="disabled" type="text" value="<%= (String)request.getAttribute("name") %>"></td>
 						</tr>
 						<tr>
-							<th>닉네임</th>
+							<th><span class="req">*</span>닉네임</th>
 							<td><input type="text" id="userNickName" name="userNickName" value="<%= (String)request.getAttribute("nick") %>"></td>
 						</tr>
 						<tr>
@@ -63,7 +63,7 @@
 							</td>
 						</tr> -->
 						<tr class="EMAIL hidden" id="emailhidden" style="display: none;">
-							<th id="email1">새 이메일</th>
+							<th id="email1"><!-- 새 이메일 --></th>
 							<td>
 								<div class="input-wrap no-margin">
 									<input type="text" id="fakeEmail"placeholder="새로운 이메일을 입력해 주세요">
@@ -78,9 +78,9 @@
 							</td>
 						</tr>
 						<tr  id="emailhidden2" style="display: none;">
-							<th>인증번호 입력</th>
+							<th><!-- 인증번호 입력 --></th>
 							<td>
-								<input type="text" id="authNumber" value="">
+								<input type="text" id="authNumber" value="" placeholder="인증번호를 입력해 주세요">
 								<button type="button" class="sub-btn black-btn" id="confirmEmailBtn">메일인증 확인</button>
 							</td>
 						</tr>
@@ -162,7 +162,7 @@
 $(function(){
 	 $('#emailChangeBtn').click(function(){
 		
-		 alert("버튼 클릭");
+		/*  alert("버튼 클릭"); */
 		 $("#emailhidden").css("display", "block"); 
 		 $("#emailhidden2").css("display", "inline-block"); 
 		 
@@ -176,7 +176,7 @@ let useemail = "";
 $(function(){
 	 $('#emailAuthRequestBtn').click(function(){ // 버튼 클릭시 이메일 인증번호 전송하기
 		
-		 alert("버튼 클릭");
+	/* 	 alert("버튼 클릭"); */
 	 
 		 useremail = $('#fakeEmail').val();
 		 if( useremail == null || useremail == ""){
@@ -187,14 +187,14 @@ $(function(){
 		 
 		 if(useremail.match('@') ){
 			 
-			 let Email = $('#fakeEmail').val();
-			 console.log(Email);
+/* 			 let Email = $('#fakeEmail').val(); */
+			 console.log(useremail);
 			 
 
 			 $.ajax({
 				url : "/Lush/member/idcheck.do",
 				type : "GET",
-				data : {userEmail : Email},
+				data : {useremail : useremail},
 				async: false,
 				dataType : "json",
 				success : 
@@ -226,7 +226,7 @@ $(function(){
 $(function(){
 	 $('#confirmEmailBtn').click(function(){
 		
-		 alert("버튼 클릭");
+		/*  alert("버튼 클릭"); */
 		 
 		 let usercode = $('#authNumber').val();
 		 
@@ -261,7 +261,7 @@ $(function(){
 $(function(){
 	 $('#phoneNumberChangeBtn').click(function(){
 		
-		 alert("버튼 클릭");
+		/*  alert("버튼 클릭"); */
 		 $("#numchange").css("display", "block"); 
 		/*  $("#emailhidden2").css("display", "inline-block");  */
 		 
@@ -341,6 +341,8 @@ $(function(){
 			 $( '#phoneNumber' ).attr( 'value', usernum ) ;
 			 $("#numchange").css("display", "none"); 
 			 $("#numconfirm2").css("display", "none"); 
+		 }else{
+			 alert("일치하지 않습니다!");
 		 }
 		
 		})

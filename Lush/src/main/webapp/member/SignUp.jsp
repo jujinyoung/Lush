@@ -42,7 +42,7 @@
 				<h3>약관동의</h3>
 				<div class="input-wrap">
 					<input type="checkbox" id="termsAll" class="checkAll">
-					<label for="termsAll">러쉬코리아의 모든 약관을 확인하고 전체 동의합니다. (전체동의, 선택항목도 포함됩니다.)</label>
+					<label for="termsAll">러쉬코리아의 모든 약관을 확인하고 전체 동의합니다.</label>
 				</div>
 
 				<div class="terms-box">
