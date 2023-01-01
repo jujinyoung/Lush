@@ -94,4 +94,33 @@ public class CategoriesService {
 
         return null;
     }
+
+    public int getTotalRecords(int categoriesID){
+
+        Connection conn = null;
+        try {
+            conn = ConnectionProvider.getConnection();
+            //카테고리 ID로 카테고리2의 이름을 검색해서 이름이 전체라면 카테고리1번과 관련된 모든 id를 가져와야함.
+            Categories categories = categoriesDao.selectCategoriesById(conn, categoriesID);
+            ArrayList<Integer> categoriesIdList = new ArrayList<>();
+            if (categories.getPc_cate2().equals("전체")) {
+                ArrayList<Categories> categoriesList = categoriesDao.selectByCategories1(conn, categories.getPc_cate1());
+                for (Categories c: categoriesList) {
+                    categoriesIdList.add(c.getPc_id());
+                }
+            }else {
+                categoriesIdList.add(categoriesID);
+            }
+
+            int result = productDao.getTotalRecords(conn, categoriesIdList);
+
+            return result;
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            JdbcUtil.close(conn);
+        }
+
+        return 0;
+    }
 }

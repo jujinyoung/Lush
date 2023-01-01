@@ -109,7 +109,7 @@ public class ProductReviewDaoImpl implements ProductReviewDao{
         PreparedStatement pstmt = null;
         PreparedStatement pstmt2 = null;
         ResultSet rs = null;
-        String sql = "INSERT INTO ltb_productReview VALUES (ltb_productReview_seq.nextval,?,?,sysdate,?,?)";
+        String sql = "INSERT INTO ltb_productReview VALUES (ltb_productReview_seq.nextval,?,?,?,?,sysdate)";
         try {
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, productReview.getMe_id());

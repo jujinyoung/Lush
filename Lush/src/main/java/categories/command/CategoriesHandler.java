@@ -32,7 +32,7 @@ public class CategoriesHandler implements CommandHandler {
         ArrayList<ProductDetails> productDetails = categoriesService.selectProductDetailsList(categoriesID, selectStatus, currentPage, numberPerPage);
 
         try {
-            int totalRecords = productDetails.size();
+            int totalRecords = categoriesService.getTotalRecords(categoriesID);
             int totalPages = (int) Math.ceil((double) totalRecords/numberPerPage);
             PageBlock pageBlock = PageService.pagingService(currentPage, numberPerPage, numberOfPageBlock, totalPages);
             request.setAttribute("pageBlock", pageBlock);
