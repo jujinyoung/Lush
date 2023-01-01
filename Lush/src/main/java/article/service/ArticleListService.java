@@ -28,14 +28,14 @@ public class ArticleListService {
     private ArticleListService(){}
     public static ArticleListService getInstance(){return instance;}
 
-    public List<Article> selectArticleList(int articleStatus, int currentPage, int numberPerPage){
+    public List<Article> selectArticleList(int categoryLink, int currentPage, int numberPerPage){
         Connection conn = null;
         ArticleDao dao = ArticleDaoImpl.getInstance();
         List<Article> articles = null;
 
         try {
             conn = ConnectionProvider.getConnection();
-            articles = dao.selectArticleList(conn, articleStatus, currentPage, numberPerPage);
+            articles = dao.selectArticleList(conn, categoryLink, currentPage, numberPerPage);
             if (articles == null){
                 throw new EventListEmptyException("이벤트 목록이 비어있습니다.");
             }

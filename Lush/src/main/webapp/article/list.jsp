@@ -798,7 +798,6 @@ if (<%=searchCondition%> == 1){
        });
     })
      -->
-</script>
 </body>
 </html>
 
