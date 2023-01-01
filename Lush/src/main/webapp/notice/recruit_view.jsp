@@ -1,24 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<% pageContext.setAttribute("newLineChar", "\\n"); %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>러쉬코리아</title>
 <link rel="icon" type="image/png" sizes="192x192" href="../images/ico/fabicon.png">
-<link href="css/reset.css" type="text/css" rel="stylesheet">
-<link href="css/layout.css" type="text/css" rel="stylesheet">
-<link href="css/style.css" type="text/css" rel="stylesheet">
+<link href="../inquiry/css/reset.css" type="text/css" rel="stylesheet">
+<link href="../inquiry/css/layout.css" type="text/css" rel="stylesheet">
+<link href="../inquiry/css/style.css" type="text/css" rel="stylesheet">
 <style>
-.inquiry-read .read-table table td .inq-answer-date {color:#757575;display:block;margin-top:16px;}
+
 </style>
 </head>
 <body>
 <jsp:include page="/WEB-INF/inc/headerfooter/header.jsp"></jsp:include>
 
-<!--  <form id="searchParam" action="" method="get"> -->
-<section id="mypage-inquiry" class="my-page">
+<section id="mypage-cs" class="my-page" style="padding-top:128px;">
 	<div class="inner flex top">
 		<!-- 마이페이지 좌측 메뉴 -->
 		<article class="my-menu">
@@ -67,7 +67,7 @@
     <div class="menu-box">
         <p class="body2">고객센터</p>
         <ul>
-            <li><a href="/mypage/noticeList">공지사항</a></li>
+            <li><a href="/Lush/notice/list.do">공지사항</a></li>
             <li><a href="/Lush/inquiry/list.do">1:1문의</a></li>
             <li><a href="/mypage/compliment">칭찬게시판</a></li>
             <li><a href="/mypage/faq">FAQ</a></li>
@@ -92,92 +92,65 @@
 <!-- 마이페이지 좌측 메뉴 //-->
 
 		<!-- 마이페이지 우측 컨텐츠 영역 -->
-		<article class="my-contents inquiry">
+		<article class="my-contents notice">
 			<div class="mypage-top">
-				<h2 class="mypage-title">1:1 문의</h2>
+				<h2 class="mypage-title">공지사항</h2>
 			</div>
-			<div class="inquiry-read">
-				<div class="read-table">
-					<p>LUSH에 궁금한 내용을 등록해 주세요. 담당자가 확인 후 빠르게 답변해 드리겠습니다.</p>
-					<table class="list-table dark">
-						<colgroup>
-							<col width="208px">
-							<col width="auto">
-						</colgroup>
-						<tbody>
-							<tr>
-								<th>카테고리</th>
-								<td>
-									<strong class="cate">
-									<c:choose>
-										<c:when test="${ viewContent.q_category eq 1}">상품</c:when>
-										<c:when test="${ viewContent.q_category eq 2}">주문/결제</c:when>
-										<c:when test="${ viewContent.q_category eq 3}">오프라인</c:when>
-										<c:when test="${ viewContent.q_category eq 4}">배송</c:when>
-										<c:when test="${ viewContent.q_category eq 5}">배송지연</c:when>
-										<c:when test="${ viewContent.q_category eq 6}">교환/취소/반품</c:when>
-										<c:when test="${ viewContent.q_category eq 7}">회원정보</c:when>
-										<c:otherwise>기타</c:otherwise>
-									</c:choose>
-									</strong>
-								</td>
-							</tr>
+			<div>
+				<div class="tab-cont">
+					<!-- read page -->
+					<div class="tab-inner on">
+						<table class="list-table read">
+							<colgroup>
+								<col width="166px">
+								<col width="auto">
+							</colgroup>
+							<thead>
 							<tr>
 								<th>제목</th>
 								<td>
-									<p class="body1">${viewContent.q_title}</p>
+									<strong>${viewContent.rec_title}</strong>
 								</td>
+							</tr>
+							<tr>
+								<th>작성자</th>
+								<td>
+									${viewContent.rec_writer }</td>
 							</tr>
 							<tr>
 								<th>작성일</th>
 								<td>
-									<p class="body1">${ viewContent.q_date }</p>
-								</td>
+									${viewContent.rec_date }</td>
 							</tr>
 							<tr>
-								<th>내용</th>
+								<th>조회수</th>
 								<td>
-									<div class="inq-cont">
-									${ viewContent.q_content }
+									${viewContent.rec_hits }</td>
+							</tr>
+							</thead>
+							<tbody>
+							<tr>
+								<td colspan="2">
+									<div class="board-contents">
+										<p style="word-wrap: break-word">
+										${fn:replace(viewContent.rec_content, newLineChar, "<br> ")}
+  
 									</div>
-									<!-- <div class="inq-image">
-										</div> -->
 								</td>
 							</tr>
-							
-							<!-- 답변 -->
-							 <c:choose>
-							 <c:when test="${viewContent.q_answer eq null}">
-							<tr style="display:none">
-								<th><img src="../images/ico/user_x72.png"></th>
-								<td>
-									<div class="inq-answer">
-										<span style="word-wrap: break-word"></span>
-										<p class="inq-answer-date"></p>
-									</div>
-								</td>
-							</tr></c:when>
-							<c:otherwise>
-							<tr>
-								<th><img src="../images/ico/user_x72.png"></th>
-								<td>
-									<div class="inq-answer">
-										<span style="word-wrap: break-word">${ viewContent.q_answer }</span>
-										<p class="inq-answer-date"></p>
-									</div>
-								</td>
-							</c:otherwise>
-							</c:choose>
 							</tbody>
-					</table>
-				</div>
-				<div class="btn-wrap large center">
-					<a href="/Lush/inquiry/list.do" class="black-btn">목록</a>
+						</table>
+						<div class="btn-wrap right medium">
+							<a href="/Lush/notice/list2.do" class="border-btn">목록</a>
+						</div>
+					</div>
+					<!-- read page //-->
 				</div>
 			</div>
-		</article></div>
-		</section>
-		<!-- </form> -->
+		</article>
+	</div>
+</section>
+
 <jsp:include page="/WEB-INF/inc/headerfooter/footer.jsp"></jsp:include>
 
 </body>

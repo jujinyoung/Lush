@@ -11,13 +11,12 @@
 <link href="css/layout.css" type="text/css" rel="stylesheet">
 <link href="css/style.css" type="text/css" rel="stylesheet">
 
-<link rel="shortcut icon" type="image/x-icon" href="">
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
-  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
 
 
@@ -27,8 +26,9 @@
 </style>
 </head>
 <body>
+<jsp:include page="/WEB-INF/inc/headerfooter/header.jsp"></jsp:include>
  <form id="searchParam" action="" method="get">
-<section id="mypage-inquiry" class="my-page">
+<section id="mypage-inquiry" class="my-page" style="padding-top:128px;">
 	<div class="inner flex top">
 		<!-- 마이페이지 좌측 메뉴 -->
 		<article class="my-menu">
@@ -77,7 +77,7 @@
     <div class="menu-box">
         <p class="body2">고객센터</p>
         <ul>
-            <li><a href="/mypage/noticeList">공지사항</a></li>
+            <li><a href="/Lush/notice/list.do">공지사항</a></li>
             <li><a href="/Lush/inquiry/list.do">1:1문의</a></li>
             <li><a href="/mypage/compliment">칭찬게시판</a></li>
             <li><a href="/mypage/faq">FAQ</a></li>
@@ -270,6 +270,6 @@
 		}
 	</script>
 	
-	
+<jsp:include page="/WEB-INF/inc/headerfooter/footer.jsp"></jsp:include>	
 </body>
 </html>

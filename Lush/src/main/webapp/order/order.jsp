@@ -23,6 +23,7 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/inc/headerfooter/header.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/inc/headerfooter/footer.jsp"></jsp:include>
 <section id="order" style="padding-top: 128px;">
 	<form id="buy" name="buy" action="<%= contextPath %>/order/order.do" method="post">
 
