@@ -28,7 +28,7 @@ public class AdLoginService {
 						
 				System.out.println("admin login admin 선언");
 				
-				System.out.println( admin.getAdm_id()  );
+			//	System.out.println( admin.getAdm_id()  );
 				
 				if(admin == null || !admin.matchPassword(password ) ){ 
 					System.out.println("matchPassword");

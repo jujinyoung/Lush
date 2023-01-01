@@ -738,6 +738,7 @@ img {
 </article>
 </section>
 
+
 <jsp:include page="/WEB-INF/inc/headerfooter/footer.jsp"></jsp:include>
 <!-- 카테고리 -->
 <script>
