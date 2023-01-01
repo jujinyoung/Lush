@@ -37,10 +37,10 @@ a:visited, a:hover, a:active, a:focus {
 						<div class="all-menu" id="all-menu">
 							<div class="inner">
 								<ul class="flex top">
-									<li><a href="/categories/index/113" class="depth2"
+									<li><a href="/Lush/categories/index.do?categoriesID=113" class="depth2"
 										style="color:; font-size: 16px;">베스트</a>
 										<ul class="depth3">
-											<li><a href="/categories/index/115"
+											<li><a href="/Lush/categories/index.do?categoriesID=115"
 												style="color:; font-size: 14px;">BEST 50</a></li>
 											<li><a href="/categories/index/143"
 												style="color:; font-size: 14px;">주간 베스트</a></li>
