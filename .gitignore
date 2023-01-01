@@ -73,3 +73,6 @@ logs/
 .Trashes
 .Thumbs.db
 .ehthumbs.db
+
+SmsSignature.java
+MySMTPAuthenticator.java
