@@ -63,7 +63,7 @@ String contextPath = request.getContextPath();
 								<input type="hidden" name="amount" value=${ pro.amount }>
 									<tr>
 										<td class="cart-prd-img"><img
-											src="https://www.lush.co.kr/upload/item/15/20220929153226L.png"
+											src="../images/products/${pro.pid}.png"
 											alt="dummy 제품 이미지"> <input type="hidden" id="pname"
 											name="pname" value="${ pro.name }"></td>
 

@@ -25,14 +25,13 @@ public class ProductJoinDaoImpl implements ProductJoinDao{
         			" FROM ltb_product,ltb_ps " +
         			" WHERE ltb_product.pd_id = ltb_ps.pd_id " +
         			" AND ps_id = ?";
-        List<ProductJoin> list = null;
+        List<ProductJoin> list = new ArrayList<>();
         ProductParameter pp = null;
         
         try {
 			Iterator<ProductParameter> iterator = productparameterlist.iterator();
 			list = new ArrayList<>();
 			while (iterator.hasNext()) {
-				System.out.println("ProductJoinDaoImpl.selectProductJoin");
 				pp = iterator.next();
 				long psid = pp.getPsid();
 				int amount = pp.getAmount();

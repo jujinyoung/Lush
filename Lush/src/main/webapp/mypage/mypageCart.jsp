@@ -66,7 +66,7 @@
 												title="씨 베지터블 체크박스" value="${ pro.psid }"></td>
 											<td class="cart-prd-img"><a href="/products/view/9">
 													<img
-													src="https://www.lush.co.kr/upload/item/1000000656/20211008105655L.png"
+													src="../images/products/${pro.pid}.png"
 													alt="dummy 제품 이미지">
 											</a></td>
 											<td class="text-left"><a href="/products/view/9">

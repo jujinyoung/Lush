@@ -82,6 +82,8 @@ public class OrderService {
 		} catch (Exception e) {
 			JdbcUtil.rollback(conn);
 			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(conn);
 		}
 
 		return rowCount3;
@@ -102,6 +104,8 @@ public class OrderService {
 			e.printStackTrace();
 		} catch (EmptyException e) {
 			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(conn);
 		}
 
 		return member;
@@ -122,6 +126,8 @@ public class OrderService {
 			e.printStackTrace();
 		} catch (EmptyException e) {
 			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(conn);
 		}
 
 		return productsangse;
@@ -142,6 +148,8 @@ public class OrderService {
 			e.printStackTrace();
 		} catch (EmptyException e) {
 			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(conn);
 		}
 
 		return shid;
@@ -162,6 +170,8 @@ public class OrderService {
 			e.printStackTrace();
 		} catch (EmptyException e) {
 			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(conn);
 		}
 
 		return list;
@@ -182,6 +192,8 @@ public class OrderService {
 			e.printStackTrace();
 		} catch (EmptyException e) {
 			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(conn);
 		}
 
 		return rowCount;
@@ -202,6 +214,8 @@ public class OrderService {
 			e.printStackTrace();
 		} catch (EmptyException e) {
 			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(conn);
 		}
 
 		return rowCount;
@@ -222,6 +236,8 @@ public class OrderService {
 			e.printStackTrace();
 		} catch (EmptyException e) {
 			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(conn);
 		}
 
 		return rowCount;

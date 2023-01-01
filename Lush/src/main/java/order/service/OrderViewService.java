@@ -1,6 +1,7 @@
 package order.service;
 
 import com.util.ConnectionProvider;
+import com.util.JdbcUtil;
 
 import order.domain.Member;
 import order.domain.Product;
@@ -52,6 +53,8 @@ public class OrderViewService {
 			e.printStackTrace();
 		} catch (EmptyException e) {
 			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(conn);
 		}
 
 		return member;
@@ -72,6 +75,8 @@ public class OrderViewService {
 			e.printStackTrace();
 		} catch (EmptyException e) {
 			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(conn);
 		}
 
 		return shipadd;
@@ -92,6 +97,8 @@ public class OrderViewService {
 			e.printStackTrace();
 		} catch (EmptyException e) {
 			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(conn);
 		}
 
 		return product;
@@ -112,6 +119,8 @@ public class OrderViewService {
 			e.printStackTrace();
 		} catch (EmptyException e) {
 			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(conn);
 		}
 
 		return productsangse;
@@ -152,6 +161,8 @@ public class OrderViewService {
 			e.printStackTrace();
 		} catch (EmptyException e) {
 			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(conn);
 		}
 
 		return list;
@@ -172,6 +183,8 @@ public class OrderViewService {
 			e.printStackTrace();
 		} catch (EmptyException e) {
 			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(conn);
 		}
 
 		return rowCount;
@@ -192,6 +205,8 @@ public class OrderViewService {
 			e.printStackTrace();
 		} catch (EmptyException e) {
 			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(conn);
 		}
 
 		return rowCount;
@@ -212,6 +227,8 @@ public class OrderViewService {
 			e.printStackTrace();
 		} catch (EmptyException e) {
 			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(conn);
 		}
 
 		return num;

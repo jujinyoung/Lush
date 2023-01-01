@@ -22,7 +22,7 @@ public class MypageHandler implements CommandHandler {
     public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
     	System.out.println("MypageHandler.process");
     	HttpSession session =  request.getSession(  false );
-		System.out.println("session = " + session);
+		
 
     	if( session == null) {
     		System.out.println("세션없음");
@@ -32,9 +32,10 @@ public class MypageHandler implements CommandHandler {
     		if(requestMethod.equals("GET")) { 
 				MypageService mypageservice = MypageService.getInstance();
 
-				User user = (User) session.getAttribute("authUser");
+				User user = (User)session.getAttribute("authUser");
 				String sid = user.getLoginid();
 		    	Member member = mypageservice.selectMember(sid);
+		    	
 		    	long mid = member.getMid();
 
 		    	JinhangSum jinhangsum = mypageservice.selectJinhangSum(mid);
