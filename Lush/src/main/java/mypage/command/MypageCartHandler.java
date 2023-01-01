@@ -99,13 +99,12 @@ public class MypageCartHandler implements CommandHandler {
 			} else if (requestMethod.equals("POST")) {
 				MypageCartService mypagecartservice = MypageCartService.getInstance();
 
-				String sid = (String) session.getAttribute("auth");
 //		    	User user = session.getAttribute("authUser");
 //		    	user.getId();
-				sid = "test1";
+				User user = (User) request.getSession(false).getAttribute("authUser");
+				String sid = user.getLoginid();
 				Member member = mypagecartservice.selectMember(sid);
 				long mid = member.getMid();
-				mid = 1;
 
 				String[] lists = request.getParameterValues("psid");
 				List<Long> psidlist = new ArrayList<>();

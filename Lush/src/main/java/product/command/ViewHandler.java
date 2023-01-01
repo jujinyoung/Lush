@@ -5,6 +5,7 @@ import command.CommandHandler;
 import event.domain.EventReview;
 import event.service.EventViewService;
 import file.FileRequest;
+import member.domain.User;
 import order.domain.ProductSangse;
 import paging.PageBlock;
 import paging.PageService;
@@ -15,6 +16,8 @@ import product.service.ProductService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,8 +50,10 @@ public class ViewHandler implements CommandHandler {
             request.setAttribute("pageBlock", pageBlock);
             return "/products/view/" + productID + ".jsp";
         }else if (requestMethod.equals("POST")){
-
-            int memberID = 1;
+        	HttpSession session = request.getSession(false);
+        	
+        	User user = (User) session.getAttribute("authUser");
+        	int memberID = user.getId();
 
             //파일form처리
             String savePath = request.getServletContext().getRealPath("/upload/products");
@@ -59,7 +64,9 @@ public class ViewHandler implements CommandHandler {
             int score = Integer.parseInt(mrequest.getParameter("score"));
             String content = mrequest.getParameter("content");
             ProductReview productReview = new ProductReview(memberID, productID, score, content);
-
+            
+            
+            
             //로직 실행
             if (btnval.equals("0")){
                 List<String> fileUrls = FileRequest.createFileURL(mrequest);
