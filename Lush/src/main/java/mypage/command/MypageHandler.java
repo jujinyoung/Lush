@@ -40,8 +40,17 @@ public class MypageHandler implements CommandHandler {
 
 		    	JinhangSum jinhangsum = mypageservice.selectJinhangSum(mid);
 		    	
+		    	
 		    	List<Long> orderIdList = mypageservice.getIdList(mid);
 		    	
+		    	if(orderIdList == null) {
+		    		JinhangSum jinhangsum2 = new JinhangSum(0,0,0,0,0,0,0,0,0);
+		    		request.setAttribute("member", member);
+			        request.setAttribute("jinhangsum", jinhangsum2);  
+			        HashMap<Long, List<MypageJoin>> map = null;
+			        request.setAttribute("maps", map);
+		    		return "/mypage/mypageMain.jsp";
+		    	}
 		    	HashMap<Long, List<MypageJoin>> map = mypageservice.selectMypageJoin(mid, orderIdList);
 
 		        request.setAttribute("member", member);
