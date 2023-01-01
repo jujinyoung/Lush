@@ -12,6 +12,8 @@ public interface ShopDao {
 
 	public List<Shop> searchShopList(Connection conn, int currentPage, int numberPerPage, int searchCondition, String searchWord ) throws SQLException;
 
+	public List<Shop> selectShopView(Connection conn, int currentPage, int numberPerPage,int spId ) throws SQLException;
+	
     public int getTotalPages(Connection conn, int numberPerPage) throws SQLException;
 
     public int getProceedTotalRecords(Connection conn) throws Exception;

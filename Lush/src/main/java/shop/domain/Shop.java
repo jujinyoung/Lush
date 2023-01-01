@@ -127,5 +127,13 @@ public class Shop {
 	public void setAdm_id(int adm_id) {
 		this.adm_id = adm_id;
 	}
+
+	@Override
+	public String toString() {
+		return "Shop [sp_id=" + sp_id + ", sp_rdate=" + sp_rdate + ", sp_edate=" + sp_edate + ", sp_name=" + sp_name
+				+ ", sp_adr_k=" + sp_adr_k + ", sp_adr_e=" + sp_adr_e + ", sp_bhour1=" + sp_bhour1 + ", sp_bhour2="
+				+ sp_bhour2 + ", sp_tel=" + sp_tel + ", sp_sns=" + sp_sns + ", sp_info=" + sp_info + ", sp_map="
+				+ sp_map + ", sp_status=" + sp_status + ", adm_id=" + adm_id + "]";
+	}
 	
 }

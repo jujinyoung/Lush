@@ -55,7 +55,7 @@ public class DispatcherServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //        System.out.println("DispatcherServlet.doGet");
         String requestURI = request.getRequestURI();
-//        System.out.println("requestURI = " + requestURI);
+        System.out.println("requestURI = " + requestURI);
         CommandHandler handler = commandHandlerMap.get(requestURI);
 
         String viewPage = null;

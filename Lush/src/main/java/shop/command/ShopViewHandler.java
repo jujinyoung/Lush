@@ -11,7 +11,7 @@ import paging.PageService;
 import shop.domain.Shop;
 import shop.service.ShopListService;
 
-public class ShopListHandler implements CommandHandler{
+public class ShopViewHandler implements CommandHandler{
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -19,6 +19,7 @@ public class ShopListHandler implements CommandHandler{
         int searchCondition = request.getParameter("searchCondition")==null ? 1 : Integer.parseInt(request.getParameter("searchCondition"));
         String searchWord = request.getParameter("searchWord") == null ? "" : request.getParameter("searchWord");
         int currentPage = request.getParameter("currentPage")==null ? 1 : Integer.parseInt(request.getParameter("currentPage"));
+        int spId = request.getParameter("spId") == null ? 1 : Integer.parseInt(request.getParameter("spId"));
 
         ShopListService listService = ShopListService.getInstance();
 		List<Shop> shops = null;
@@ -26,12 +27,8 @@ public class ShopListHandler implements CommandHandler{
         int numberPerPage = 6;
         int numberOfPageBlock = 10;
 		
-        if (searchWord.equals("")){
-        	shops = listService.selectShopList(currentPage, numberPerPage);
-        }else {
-        	shops = listService.searchShopList(currentPage, numberPerPage, searchCondition, searchWord);
-        }
-//        System.out.println("shop>>>" + shops);
+        shops = listService.selectShopView(currentPage, numberPerPage, spId);
+        System.out.println("shop>>>" + shops);
         
         int totalPages = listService.getTotalPages(numberPerPage);
         int proceedRecords = listService.getProceedRecords();
@@ -47,8 +44,9 @@ public class ShopListHandler implements CommandHandler{
         request.setAttribute("pageBlock", pageBlock);
         request.setAttribute("proceedRecords", proceedRecords);
         request.setAttribute("endRecords", endRecords);
+        request.setAttribute("spId", spId);
         
-		return "/board/shop.jsp";
+		return "/board/shop/view.jsp";
 	}
 
 }

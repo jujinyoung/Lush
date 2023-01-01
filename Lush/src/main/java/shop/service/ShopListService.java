@@ -57,6 +57,26 @@ public class ShopListService {
         return list;
     }
     
+    public List<Shop> selectShopView(int currentPage, int numberPerPage, int spId){
+        Connection conn = null;
+        List<Shop> shops = null;
+
+        try {
+            conn = ConnectionProvider.getConnection();
+            shops = shopDao.selectShopView(conn, currentPage, numberPerPage, spId);
+            if (shops == null){
+                throw new ShopListEmptyException("매장 목록이 비어있습니다.");
+            }
+        } catch (NamingException | SQLException e) {
+            e.printStackTrace();
+        } catch (ShopListEmptyException e) {
+            e.printStackTrace();
+        }finally {
+            JdbcUtil.close(conn);
+        }
+        return shops;
+    }
+    
     public int getTotalPages(int numberPerPage){
         Connection conn = null;
 
