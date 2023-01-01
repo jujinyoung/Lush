@@ -149,4 +149,28 @@ public class ProductDaoImpl implements ProductDao{
             JdbcUtil.close(rs);
         }
     }
+
+    @Override
+    public Product selectProduct(Connection conn, int productID) throws SQLException {
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        String sql = "SELECT * FROM ltb_product WHERE pd_id = ?";
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, productID);
+            rs = pstmt.executeQuery();
+            Product product = null;
+            if (rs.next()){
+                product = new Product(rs.getInt("pd_id"), rs.getInt("pc_id"), rs.getString("pd_name"), rs.getString("pd_vegan")
+                        , rs.getString("pd_domestic"), rs.getString("pd_cate3"), DateFormmater.sliceDatedd(rs.getDate("pd_rdate")), rs.getString("pd_event")
+                        , rs.getString("pd_naked"), rs.getString("pd_curation"), rs.getString("pd_recommend"), rs.getInt("pd_review")
+                        , rs.getInt("pd_price"), rs.getInt("pd_trade"));
+            }
+
+            return product;
+        }finally {
+            JdbcUtil.close(pstmt);
+            JdbcUtil.close(rs);
+        }
+    }
 }

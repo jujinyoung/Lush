@@ -1,6 +1,8 @@
 package product.dao;
 
 import com.util.JdbcUtil;
+import product.domian.ProductReviewImage;
+import product.domian.ProductReviewImages;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -144,6 +146,33 @@ public class ProductReviewImagesDaoImpl implements ProductReviewImagesDao{
                 list = new ArrayList<>();
                 do {
                     list.add(rs.getString(1));
+                }while (rs.next());
+            }
+            return list;
+        }finally {
+            JdbcUtil.close(pstmt);
+            JdbcUtil.close(rs);
+        }
+    }
+
+    @Override
+    public ArrayList<ProductReviewImages> mainReviewList(Connection conn) throws SQLException {
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        String sql = "SELECT pri_id, pdr_id, pri_image " +
+                "FROM( " +
+                "    SELECT pri_id, pdr_id, pri_image, ROW_NUMBER() OVER(PARTITION BY pdr_id ORDER BY pri_id) as RowIdx " +
+                "    FROM ltb_productReviewImages " +
+                ")  " +
+                "WHERE RowIdx = 1";
+        try {
+            pstmt = conn.prepareStatement(sql);
+            rs = pstmt.executeQuery();
+            ArrayList<ProductReviewImages> list = null;
+            if (rs.next()){
+                list = new ArrayList<>();
+                do {
+                    list.add(new ProductReviewImages(rs.getInt("pri_id"), rs.getInt("pdr_id"), rs.getString("pri_image")));
                 }while (rs.next());
             }
             return list;

@@ -20,4 +20,6 @@ public interface ProductReviewDao {
     public int update(Connection conn, ProductReview productReview) throws SQLException;
 
     public int delete(Connection conn, int reviewID) throws SQLException;
+
+    public ProductReview mainReview(Connection  conn, int reviewID) throws SQLException;
 }
