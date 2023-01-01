@@ -1,12 +1,12 @@
 package managergoods.dao;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import com.util.JdbcUtil;
 
 import managergoods.domain.ManagerGoods;
@@ -21,7 +21,7 @@ public class ManGoodsImpl implements ManGoodsDAO {
 	    	}
 
 	@Override
-	public List<ManagerGoods> selectGoodsList(Connection conn, int currentPage, int numberPerPage) throws SQLException {
+	public List<ManagerGoods> selectGoodsList(Connection conn, int categoryLink, int currentPage, int numberPerPage) throws SQLException {
 		// TODO Auto-generated method stub
 		int begin = (currentPage-1)*numberPerPage + 1;
         int end = begin + numberPerPage - 1;
@@ -75,7 +75,7 @@ public class ManGoodsImpl implements ManGoodsDAO {
     }
 
 	@Override
-	public List<ManagerGoods> searchGoodsList(Connection conn, int currentPage, int numberPerPage, int condition, String key) throws SQLException {
+	public List<ManagerGoods> searchGoodsList(Connection conn, int categoryLink, int currentPage, int numberPerPage, int condition, String key) throws SQLException {
 		
 		PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -125,7 +125,7 @@ public class ManGoodsImpl implements ManGoodsDAO {
     }
 
 	@Override
-	public int getPages(Connection conn, int numberPerPage) throws SQLException {
+	public int getPages(Connection conn, int numberPerPage, int categoryLink) throws SQLException {
 		PreparedStatement pstmt = null;
         ResultSet rs = null;
 
@@ -149,6 +149,32 @@ public class ManGoodsImpl implements ManGoodsDAO {
             JdbcUtil.close(rs);
         }
     }
+	@Override
+	public String getNum(Connection conn, int pdID) throws SQLException {
+		// TODO Auto-generated method stub
+		PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        String sql = "SELECT ltb_product.pd_id, pd_name, ps_weight, ps_price, ps_amount , ltb_categories.pc_id, pc_cate1, pc_cate2 FROM ltb_product "
+        		+ " JOIN ltb_ps " 
+        		+ "	ON ltb_product.pd_id = ltb_ps.pd_id "
+        		+ "	JOIN ltb_categories "
+        		+ "	ON ltb_product.pc_id = ltb_categories.pc_id "
+        		+ " WHERE pd_id= ?";
+        try {
+        	pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, pdID);
+            rs = pstmt.executeQuery();
+            String num = null;
+            if(rs.next()) {
+            	num = rs.getString(1);
+            }
+            return num;
+        }finally {
+        	JdbcUtil.close(pstmt);
+            JdbcUtil.close(rs);
+        }
+	}
 
 
 

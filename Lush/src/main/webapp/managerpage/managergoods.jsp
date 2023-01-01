@@ -611,7 +611,7 @@ input.underline {
 				<th>용량</th>
 				<th>수량</th>
 				<th>가격</th>
-				<th>삭제</th>
+				<th>관리</th>
 			</tr>
 			</thead>
 			<tbody>
@@ -643,9 +643,8 @@ input.underline {
                          </a>
                          </td>
                          <td>
-                         <a>
-                         &nbsp;&nbsp;&nbsp;<input class="btnDelete" type="button" id="boardCommentFiles" value="삭제">
-                         </a>
+                         &nbsp;&nbsp;&nbsp;<a href="./Lush/managerpage/goodsview.do?pdID=${goods.pd_id}&currentPage=${pageBlock.currentPage}" style="text-decoration: underline;">수정</a>
+                         /<a href="delete?pd_id=${goods.pd_id}" style="text-decoration: underline;">삭제</a>
                          </td>
                         
 				</tr>

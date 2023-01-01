@@ -19,14 +19,14 @@ public class GoodsListService {
     private GoodsListService(){}
     public static GoodsListService getInstance(){return instance;}
 
-    public List<ManagerGoods> selectGoodsList(int currentPage, int numberPerPage){
+    public List<ManagerGoods> selectGoodsList(int categoryLink, int currentPage, int numberPerPage){
         Connection conn = null;
         ManGoodsDAO dao = ManGoodsImpl.getInstance();
         List<ManagerGoods> goods = null;
 
         try {
             conn = ConnectionProvider.getConnection();
-            goods = dao.selectGoodsList(conn, currentPage, numberPerPage);
+            goods = dao.selectGoodsList(conn, categoryLink, currentPage, numberPerPage);
             if (goods == null){
                 throw new EventListEmptyException("이벤트 목록이 비어있습니다.");
             }
@@ -40,14 +40,14 @@ public class GoodsListService {
         return goods;
     }
 
-    public List<ManagerGoods> searchGoodsList(int currentPage, int numberPerPage, int searchCondition, String searchWord){
+    public List<ManagerGoods> searchGoodsList(int categoryLink, int currentPage, int numberPerPage, int searchCondition, String searchWord){
         Connection conn = null;
 
         List<ManagerGoods> list = null;
         try {
             conn = ConnectionProvider.getConnection();
             ManGoodsDAO dao = ManGoodsImpl.getInstance();
-            list = dao.searchGoodsList(conn, currentPage, numberPerPage, searchCondition, searchWord);
+            list = dao.searchGoodsList(conn, categoryLink, currentPage, numberPerPage, searchCondition, searchWord);
         } catch (NamingException | SQLException e) {
             throw new RuntimeException(e);
         } finally {
@@ -55,18 +55,22 @@ public class GoodsListService {
         }
         return list;
     }
+    
 
-    public int getTotalPages(int numberPerPage){
+    public int getTotalPages(int numberPerPage, int categoryLink){
         Connection conn = null;
 
         try {
             conn = ConnectionProvider.getConnection();
             ManGoodsDAO dao = ManGoodsImpl.getInstance();
-            return dao.getPages(conn, numberPerPage);
+            return dao.getPages(conn, numberPerPage, categoryLink);
         } catch (NamingException | SQLException e) {
             throw new RuntimeException(e);
         } finally {
             JdbcUtil.close(conn);
         }
     }
+    
+
+
 }
