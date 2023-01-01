@@ -2,7 +2,7 @@ package paging;
 
 import java.sql.SQLException;
 
-public class PageService {
+public class ShopPageService {
 
     public static PageBlock pagingService(int currentPage, int numberPerPage, int numberOfPageBlock, int totalPages) {
 
