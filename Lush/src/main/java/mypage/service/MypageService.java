@@ -103,13 +103,11 @@ public class MypageService {
 			conn = ConnectionProvider.getConnection();
 			list = dao.getIdList(conn, mid);
 			if (list == null) {
-				throw new EmptyException("id 리스트가 없습니다.");
+				return null;
 			}
 		} catch (NamingException | SQLException e) {
 			e.printStackTrace();
-		} catch (EmptyException e) {
-			e.printStackTrace();
-		}finally {
+		} finally {
 			JdbcUtil.close(conn);
 		}
 
