@@ -4,15 +4,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 <link href="css/LoginMain_style.css" rel="stylesheet" type="text/css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<link rel="icon" type="image/png" sizes="192x192" href="/Lush/images/ico/fabicon.png">
+<title>러쉬코리아</title>
 </head>
 <body>
 
 
 
-
+<jsp:include page="/WEB-INF/inc/headerfooter/header.jsp"></jsp:include>
 <section id="login" style="padding-top: 128px;">
 	<div class="inner">
 		<article class="login-wrap">
@@ -33,8 +34,8 @@
 							<input type="hidden" name="popup" value="">
 							<input type="hidden" name="failureUrl" value="/users/login?target=/&amp;popup=">
 							<input type="hidden" name="op_login_type" value="ROLE_USER">
-							<input type="text" name="id" id="id" placeholder="아이디">
-							<input type="password"name="password" id="password"  placeholder="비밀번호">
+							<input type="text" name="id" id="id" placeholder="아이디" value="nana">
+							<input type="password"name="password" id="password"  placeholder="비밀번호" value="1234">
 							<div class="input-wrap">
 								<input type="checkbox" id="save_id" name="save_id" value="true"><label for="save_id">아이디 저장</label>
 							</div>
@@ -43,7 +44,7 @@
 							<ul class="login-opt flex center">
 								<li><a href="SignUp.jsp">회원가입</a></li>
 								<li><a href="FindId.jsp">아이디 찾기</a></li>
-								<li><a href="FindPass.jsp">비밀번호 찾기</a></li>
+								<li><a href="FindPassPre.jsp">비밀번호 찾기</a></li>
 							</ul>
 							</form>
 						
@@ -69,7 +70,7 @@
 </section>
 
 
-
+<jsp:include page="/WEB-INF/inc/headerfooter/footer.jsp"></jsp:include>
 
 <script>
 /* 회원/비회원 탭 변경  */

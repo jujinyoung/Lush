@@ -14,10 +14,11 @@ public class ProductOrder {
     private String add;
     private String fcheck;
     private long osid;
+    private String osname;
     
 
     public ProductOrder(long poid,long mid, String odate, long total, String oname, 
-    		String email, String tel, String msg, long did, String add, String fcheck,long osid) {
+    		String email, String tel, String msg, long did, String add, String fcheck,long osid, String osname) {
     	this.poid = poid;
     	this.mid = mid;
     	this.odate = odate;
@@ -30,6 +31,7 @@ public class ProductOrder {
     	this.add = add;
     	this.fcheck = fcheck;
     	this.osid = osid;
+    	this.osname = osname;
     }
 
 
@@ -90,6 +92,10 @@ public class ProductOrder {
 
 	public long getOsid() {
 		return osid;
+	}
+	
+	public String getOsname() {
+		return osname;
 	}
 
     

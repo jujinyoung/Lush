@@ -18,8 +18,9 @@
     <title>러쉬코리아</title>
 </head>
 <body>
+<jsp:include page="/WEB-INF/inc/headerfooter/header.jsp"></jsp:include>
 
-<section>
+<section style="padding-top: 128px">
     <!-- 이벤트 리스트 -->
     <article>
         <!-- inner -->
@@ -253,6 +254,8 @@
         <button type="button" class="popup-close-btn">팝업닫기</button>
     </div>
 </div>
+
+<jsp:include page="/WEB-INF/inc/headerfooter/footer.jsp"></jsp:include>
 
 <script>
     let val = 0;

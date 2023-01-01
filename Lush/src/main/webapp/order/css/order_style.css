@@ -505,7 +505,7 @@ label {
     width: 24px;
     height: 24px;
     margin-left: -41px;
-    background: url(https://www.lush.co.kr/content/renewal/pc/images/ico/ico_plus_gray.svg) no-repeat center center;
+    background: url(/Lush/images/order/plusbutton.svg) no-repeat center center;
 }
 
 .total-wrap li.total-price::after, .total-wrap li.total-order::after {
@@ -517,7 +517,7 @@ label {
     width: 24px;
     height: 24px;
     margin-left: -41px;
-    background: url(https://www.lush.co.kr/content/renewal/pc/images/ico/ico_equal_gray.png) no-repeat bottom 4px center;
+    background: url("/Lush/images/order/equalimg.png") no-repeat bottom 4px center;
 }
 
 .order-wrap .payment-info table {
@@ -804,7 +804,7 @@ table.no-border-table tr td input {
     height: 24px;
     top: 19px;
     right: 20px;
-    background: url(https://www.lush.co.kr/content/renewal/pc/images/ico/closePop.png) no-repeat center center;
+    background: url(/Lush/images/ico/cabutton.png) no-repeat center center;
     text-indent: -9999px;
     margin: 0;
     padding: 0 !important;

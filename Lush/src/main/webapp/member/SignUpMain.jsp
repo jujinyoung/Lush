@@ -5,7 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>회원가입 정보 입력</title>
+<link rel="icon" type="image/png" sizes="192x192" href="/Lush/images/ico/fabicon.png">
+<title>러쉬코리아</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <link href="css/SignUpMain_style.css" rel="stylesheet" type="text/css">
 <style>
@@ -13,7 +14,7 @@
 </head>
 <body>
 
-
+ <jsp:include page="/WEB-INF/inc/headerfooter/header.jsp"></jsp:include>
 <section id="joinInfo" style="padding-top: 128px;">
 	<div class="page-top">
 		<h2 class="page-title">회원가입</h2>
@@ -68,7 +69,7 @@
 				<tr class="basic-info-mail clear">
 					<th><span class="req">*</span>이메일</th>
 					<td>
-						 <input type="text" id="fakeEmail" name = "fakeEmail" class="_not_blank">
+						 <input type="text" id="fakeEmail" name = "fakeEmail" class="_not_blank" placeholder="@를 포함해 입력해 주세요.">
 						 <button type="button" id="EmailBtn" name="EmailBtn" class="border-btn">인증</button>
 						 <div id="sendemail" style="display: none; color:#006400; height: 47.99px; width: 100px;
 						 margin: 0 0 0 20px; padding: 4px;">
@@ -89,18 +90,26 @@
 				</tr>
 				<tr>
 					<th><span class="req">*</span>휴대전화</th>
-					<td>
+				<!-- 	<td>
 						<input type="text" id="tel" name="tel" placeholder="- 없이 입력하세요.">
+						<button type="button" id="telBtn" name="telBtn" class="border-btn">번호 인증</button>
+						
 							<div class="input-wrap">
+						</div>
+					</td> -->
+					<td>
+						<div class="id-check">
+							<input type="text" id="tel" name="tel" placeholder="- 없이 입력하세요." >
+							<button type="button" id="telBtn" name="telBtn" class="border-btn">번호 인증</button>
 						</div>
 					</td>
 				</tr>
 				<tr class="basic-info-address">
 					<th><span class="req">*</span>주소</th>
 					<td>			
-					    <input type="text" name="sample6_postcode" id="sample6_postcode" placeholder="우편번호">
+					    <input type="text" name="sample6_postcode" id="sample6_postcode" placeholder="우편번호" readonly="readonly">
 						<button type="button" class="border-btn" onclick="sample6_execDaumPostcode()">우편번호 검색</button>
-					<input type="text" name="sample6_address" id="sample6_address" placeholder="주소"> 
+					<input type="text" name="sample6_address" id="sample6_address" placeholder="주소" readonly="readonly"> 
 						<input type="text" name="sample6_detailAddress" id="sample6_detailAddress"  placeholder="상세주소">
 							<input type="text" id="sample6_extraAddress" placeholder="참고항목(공백가능)"> 
 					</td>
@@ -115,10 +124,94 @@
 <input type="hidden" name="_csrf" value="cc5689a3-7cae-4304-8cae-43102270f4be">
 </div></form></div>
 </section>
+<div class="modal__background" id="modalback" name="modalback">
+<div id="modal" class="modal">
+	<div class="modal_content" title="클릭시 창이 닫힙니다">
+	<button id="close" class="close">x</button>
+	<input type="text" id="smsnum" class="smsnum" placeholder="인증번호를 입력해 주세요" value="1234">
+<!-- 	<input type="submit" id="smsmsend" class="smsmsend" value="인증번호 보내기"> -->
+	<input type="submit" id="numsend" class="numsend" value="인증번호 인증">
+	</div>
+	</div>
+	</div>
+<jsp:include page="/WEB-INF/inc/headerfooter/footer.jsp"></jsp:include>
+
 
 
 <!-- 유효성 검사 -->
 <script>
+
+<!-- 핸드폰 번호 인증 -->
+/* 핸드폰 인증 -> 모달창 띄우기 */
+let usernumber1 = "";
+let ofcode = "";
+ $(function() {
+	  $('#telBtn').click(function(){ // 인증하기 -> 모달창 띄움 -> 인증번호 전송smsmsend
+		/* 	alert("클릭"); */
+	/* 		$(".modal").css("display", "block"); */
+			$("#modalback").css("display", "block");
+			$("#modal").css("display", "block");
+			usernumber1 = $('#tel').val();
+			
+			$.ajax({ // ajax 처리 
+				url : "/Lush/member/smspass.do",
+				type : "post",
+			 data : {usernumber1 :usernumber1}, // 사용자의 폰 번호로
+				// async: false,
+				dataType : "json",
+				success : 
+				function(  smsnum  ){
+					ofcode = smsnum;
+					alert("인증번호가 전송되었습니다!")
+					
+					
+				}, // fuction
+				error : function(){
+					alert("서버요청실패");
+				}
+				})// ajax 
+			
+			
+			
+			
+			
+	   	})
+			
+	   	});
+	
+
+let newnum = "";
+ $(function() {
+	  $('#numsend').click(function(){ // 인증번호 전송 버튼 클릭 -> 창 바뀌면서 전송
+		  $("#smsnum").attr("type", "text");
+		  $("#smsmsend").attr("type", "hidden");
+			$("#numsend").attr("type", "submit"); // 창이 바뀜
+			
+			newnum = $('#smsnum').val();
+			
+			if(newnum  == ofcode ){
+				// readonly 
+				alert("일치합니다");
+				$(".modal").css("display", "none");
+				$("#tel").attr("readonly", "true");
+				$("#modalback").css("display", "none");
+			}else{
+				alert("일치하지 않습니다");
+				$('#smsnum').focus();
+			}
+			
+			
+			
+   	});
+	    
+	    
+	});
+		
+	  
+
+
+/* 유효성 검사 */
+
 
 var e_RegExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 var n_RegExp = /^[가-힣]+$/; 
@@ -201,10 +294,10 @@ let zipcode = "";
 		})
 
 	 });
-</script>
+
 
 <!-- 이메일 인증 -->
-<script>
+
 
 let authcode = "";
 
@@ -220,25 +313,25 @@ $(function(){
 			 return false;
 			 
 		 }
-		 alert("버튼 클릭");
+		/*  alert("버튼 클릭"); */
 		 
 		 if(useremail.match('@') ){
-		 
-		 let Email = $('#fakeEmail').val();
-		 console.log(Email);
+		/*  
+		 let Email = $('#fakeEmail').val(); */
+		 console.log(  useremail );
 		 
 
 		 $.ajax({
 			url : "/Lush/member/idcheck.do",
 			type : "GET",
-			data : {userEmail : Email},
+			data : {useremail :useremail},
 			async: false,
 			dataType : "json",
 			success : 
 				function( certificationCode ){
 				if(certificationCode != null ){
 					alert('인증번호가 전송되었습니다!');
-					$("#sendemail").css("display", "inline-block"); // 인증번호를 입력해주세요 띄우기 
+				/* 	$("#sendemail").css("display", "inline-block"); // 인증번호를 입력해주세요 띄우기  */
 					console.log(certificationCode);
 					authcode = certificationCode;
 					console.log(authcode);
@@ -260,17 +353,17 @@ $(function(){
 
 
 
-
 <!-- 이메일 인증 확인 -->
 $(function(){
 	 $('#confirmEmailBtn').click(function(){
 		
-		 alert("버튼 클릭");
+		/*  alert("버튼 클릭"); */
 		 
 		 let usercode = $('#authNumber').val();
 		 
 		if(authcode == usercode){
 			alert("인증되었습니다!");
+			$("#fakeEmail").attr("readonly", "true");
 		}
 		
 		if(usercode == null || usercode ==""){
@@ -284,11 +377,11 @@ $(function(){
 			 
 		})
 });
-</script>
+
 
 
 <!-- 아이디 중복체크 / 유효성 검사 -->
-<script>
+
 
 var e_RegExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 var RegExp = /^[a-zA-Z0-9]{4,12}$/; 
@@ -328,9 +421,44 @@ var RegExp = /^[a-zA-Z0-9]{4,12}$/;
 		})
 		 
 	})
- </script>
 
 
+<!-- joinBtn 회원가입 버튼 누를 떄  -->
+
+$(function(){
+	 $('#joinBtn').click(function(){
+	/* 	alert("회원가입 버튼 클릭!"); */
+		<!-- 빈 값이 있다면 return false 후 그쪽으로 focus   -->
+			<!-- 아이디 -->
+			let userId = $('.input_id').val(); // input_id에 입력되는 값
+			
+			 if(userId == ''){ // 아이디 공백 
+		            alert("ID를 입력해주세요.");
+		            return false;
+		        }
+			 <!-- 비밀번호 -->
+			var password = $.trim($('#password').val()); 
+				 if( ppassword ==''){ // 아이디 공백 
+			            alert("비밀번호를 입력해주세요.");
+			            return false;
+			        }
+			 <!-- 이름 -->
+				var usename = $('#name').val();
+				 if(usename ==''){ // 이름 공백 
+			            alert("이름을 입력해주세요.");
+			            return false;
+			        }
+			<!-- 닉네임 -->
+			var usenick = $('#nick').val();
+			 if(usenick ==''){ // 이름 공백 
+		            alert("닉네임을 입력해주세요.");
+		            return false;
+		        }
+			 
+	   <!--  -->
+		})
+});
+</script>
 <!-- 우편번호 검색  -->
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
@@ -381,6 +509,21 @@ var RegExp = /^[a-zA-Z0-9]{4,12}$/;
             }
         }).open();
     }
+    
+    
+    
+ /* postcode 에 값이 찰 때 readonly 로  */
+ 
+ 
+/* $(function(){
+	 $('#sample6_postcode').on('input',function(){
+		if(  $('#sample6_postcode').val().empty '' ){
+			$("#sample6_postcode").attr("readonly", "true");
+		}
+			 
+	   <!--  -->
+		})
+}); */
 </script>
 
 

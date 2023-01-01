@@ -5,14 +5,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>가입 선택</title>
+<link rel="icon" type="image/png" sizes="192x192" href="/Lush/images/ico/fabicon.png">
+<title>러쉬코리아</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <link href="css/SignUpPre_style.css" rel="stylesheet" type="text/css">
 <style>
 </style>
 </head>
 <body>
-
+ <jsp:include page="/WEB-INF/inc/headerfooter/header.jsp"></jsp:include>
 <section id="join" style="padding-top: 128px;">
 	<div class="inner">
 		<article class="join-wrap">
@@ -27,7 +28,7 @@
 		</article>
 	</div>
 </section>
-
+<jsp:include page="/WEB-INF/inc/headerfooter/footer.jsp"></jsp:include>
 
 <script>
 </script>

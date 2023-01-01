@@ -1,0 +1,330 @@
+@import url(../../event/css/default.css);
+@import url(../../event/css/paging.css);
+
+/*러쉬 폰트 적용*/
+@font-face {
+    font-family: 'lush';
+    src: url('../../fonts/LUSHKR_Medium.otf') format('truetype');
+}
+
+section {
+    min-height: calc(100vh - 96px - 320px);
+}
+
+.top-visual {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 456px;
+    margin-bottom: 40px;
+    overflow: hidden;
+    background-size: contain;
+    background-position: center center;
+}
+
+.flex.center {
+    justify-content: center;
+}
+
+.top-visual > div {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    z-index: 2;
+    background: rgba(34,34,34,.3);
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top-visual .category-title {
+    display: block;
+    font-family: 'lush';
+    font-size: 96px;
+    line-height: 1em;
+    color: #fafafa;
+    letter-spacing: -3px;
+    font-weight: 500;
+}
+
+.top-visual .category-sub {
+    color: #fafafa;
+    font-weight: 400;
+    text-align: center;
+    font-size: 32px;
+    font-weight: 400;
+}
+
+.top-visual img {
+    position: absolute;
+    min-width: 100%;
+    display: block;
+    z-index: 1;
+    left: 50%;
+    top: 50%;
+    min-height: 100%;
+    transform: translate(-50%,-50%);
+}
+
+.inner {
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    width: 1224px;
+}
+
+.prd-list .prd-sort li:not(:last-of-type) {
+    margin-right: 11px;
+}
+
+.prd-list .prd-sort li {
+    display: inline-block;
+}
+
+.prd-list .prd-sort li a {
+    display: block;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.45px;
+    color: #949494;
+}
+
+.prd-list .prd-sort li a.on {
+    color: #222;
+}
+
+.select-box.short {
+    width: 138px;
+}
+
+.select-box {
+    display: inline-block;
+    position: relative;
+    height: 48px;
+    border: 1px solid #949494;
+}
+
+.select-box.short .selected-value {
+    font-size: 16px;
+    color: #535353;
+}
+
+.select-box .selected-value {
+    display: block;
+    line-height: 46px;
+    background: #fff url(../../images/ico/select_off.svg) no-repeat center right 15px;
+    padding: 0 34px 0 16px;
+    height: 100%;
+    width: 100%;
+}
+
+.select-box .option-box {
+    display: none;
+    position: absolute;
+    top: 46px;
+    left: -1px;
+    width: calc(100% + 2px);
+    height: auto;
+    max-height: 250px;
+    overflow-y: auto;
+    border: 1px solid #949494;
+    background: #fff;
+    z-index: 10;
+    padding: 4px 0;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.select-box .option-box li {
+    color: #535353;
+    font-size: 16px;
+    padding: 12px 34px 12px 16px;
+    cursor: pointer;
+}
+
+.prd-list .list-top + .list .list-wrap {
+    margin-top: 30px;
+}
+
+.prd-list .list ul li {
+    display: block;
+    position: relative;
+    width: calc((100% - 72px)/4);
+    margin-bottom: 24px;
+    background: #fafafa;
+}
+
+.prd-list .list .item {
+    display: block;
+    position: relative;
+    padding: 16px 16px 24px 16px;
+    text-align: center;
+}
+
+.prd-list .list .item .prd-img-box {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 256px;
+    overflow: hidden;
+}
+
+.prd-list .list .item .prd-img {
+    display: block;
+    min-width: 100%;
+    min-height: 100%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    height: 100%;
+}
+
+.prd-list .list .item .tag-box {
+    position: relative;
+    padding: 0;
+    height: 24px;
+    width: 100%;
+    overflow: hidden;
+    flex-wrap: wrap;
+    margin: 16px auto 8px auto;
+}
+
+.prd-list .list .item .tag-box a {
+    display: inline-block;
+    width: 64px;
+    height: 24px;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    line-height: 21px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: -0.31px;
+    text-align: center;
+    margin: 0 4px;
+}
+
+.prd-list .list .item .tag-box a img {
+    display: block;
+    width: 100%;
+}
+
+.prd-list .list .item .name {
+    display: block;
+    color: #222;
+    font-weight: 500;
+    max-height: 64px;
+    line-height: 32px;
+    font-size: 22px;
+    letter-spacing: -0.62px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.prd-list .list .item .cate {
+    display: block;
+    margin: 8px auto;
+    text-align: center;
+    color: #535353;
+    line-height: 24px;
+    font-size: 18px;
+    letter-spacing: -0.5px;
+}
+
+.prd-list .list .item .price {
+    color: #535353;
+    line-height: 24px;
+    font-size: 16px;
+    letter-spacing: -0.45px;
+}
+
+.prd-list .list .item-mask {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(195,195,195,0.3);
+    pointer-events: none;
+}
+
+.prd-list .list .buttons {
+    display: none;
+    position: absolute;
+    width: 100%;
+    top: 239px;
+    text-align: center;
+}
+
+.prd-list .list .buttons .like {
+    background: #fff url(../../images/ico/ico_like.svg) no-repeat center center;
+    background-size: 18px 16px;
+}
+
+.prd-list .list .buttons .basket {
+    background: #fff url(../../images/ico/bag.svg) no-repeat center center;
+    background-size: 20px 21px;
+}
+
+.prd-list .list .buttons button {
+    position: relative;
+    z-index: 2;
+    text-indent: -9999px;
+    width: 64px;
+    height: 32px;
+    border: 1px solid #bdbdbd;
+    border-radius: 20px;
+    margin: 0 2px;
+}
+
+.prd-list .list ul li.soldout .name, .prd-list .list ul li.soldout .cate, .prd-list .list ul li.soldout .price {
+    color: #939393;
+}
+
+.prd-list .list .item .tag-box a.sold-out {
+    font-size: 14px;
+    font-weight: 400;
+    color: #535353;
+}
+
+.prd-list .list .list-wrap {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-top: 72px;
+    width: 100% !important;
+}
+
+.select-box.on .selected-value {
+    color: #757575;
+    background: #fff url(../../images/ico/select_on.svg) no-repeat center right 15px;
+}
+
+.select-box.on .option-box {
+    display: block;
+}
+
+.empty.big {
+    padding: 128px 0;
+    width: 100%;
+    margin: 0;
+}
+
+.empty p {
+    text-align: center;
+    font-size: 16px;
+    color: #222;
+    letter-spacing: -0.45px;
+    line-height: 24px;
+}
+
