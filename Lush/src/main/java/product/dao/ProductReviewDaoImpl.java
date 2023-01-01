@@ -168,4 +168,26 @@ public class ProductReviewDaoImpl implements ProductReviewDao{
             JdbcUtil.close(pstmt);
         }
     }
+
+    @Override
+    public ProductReview mainReview(Connection conn, int reviewID) throws SQLException {
+
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        String sql = "SELECT * FROM ltb_productReview WHERE pdr_id=?";
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, reviewID);
+            rs = pstmt.executeQuery();
+            ProductReview productReview = null;
+            if (rs.next()){
+                productReview = new ProductReview(rs.getInt("pdr_id"), rs.getInt("me_id"), rs.getInt("pd_id"), DateFormmater.sliceDatedd(rs.getDate("pdr_date"))
+                        , rs.getInt("pdr_grade"), rs.getString("pdr_content"));
+            }
+
+            return productReview;
+        }finally {
+            JdbcUtil.close(pstmt);
+        }
+    }
 }

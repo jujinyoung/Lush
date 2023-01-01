@@ -1,5 +1,7 @@
 package product.dao;
 
+import product.domian.ProductReviewImages;
+
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -17,4 +19,6 @@ public interface ProductReviewImagesDao {
     public int getUserImagesCount(Connection conn, int productReviewID) throws SQLException;
 
     public ArrayList<String> getUrl(Connection conn, int productReviewID) throws SQLException;
+
+    public ArrayList<ProductReviewImages> mainReviewList(Connection conn) throws SQLException;
 }
