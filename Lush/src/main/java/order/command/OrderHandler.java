@@ -1,6 +1,7 @@
 package order.command;
 
 import command.CommandHandler;
+import member.domain.User;
 import mypage.service.MypageCartService;
 import order.domain.Member;
 import order.domain.ProductOrder;
@@ -42,8 +43,9 @@ public class OrderHandler implements CommandHandler {
 					String[] amounts = request.getParameterValues("amount");
 					
 					long totalprice = Long.parseLong(request.getParameter("totalprice1").trim());
-					
-					String sid = (String) session.getAttribute("auth");
+
+					User user = (User) session.getAttribute("authUser");
+					String sid = user.getLoginid();
 					Member member = orderService.selectMember(sid);
 					long mid = member.getMid();
 
@@ -120,8 +122,8 @@ public class OrderHandler implements CommandHandler {
 
 					int orderCheck = 0;
 					orderCheck = orderService.addOrder(productorder, productorderdetailslist, productpay);
-					
-					
+
+					System.out.println("usermyPage = " + user.getName());
 					String location = "/Lush/order/ordersuccess.jsp";
 					if (orderCheck != 0) {
 						location += "?order=success";
@@ -137,8 +139,9 @@ public class OrderHandler implements CommandHandler {
 					String[] amounts = request.getParameterValues("amount");
 					
 					long totalprice = Long.parseLong(request.getParameter("totalprice1").trim());
-					
-					String sid = (String) session.getAttribute("auth");
+
+					User user = (User) session.getAttribute("authUser");
+					String sid = user.getLoginid();
 					Member member = orderService.selectMember(sid);
 					long mid = member.getMid();
 
@@ -220,7 +223,7 @@ public class OrderHandler implements CommandHandler {
 
 					int orderCheck = 0;
 					orderCheck = orderService.addOrder(productorder, productorderdetailslist, productpay);
-					
+
 
 					String location = "/Lush/order/ordersuccess.jsp";
 					if (orderCheck != 0) {

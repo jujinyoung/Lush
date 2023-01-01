@@ -20,6 +20,7 @@ import command.CommandHandler;
 import inquiry.domain.Category;
 import inquiry.domain.Inquiry;
 import inquiry.service.InquiryWriteService;
+import member.domain.User;
 
 public class WriteHandler implements CommandHandler {
 
@@ -55,13 +56,14 @@ public class WriteHandler implements CommandHandler {
 			}
 			request.setAttribute("clist", clist);
 
-			return "/inquiry/inquiry_write.jsp?me_name=김경연";
+			return "/inquiry/inquiry_write.jsp";
 
 		}else if(requestMethod.equals("POST")) {
 
-			request.setCharacterEncoding("UTF-8"); 
-			int me_id=12;
-			String me_name="김경연";
+			request.setCharacterEncoding("UTF-8");
+			User user = (User) request.getSession(false).getAttribute("authUser");
+			int me_id= user.getId();
+			String me_name=user.getName();
 /*
 			String saveDirectory = request.getRealPath("C:\\lush"); // 저장 
 			System.out.println("> 실제 업로드 경로 :  " + saveDirectory);

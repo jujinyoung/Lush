@@ -1,6 +1,7 @@
 package order.command;
 
 import command.CommandHandler;
+import member.domain.User;
 import mypage.domain.Basket;
 import mypage.service.MypageCartService;
 import order.domain.Member;
@@ -43,9 +44,8 @@ public class OrderViewHandler implements CommandHandler {
 					String[] psids = request.getParameterValues("psid");
 					String[] amounts = request.getParameterValues("amount");
 
-					String sid = (String) session.getAttribute("auth");
-//    		    	User user = session.getAttribute("authUser");
-//    		    	user.getId();
+					User user = (User) session.getAttribute("authUser");
+					String sid = user.getLoginid();
 					Member member = orderViewService.selectMember(sid);
 					long mid = member.getMid();
 					
@@ -59,7 +59,6 @@ public class OrderViewHandler implements CommandHandler {
 
 
 					List<ProductJoin> list = orderViewService.selectProductJoin(productparameterlist);
-					
 					
 					long ordernum = orderViewService.getOrderNum();
 					
@@ -99,14 +98,11 @@ public class OrderViewHandler implements CommandHandler {
 				} else if (fromwhere == 2) {
 					MypageCartService mypagecartservice = MypageCartService.getInstance();
 					OrderViewService orderViewService = OrderViewService.getInstance();
-					
-					String sid = (String) session.getAttribute("auth");
-//			    	User user = session.getAttribute("authUser");
-//			    	user.getId();
-					sid = "test1";
-					Member member = mypagecartservice.selectMember(sid);
+
+					User user = (User) session.getAttribute("authUser");
+					String sid = user.getLoginid();
+					Member member = orderViewService.selectMember(sid);
 					long mid = member.getMid();
-					mid = 1;
 
 					List<Basket> basketlist = mypagecartservice.selectBasket(mid);
 					if(basketlist == null) {

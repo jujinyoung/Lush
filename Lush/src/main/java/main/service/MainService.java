@@ -45,7 +45,7 @@ public class MainService {
 
             return mainReviews;
         }catch (Exception e){
-            e.printStackTrace();
+
         }finally {
             JdbcUtil.close(conn);
         }

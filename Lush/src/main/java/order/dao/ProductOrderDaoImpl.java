@@ -44,7 +44,7 @@ public class ProductOrderDaoImpl implements ProductOrderDao{
 	public int addOrder(Connection con, ProductOrder productorder) throws SQLException {
 
         PreparedStatement pstmt = null;
-        String ordersql = "INSERT INTO ltb_prdct_order VALUES (  ?,?,default,?,?,?,?,?,?,?,?,?,? ) ";
+        String ordersql = "INSERT INTO ltb_prdct_order VALUES (  ?,?,sysdate,?,?,?,?,?,?,?,?,?,? ) ";
         int rowCount = 0;
 
         

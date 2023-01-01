@@ -74,7 +74,7 @@ public class MypageJoinDaoImpl implements MypageJoinDao {
 
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = " SELECT * FROM ltb_product A,ltb_ps B,ltb_mbr_prdct_ordr_details C,ltb_prdct_order D WHERE A.pd_id = B.ps_id and B.ps_id= C.ps_id and C.m_prdct_order_id = D.m_prdct_order_id and D.me_id = ? and D.m_prdct_order_id = ? and order_date >= TO_DATE(?,'YY/MM/DD') and order_date <= TO_DATE(?,'YY/MM/DD') and os_id = ?";
+		String sql = " SELECT * FROM ltb_product A,ltb_ps B,ltb_mbr_prdct_ordr_details C,ltb_prdct_order D WHERE A.pd_id = B.pd_id and B.ps_id= C.ps_id and C.m_prdct_order_id = D.m_prdct_order_id and D.me_id = ? and D.m_prdct_order_id = ? and order_date >= TO_DATE(?,'YY/MM/DD') and order_date <= TO_DATE(?,'YY/MM/DD')+1 and os_id = ?";
 		HashMap<Long, List<MypageJoin>> map = null;
 		List<MypageJoin> list = null;
 		

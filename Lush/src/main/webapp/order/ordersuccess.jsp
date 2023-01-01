@@ -36,12 +36,12 @@ String contextPath = request.getContextPath();
 
 			<p class="complete-text">
 				고객님의 주문이 완료되었습니다.<br> 주문하신 내역은 <a
-					href="<%=contextPath%>/order/default.jsp">마이페이지</a>에서 가능합니다. <span
+					href="<%=contextPath%>/mypage/mypage.do">마이페이지</a>에서 가능합니다. <span
 					class="addon">비회원은 주문 정보로 로그인하여 주문내역을 확인할 수 있습니다.</span>
 			</p>
 			<div class="btn-wrap large double">
-				<a href="<%=contextPath%>/order/default.jsp" class="border-btn">계속
-					쇼핑하기</a> <a href="<%=contextPath%>/order/default.jsp"
+				<a href="<%=contextPath%>/index.do" class="border-btn">계속
+					쇼핑하기</a> <a href="<%=contextPath%>/mypage/mypage.do"
 					class="black-btn">주문내역 조회</a>
 			</div>
 		</div>

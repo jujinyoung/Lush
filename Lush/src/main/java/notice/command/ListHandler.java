@@ -13,10 +13,10 @@ public class ListHandler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
+		System.out.println("ListHandler.process");
 		NoticeListService noticeService = NoticeListService.getInstance();
 		List<Notice> notices =  noticeService.selectNoticeList();
-		
+
 		request.setAttribute("notices", notices);
 		
 		return "/notice/notice.jsp";

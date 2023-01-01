@@ -1,6 +1,7 @@
 package mypage.command;
 
 import command.CommandHandler;
+import member.domain.User;
 import order.domain.Member;
 import order.domain.Product;
 import order.domain.ProductJoin;
@@ -33,13 +34,12 @@ public class MypageCartHandler implements CommandHandler {
 			if (requestMethod.equals("GET")) {
 				MypageCartService mypagecartservice = MypageCartService.getInstance();
 
-				String sid = (String) session.getAttribute("auth");
-//		    	User user = session.getAttribute("authUser");
-//		    	user.getId();
-				sid = "test1";
+//				String sid = (String) session.getAttribute("auth");
+//		    	User user = rgetAttribute("authUser");
+				User user = (User) request.getSession(false).getAttribute("authUser");
+				String sid = user.getLoginid();
 				Member member = mypagecartservice.selectMember(sid);
 				long mid = member.getMid();
-				mid = 1;
 
 				List<Basket> basketlist = mypagecartservice.selectBasket(mid);
 				if(basketlist == null) {

@@ -1,6 +1,7 @@
 package mypage.command;
 
 import command.CommandHandler;
+import member.domain.User;
 import mypage.service.MypageService;
 import order.domain.ProductJoin;
 import mypage.domain.JinhangSum;
@@ -21,7 +22,8 @@ public class MypageHandler implements CommandHandler {
     public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
     	System.out.println("MypageHandler.process");
     	HttpSession session =  request.getSession(  false );
-    	
+		System.out.println("session = " + session);
+
     	if( session == null) {
     		System.out.println("세션없음");
     		return "/order/default.jsp";
@@ -29,11 +31,12 @@ public class MypageHandler implements CommandHandler {
         	String requestMethod = request.getMethod();  
     		if(requestMethod.equals("GET")) { 
 				MypageService mypageservice = MypageService.getInstance();
-		        
-		        
-		    	String sid = (String)session.getAttribute("auth");
+
+				User user = (User) session.getAttribute("authUser");
+				String sid = user.getLoginid();
 		    	Member member = mypageservice.selectMember(sid);
 		    	long mid = member.getMid();
+
 		    	JinhangSum jinhangsum = mypageservice.selectJinhangSum(mid);
 		    	
 		    	List<Long> orderIdList = mypageservice.getIdList(mid);

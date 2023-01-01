@@ -1,6 +1,10 @@
+<%@ page import="member.domain.User" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%
+    User user = (User) request.getSession(false).getAttribute("authUser");
+    String name = user.getName();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +15,7 @@
 <link href="css/layout.css" type="text/css" rel="stylesheet">
 <link href="css/style.css" type="text/css" rel="stylesheet">
 <style>
-.files td .file-btn span { display: inline-block; height: 26px; background: url(../../images/ico/camera_black.svg) no-repeat center left; padding-left: 40px; cursor: pointer;text-decoration: underline;color:#535353;}
+.files td .file-btn span { display: inline-block; height: 26px; background: url(../images/ico/camera_black.svg) no-repeat center left; padding-left: 40px; cursor: pointer;text-decoration: underline;color:#535353;}
 </style>
 </head>
 <body>
@@ -130,7 +134,7 @@
 					
 						<th>작성자</th>
 						<td><input id="userName" name="me_name" title="작성자"
-							type="text" value="${param.me_name}" readonly="readonly" /></td>
+							type="text" value="<%=name%>" readonly="readonly" /></td>
 					</tr>
 					<tr>
 						<th>내용</th>

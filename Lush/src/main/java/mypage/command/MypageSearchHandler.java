@@ -1,6 +1,7 @@
 package mypage.command;
 
 import command.CommandHandler;
+import member.domain.User;
 import mypage.service.MypageService;
 import order.domain.ProductJoin;
 import mypage.domain.JinhangSum;
@@ -29,8 +30,10 @@ public class MypageSearchHandler implements CommandHandler {
         	String requestMethod = request.getMethod();  
     		if(requestMethod.equals("GET")) { 
 				MypageService mypageservice = MypageService.getInstance();
-		        
-		    	String sid = (String)session.getAttribute("auth");
+
+
+				User user = (User) session.getAttribute("authUser");
+				String sid = user.getLoginid();
 		    	Member member = mypageservice.selectMember(sid);
 		    	long mid = member.getMid();
 		    	
