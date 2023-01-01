@@ -643,7 +643,7 @@ input.underline {
                          </a>
                          </td>
                          <td>
-                         &nbsp;&nbsp;&nbsp;<a href="./Lush/managerpage/goodsview.do?pdID=${goods.pd_id}&currentPage=${pageBlock.currentPage}" style="text-decoration: underline;">수정</a>
+                         &nbsp;&nbsp;&nbsp;<a href="/Lush/managerpage/goodsview.do?pdID=${goods.pd_id}&currentPage=${pageBlock.currentPage}" style="text-decoration: underline;">수정</a>
                          /<a href="delete?pd_id=${goods.pd_id}" style="text-decoration: underline;">삭제</a>
                          </td>
                         

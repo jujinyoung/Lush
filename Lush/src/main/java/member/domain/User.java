@@ -36,8 +36,13 @@ public class User {
 		this.loginid = loginid;
 		this.name = name;
 	}
-	
-	
-	
 
+	@Override
+	public String toString() {
+		return "User{" +
+				"loginid='" + loginid + '\'' +
+				", name='" + name + '\'' +
+				", id=" + id +
+				'}';
+	}
 }

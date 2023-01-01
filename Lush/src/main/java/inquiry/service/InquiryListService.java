@@ -28,6 +28,7 @@ public class InquiryListService {
 		List<Inquiry> inquirys = null;
 		
 		try {
+			System.out.println("me_id = " + me_id);
 			conn = ConnectionProvider.getConnection();
 			inquirys = inquiryDao.selectInquiryList(conn, me_id);
 			if(inquirys == null) {

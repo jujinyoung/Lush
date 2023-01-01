@@ -85,7 +85,7 @@ public class LoginDAOImpl implements LoginDAO{
 			// 존재한다면 member 객체 생성
 		if(rs.next()) {
 			member = new Member(
-			
+				rs.getInt("me_id"),
 			  rs.getString("me_pass"), 
 			  rs.getString("me_name"), 
 			  rs.getString("me_add"),

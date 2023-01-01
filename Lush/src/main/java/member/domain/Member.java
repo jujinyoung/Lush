@@ -15,8 +15,17 @@ public class Member { // DTO / VO
 	public Member() {
 		
 	}
-	
-	
+
+	public Member(int me_id, String me_pass, String me_name, String me_add, String me_tel, String me_email, String me_nick, String me_loginid) {
+		this.me_id = me_id;
+		this.me_pass = me_pass;
+		this.me_name = me_name;
+		this.me_add = me_add;
+		this.me_tel = me_tel;
+		this.me_email = me_email;
+		this.me_nick = me_nick;
+		this.me_loginid = me_loginid;
+	}
 
 	public Member(String me_nick, String me_email, String me_tel, String me_add, String me_loginid) {
 	

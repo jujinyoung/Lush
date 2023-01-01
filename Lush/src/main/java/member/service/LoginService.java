@@ -35,7 +35,7 @@ public class LoginService { // 로그인
 					return null;
 				}
 
-				return new User(member.getMe_loginid(), member.getMe_name());
+				return new User(member.getMe_loginid(), member.getMe_name(), member.getMe_id());
 				}catch(SQLException | NamingException e) {
 						throw new RuntimeException(e);
 					}finally {

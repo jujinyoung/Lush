@@ -54,7 +54,7 @@ public class AdLoginHandler implements CommandHandler {
 			System.out.println(request.getSession() );
 			 System.out.println(" 세션 추가 ");
 			 
-			response.sendRedirect("AdPage_temp.jsp");
+			response.sendRedirect("/managerpage/managerMain.jsp");
 			return null;
 		}catch(IOException e) {
 			errors.put("idOrPwNotMatch", Boolean.TRUE);

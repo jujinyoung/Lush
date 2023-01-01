@@ -1,6 +1,7 @@
 package mypage.service;
 
 import com.util.ConnectionProvider;
+import com.util.JdbcUtil;
 
 import mypage.domain.JinhangSum;
 import mypage.domain.Member;
@@ -43,8 +44,9 @@ public class MypageService {
             e.printStackTrace();
         } catch (EmptyException e) {
             e.printStackTrace();
-        }
-        
+        }finally {
+			JdbcUtil.close(conn);
+		}
         return member;
     }
     
@@ -63,7 +65,9 @@ public class MypageService {
             e.printStackTrace();
         } catch (EmptyException e) {
             e.printStackTrace();
-        }
+        }finally {
+			JdbcUtil.close(conn);
+		}
         
         return jinhangsum;
     }
@@ -83,6 +87,8 @@ public class MypageService {
 			e.printStackTrace();
 		} catch (EmptyException e) {
 			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(conn);
 		}
 
 		return map;
@@ -103,6 +109,8 @@ public class MypageService {
 			e.printStackTrace();
 		} catch (EmptyException e) {
 			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(conn);
 		}
 
 		return list;
@@ -123,6 +131,8 @@ public class MypageService {
 			e.printStackTrace();
 		} catch (EmptyException e) {
 			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(conn);
 		}
 
 		return map;

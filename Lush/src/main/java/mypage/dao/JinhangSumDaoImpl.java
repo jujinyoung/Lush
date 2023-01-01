@@ -37,23 +37,23 @@ public class JinhangSumDaoImpl implements JinhangSumDao{
         try {
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, nowStr);
-            pstmt.setLong(2, 1);
+            pstmt.setLong(2, mid);
             pstmt.setString(3, nowStr);
-            pstmt.setLong(4, 1);
+            pstmt.setLong(4, mid);
             pstmt.setString(5, nowStr);
-            pstmt.setLong(6, 1);
+            pstmt.setLong(6, mid);
             pstmt.setString(7, nowStr);
-            pstmt.setLong(8, 1);
+            pstmt.setLong(8, mid);
             pstmt.setString(9, nowStr);
-            pstmt.setLong(10, 1);
+            pstmt.setLong(10, mid);
             pstmt.setString(11, nowStr);
-            pstmt.setLong(12, 1);
+            pstmt.setLong(12, mid);
             pstmt.setString(13, nowStr);
-            pstmt.setLong(14, 1);
+            pstmt.setLong(14, mid);
             pstmt.setString(15, nowStr);
-            pstmt.setLong(16, 1);
+            pstmt.setLong(16, mid);
             pstmt.setString(17, nowStr);
-            pstmt.setLong(18, 1);
+            pstmt.setLong(18, mid);
 
             
             rs = pstmt.executeQuery();

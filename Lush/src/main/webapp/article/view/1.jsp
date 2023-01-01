@@ -610,8 +610,7 @@ ol, ul, dl {
 </head>
 <body>
 
-<header id ="header">
-</header>
+<jsp:include page="/WEB-INF/inc/headerfooter/header.jsp"></jsp:include>
 
 <!-- 탑이미지 -->
 <section id="story" style="padding-top: 128px;">
@@ -833,8 +832,7 @@ ol, ul, dl {
 </article>
 </section>
 
-<footer>
-</footer>
+<jsp:include page="/WEB-INF/inc/headerfooter/footer.jsp"></jsp:include>
 
 <script>
 
