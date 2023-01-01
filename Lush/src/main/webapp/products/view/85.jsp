@@ -1,8 +1,12 @@
+<%@ page import="member.domain.User" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%
   String pid = request.getParameter("productID");
+  User user = (User) request.getSession(false).getAttribute("authUser");
+  int id = 0;
+  if (user != null) id = user.getId();
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -259,7 +263,9 @@
             <div class="inner">
               <div class="review-title flex">
                 <h2>총 <span class="item-review-count">${totalRecords}</span>개의 후기</h2>
-                <button type="button" class="pop-open black-btn">제품후기 작성</button>
+                <c:if test="<%=user != null%>">
+                  <button type="button" class="pop-open black-btn">제품후기 작성</button>
+                </c:if>
               </div>
               <div class="review-photo">
                 <div class="swiper-container">
@@ -295,13 +301,14 @@
                             <div id="imageSize" class="review-contents cut">
                               <p>${review.productReview.pdr_content}</p>
 
-<%--                              <c:if test="${review.member.mid} eq 세션으로받은id값">--%>
+                              <c:set var="id" value="<%=id%>"></c:set>
+                              <c:if test="${review.member.mid eq id}">
                                 <div class="review-btn">
                                   <button type="button" id="updateReview">수정</button>
                                   <button type="button" id="delReview">삭제</button>
                                   <input type="text" id="rid" value="${review.productReview.pdr_id}" hidden>
                                 </div>
-<%--                              </c:if>--%>
+                              </c:if>
 
                               <c:if test="${review.imgPath ne null}">
                                 <c:forEach var="images" items="${review.imgPath}">

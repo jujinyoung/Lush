@@ -1,8 +1,11 @@
+<%@ page import="member.domain.User" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="/Lush/css/header.css" type="text/css">
 <%
       request.setCharacterEncoding("UTF-8");
       String contextPath = request.getContextPath();
+	  User user = (User) request.getSession(false).getAttribute("authUser");
 %>
 <style>
 a:visited, a:hover, a:active, a:focus {
@@ -272,7 +275,7 @@ a:visited, a:hover, a:active, a:focus {
 							</div>
 						</div></li>
 					<li><a href="/Lush/board/shop.do">매장안내</a></li>
-					<li><a href="javascript:void(0);">스파</a></li>
+					<li><a href="javascript:;">스파</a></li>
 					<li><a href="/Lush/event/list.do">이벤트</a></li>
 				</ul>
 			</nav>
@@ -293,11 +296,20 @@ a:visited, a:hover, a:active, a:focus {
 				<div class="small-menu" id="small-menu">
 					<ul>
 					<li>
-						<li><a href="/Lush/member/LoginMain.jsp">로그인</a></li>
-						<li><a href="/Lush/member/SignUpPre.jsp">회원가입</a></li>
-						<li><a href="/javascript:void(0);">커뮤니티</a></li>
+						<c:choose>
+							<c:when test="<%=user == null%>">
+								<li><a href="/Lush/member/LoginMain.jsp">로그인</a></li>
+								<li><a href="/Lush/member/SignUpPre.jsp">회원가입</a></li>
+							</c:when>
+							<c:otherwise>
+								<li><a href="/Lush/member/logout.do">로그아웃</a></li>
+								<li><a href="/Lush/mypage/mypage.do">마이페이지</a></li>
+							</c:otherwise>
+						</c:choose>
+
+						<li><a href="/javascript:;">커뮤니티</a></li>
 						<li><a href="/Lush/notice/list.do">고객센터</a></li>
-						<li><a href="javascript:void(0);">선물함<span id="commonGiftCount"></span></a></li>
+						<li><a href="javascript:;">선물함<span id="commonGiftCount"></span></a></li>
 					</ul>
 				</div>
 			</li>

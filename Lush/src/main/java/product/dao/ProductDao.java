@@ -19,4 +19,6 @@ public interface ProductDao {
     public int countReview(Connection conn, int productID) throws SQLException;
 
     public Product selectProduct(Connection conn, int productID) throws SQLException;
+
+    public int getTotalRecords(Connection conn, ArrayList<Integer> categoriesID) throws SQLException;
 }

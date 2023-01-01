@@ -173,4 +173,29 @@ public class ProductDaoImpl implements ProductDao{
             JdbcUtil.close(rs);
         }
     }
+
+    @Override
+    public int getTotalRecords(Connection conn, ArrayList<Integer> categoriesID) throws SQLException {
+
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        String sql = "SELECT COUNT(*) FROM ltb_product WHERE pc_id IN (?";
+        for (int i = 1; i < categoriesID.size(); i++) {
+            sql+= ",?";
+        }
+
+        sql += ")";
+        try {
+            pstmt = conn.prepareStatement(sql);
+            for(int i=0; i<categoriesID.size(); i++){
+                pstmt.setInt(i+1,categoriesID.get(i));
+            }
+            rs = pstmt.executeQuery();
+            rs.next();
+            return rs.getInt(1);
+        }finally {
+            JdbcUtil.close(pstmt);
+            JdbcUtil.close(rs);
+        }
+    }
 }

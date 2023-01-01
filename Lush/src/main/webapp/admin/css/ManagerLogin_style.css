@@ -286,13 +286,6 @@ button, input[type="button"], input[type="submit"], input[type="reset"], input[t
 .login-opt {
     margin: 32px auto;
 }
-.flex {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 108%;
-
-}
 
 input[type="checkbox" i] {
     background-color: initial;
