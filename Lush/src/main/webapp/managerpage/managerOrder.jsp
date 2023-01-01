@@ -650,20 +650,22 @@ input.underline {
                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${order.ps_id}
                          </a>
                          </td>
-                         <td>
-                         <select>
-                        	<option selected>&nbsp;선택해주세요</option>
-                        	<option>입금대기</option>
-                        	<option>결제완료</option>
-                        	<option>배송준비중</option>
-                        	<option>배송중</option>
-                        	<option>배송완료</option>
-                        	<option>구매확정</option>
-                        	<option>주문취소</option>
-                        	<option>교환</option>
-                        	<option>반품</option>
-                         </select>
-                         </td>
+                         <td>                         
+                         <select id="os">
+                         							<option selected>${order.os_name}</option>
+													<option value="1">입금대기</option>
+													<option value="2">결제완료</option>
+													<option value="3">배송준비</option>
+													<option value="4">배송중</option>
+													<option value="5">배송완료</option>
+													<option value="6">구매확정</option>
+													<option value="7">주문취소</option>
+													<option value="8">교환</option>
+													<option value="9">반품</option>
+						</select> 
+
+						<input type="hidden" id="oss" name="oss" value="">
+                        </td>
                         
 				</tr>
 				 </c:forEach>
@@ -697,7 +699,30 @@ input.underline {
 </section>
 
 
+<script>
+$("#oid").val("0");
+$("#oss").val("1");
+$("#os").change(function(){
+	var valss = $("#os option:selected").val();
+	$("#oss").val(valss);
+}); 
+</script>
 
+<script>
+var today = new Date();
+var year = today.getFullYear();
+var month = ('0' + (today.getMonth() + 1)).slice(-2);
+var day = ('0' + today.getDate()).slice(-2);
+var dateString = year + month + day;
+$("#searchStartDate").val(dateString);
+$("#searchEndDate").val(dateString);
+$("#resetBtn").click(function(){
+	$("#searchStartDate").val(dateString);
+	$("#searchEndDate").val(dateString);
+	$("#os").val("0");
+	$("#oid").val("");
+}); 
+</script>
 
 <script>
 

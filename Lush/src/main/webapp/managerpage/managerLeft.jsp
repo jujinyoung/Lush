@@ -589,7 +589,6 @@ table .right {
 		<div class="menu-box">
 			<p class="body2">공지사항관리</p>
 			<ul>
-				<li><a href="/Lush/managerpage/managerNotice.jsp">공지사항 관리</a></li>
 				<li><a href="/Lush/managerpage/noticeAdd.jsp">공지사항 등록</a></li>
 			</ul>
 		</div>
