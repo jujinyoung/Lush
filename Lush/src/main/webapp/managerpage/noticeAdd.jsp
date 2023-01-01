@@ -349,7 +349,6 @@ select::-ms-expand {
 <body>
 
 <header></header>
-<form id="reviewList" action="/mypage/plus-review" method="post">
 	<section id="mypage-plus" class="my-page" style="padding-top: 128px;">
 		<div class="inner flex top">
 			
@@ -361,7 +360,10 @@ select::-ms-expand {
 				<div class="mypage-top">
 					<h2 class="mypage-title">공지사항 등록</h2>
 				</div>
+				
+				<form action="/Lush/managerpage/noticeAdd.do" method="post">
 				<div class="plus-review-table">
+				
 				
 				<table class="list-table light">
                 <colgroup>
@@ -374,25 +376,22 @@ select::-ms-expand {
                 <tr class="title">
                     <th>제목</th>
                     <td>
-                        <input type="text" id="boardCommentFiles">
+                        <input type="text" name="n_title" id="boardCommentFiles">
                     </td>
                 </tr>
                
-               <tr class="title">
-                    <th>카테고리</th>
+               <tr class="contents">
+                    <th>작성자</th>
                     <td>
-                        <select>
-                        	<option selected>&nbsp;카테고리</option>
-                        	<option>공지사항</option>
-                        	<option>직원채용</option>
-                        </select>
+                        <input type="text" name="n_writer" class="_emoji2">
                     </td>
                 </tr>
                
                 <tr class="contents">
                     <th>내용</th>
                     <td>
-                        <textarea name="cmntContent" class="_emoji2"></textarea>
+                        <textarea name="n_content" class="_emoji2"></textarea>
+                        
                     </td>
                 </tr>
                 
@@ -400,20 +399,22 @@ select::-ms-expand {
                 
                 </tbody>
             </table>
+       
             <div>
             <input type="hidden" name="_csrf" value="bef55ff9-f147-4f96-b725-12e0449c5554">
             </div>
 				</div>
 				
 			<div class="btn-wrap large double">
-        <button type="reset" class="border-btn pop-change" onclick="rna.openLayerPopup('commentCancelPopup')">취소</button>
-        <button type="button" class="black-btn pop-change" onclick="registBoardComment();">작성하기</button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="submit" value="작성하기">
     </div>
+		</form>
 			</article>
 		</div>
 	</section>
-</form>
-
 <jsp:include page="/WEB-INF/inc/footer.jsp"></jsp:include>
 </body>
 </html>
