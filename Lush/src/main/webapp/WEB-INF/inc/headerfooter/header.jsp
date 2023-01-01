@@ -290,18 +290,17 @@ a:visited, a:hover, a:active, a:focus {
 					class="member"> <img src="/Lush/images/header/account.svg"
 						alt="마이페이지">
 				</a>
-					<div class="small-menu" id="small-menu">
-						<ul>
-							<li><a href="/users/login?target=/">로그인</a></li>
-							<li><a href="/users/join-us">회원가입</a></li>
-							<li><a href="/service/badge">커뮤니티</a></li>
-							<li><a href="/mypage/noticeList">고객센터</a></li>
-							<li><a href="/giftvoucher/giftbox">선물함<span
-									id="commonGiftCount"></span></a></li>
-						</ul>
-					</div></li>
-			</ul>
-		</div>
+				<div class="small-menu" id="small-menu">
+					<ul>
+						<li><a href="/users/login?target=/">로그인</a></li>
+						<li><a href="/users/join-us">회원가입</a></li>
+						<li><a href="/service/badge">커뮤니티</a></li>
+						<li><a href="/Lush/notice/list.do">고객센터</a></li>
+						<li><a href="/giftvoucher/giftbox">선물함<span id="commonGiftCount"></span></a></li>
+					</ul>
+				</div>
+			</li>
+		</ul>
 	</div>
 
 	<!-- 검색 영역 -->
