@@ -645,7 +645,7 @@ table .right {
 	</div>
 </section>
 
-<jsp:include page="/WEB-INF/inc/footer.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/inc/headerfooter/footer.jsp"></jsp:include>
 
 <script>
 

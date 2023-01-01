@@ -440,6 +440,6 @@ select::-ms-expand {
 	</section>
 </form>
 
-<jsp:include page="/WEB-INF/inc/footer.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/inc/headerfooter/footer.jsp"></jsp:include>
 </body>
 </html>

@@ -640,8 +640,7 @@ img {
 
 <body>
 
-<header id ="header">
-</header>
+<jsp:include page="/WEB-INF/inc/headerfooter/header.jsp"></jsp:include>
 
 <!-- 탑이미지 -->
 <section id="story" style="padding-top: 128px;">
@@ -739,8 +738,7 @@ img {
 </article>
 </section>
 
-<footer>
-</footer>
+<jsp:include page="/WEB-INF/inc/headerfooter/footer.jsp"></jsp:include>
 <!-- 카테고리 -->
 <script>
  

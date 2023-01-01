@@ -611,7 +611,7 @@ table.list-table td {
 </form>
 			
 <!-- 푸터 -->
-<jsp:include page="/WEB-INF/inc/footer.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/inc/headerfooter/footer.jsp"></jsp:include>
 
 <script>
 if (<%=searchCondition%> == 1){
