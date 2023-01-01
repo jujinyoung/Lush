@@ -146,7 +146,7 @@
 							<tbody>
 								<c:forEach var="pro" items="${map.value}"> 
 								<tr>
-									<td><img src="/Lush/images/ico/prdimg.png" alt="일반배송상품"></td>
+									<td><img src="../images/products/${pro.pid}.png" alt="일반배송상품"></td>
 									<td>
 										<p class="name">${pro.name}</p>
 										<p class="cate">${pro.cat3}</p>

@@ -81,7 +81,7 @@
 						<div class="table-top">
 							<p class="sub-page-title">일반배송</p>
 							<p>
-								<span>주문일 : 2022-12-20</span> / <span>주문번호 : <a
+								<span>주문일 : ${map.value.get(0).getOdate()}</span> / <span>주문번호 : <a
 									href="/mypage/order-detail/0/K1000079212">KFBGKD-${map.key}</a></span>
 							</p>
 						</div>
@@ -110,7 +110,7 @@
 							<tbody>
 								<c:forEach var="pro" items="${map.value}"> 
 								<tr>
-									<td><img src="/Lush/images/ico/prdimg.png" alt="일반배송상품"></td>
+									<td><img src="../images/products/${pro.pid}.png" alt="일반배송상품"></td>
 									<td>
 										<p class="name">${pro.name}</p>
 										<p class="cate">${pro.cat3}</p>
