@@ -32,22 +32,22 @@
 						<img src="/Lush/images/ico/mplogo.png" alt="levelImg">
 						<div>
 							<p class="user-name">${member.name}님</p>
-							<a href="/mypage/user-modify">회원정보 변경</a><br> <a
+							<a href="InfoPre.jsp">회원정보 변경</a><br> <a
 								href="/mypage/user-delivery">배송지 관리</a>
 						</div>
 					</div>
 					<div class="user-menu">
 						<ul class="flex">
 							<li class="benefit">
-								<p class="body1">혜택</p> <a href="/mypage/benefit"
+								<p class="body1">혜택</p> <a href="/javascript:void(0);"
 								class="link-green "><span>0 장</span></a>
 							</li>
 							<li class="duczzi">
-								<p class="body1">덕찌력</p> <a href="/mypage/badge/2022"
+								<p class="body1">덕찌력</p> <a href="/javascript:void(0);"
 								class="link-green "><span>0</span></a>
 							</li>
 							<li class="question">
-								<p class="body1">문의</p> <a href="/mypage/inquiry"
+								<p class="body1">문의</p> <a href="/Lush/inquiry/view.do"
 								class="link-green "><span>0 건</span></a>
 							</li>
 						</ul>
