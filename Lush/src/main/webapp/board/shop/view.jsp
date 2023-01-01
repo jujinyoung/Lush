@@ -12,7 +12,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>러쉬 매장안내</title>
+	<title>러쉬코리아</title>
 	<link rel="stylesheet" href="../css/shop_style.css" type="text/css">
 	<link rel="icon" type="image/png" sizes="192x192" href="../../images/ico/fabicon.png">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
