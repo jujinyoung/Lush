@@ -14,9 +14,8 @@ public class CartAjax implements CommandHandler {
     @Override
     public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-//        User user = (User) request.getSession(false).getAttribute("authUser");
-//        int memberID = user.getId();
-        int memberID = 1;
+    	User user = (User) request.getSession(false).getAttribute("authUser");
+    	int memberID = user.getId();
 
         //request받은 변수
         String[] pid = request.getParameterValues("pid[]");
