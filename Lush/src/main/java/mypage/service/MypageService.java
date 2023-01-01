@@ -127,5 +127,7 @@ public class MypageService {
 
 		return map;
 	}
+    
+    
 
 }

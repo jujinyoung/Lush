@@ -9,11 +9,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="css/mypageMain.css" type="text/css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <title>러쉬 MYPAGE</title>
-<link rel="icon" type="image/png" sizes="192x192"
-	href="/Lush/images/ico/fabicon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/Lush/images/ico/fabicon.png">
 
 </head>
 <body>

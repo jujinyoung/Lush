@@ -34,12 +34,14 @@
     </div>
 </section>
 <jsp:include page="/WEB-INF/inc/headerfooter/footer.jsp"></jsp:include>
+<div class="modal__background" id="modalback" name="modalback">
 <div id="modal" class="modal">
 	<div class="modal_content" title="클릭시 창이 닫힙니다">
 	<button id="close" class="close">x</button>
 	<input type="hidden" id="smsnum" class="smsnum" placeholder="인증번호를 입력해 주세요" value="1234">
 	<input type="submit" id="smsmsend" class="smsmsend" value="인증번호 보내기">
 	<input type="hidden" id="numsend" class="numsend" value="인증번호 인증">
+	</div>
 	</div>
 	</div>
 
@@ -54,7 +56,7 @@
 <script>
 $(function() {
     $('#close').click(function(){ // 모달창 x 
-    	$("#modal").css("display", "none");
+    	$("#modalback").css("display", "none");
 		 
    	});
     
@@ -65,7 +67,7 @@ let phonenum = "";
 
 $(function() {
     $('#smsbutton').click(function(){ // 휴대폰 인증 클릭시
-    	 alert("버튼 클릭");
+    	/*  alert("버튼 클릭"); */
     
     	 let phonenum = $('#phonenum').val();
 		 console.log(phonenum );
@@ -87,7 +89,9 @@ $(function() {
 						$('#phonenum').focus();
 						return false;
 					}else if(result == 1){ // 정상적인 번호 
-						$(".modal").css("display", "block");
+						$("#modalback").css("display", "block");
+						$("#modal").css("display", "block");
+					
 					
 					}// if 
 				}, // fuction
@@ -104,21 +108,61 @@ $(function() {
 });
 
 /*  인증번호 보내기 */
- 
+ let authcode = "";
  $(function() {
 	  $('#smsmsend').click(function(){ // 인증번호 보내기 
 		  $("#smsnum").attr("type", "text");
 		  $("#smsmsend").attr("type", "hidden");
 			$("#numsend").attr("type", "submit");
 			
-
+			 $.ajax({ // ajax 처리 
+					url : "/Lush/member/smspass.do",
+					type : "post",
+					// data : {phonenum : phonenum},
+					// async: false,
+					dataType : "json",
+					success : 
+					function(  smsnum  ){
+						console.log(smsnum);
+						authcode = smsnum;
+						console.log(authcode);
+					}, // fuction
+					error : function(){
+						alert("서버요청실패");
+					}
+					})// ajax 
 			
 	   	});
 	    
 	    
 	});
+	
+ $(function() {
+	 $('#numsend').click(function(){	
+		 usernum  = $('#smsnum').val();
+		 console.log( usernum );
+/* 		 alert("인증번호 인증 버튼 클릭"); */
+		 if(  usernum  == authcode ){
+			 let f = document.createElement('form');
+			    f.setAttribute('method', 'get');
+			    f.setAttribute('action', '/Lush/member/changeinfo.do');
+			    document.body.appendChild(f);
+			    f.submit(); 
+		 }else{
+			 do{
+					alert("번호가 일치하지 않습니다!");
+					 $("#smsnum").focus();
+				}while( authcode  == usernum)
+		 }
+		 
+		
+	   	});
+	    
+	    
+	});
+		
 			 
-	  
+/* 	  
 	  
 let usernum = "";
 $(function() {
@@ -136,12 +180,12 @@ $(function() {
 				function(  smsnum  ){
 					if( smsnum == usernum){
 						alert("인증되었습니다!");
-						/* $(location).attr('href', 'InfoChange.jsp'); */
+						/* $(location).attr('href', 'InfoChange.jsp'); *//*
 						 let f = document.createElement('form');
 						    f.setAttribute('method', 'get');
 						    f.setAttribute('action', 'changeinfo.do');
 						    document.body.appendChild(f);
-						    f.submit();
+						    f.submit(); 
 					}else if( smsnum != usernum ){
 						do{
 							alert("번호가 일치하지 않습니다!");
@@ -163,7 +207,7 @@ $(function() {
 		    
 		    
 		});
-				 
+				  */
 		    
 	  
 	  

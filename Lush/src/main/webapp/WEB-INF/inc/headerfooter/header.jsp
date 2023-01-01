@@ -283,7 +283,7 @@ a:visited, a:hover, a:active, a:focus {
 						src="/Lush/images/header/logo_live.png" alt="숏핑 라이브" width=""></a></li>
 				<li><a href="javascript:;" class="search"><img
 						src="/Lush/images/header/search.svg" alt="검색"></a></li>
-				<li><a href="/cart" class="basket"><img
+				<li><a href="/Lush/mypage/mypageCart.do" class="basket"><img
 						src="/Lush/images/header/bag.svg" alt="장바구니"><span
 						class="basket-cnt" id="header_cart_quantity">0</span></a></li>
 				<li class="open-menu" id="atag3"><a href="<%= contextPath %>/mypage/mypage.do"
