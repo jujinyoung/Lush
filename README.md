@@ -97,7 +97,7 @@
 - [x] 
 
 ## 이벤트
-[![이벤트](https://img.youtube.com/vi/shrErC-E2mI/0.jpg)](https://www.youtube.com/watch?v=shrErC-E2mI)
+[![이벤트](https://img.youtube.com/vi/kPu77L3eBp0/0.jpg)](https://www.youtube.com/watch?v=kPu77L3eBp0)
 - [x] 날짜로 진행중, 종료된 이벤트 분류
 - [x] 제목, 내용을 통한 이벤트 검색 구현
 - [x] 이벤트 페이징 처리
