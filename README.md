@@ -39,7 +39,7 @@
 * **문혜빈**
     * **Github** - (https://github.com/moonevi)
     * **Mail** - <the_hb@naver.com>
-* **김민지**
+* **정민지**
     * **Github** - (https://github.com/mingdii416)
     * **Mail** - <hyungjs1234@naver.com>
 * **김경연**
