@@ -91,9 +91,9 @@
 
 ## 매장관리/러쉬이야기
 [![매장관리/러쉬이야기](https://img.youtube.com/vi/shrErC-E2mI/0.jpg)](https://www.youtube.com/watch?v=shrErC-E2mI)
-- [x] 
-- [x] 
-- [x] 
+- [x] 러쉬이야기 목록 페이징 구현
+- [x] 제목과 내용을 통한 러쉬이야기 검색 구현
+- [x] 전체, 브랜드, 제품, 캠페인, 원재료 카테고리 구분
 - [x] 
 
 ## 이벤트
@@ -107,10 +107,10 @@
 
 ## 관리자
 [![관리](https://img.youtube.com/vi/4WoxKV7UtSQ/0.jpg)](https://www.youtube.com/watch?v=4WoxKV7UtSQ)
-- [x] 
-- [x] 
-- [x] 
-- [x] 
+- [x] 회원관리 : 이름과 이메일을 통한 회원 검색 구현
+- [x] 상품관리 : 상품 카테고리별로 상품 검색 구현
+- [x] 주문관리 : 주문아이디, 이메일별로 주문상태 검색 구현
+- [x] 관리자 페이지 페이징 처리
 
 ---
 ## document
