@@ -58,10 +58,10 @@
 ---
 ## 회원관리
 [![회원관리]( https://img.youtube.com/vi/iNkMttST5s0/0.jpg)](https://www.youtube.com/watch?v=iNkMttST5s0)
-- [x] 
-- [x] 
-- [x] 
-- [x] 
+- [x] 회원가입 아이디 중복 확인 AJAX 처리
+- [x] SMS 문자, 이메일 인증 구현
+- [x] 로그인 체크 필터 사용한 세션 관리
+- [x] 회원 로그인, 수정, 삭제 기능
 
 ## 상품/카테고리
 [![상품/카테고리]( https://img.youtube.com/vi/a9uHo206g3Y/0.jpg)](https://www.youtube.com/watch?v=a9uHo206g3Y)
