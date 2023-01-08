@@ -77,15 +77,17 @@
 
 ## 장바구니/주문/결제
 [![장바구니/주문/결제](https://img.youtube.com/vi/TnCWZ3mNc4U/0.jpg)](https://www.youtube.com/watch?v=TnCWZ3mNc4U)
-- [x] 
-- [x] 
-- [x] 
-- [x] 
+- [x] 장바구니 추가 및 삭제 구현
+- [x] 장바구니 제품 수량 및 가격 변경 반영
+- [x] 장바구니 제품 주문 처리
+- [x] Ajax 활용한 주문 및 결제 시 동시접속자 재고 처리 및 거래수 처리
+- [x] 결제파트 카카오페이 테스트 api 연동
+- [x] 주문 회원 데이터 불러오기 및 배송지 추가
 
 ## 마이페이지/공지사항/문의
 [![마이페이지/공지사항/문의](https://img.youtube.com/vi/_vvvL6DsAFQ/0.jpg)](https://www.youtube.com/watch?v=_vvvL6DsAFQ)
-- [x] 
-- [x] 
+- [x] 회원별 최근 주문 조회
+- [x] 주문 번호, 주문 일자 및 주문 상태 값에 따른 사용자 조회
 - [x] 
 - [x] 
 
