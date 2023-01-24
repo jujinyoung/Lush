@@ -88,15 +88,12 @@
 [![마이페이지/공지사항/문의](https://img.youtube.com/vi/_vvvL6DsAFQ/0.jpg)](https://www.youtube.com/watch?v=_vvvL6DsAFQ)
 - [x] 회원별 최근 주문 조회
 - [x] 주문 번호, 주문 일자 및 주문 상태 값에 따른 사용자 조회
-- [x] 
-- [x] 
 
 ## 매장관리/러쉬이야기
 [![매장관리/러쉬이야기](https://img.youtube.com/vi/shrErC-E2mI/0.jpg)](https://www.youtube.com/watch?v=shrErC-E2mI)
 - [x] 러쉬이야기 목록 페이징 구현
 - [x] 제목과 내용을 통한 러쉬이야기 검색 구현
 - [x] 전체, 브랜드, 제품, 캠페인, 원재료 카테고리 구분
-- [x] 
 
 ## 이벤트
 [![이벤트](https://img.youtube.com/vi/kPu77L3eBp0/0.jpg)](https://www.youtube.com/watch?v=kPu77L3eBp0)
